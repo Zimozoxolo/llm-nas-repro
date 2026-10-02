@@ -48,6 +48,19 @@ python -m llmnas run table3_main --set llm.base_url=http://localhost:11434/v1 ll
 python -m llmnas run table3_main --set llm.mode=replay
 ```
 
+### Local models with Ollama (free, slower)
+
+```bash
+ollama pull qwen2.5:7b
+ollama create qwen2.5-7b-8k -f configs/ollama/qwen2.5-7b-8k.Modelfile   # 8K context, avoids prompt truncation
+python -m llmnas run table3_main --datasets cifar10 --devices edgegpu --seeds 0 --set llm.base_url=http://localhost:11434/v1 llm.model=qwen2.5-7b-8k
+```
+
+On a 4 GB laptop GPU (RTX 3050 Ti), one call takes ~80-95 s, so a 120-call search takes about 3 hours.
+A local model is a *substituted LLM*: report its runs separately from GPT-4.1 runs (they get their own
+config hash and folder automatically). For long runs, start Python with `-u` (or set `PYTHONUNBUFFERED=1`)
+so the log file updates live.
+
 Changing any setting other than `llm.mode` produces a new config hash, so the run goes to a new directory
 and earlier results are never overwritten.
 

@@ -1,0 +1,6 @@
+# qwen2.5:7b with an 8K context window. Ollama's default (2K in 0.6.x) can silently
+# truncate Stage-1/Stage-2 prompts once the knowledge base fills up.
+#   ollama pull qwen2.5:7b
+#   ollama create qwen2.5-7b-8k -f configs/ollama/qwen2.5-7b-8k.Modelfile
+FROM qwen2.5:7b
+PARAMETER num_ctx 8192
