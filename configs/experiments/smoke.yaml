@@ -1,0 +1,14 @@
+# Offline end-to-end check (no API key, ~1 min). The mock backend is a random
+# operator, NOT an LLM - numbers from this run mean nothing.
+name: smoke
+type: search
+datasets: [cifar10]
+devices: [edgegpu]
+seeds: [0]
+overrides:
+  search: {generations: 3}
+  llm: {backend: mock}
+variants:
+  llmnas: {}
+  no_partitioning: {search: {partitioning: false}}
+  no_llm_pea: {search: {operator: random}}

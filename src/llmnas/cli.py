@@ -1,0 +1,84 @@
+"""Command line interface:  python -m llmnas <command> ...
+
+  prepare-data                     download benchmarks + build data/processed/*.csv
+  check-data                       sanity checks (paper's Table-2 points, predictor Spearman)
+  run <experiment> [filters]       run an experiment grid (resumable)
+  report <experiment>              tables + figures -> results/reports/<experiment>/
+  fig3                             Figure 3 (parameter histogram by #conv3x3)
+"""
+
+from __future__ import annotations
+
+import argparse
+from pathlib import Path
+
+
+def load_dotenv(path: Path | None = None) -> None:
+    """Read KEY=VALUE lines from the repo's .env (git-ignored) without overriding real env vars."""
+    import os
+
+    path = path or Path(__file__).resolve().parents[2] / ".env"
+    if not path.exists():
+        return
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line and not line.startswith("#") and "=" in line:
+            key, _, val = line.partition("=")
+            os.environ.setdefault(key.strip(), val.strip().strip('"').strip("'"))
+
+
+def _filters(a) -> dict:
+    return dict(variants=a.variants, datasets=a.datasets, devices=a.devices, seeds=a.seeds)
+
+
+def main(argv=None) -> None:
+    ap = argparse.ArgumentParser(prog="llmnas", description=__doc__, formatter_class=argparse.RawTextHelpFormatter)
+    sub = ap.add_subparsers(dest="cmd", required=True)
+
+    sub.add_parser("prepare-data").add_argument("--data-dir", default=None)
+    sub.add_parser("check-data").add_argument("--data-dir", default=None)
+
+    for name in ("run", "report"):
+        p = sub.add_parser(name)
+        p.add_argument("experiment", help="name in configs/experiments/ or a path to a yaml file")
+        p.add_argument("--set", nargs="*", default=[], metavar="KEY=VALUE",
+                       help="override config, e.g. --set llm.model=gpt-4o search.generations=5")
+        p.add_argument("--variants", nargs="*")
+        p.add_argument("--datasets", nargs="*")
+        p.add_argument("--devices", nargs="*")
+        p.add_argument("--seeds", nargs="*", type=int)
+        if name == "run":
+            p.add_argument("--force", action="store_true", help="recompute finished runs")
+
+    sub.add_parser("fig3").add_argument("--out", default="results/reports/fig3_params.png")
+    a = ap.parse_args(argv)
+    load_dotenv()
+
+    if a.cmd == "prepare-data":
+        from .data import prepare
+
+        prepare(Path(a.data_dir) if a.data_dir else None)
+    elif a.cmd == "check-data":
+        from .checks import check_data
+
+        check_data(a.data_dir)
+    elif a.cmd in ("run", "report"):
+        from .experiments import load_experiment, parse_sets, run_experiment
+
+        exp = load_experiment(a.experiment, parse_sets(a.set))
+        if a.cmd == "run":
+            run_experiment(exp, force=a.force, **_filters(a))
+        else:
+            from .report import make_report
+
+            make_report(exp)
+    elif a.cmd == "fig3":
+        from .report import plot_fig3
+
+        Path(a.out).parent.mkdir(parents=True, exist_ok=True)
+        plot_fig3(Path(a.out))
+        print(f"Wrote {a.out}")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,42 @@
+# Defaults shared by every experiment. Values marked [paper] are stated in the paper;
+# values marked [assumed] are NOT specified there - see REPRODUCTION.md before changing.
+
+data_dir: null              # null -> ./data (or $LLMNAS_DATA)
+results_dir: results
+
+search:
+  generations: 10           # [paper] Sec. 4.1
+  crossover_prob: 0.5       # [paper] p_c
+  partitioning: true        # [paper] six niches of Table 1
+  operator: llm             # llm | random (PEA ablation) | random_sample
+  knowledge_base: true      # [paper] Stage-1 co-evolve knowledge base
+  init_pop_per_niche: 5     # [assumed]
+  n_child: 4                # [assumed] children requested per Stage-2 call
+  n_parents_shown: 6        # [assumed] Pareto parents put in each prompt
+  latency_limit: null       # [assumed] null | niche_max | <float ms>
+  match_budget: true        # un-partitioned run gets n_child x 6 so #candidates match
+
+predictor:
+  kind: zc_ensemble         # [paper] zc_ensemble | synflow | oracle
+  n_train: 1000             # [assumed] architectures used to fit the predictor
+  target: val               # [assumed] fit on NB201 validation accuracy
+
+evaluation:
+  acc: test                 # [assumed] HV/IGD use NB201 200-epoch test accuracy (Table 2 uses it)
+  front_source: archive     # archive = final Pareto front of Alg. 1 | all = every evaluated arch
+  normalization: front      # [assumed] front | space
+  ref_point: [1.1, 1.1]     # [assumed] in normalised (latency, error) space
+
+llm:
+  backend: openai           # openai | anthropic | mock
+  model: gpt-4.1            # [paper]
+  temperature: 0.7          # [assumed] (ignored by the anthropic backend)
+  base_url: null            # e.g. https://openrouter.ai/api/v1 or http://localhost:11434/v1
+  api_key_env: OPENAI_API_KEY
+  max_tokens: 4096
+  mode: record              # record | replay (re-run from saved llm_calls.jsonl)
+
+bias:                       # exploration-bias study only
+  rounds: 10
+  per_round: 6
+  prompt: normal

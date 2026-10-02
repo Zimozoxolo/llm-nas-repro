@@ -1,0 +1,17 @@
+# Table 5 + Figures 6-8. The paper reports CIFAR-100; add datasets for Figs 6 and 8.
+# `llmnas` runs are shared with table3_main if you point both at the same results_dir
+# (re-use is automatic: a finished run.json is never recomputed).
+name: table5_ablation
+type: search
+datasets: [cifar100]
+devices: [edgegpu, raspi4, edgetpu, pixel3, eyeriss, fpga]
+seeds: [0, 1, 2]
+variants:
+  llmnas: {}
+  no_partitioning: {search: {partitioning: false}}
+  no_llm_pea: {search: {operator: random}}
+  synflow_only: {predictor: {kind: synflow}}
+  # extra (not in paper): isolates the knowledge-base co-evolution
+  no_knowledge_base: {search: {knowledge_base: false}}
+  # extra (not in paper): non-LLM floor with the same number of evaluations
+  random_sampling: {search: {operator: random_sample}}

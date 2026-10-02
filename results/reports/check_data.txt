@@ -1,0 +1,40 @@
+== Benchmark tables
+  cifar10         rows=15625  best test acc=94.37 (expected 94.37) OK
+  cifar100        rows=15625  best test acc=73.51 (expected 73.51) OK
+  ImageNet16-120  rows=15625  best test acc=47.31 (expected 47.31) OK
+
+== Niche sizes (Table 1)
+  S0:   729 architectures - Explores non-convolutional architectures
+  S1:  3367 architectures - Focuses on simple, low-latency models
+  S2:  6144 architectures - Entry-level complex architectures
+  S3:  3840 architectures - Mid-level complexity
+  S4:  1280 architectures - High-level complexity
+  S5:   265 architectures - Explores the most complex designs
+
+== Paper Table-2 LLM-NAS points found in the benchmark (CIFAR-10)
+| Device | Paper acc | Paper lat | #matching archs in HW-NAS-Bench/NB201 | example |
+|---|---|---|---|---|
+| Edge GPU | 94.37 | 4.35 | 0 | - |
+| Edge GPU | 93.88 | 3.36 | 1 | (3, 3, 4, 1, 3, 0) |
+| Edge GPU | 89.18 | 1.78 | 1 | (2, 1, 0, 2, 0, 0) |
+| Raspi 4 | 94.37 | 69.76 | 1 | (3, 3, 3, 1, 2, 3) |
+| Raspi 4 | 92.37 | 18.67 | 1 | (0, 1, 0, 0, 1, 3) |
+| Raspi 4 | 90.70 | 7.29 | 1 | (4, 2, 0, 1, 0, 2) |
+| Pixel 3 | 94.30 | 21.59 | 1 | (2, 3, 3, 1, 3, 3) |
+| Pixel 3 | 93.31 | 8.98 | 1 | (3, 3, 4, 1, 2, 0) |
+| Pixel 3 | 90.36 | 2.57 | 1 | (2, 2, 2, 1, 2, 0) |
+| FPGA | 94.37 | 6.68 | 2 | (3, 3, 3, 1, 3, 2) |
+| FPGA | 93.29 | 2.91 | 2 | (3, 1, 1, 1, 2, 0) |
+| FPGA | 89.57 | 1.65 | 5 | (1, 1, 0, 2, 0, 1) |
+
+== Figure-2 example rows: best-matching (dataset, device)
+  (2, 2, 3, 1, 0, 3): paper lat=5.42 acc=71.77 -> closest cifar100/edgegpu: lat=5.43 acc=71.96
+  (1, 2, 3, 1, 0, 3): paper lat=4.39 acc=70.91 -> closest cifar100/edgegpu: lat=4.40 acc=70.79
+  (2, 3, 3, 2, 0, 0): paper lat=1.77 acc=61.73 -> closest cifar100/edgegpu: lat=1.78 acc=63.03
+  (3, 1, 3, 1, 2, 0): paper lat=3.34 acc=69.59 -> closest cifar100/edgegpu: lat=3.34 acc=69.33
+  (1, 3, 3, 1, 2, 0): paper lat=2.56 acc=64.17 -> closest cifar100/edgegpu: lat=2.57 acc=63.89
+
+== ZC-ensemble predictor (paper: Spearman ~0.90)
+  cifar10         XGB(13 ZC) Spearman vs test acc = 0.960 ± 0.001   (synflow alone: 0.777)
+  cifar100        XGB(13 ZC) Spearman vs test acc = 0.964 ± 0.001   (synflow alone: 0.763)
+  ImageNet16-120  XGB(13 ZC) Spearman vs test acc = 0.957 ± 0.002   (synflow alone: 0.752)

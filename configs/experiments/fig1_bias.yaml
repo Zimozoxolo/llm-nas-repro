@@ -1,0 +1,10 @@
+# Figure 1 (Edge GPU, CIFAR-10) and Figure 9 (all devices, CIFAR-10).
+name: fig1_bias
+type: bias
+datasets: [cifar10]
+devices: [edgegpu, raspi4, edgetpu, pixel3, eyeriss, fpga]
+seeds: [0]
+variants:
+  normal: {bias: {prompt: normal}}
+  latency_optimized: {bias: {prompt: latency_optimized}}
+  llmnas: {type: search}

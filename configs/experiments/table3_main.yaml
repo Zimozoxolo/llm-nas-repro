@@ -1,0 +1,9 @@
+# Table 3 (HV / IGD, 3 datasets x 6 devices) - also feeds Table 2 and Table 4.
+# 18 settings x 3 seeds x 120 calls = 6,480 API calls with gpt-4.1.
+name: table3_main
+type: search
+datasets: [cifar10, cifar100, ImageNet16-120]
+devices: [edgegpu, raspi4, edgetpu, pixel3, eyeriss, fpga]
+seeds: [0, 1, 2]
+variants:
+  llmnas: {}
