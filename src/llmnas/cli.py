@@ -20,7 +20,7 @@ def load_dotenv(path: Path | None = None) -> None:
     path = path or Path(__file__).resolve().parents[2] / ".env"
     if not path.exists():
         return
-    for line in path.read_text(encoding="utf-8").splitlines():
+    for line in path.read_text(encoding="utf-8-sig").splitlines():
         line = line.strip()
         if line and not line.startswith("#") and "=" in line:
             key, _, val = line.partition("=")

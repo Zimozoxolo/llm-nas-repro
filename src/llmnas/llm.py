@@ -50,6 +50,9 @@ class OpenAIBackend(LLMBackend):
         from openai import OpenAI
 
         key = os.environ.get(api_key_env) or ("ollama" if base_url and "localhost" in base_url else None)
+        if not key:
+            raise SystemExit(f"{api_key_env} is not set. Put `{api_key_env}=sk-...` in llm-nas-repro/.env "
+                             "(saved, no quotes), set it as an environment variable, or use --set llm.backend=mock.")
         self.client = OpenAI(api_key=key, base_url=base_url)
         self.model, self.temperature, self.max_tokens, self.seed = model, temperature, max_tokens, seed
 
