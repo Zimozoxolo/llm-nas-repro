@@ -63,9 +63,10 @@ def run_search(cfg: dict, dataset: str, device: str, seed: int, run_dir: Path) -
                                 target=p_cfg.get("target", "val"), xgb_params=p_cfg.get("xgb_params"))  # fmt: skip
 
     niches = get_niches(s_cfg["partitioning"])
-    n_child = s_cfg["n_child"]
+    n_child, init_pop = s_cfg["n_child"], s_cfg["init_pop_per_niche"]
     if not s_cfg["partitioning"] and s_cfg.get("match_budget", True):
-        n_child *= len(PAPER_NICHES)  # same number of candidates as the partitioned run
+        n_child *= len(PAPER_NICHES)  # same number of candidates (and initial samples) as the partitioned run
+        init_pop *= len(PAPER_NICHES)
     states = [NicheState(n) for n in niches]
     use_llm = s_cfg["operator"] == "llm"
     session = None
@@ -88,7 +89,7 @@ def run_search(cfg: dict, dataset: str, device: str, seed: int, run_dir: Path) -
 
     # ---- Phase 1: initial population per niche
     for st in states:
-        for code in st.niche.sample(rng, s_cfg["init_pop_per_niche"], exclude=unmeasured):
+        for code in st.niche.sample(rng, init_pop, exclude=unmeasured):
             evaluate(code, st.niche.name, 0, "init")
             st.update_archive(code, ev)
             st.last_cycle.append(code)

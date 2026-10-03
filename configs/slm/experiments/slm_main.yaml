@@ -1,0 +1,16 @@
+# Main blended experiment: does LLM co-evolution (+ survey knowledge) beat LTS's evolutionary
+# search at finding fast/small SLM shapes? `datasets` = search space, `devices` = hardware profile.
+# 2 devices x 3 seeds x (120 calls for each LLM variant).
+name: slm_main
+base_config: slm
+type: slm
+datasets: [slm]
+devices: [jetson_orin_nx_16gb, snapdragon_8gen1_cpu]
+seeds: [0, 1, 2]
+variants:
+  llmnas: {}                                                   # LLM-NAS transferred as-is
+  llmnas_survey_kb: {search: {kb_seed: survey}}                # + survey insights as prior knowledge
+  no_partitioning: {search: {partitioning: false}}             # LLM without niches
+  lts_search: {search: {partitioning: false, operator: random}}  # LTS's evolutionary search
+  no_llm_pea: {search: {operator: random}}                     # niches + random evolution
+  random_sampling: {search: {operator: random_sample}}

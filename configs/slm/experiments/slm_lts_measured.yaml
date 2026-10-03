@@ -1,0 +1,15 @@
+# LTS-faithful setting: GPT-2 backbone space, latency/memory MEASURED in the loop on this machine.
+# CPU works with any PyTorch; for the GPU use a CUDA PyTorch and --devices rtx3050ti_laptop
+# with --set hardware.measure_device=cuda. Measurements are cached and reused across runs.
+name: slm_lts_measured
+base_config: slm
+type: slm
+datasets: [lts_gpt2]
+devices: [local_cpu]
+seeds: [0]
+overrides:
+  hardware: {source: measured, measure_device: cpu}
+  workload: {weight_dtype: f32}   # match the CPU calibration (PyTorch fp32); use f16 for cuda
+variants:
+  llmnas_survey_kb: {search: {kb_seed: survey}}
+  lts_search: {search: {partitioning: false, operator: random}}

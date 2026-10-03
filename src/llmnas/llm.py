@@ -76,6 +76,8 @@ class MockBackend(LLMBackend):
         self.rng = random.Random(seed)
 
     def complete(self, system: str, user: str, meta: dict[str, Any]) -> LLMResponse:
+        if meta.get("stage") != "kb_update" and "mock_generate" in meta:  # search spaces other than NB201
+            return LLMResponse(json.dumps(meta["mock_generate"]()))
         if meta.get("stage") == "kb_update":
             rules = ["Use skip_connect next to heavy convs because it is cheap.",
                      "Avoid many avg_pool_3x3 because they add latency for little accuracy."]  # fmt: skip

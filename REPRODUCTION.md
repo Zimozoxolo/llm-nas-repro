@@ -56,7 +56,7 @@ sensitivity check on the ones that matter (HV normalisation, `n_child`, predicto
 | Accuracy used for HV/IGD and plots | NB201 200-epoch **test** accuracy (mean over seeds) | Table 2 reports 94.37 %, the CIFAR-10 test optimum |
 | Discovered set S | final front of Algorithm 1 (selected by *predicted* accuracy), re-scored with true accuracy | Algorithm 1 returns P_final; set `evaluation.front_source: all` to score every evaluated arch |
 | HV / IGD normalisation | min-max by the true front's ideal/nadir points, reference point (1.1, 1.1), HV reported as HV(S)/HV(P\*) | paper reports HV ≤ 1 ("near-perfect"), implying a ratio; not stated |
-| "Without partitioning" budget | one niche covering the whole space, 24 children per call, so the same number of candidates is evaluated (20 calls instead of 120) | `search.match_budget` |
+| "Without partitioning" budget | one niche covering the whole space with 30 initial samples and 24 children per call, so the same number of candidates is evaluated (20 calls instead of 120) | `search.match_budget` |
 | Synflow ablation | Synflow mapped to the accuracy scale with an isotonic fit (ranking = Synflow's) | the LLM is shown "accuracy" in every variant |
 | Seeds | 3 per setting | paper reports ± but not the number of runs |
 

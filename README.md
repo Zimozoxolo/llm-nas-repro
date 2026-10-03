@@ -9,6 +9,9 @@ HW-NAS-Bench, built for repeatable re-runs.
 * Runs are keyed by a hash of their config. A finished run is never recomputed, and grids resume after interruptions.
 * Local runs and the [Colab notebook](notebooks/LLM_NAS_Reproduction_Colab.ipynb) call the same code.
 
+**Extension:** the same engine searches hardware-efficient *small language models*, blended with
+LiteTransformerSearch and the 2024 SLM survey. See **[BLEND.md](BLEND.md)** and `configs/slm/`.
+
 See **[REPRODUCTION.md](REPRODUCTION.md)** for how each paper result maps to a command, and for every
 detail the paper leaves unspecified and the choice made here.
 
@@ -69,6 +72,7 @@ and earlier results are never overwritten.
 ```
 configs/base.yaml                 all defaults, each tagged [paper] or [assumed]
 configs/experiments/*.yaml        one file per paper table/figure (grid + variants)
+configs/slm/                      SLM-blend defaults, experiments, device calibrations
 src/llmnas/
   search_space.py                 NB201 encoding (paper Fig. 2), niches (Table 1), PEA operators
   data.py                         download + build tidy benchmark tables
@@ -83,6 +87,7 @@ src/llmnas/
   report.py                       Tables 2-5, Figures 1, 3, 6-8
   paper_results.py                the paper's reported numbers, for side-by-side tables
   checks.py                       data-alignment checks
+  slm/                            blended SLM search (BLEND.md): space, costs, measure, prompts, search, report
 notebooks/                        Colab notebook (+ the script that generates it)
 tests/                            pytest; runs on synthetic data, no download needed
 results/runs/<variant>-<hash>/<dataset>/<device>/seed<k>/

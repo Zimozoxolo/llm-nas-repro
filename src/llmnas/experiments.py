@@ -57,10 +57,12 @@ def parse_sets(sets: list[str] | None) -> dict:
 
 def load_experiment(path: str | Path, cli_overrides: dict | None = None) -> dict:
     path = Path(path)
-    if not path.exists() and (REPO / "configs" / "experiments" / f"{path}.yaml").exists():
-        path = REPO / "configs" / "experiments" / f"{path}.yaml"
+    for folder in (REPO / "configs" / "experiments", REPO / "configs" / "slm" / "experiments"):
+        if not path.exists() and (folder / f"{path}.yaml").exists():
+            path = folder / f"{path}.yaml"
     exp = yaml.safe_load(open(path))
-    base = yaml.safe_load(open(REPO / "configs" / "base.yaml"))
+    base_file = {"slm": REPO / "configs" / "slm" / "base.yaml"}.get(exp.get("base_config"), REPO / "configs" / "base.yaml")
+    base = yaml.safe_load(open(base_file))
     exp["base"] = deep_merge(deep_merge(base, exp.get("overrides")), cli_overrides)
     return exp
 
@@ -99,6 +101,9 @@ def iter_runs(exp: dict, variants=None, datasets=None, devices=None, seeds=None)
 def run_experiment(exp: dict, force: bool = False, **filters) -> None:
     from .bias import run_bias
     from .search import run_search
+    from .slm.search import run_slm_search
+
+    runners = {"bias": run_bias, "search": run_search, "slm": run_slm_search}
 
     todo = list(iter_runs(exp, **filters))
     version = code_version()
@@ -112,8 +117,7 @@ def run_experiment(exp: dict, force: bool = False, **filters) -> None:
         cfg = {**cfg, "code_version": version}
         with open(rdir / "config.yaml", "w") as f:
             yaml.safe_dump(cfg, f, sort_keys=False)
-        fn = run_bias if cfg["type"] == "bias" else run_search
-        res = fn(cfg, ds, dev, seed, rdir)
+        res = runners[cfg["type"]](cfg, ds, dev, seed, rdir)
         print(f"{tag}: HV={res['hv']:.4f} IGD={res['igd']:.4f} front={res['n_front']} "
               f"evaluated={res['n_evaluated']} time={res['search_time_s']}s")  # fmt: skip
 

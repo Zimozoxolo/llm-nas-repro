@@ -158,6 +158,21 @@ for f in glob.glob(f"{RESULTS}/runs/llmnas-*/cifar10/edgegpu/seed0/run*.json"):
     r = json.load(open(f)); print(os.path.basename(f), "HV", r["hv"], "IGD", r["igd"])
 """)
 
+md("""
+## 10. Extension – LLM-NAS for small language models (BLEND.md)
+Blends LLM-NAS with LiteTransformerSearch (decoder-parameter proxy, transformer space) and the
+2024 SLM survey (prefill/decode/memory cost model, reference SLMs, prior knowledge).
+`datasets` = search space (`slm`, `lts_gpt2`), `devices` = hardware profile.
+""")
+code("""
+!python -m llmnas slm-reference
+!python -m llmnas run slm_smoke --set results_dir={RESULTS}
+!python -m llmnas run slm_main {SET} --seeds 0
+!python -m llmnas report slm_main {SET}
+display(Markdown(open(f"{RESULTS}/reports/slm_main/report.md").read().split("## Per-run")[0]))
+display(Image(f"{RESULTS}/reports/slm_main/fronts_slm_jetson_orin_nx_16gb.png"))
+""")
+
 nb = nbf.v4.new_notebook(cells=cells, metadata={"colab": {"provenance": []},
                                                  "kernelspec": {"name": "python3", "display_name": "Python 3"}})
 nbf.write(nb, "LLM_NAS_Reproduction_Colab.ipynb")

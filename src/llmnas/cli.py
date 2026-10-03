@@ -5,6 +5,8 @@
   run <experiment> [filters]       run an experiment grid (resumable)
   report <experiment>              tables + figures -> results/reports/<experiment>/
   fig3                             Figure 3 (parameter histogram by #conv3x3)
+  slm-reference                    reference SLMs: parameter-count check + modelled costs
+  slm-calibrate --device cpu|cuda  fit the SLM latency model to measurements on this machine
 """
 
 from __future__ import annotations
@@ -51,6 +53,16 @@ def main(argv=None) -> None:
             p.add_argument("--force", action="store_true", help="recompute finished runs")
 
     sub.add_parser("fig3").add_argument("--out", default="results/reports/fig3_params.png")
+
+    p = sub.add_parser("slm-reference", help="check reference SLMs: parameter counts and modelled costs")
+    p.add_argument("--device", default="jetson_orin_nx_16gb")
+    p = sub.add_parser("slm-calibrate", help="measure random transformers and fit the latency model")
+    p.add_argument("--device", default="cpu", help="cpu or cuda")
+    p.add_argument("--space", default="lts_gpt2")
+    p.add_argument("--n", type=int, default=20)
+    p.add_argument("--seed", type=int, default=0)
+    p.add_argument("--max-decoder-m", type=float, default=None, help="skip candidates larger than this")
+    p.add_argument("--out", required=True, help="e.g. configs/slm/devices/local_cpu.json")
     a = ap.parse_args(argv)
     load_dotenv()
 
@@ -68,10 +80,22 @@ def main(argv=None) -> None:
         exp = load_experiment(a.experiment, parse_sets(a.set))
         if a.cmd == "run":
             run_experiment(exp, force=a.force, **_filters(a))
+        elif exp.get("type") == "slm":
+            from .slm.report import make_slm_report
+
+            make_slm_report(exp)
         else:
             from .report import make_report
 
             make_report(exp)
+    elif a.cmd == "slm-reference":
+        from .slm.cli import reference
+
+        reference(a.device)
+    elif a.cmd == "slm-calibrate":
+        from .slm.cli import calibrate_cmd
+
+        calibrate_cmd(a)
     elif a.cmd == "fig3":
         from .report import plot_fig3
 

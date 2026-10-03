@@ -1,0 +1,14 @@
+# Offline check of the SLM pipeline (mock LLM = random operator, ~1 min).
+name: slm_smoke
+base_config: slm
+type: slm
+datasets: [slm]
+devices: [jetson_orin_nx_16gb]
+seeds: [0]
+overrides:
+  search: {generations: 3}
+  llm: {backend: mock}
+variants:
+  llmnas: {}
+  lts_search: {search: {partitioning: false, operator: random}}
+  no_llm_pea: {search: {operator: random}}

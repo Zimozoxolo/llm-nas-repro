@@ -1,0 +1,83 @@
+# Defaults for the blended SLM search (LLM-NAS engine + LTS proxy/space + SLM-survey costs).
+# [paper] = taken from LLM-NAS, [LTS] = Javaheripi et al. 2022, [survey] = Lu et al. 2024,
+# [assumed] = a choice made here - see BLEND.md.
+
+type: slm
+data_dir: null
+results_dir: results
+
+spaces:
+  slm:                       # modern SLM backbone, ranges from the survey's Table 1 / Fig. 2
+    spec:
+      heterogeneous: false
+      n_layer: [8, 40, 1]          # [survey] 0.1-5B models use 12-62 layers
+      d_model: [512, 3072, 128]
+      d_inner: [1024, 16384, 128]
+      ffn_ratio: [2, 8]            # [survey] gated-FFN ratio 2-8
+      n_head: [4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 36, 40, 44, 48]
+      head_dims: [64, 128]
+      n_kv_head: [1, 2, 4, 8, n_head]   # [survey] MQA / GQA / MHA
+      ffn: [gated]                 # [survey] SwiGLU dominates 2024 SLMs
+      vocab_size: 32000            # [assumed] fixed tokenizer; the survey shows vocab mostly costs memory
+      tie_embeddings: true
+    niches: [0, 250, 500, 1000, 2000, 3000]   # decoder params (M); [survey] latency clusters 0.1-1B / 1-2B / 2-3B
+    niche_labels: ["<250M", "250-500M", "0.5-1B", "1-2B", "2-3B", ">=3B"]
+  lts_gpt2:                  # [LTS] GPT-2 backbone search space (Sec. 3), heterogeneous per layer
+    spec:
+      heterogeneous: true
+      n_layer: [2, 16, 1]
+      d_model: [128, 1024, 64]
+      d_inner: [256, 4096, 64]
+      ffn_ratio: [2, 32]           # [LTS] d_inner >= 2 * d_model
+      n_head: [2, 4, 8]
+      head_dims: []
+      n_kv_head: [n_head]          # GPT-2: plain multi-head attention
+      ffn: [standard]
+      vocab_size: 50257
+      tie_embeddings: true
+    niches: [0, 10, 25, 50, 75, 100]
+    niche_labels: ["<10M", "10-25M", "25-50M", "50-75M", "75-100M", ">=100M"]
+
+devices:                     # profiles live in src/llmnas/slm/costs.py; add `calibration: <json>` after slm-calibrate
+  jetson_orin_nx_16gb: {profile: jetson_orin_nx_16gb}
+  snapdragon_8gen1_cpu: {profile: snapdragon_8gen1_cpu}
+  rtx3050ti_laptop: {profile: rtx3050ti_laptop, calibration: configs/slm/devices/rtx3050ti_laptop.json}
+  local_cpu: {profile: generic_cpu, calibration: configs/slm/devices/local_cpu.json}
+
+workload:                    # [survey] Sec. 4 setup
+  prompt_tokens: 50
+  gen_tokens: 50
+  context: 2048
+  weight_dtype: q4_k_m
+  kv_dtype: f16
+  compute_buffer_tokens: 512
+
+objectives: [quality, latency, memory]   # [LTS] 3-D Pareto front (perplexity proxy, latency, memory)
+
+hardware:
+  source: analytical         # analytical | measured (PyTorch, LTS-style, cached per device)
+  measure_device: cpu        # cpu | cuda (needs a CUDA build of PyTorch)
+  cache_dir: null            # default results/slm_measurements
+  latency_limit_ms: null
+
+search:
+  generations: 10            # [paper]
+  crossover_prob: 0.5        # [paper]
+  partitioning: true         # [paper]
+  operator: llm              # llm | random | random_sample
+  knowledge_base: true       # [paper]
+  kb_seed: none              # none | survey
+  init_pop_per_niche: 5      # [assumed]
+  n_child: 4                 # [assumed]
+  n_parents_shown: 6         # [assumed]
+  mutation_prob: 0.3         # [LTS] for the non-LLM operators
+  match_budget: true
+
+llm:
+  backend: openai
+  model: gpt-4.1
+  temperature: 0.7
+  base_url: null
+  api_key_env: OPENAI_API_KEY
+  max_tokens: 4096
+  mode: record
