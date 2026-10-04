@@ -79,6 +79,14 @@ Objectives are min-max normalised over the pool, with reference point 1.1 per ob
 reported as HV(run) / HV(pool). These numbers compare methods *within* an experiment only. The
 report also gives per-generation curves and the reference-model comparison.
 
+**Primary metric: latency overhead at matched quality.** HV saturates in this space (≈ 0.98–0.99 for
+every method). Once niches span all sizes, any method that covers the sizes covers most of the front.
+The quantity that matters is how fast the best model is *at a given size*. So for 40 log-spaced
+decoder-parameter levels N, the report compares the fastest model with ≥ N decoder parameters that a
+run found against the fastest found by any run. It gives the geometric mean of the ratio minus 1
+(0 % = matches the best everywhere), the coverage (share of levels reached), and a per-niche
+breakdown. `latency_overhead.csv` holds the per-run values.
+
 ## 5. Validation done so far
 
 | Check | Result |

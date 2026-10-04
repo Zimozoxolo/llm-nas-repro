@@ -118,3 +118,23 @@ def test_measurement_tiny_model_cpu():
     a = {"n_layer": 2, "d_model": 128, "ffn": "standard", "layers": [{"d_inner": 256, "n_head": 2, "n_kv_head": "n_head"}] * 2}
     m = measure(a, spec, Workload(prompt_tokens=8, gen_tokens=4), "cpu", repeats=1)
     assert m["ok"] and m["prefill_ms"] > 0 and m["decode_ms_per_token"] > 0
+
+
+def test_latency_overhead_metric():
+    from llmnas.slm.report import _best_latency_at_least, latency_overhead
+
+    pts = np.array([[100, 10.0], [200, 30.0], [150, 12.0]])
+    assert _best_latency_at_least(pts, np.array([50, 120, 180, 250])).tolist()[:3] == [10.0, 12.0, 30.0]
+    assert np.isnan(_best_latency_at_least(pts, np.array([250]))[0])
+
+    def run(variant, pts):
+        ev = [{"costs": {"decoder_params_m": s, "latency_ms": t, "feasible": True}} for s, t in pts]
+        return {"variant": variant, "dataset": "slm", "device": "d", "seed": 0, "evaluated": ev,
+                "config": {"spaces": {"slm": {"niches": [0, 150]}}}}
+
+    good = run("good", [(100, 10), (200, 20)])
+    slow = run("slow", [(100, 20), (200, 40)])  # 2x slower at every size
+    df = latency_overhead([good, slow]).set_index("variant")
+    assert df.loc["good", "lat_overhead"] == pytest.approx(0.0)
+    assert df.loc["slow", "lat_overhead"] == pytest.approx(1.0)
+    assert df.loc["slow", "coverage"] == 1.0

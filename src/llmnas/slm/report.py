@@ -82,6 +82,53 @@ def score_runs(results: list[dict], objectives: list[str] | None = None) -> tupl
     return df, pd.DataFrame(traj)
 
 
+def _size_latency(run: dict) -> np.ndarray:
+    """(decoder params M, latency ms) of every feasible evaluated architecture."""
+    return np.array([[e["costs"]["decoder_params_m"], e["costs"]["latency_ms"]]
+                     for e in run["evaluated"] if e["costs"]["feasible"]], float).reshape(-1, 2)  # fmt: skip
+
+
+def _best_latency_at_least(pts: np.ndarray, levels: np.ndarray) -> np.ndarray:
+    """For each size level N: the lowest latency among points with >= N decoder params (NaN if none)."""
+    order = np.argsort(-pts[:, 0])  # largest first, running minimum of latency
+    sizes, run_min = pts[order, 0], np.minimum.accumulate(pts[order, 1])
+    idx = np.searchsorted(-sizes, -levels, side="right") - 1  # last point with size >= level
+    return np.where(idx >= 0, run_min[np.clip(idx, 0, None)], np.nan)
+
+
+def latency_overhead(results: list[dict], n_levels: int = 40) -> pd.DataFrame:
+    """Latency overhead at matched quality.
+
+    Quality is the decoder-parameter proxy, so "at least as good" = ">= N decoder params".
+    For log-spaced N across the pooled front of each (space, device): t*(N) is the fastest
+    such model found by *any* run, t_m(N) the fastest found by this run. Reported:
+    geometric mean of t_m/t* - 1 over covered levels (0 = matches the best everywhere),
+    coverage = share of levels where the run has any qualifying model, and the same
+    overhead restricted to each niche's size band.
+    """
+    rows = []
+    groups: dict[tuple, list] = {}
+    for r in results:
+        groups.setdefault((r["dataset"], r["device"]), []).append(r)
+    for (space, dev), group in groups.items():
+        pool = np.vstack([_size_latency(r) for r in group])
+        front = pool[nondominated(np.column_stack([-pool[:, 0], pool[:, 1]]))]
+        levels = np.geomspace(front[:, 0].min(), front[:, 0].max(), n_levels)
+        best = _best_latency_at_least(pool, levels)
+        bounds = list(group[0]["config"]["spaces"][space]["niches"]) + [np.inf]
+        for r in group:
+            ratio = _best_latency_at_least(_size_latency(r), levels) / best
+            ok = ~np.isnan(ratio)
+            row = dict(variant=r["variant"], space=space, device=dev, seed=r["seed"],
+                       lat_overhead=float(np.exp(np.mean(np.log(ratio[ok]))) - 1) if ok.any() else np.nan,
+                       coverage=float(ok.mean()))  # fmt: skip
+            for i in range(len(bounds) - 1):
+                band = ok & (levels >= bounds[i]) & (levels < bounds[i + 1])
+                row[f"S{i}"] = float(np.exp(np.mean(np.log(ratio[band]))) - 1) if band.any() else np.nan
+            rows.append(row)
+    return pd.DataFrame(rows)
+
+
 def reference_comparison(results: list[dict], cfg: dict, space: str, device: str, variant: str = "llmnas") -> pd.DataFrame:
     """LTS-style claim: for each hand-designed SLM, the fastest searched model with >= its decoder params."""
     spec = SpaceSpec.from_config({**cfg["spaces"][space]["spec"], "name": space})
@@ -156,6 +203,13 @@ def plot_niche_clusters(cfg, space, device, out: Path, n=3000):
     plt.close(fig)
 
 
+def _pct(x):
+    x = x.dropna()
+    if len(x) == 0:
+        return "-"
+    return f"{x.mean():+.1%}" + (f" ± {x.std(ddof=0):.1%}" if len(x) > 1 else "")
+
+
 def _pm(x):
     return f"{x.mean():.3f} ± {x.std(ddof=0):.3f}" if len(x) > 1 else f"{x.mean():.3f}"
 
@@ -174,17 +228,35 @@ def make_slm_report(exp: dict) -> Path:
           "reference front of this experiment (see `slm/report.py`).\n"]  # fmt: skip
     configured = results[0]["objectives"]
     df2 = score_runs(results, ["quality", "latency"])[0] if configured != ["quality", "latency"] else None
+    lo = latency_overhead(results)
+    lo.to_csv(out / "latency_overhead.csv", index=False)
+    md += ["**Primary metric - latency overhead at matched quality:** for 40 log-spaced decoder-parameter "
+           "levels N, the fastest model with >= N decoder params found by the run, relative to the fastest "
+           "found by any run (geometric mean; 0% = best everywhere). Coverage = share of levels the run "
+           "reaches at all.\n"]  # fmt: skip
     for (space, dev), g in df.groupby(["space", "device"]):
         md += [f"## {space} on {dev}\n",
                f"HV/IGD use the configured objectives {configured}"
                + ("; HV₂/IGD₂ re-score the same runs on (quality, latency) only." if df2 is not None else "") + "\n",
-               "| Variant | HV↑ | IGD↓ | HV₂↑ | IGD₂↓ | front | valid proposals | API calls | runs |",
-               "|---|---|---|---|---|---|---|---|---|"]  # fmt: skip
+               "| Variant | latency overhead↓ | coverage | HV↑ | IGD↓ | HV₂↑ | IGD₂↓ | front | valid proposals "
+               "| API calls | runs |",
+               "|---|---|---|---|---|---|---|---|---|---|---|"]  # fmt: skip
+        lg = lo[(lo.space == space) & (lo.device == dev)]
         for v, gv in g.groupby("variant", sort=False):
             g2 = df2[(df2.space == space) & (df2.device == dev) & (df2.variant == v)] if df2 is not None else None
             two = f"{_pm(g2.hv)} | {_pm(g2.igd)}" if g2 is not None else "- | -"
-            md.append(f"| {v} | {_pm(gv.hv)} | {_pm(gv.igd)} | {two} | {gv.n_front.mean():.1f} | "
-                      f"{gv.valid_rate.mean():.0%} | {gv.api_calls.mean():.0f} | {len(gv)} |")  # fmt: skip
+            lv = lg[lg.variant == v]
+            md.append(f"| {v} | {_pct(lv.lat_overhead)} | {lv.coverage.mean():.0%} | {_pm(gv.hv)} | {_pm(gv.igd)} | "
+                      f"{two} | {gv.n_front.mean():.1f} | {gv.valid_rate.mean():.0%} | {gv.api_calls.mean():.0f} | "
+                      f"{len(gv)} |")  # fmt: skip
+        labels = next(r["config"] for r in results if r["dataset"] == space)["spaces"][space].get("niche_labels") or []
+        bands = [c for c in lg.columns if c.startswith("S") and c[1:].isdigit()]
+        per = lg.groupby("variant", sort=False)[bands].mean()
+        md += ["", "Latency overhead per niche (mean over seeds; blank = level not reached):\n",
+               "| Variant | " + " | ".join(f"{b} {labels[int(b[1:])] if int(b[1:]) < len(labels) else ''}" for b in bands) + " |",
+               "|---|" + "---|" * len(bands)]  # fmt: skip
+        for v, row in per.iterrows():
+            md.append(f"| {v} | " + " | ".join("" if np.isnan(x) else f"{x:+.1%}" for x in row) + " |")
         cfg = next(r["config"] for r in results if r["dataset"] == space and r["device"] == dev)
         if "llmnas" in set(g.variant):
             md += ["", "**Hand-designed SLMs vs the fastest LLM-NAS model with at least as many decoder parameters** "
