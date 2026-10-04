@@ -46,14 +46,15 @@ class LLMBackend:
 
 class OpenAIBackend(LLMBackend):
     def __init__(self, model: str = "gpt-4.1", temperature: float = 0.7, base_url: str | None = None,
-                 api_key_env: str = "OPENAI_API_KEY", max_tokens: int = 4096, seed: int | None = None):  # fmt: skip
+                 api_key_env: str = "OPENAI_API_KEY", max_tokens: int = 4096, seed: int | None = None,
+                 timeout: float = 600.0):  # fmt: skip
         from openai import OpenAI
 
         key = os.environ.get(api_key_env) or ("ollama" if base_url and "localhost" in base_url else None)
         if not key:
             raise SystemExit(f"{api_key_env} is not set. Put `{api_key_env}=sk-...` in llm-nas-repro/.env "
                              "(saved, no quotes), set it as an environment variable, or use --set llm.backend=mock.")
-        self.client = OpenAI(api_key=key, base_url=base_url)
+        self.client = OpenAI(api_key=key, base_url=base_url, timeout=timeout)
         self.model, self.temperature, self.max_tokens, self.seed = model, temperature, max_tokens, seed
 
     def complete(self, system: str, user: str, meta: dict[str, Any]) -> LLMResponse:
@@ -104,7 +105,8 @@ def make_backend(cfg: dict) -> LLMBackend:
     if kind == "openai":
         return OpenAIBackend(model=cfg.get("model", "gpt-4.1"), temperature=cfg.get("temperature", 0.7),
                              base_url=cfg.get("base_url"), api_key_env=cfg.get("api_key_env", "OPENAI_API_KEY"),
-                             max_tokens=cfg.get("max_tokens", 4096), seed=cfg.get("seed"))  # fmt: skip
+                             max_tokens=cfg.get("max_tokens", 4096), seed=cfg.get("seed"),
+                             timeout=cfg.get("timeout", 600.0))  # fmt: skip
     if kind == "anthropic":
         from .llm_anthropic import AnthropicBackend
 

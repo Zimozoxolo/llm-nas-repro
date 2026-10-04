@@ -18,7 +18,8 @@ from pathlib import Path
 import yaml
 
 REPO = Path(__file__).resolve().parents[2]
-_HASH_EXCLUDE = {("llm", "mode"), ("results_dir",), ("data_dir",), ("variant",), ("code_version",)}
+_HASH_EXCLUDE = {("llm", "mode"), ("llm", "timeout"), ("results_dir",), ("data_dir",), ("variant",),
+                 ("code_version",)}
 
 
 def code_version() -> str:
@@ -107,6 +108,7 @@ def run_experiment(exp: dict, force: bool = False, **filters) -> None:
 
     todo = list(iter_runs(exp, **filters))
     version = code_version()
+    failed: list[str] = []
     for i, (cfg, ds, dev, seed, rdir) in enumerate(todo, 1):
         tag = f"[{i}/{len(todo)}] {cfg['variant']} {ds} {dev} seed{seed}"
         if (rdir / "run.json").exists() and not force and cfg["llm"].get("mode") != "replay":
@@ -117,9 +119,16 @@ def run_experiment(exp: dict, force: bool = False, **filters) -> None:
         cfg = {**cfg, "code_version": version}
         with open(rdir / "config.yaml", "w") as f:
             yaml.safe_dump(cfg, f, sort_keys=False)
-        res = runners[cfg["type"]](cfg, ds, dev, seed, rdir)
+        try:
+            res = runners[cfg["type"]](cfg, ds, dev, seed, rdir)
+        except Exception as e:  # one failed run (e.g. LLM timeouts) must not abort the rest of the grid
+            failed.append(tag)
+            print(f"{tag}: FAILED ({type(e).__name__}: {e}); continuing - rerun the command to retry it")
+            continue
         print(f"{tag}: HV={res['hv']:.4f} IGD={res['igd']:.4f} front={res['n_front']} "
               f"evaluated={res['n_evaluated']} time={res['search_time_s']}s")  # fmt: skip
+    if failed:
+        print(f"\n{len(failed)} run(s) failed: " + "; ".join(failed))
 
 
 def load_results(exp: dict, **filters) -> list[dict]:

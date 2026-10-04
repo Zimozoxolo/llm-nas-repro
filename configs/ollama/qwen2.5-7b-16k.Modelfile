@@ -1,0 +1,5 @@
+# qwen2.5:7b with a 16K context window, for SLM-blend prompts (transformer JSON is longer than
+# NB201 tuples, and the no-partitioning variant requests 24 architectures in one reply).
+#   ollama create qwen2.5-7b-16k -f configs/ollama/qwen2.5-7b-16k.Modelfile
+FROM qwen2.5:7b
+PARAMETER num_ctx 16384
