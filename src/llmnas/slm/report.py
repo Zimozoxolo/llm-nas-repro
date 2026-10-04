@@ -24,6 +24,7 @@ import pandas as pd  # noqa: E402
 from ..experiments import REPO, load_results  # noqa: E402
 from ..metrics import hypervolume_2d, igd  # noqa: E402
 from .costs import Workload, device_from_config, evaluate_costs  # noqa: E402
+from .prompts import OBJ_LABELS  # noqa: E402
 from .reference import REFERENCE_SLMS  # noqa: E402
 from .search import _load_device, nondominated  # noqa: E402
 from .space import Sampler, SpaceSpec, niches_from_config  # noqa: E402
@@ -42,18 +43,22 @@ def hypervolume(points: np.ndarray, ref: np.ndarray) -> float:
     return float(sum(hypervolume_2d(pts[: i + 1, :2], ref[:2]) * (zs[i + 1] - zs[i]) for i in range(len(pts))))
 
 
-def _feasible_obj(run: dict, max_gen: int | None = None) -> np.ndarray:
-    rows = [e["obj"] for e in run["evaluated"] if e["costs"]["feasible"] and (max_gen is None or e["gen"] <= max_gen)]
-    return np.array(rows, float).reshape(-1, len(run["objectives"]))
+def _feasible_obj(run: dict, max_gen: int | None = None, objectives: list[str] | None = None) -> np.ndarray:
+    """Objective rows of feasible evaluated architectures; ``objectives`` re-scores saved runs
+    on a different objective set (e.g. quality+latency) without re-running anything."""
+    objs = objectives or run["objectives"]
+    rows = [[e["costs"][OBJ_LABELS[o]] for o in objs] for e in run["evaluated"]
+            if e["costs"]["feasible"] and (max_gen is None or e["gen"] <= max_gen)]  # fmt: skip
+    return np.array(rows, float).reshape(-1, len(objs))
 
 
-def score_runs(results: list[dict]) -> tuple[pd.DataFrame, pd.DataFrame]:
+def score_runs(results: list[dict], objectives: list[str] | None = None) -> tuple[pd.DataFrame, pd.DataFrame]:
     rows, traj = [], []
     groups: dict[tuple, list] = {}
     for r in results:
         groups.setdefault((r["dataset"], r["device"]), []).append(r)
     for (space, dev), group in groups.items():
-        pool = np.vstack([_feasible_obj(r) for r in group])
+        pool = np.vstack([_feasible_obj(r, objectives=objectives) for r in group])
         lo, hi = pool.min(0), pool.max(0)
         norm = lambda x: (x - lo) / np.where(hi > lo, hi - lo, 1)  # noqa: E731
         ref_front = norm(pool[nondominated(pool)])
@@ -61,7 +66,7 @@ def score_runs(results: list[dict]) -> tuple[pd.DataFrame, pd.DataFrame]:
         hv_ref = hypervolume(ref_front, r_pt)
         for r in group:
             for g in range(r["config"]["search"]["generations"] + 1):
-                o = _feasible_obj(r, g)
+                o = _feasible_obj(r, g, objectives)
                 f = norm(o[nondominated(o)]) if len(o) else o
                 s = dict(variant=r["variant"], space=space, device=dev, seed=r["seed"], gen=g,
                          hv=hypervolume(f, r_pt) / hv_ref if len(f) else 0.0,
@@ -167,12 +172,19 @@ def make_slm_report(exp: dict) -> Path:
     traj.to_csv(out / "trajectories.csv", index=False)
     md = [f"# Report: {exp['name']}\n", f"{len(results)} finished runs. HV/IGD are relative to the pooled "
           "reference front of this experiment (see `slm/report.py`).\n"]  # fmt: skip
+    configured = results[0]["objectives"]
+    df2 = score_runs(results, ["quality", "latency"])[0] if configured != ["quality", "latency"] else None
     for (space, dev), g in df.groupby(["space", "device"]):
-        md += [f"## {space} on {dev}\n", "| Variant | HV↑ | IGD↓ | front | valid proposals | API calls | runs |",
-               "|---|---|---|---|---|---|---|"]  # fmt: skip
+        md += [f"## {space} on {dev}\n",
+               f"HV/IGD use the configured objectives {configured}"
+               + ("; HV₂/IGD₂ re-score the same runs on (quality, latency) only." if df2 is not None else "") + "\n",
+               "| Variant | HV↑ | IGD↓ | HV₂↑ | IGD₂↓ | front | valid proposals | API calls | runs |",
+               "|---|---|---|---|---|---|---|---|---|"]  # fmt: skip
         for v, gv in g.groupby("variant", sort=False):
-            md.append(f"| {v} | {_pm(gv.hv)} | {_pm(gv.igd)} | {gv.n_front.mean():.1f} | {gv.valid_rate.mean():.0%} | "
-                      f"{gv.api_calls.mean():.0f} | {len(gv)} |")  # fmt: skip
+            g2 = df2[(df2.space == space) & (df2.device == dev) & (df2.variant == v)] if df2 is not None else None
+            two = f"{_pm(g2.hv)} | {_pm(g2.igd)}" if g2 is not None else "- | -"
+            md.append(f"| {v} | {_pm(gv.hv)} | {_pm(gv.igd)} | {two} | {gv.n_front.mean():.1f} | "
+                      f"{gv.valid_rate.mean():.0%} | {gv.api_calls.mean():.0f} | {len(gv)} |")  # fmt: skip
         cfg = next(r["config"] for r in results if r["dataset"] == space and r["device"] == dev)
         if "llmnas" in set(g.variant):
             md += ["", "**Hand-designed SLMs vs the fastest LLM-NAS model with at least as many decoder parameters** "
