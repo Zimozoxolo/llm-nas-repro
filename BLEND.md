@@ -97,7 +97,36 @@ breakdown. `latency_overhead.csv` holds the per-run values.
 | In-loop measured search (`slm_lts_measured`, 2 generations) | 78 architectures measured in 7.5 min on CPU |
 | Offline end-to-end runs, replay, operators stay valid, 3-D HV | 43 tests pass |
 
-## 6. Limitations (state these in the thesis)
+## 6. Results: `slm_main` with Qwen2.5-7B (local, 16K context), 3 seeds × 2 devices
+
+Primary metric: latency overhead at matched quality (lower is better), mean ± std over 6 runs (3 seeds × Jetson + Snapdragon).
+Full tables: `results/reports/slm_main/report.md`.
+
+| Variant | Latency overhead | Coverage | Valid proposals |
+|---|---|---|---|
+| `random_sampling` | **+5.2 % ± 0.8** | 96 % | 100 % |
+| `lts_search` (LTS's algorithm) | +6.1 % ± 2.3 | 92 % | 94 % |
+| `no_llm_pea` | +6.3 % ± 2.9 | 98 % | 98 % |
+| `llmnas_survey_kb` | +7.8 % ± 3.4 | 95 % | 50 % |
+| `llmnas` | +8.4 % ± 4.8 | 95 % | 49 % |
+| `no_partitioning` (LLM, no niches) | +10.1 % ± 2.6 | 88 % | 50 % |
+
+Mann-Whitney U on the 6 runs: random sampling beats `llmnas` (p = 0.04); every other pairwise
+difference has p > 0.09; `llmnas` vs `llmnas_survey_kb` p = 0.94. Findings:
+
+1. **Niches carry over to transformers.** Without them the LLM is the worst method and reaches only
+   88 % of the size range (no other method is below 92 %). The direction matches LLM-NAS, but the
+   overhead gap vs `llmnas` is not significant at n = 6.
+2. **A 7B LLM operator does not beat random proposals inside niches.** About half its proposals are
+   discarded (out-of-niche or duplicate), it is significantly worse than random sampling, and it
+   varies more from run to run. This is the same pattern as the CNN reproduction with Qwen.
+3. **The survey prior has no measurable effect with Qwen** (p = 0.94).
+4. **Shape matters for the smallest models.** At equal decoder parameters, searched shapes are 1.41×
+   faster than SmolLM-135M and 1.19× faster than SmolLM-360M under the Jetson model. From about 1B
+   upwards the hand-designed SLMs are already within about ±5 % of the best found.
+5. **The open question** is whether a stronger LLM (GPT-4.1, as in the paper) changes finding 2.
+
+## 7. Limitations (state these in the thesis)
 
 * **The quality proxy is a ranking proxy.** It ignores data and tokenizer, which the survey finds
   matter more than architecture (Sec. 2.3). Claims are about *architecture at fixed training recipe*.
@@ -115,7 +144,7 @@ breakdown. `latency_overhead.csv` holds the per-run values.
 * **Omitted:** adaptive input embeddings (LTS), per-layer scaling (OpenELM), MLA, and
   head_dim ≠ d_model/n_head (Gemma-2).
 
-## 7. How to run
+## 8. How to run
 
 ```bash
 python -m llmnas slm-reference                 # parameter check + modelled costs of real SLMs
