@@ -59,6 +59,7 @@ python -m llmnas run claude_cnn
 python -m llmnas run claude_cnn --set llm.model=claude-sonnet-5-5       # another model
 python -m llmnas run claude_cnn --set llm.effort=low                    # less thinking = cheaper, faster
 python -m llmnas compare-llms --dataset cifar10 --device edgegpu        # all LLMs side by side with cost
+                                                                        # (also scores with chance-level cells removed: --min-acc 80)
 ```
 
 Current Claude models accept no `temperature`, and their thinking tokens count against `llm.max_tokens`

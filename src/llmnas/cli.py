@@ -58,6 +58,7 @@ def main(argv=None) -> None:
     p = sub.add_parser("compare-llms", help="side-by-side table of every LLM run on one dataset/device")
     p.add_argument("--dataset", default="cifar10")
     p.add_argument("--device", default="edgegpu")
+    p.add_argument("--min-acc", type=float, default=80.0, help="also score with architectures below this test accuracy removed")
 
     p = sub.add_parser("slm-reference", help="check reference SLMs: parameter counts and modelled costs")
     p.add_argument("--device", default="jetson_orin_nx_16gb")
@@ -96,7 +97,7 @@ def main(argv=None) -> None:
     elif a.cmd == "compare-llms":
         from .compare import compare_llms
 
-        print(compare_llms(a.dataset, a.device))
+        print(compare_llms(a.dataset, a.device, min_acc=a.min_acc))
     elif a.cmd == "slm-reference":
         from .slm.cli import reference
 
