@@ -128,7 +128,7 @@ Seeds & 3 & paper reports $\pm$ without a count \\
 Table~\ref{tab:cnn} and Figure~\ref{fig:cnnfronts} compare the full method under two LLMs with the non-LLM baselines on the paper's headline setting. GPT-4.1 was run once (120 calls, 8.6\,min, 160{,}319 input and 66{,}747 output tokens, $\approx\$0.85$ at list price); Qwen2.5-7B (4-bit, Ollama, 8K context) ran once on an RTX~3050~Ti laptop GPU (153\,min). The baselines were run with three seeds.
 
 \begin{table}[h]\centering\footnotesize
-\caption{CIFAR-10, Edge GPU. HV$\uparrow$ as a fraction of the true front's HV; IGD$\downarrow$ in normalised units. ``Usable'' = proposals that were valid, inside their niche and not duplicates; ``Eval.'' = distinct architectures evaluated. Paper values from its Table~3, which also reports FairNAS 0.892\,/\,0.073, PRP-NAS 0.843\,/\,0.116 and LLMatic 0.191\,/\,0.542 (HV\,/\,IGD).}\label{tab:cnn}
+\caption{CIFAR-10, Edge GPU. HV$\uparrow$ as a fraction of the true front's HV; IGD$\downarrow$ in normalised units. ``Usable'' = proposals that were valid, inside their niche and not duplicates; ``Eval.'' = distinct architectures evaluated (both are means over seeds for the controls). Paper values from its Table~3, which also reports FairNAS 0.892\,/\,0.073, PRP-NAS 0.843\,/\,0.116 and LLMatic 0.191\,/\,0.542 (HV\,/\,IGD).}\label{tab:cnn}
 \begin{tabular}{llccccc}
 \toprule
 Method & LLM & Seeds & HV & IGD & Usable & Eval. \\
@@ -136,8 +136,8 @@ Method & LLM & Seeds & HV & IGD & Usable & Eval. \\
 LLM-NAS (paper) & GPT-4.1 & ? & 0.997 & 0.006 & -- & -- \\
 LLM-NAS (ours) & GPT-4.1 & 1 & 0.964 & 0.063 & 99/240 (41\%) & 129 \\
 LLM-NAS (ours) & Qwen2.5-7B & 1 & 0.888 & 0.088 & 95/240 (40\%) & 125 \\
-PEA: niches, random operators & -- & 3 & $0.988\pm0.004$ & 0.051 & 179/240 (75\%) & 209 \\
-Random sampling in niches & -- & 3 & $0.991\pm0.001$ & 0.052 & 239/240 (100\%) & 269 \\
+PEA: niches, random operators & -- & 3 & $0.989\pm0.004$ & $0.038\pm0.008$ & 155/240 (65\%) & 185 \\
+Random sampling in niches & -- & 3 & $0.991\pm0.001$ & $0.052\pm0.012$ & 239/240 (100\%) & 269 \\
 \bottomrule
 \end{tabular}
 \end{table}

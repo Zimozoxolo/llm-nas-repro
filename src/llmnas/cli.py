@@ -5,6 +5,7 @@
   run <experiment> [filters]       run an experiment grid (resumable)
   report <experiment>              tables + figures -> results/reports/<experiment>/
   fig3                             Figure 3 (parameter histogram by #conv3x3)
+  compare-llms                     side-by-side table of all LLM runs (quality, tokens, cost)
   slm-reference                    reference SLMs: parameter-count check + modelled costs
   slm-calibrate --device cpu|cuda  fit the SLM latency model to measurements on this machine
 """
@@ -54,6 +55,10 @@ def main(argv=None) -> None:
 
     sub.add_parser("fig3").add_argument("--out", default="results/reports/fig3_params.png")
 
+    p = sub.add_parser("compare-llms", help="side-by-side table of every LLM run on one dataset/device")
+    p.add_argument("--dataset", default="cifar10")
+    p.add_argument("--device", default="edgegpu")
+
     p = sub.add_parser("slm-reference", help="check reference SLMs: parameter counts and modelled costs")
     p.add_argument("--device", default="jetson_orin_nx_16gb")
     p = sub.add_parser("slm-calibrate", help="measure random transformers and fit the latency model")
@@ -88,6 +93,10 @@ def main(argv=None) -> None:
             from .report import make_report
 
             make_report(exp)
+    elif a.cmd == "compare-llms":
+        from .compare import compare_llms
+
+        print(compare_llms(a.dataset, a.device))
     elif a.cmd == "slm-reference":
         from .slm.cli import reference
 
