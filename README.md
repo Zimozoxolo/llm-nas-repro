@@ -51,6 +51,20 @@ python -m llmnas run table3_main --set llm.base_url=http://localhost:11434/v1 ll
 python -m llmnas run table3_main --set llm.mode=replay
 ```
 
+### Claude
+
+```bash
+# put ANTHROPIC_API_KEY=sk-ant-... in .env, then (Opus 5.5, 120 calls, ~$11 at list price, ~70 min):
+python -m llmnas run claude_cnn
+python -m llmnas run claude_cnn --set llm.model=claude-sonnet-5-5       # another model
+python -m llmnas run claude_cnn --set llm.effort=low                    # less thinking = cheaper, faster
+python -m llmnas compare-llms --dataset cifar10 --device edgegpu        # all LLMs side by side with cost
+```
+
+Current Claude models accept no `temperature`, and their thinking tokens count against `llm.max_tokens`
+(the experiment sets 16000; the default of 4096 can truncate answers). Output tokens are billed at 5x the
+input rate, so thinking dominates the cost.
+
 ### Local models with Ollama (free, slower)
 
 ```bash
