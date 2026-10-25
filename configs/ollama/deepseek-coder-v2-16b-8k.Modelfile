@@ -1,0 +1,5 @@
+# deepseek-coder-v2:16b (MoE, ~2.4B active parameters) with an 8K context window, matching the
+# Qwen 8K setup used for the CNN runs (Ollama 0.6.x defaults to 2K and silently truncates prompts).
+#   ollama create deepseek-coder-v2-16b-8k -f configs/ollama/deepseek-coder-v2-16b-8k.Modelfile
+FROM deepseek-coder-v2:16b
+PARAMETER num_ctx 8192

@@ -25,7 +25,9 @@ PRICES = {
 }
 
 
-def _cost(model: str, tin: int, tout: int):
+def _cost(model: str, tin: int, tout: int, local: bool = False):
+    if local:
+        return 0.0  # served from localhost (Ollama etc.): no API fee
     if model in PRICES:
         pi, po = PRICES[model]
         return (tin * pi + tout * po) / 1e6
@@ -57,7 +59,8 @@ def collect(dataset: str, device: str, results_dir: str | Path | None = None) ->
             usable=st["accepted"] / max(st["proposed"], 1), out_of_niche=st["out_of_niche"], duplicate=st["duplicate"],
             invalid=st["invalid"], calls=u.get("api_calls", 0), tokens_in=u.get("input_tokens", 0),
             tokens_out=u.get("output_tokens", 0), minutes=r["search_time_s"] / 60,
-            cost_usd=_cost(c["llm"]["model"], u.get("input_tokens", 0), u.get("output_tokens", 0)) if llm else 0.0,
+            cost_usd=_cost(c["llm"]["model"], u.get("input_tokens", 0), u.get("output_tokens", 0),
+                           "localhost" in str(c["llm"].get("base_url") or "")) if llm else 0.0,
             llm=llm,
         ))  # fmt: skip
     return pd.DataFrame(rows)
