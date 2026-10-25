@@ -1,0 +1,17 @@
+# LLM-NAS with Claude on the paper's headline setting (CIFAR-10, Edge GPU), for the LLM comparison
+# against GPT-4.1 and Qwen. Needs ANTHROPIC_API_KEY in .env. One search = 120 calls.
+# Compare afterwards with:  python -m llmnas compare-llms --dataset cifar10 --device edgegpu
+# Other models:  --set llm.model=claude-sonnet-5-5   (or claude-haiku-4-5, claude-fable-5-1)
+# Thinking tokens count towards max_tokens, hence 16000 (the repo default of 4096 could truncate answers).
+name: claude_cnn
+type: search
+datasets: [cifar10]
+devices: [edgegpu]
+seeds: [0]
+overrides:
+  llm:
+    backend: anthropic
+    model: claude-opus-5-5
+    max_tokens: 16000
+variants:
+  llmnas: {}
