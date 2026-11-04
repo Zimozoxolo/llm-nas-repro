@@ -26,9 +26,9 @@ class Benchmark:
         self.zc = self.df[[f"zc_{p}" for p in ZC_PROXIES]].to_numpy()
 
     def latencies(self, device: str) -> np.ndarray:
-        """Latency per row; NaN where HW-NAS-Bench has no measurement (stored as -1,
-        e.g. 4,699 architectures on Edge TPU). Such architectures are treated as
-        outside that device's search space."""
+        """Latency per row; NaN where HW-NAS-Bench stores -1. For Edge TPU that marks 4,699 architectures that failed
+        the Edge TPU compiler (GATECH-EIC/HW-NAS-Bench issue #11), so they are infeasible on that device and are
+        excluded from its search space and true front."""
         if device not in DEVICES:
             raise KeyError(f"unknown device {device!r}; choose from {list(DEVICES)}")
         lat = self.df[f"lat_{device}"].to_numpy(dtype=float)

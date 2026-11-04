@@ -84,11 +84,16 @@ Results (full output in `results/reports/check_data.txt`):
   architectures, above the paper's ≈ 0.90. Synflow alone reaches 0.75–0.78. The paper's predictor setup
   (training size, labels) is unknown. To mimic a weaker predictor, lower `predictor.n_train`.
 
-**Missing latencies.** HW-NAS-Bench stores `-1` as the Edge TPU latency of 4,699 architectures (30 %;
-the other devices are complete). They are treated as unmeasured: excluded from Edge TPU's search space
-and true front, and discarded (`proposal_stats.no_latency`) if proposed. Treating `-1` as a real
-latency would put fake 0-cost points on the true front and make Edge TPU HV meaningless. The paper does
-not say how it handled this.
+**Failed Edge TPU compilations.** HW-NAS-Bench stores `-1` as the Edge TPU latency of 4,699 architectures (30 %;
+the same architectures for all three datasets; the other devices have none). The benchmark's maintainers state that
+`-1` marks a model that did not pass the compiler
+([GATECH-EIC/HW-NAS-Bench#11](https://github.com/GATECH-EIC/HW-NAS-Bench/issues/11), 12 Jan 2024; the reply says
+"Edge GPU compiler" but links the Coral Edge TPU compiler docs). Failures concentrate in architectures with
+`none` edges (0.4 % with no `none` edge, 26 % with one, 100 % with all six) but also include 18 with no `none` edge, so the
+cause is undocumented. They are treated as infeasible on that device: excluded from Edge TPU's search space and
+true front, and discarded (`proposal_stats.no_latency`) if proposed. Treating `-1` as a real latency would put fake
+0-cost points on the true front and make Edge TPU HV meaningless. The paper does not say how it handled this.
+The full list is in `results/edgetpu_missing_latency_architectures.csv`.
 
 The NASLib → NB201 encoding (op order `[skip, none, conv3, conv1, pool]`, edge permutation `[0,1,3,2,4,5]`)
 was verified on all 15,625 architectures: validation accuracies match exactly.
