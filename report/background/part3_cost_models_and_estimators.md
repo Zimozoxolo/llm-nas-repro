@@ -64,7 +64,7 @@ FLOPs and parameter counts are the cheapest hardware cost. HW-NAS-Bench (below) 
 - *Pitfalls.* *My reading:* needs a per-device kernel-detection and profiling step; the VPU result (83.4%) shows accuracy drops on harder devices; results are for CNNs on three platforms.
 - *Relevance.* Independent confirmation of the weakness of additive lookup tables (the FBNet assumption noted in Part 1).
 
-### 2.4 BRP-NAS (Dudziak, Chau, Abdelfattah, Lee, Kim, Lane; arXiv 2007.08668; NeurIPS 2020)
+### 2.4 BRP-NAS (Dudziak, Chau, Abdelfattah, Lee, Kim, Lane; arXiv 2007.08668, v4 January 2021)
 - *Idea.* An **end-to-end graph-convolutional-network (GCN) latency predictor**, which the authors say is the first end-to-end latency predictor, plus an accuracy predictor trained to predict which of two architectures is better (a **binary relation**) and an iterative data-selection strategy; also releases **LatBench**, a latency dataset of NAS-Bench-201 models on a broad range of devices.
 - *Evidence (author-stated).* With a layer-wise predicted latency, the Pareto-optimal models in the predicted space "do not always lie at the Pareto frontier" of the measured space, so even a perfect search on predicted latency would often return models that are not Pareto optimal in practice. The GCN predictor outperforms the layer-wise one.
 - *Relevance.* **Direct support for a point in our reports:** the quality of a Pareto front depends on the quality of the latency estimate, not only on the search algorithm.
@@ -105,7 +105,7 @@ This is the table your reproduction queries, so it is covered in more detail.
 - Fixed space of 4 nodes and 5 operations, **15,625 cells**, trained for **200 epochs** (SGD with Nesterov momentum, cosine learning rate 0.1 to 0, weight decay 0.0005) with fixed hyper-parameters on CIFAR-10, CIFAR-100 and ImageNet-16-120, with train/validation/test loss and accuracy per epoch, and multiple seeds.
 - *Benchmarked algorithms:* 10 NAS algorithms. Author-stated: DARTS (first and second order) "quickly converge to find the architecture whose edges are all skip connection"; random search, regularised evolution and REINFORCE can be completed "in seconds" with the pre-computed information.
 - *Isomorphism (author-stated, appendix).* Only **12,751** of the 15,625 cells are unique topologies if skip-connect isomorphism is considered, and only **6,466** if zeroize is also considered, yet every architecture was trained separately, so numerically the duplicates have slightly different accuracies.
-- *Relevance.* The 15,625-architecture space is small and contains many functionally equivalent cells; random methods can sample a large fraction of it (our controls evaluate about 270, 1.7%). The all-skip collapse of DARTS is the same class of degenerate cell we found on the true fronts of three devices (an architecture with about 10% accuracy).
+- *Relevance.* The 15,625-architecture space is small and contains many functionally equivalent cells; random methods can sample a large fraction of it (our controls evaluate about 270, 1.7%). The all-skip collapse of DARTS is a related kind of degenerate cell to the roughly 10%-accuracy architecture we found on the true fronts of three devices (I have not checked that they are the same architecture).
 
 ### 3.2 Learning-curve extrapolation (Domhan, Springenberg, Hutter; IJCAI 2015)
 - *Idea (abstract only).* Mimic a human who stops a bad run early: fit a probabilistic model to the first part of the learning curve and terminate runs predicted to be poor.
@@ -114,11 +114,11 @@ This is the table your reproduction queries, so it is covered in more detail.
 
 ### 3.3 Zero-cost proxies
 
-**SynFlow (Tanaka, Kunin, Yamins, Ganguli; arXiv 2006.05467; NeurIPS 2020).** A *pruning* paper (abstract only read): a conservation law explains "layer collapse" in pruning at initialisation, and the **data-free** Iterative Synaptic Flow algorithm avoids it. Zero-cost NAS papers adopt its saliency score as a proxy.
+**SynFlow (Tanaka, Kunin, Yamins, Ganguli; arXiv 2006.05467).** A *pruning* paper (abstract only read): a conservation law explains "layer collapse" in pruning at initialisation, and the **data-free** Iterative Synaptic Flow algorithm avoids it. Zero-cost NAS papers adopt its saliency score as a proxy.
 
 **NASWOT, "Neural Architecture Search without Training" (Mellor, Turner, Storkey, Crowley; ICML 2021).**
 - *Idea.* Score an **untrained** network by how distinct the activation patterns of different inputs are (overlap of binary activation codes), then pick the highest-scoring of N random networks.
-- *Results on NAS-Bench-201 (CIFAR-10 test accuracy, Table 2):* NASWOT with N = 10 / 100 / 1,000 takes 3 / 30 / 306 seconds and gives 92.44 / 92.81 / 92.96%; **random search with 12,000 seconds of training gives 93.70%**, REA 93.92%, REINFORCE 93.85%; **picking one architecture at random gives 86.61 ± 13.46%**. NASWOT beats all weight-sharing methods in the table; DARTS and ENAS collapse to 54.30%.
+- *Results on NAS-Bench-201 (CIFAR-10 test accuracy, Table 2):* NASWOT with N = 10 / 100 / 1,000 takes 3 / 30 / 306 seconds and gives 92.44 / 92.81 / 92.96%; **random search with 12,000 seconds of training gives 93.70%**, REA 93.92%, REINFORCE 93.85%; **picking one architecture at random gives 86.61 ± 13.46%**. The authors state that NASWOT outperforms all the weight-sharing methods; in their table this holds for most, but GDAS is higher on CIFAR-10 (93.51%) and CIFAR-100 (70.61%) than NASWOT with N = 1,000 (92.96%, 69.98%) and lower on ImageNet-16-120 (41.84% vs 44.44%). DARTS (both orders) and ENAS collapse to 54.30% on CIFAR-10.
 - *Authors' caveat.* The non-weight-sharing methods "do outperform NASWOT"; NAS-Bench-201 hyper-parameters are fixed and may explain DARTS's failure.
 - *Relevance.* A training-free score plus random sampling reaches within about 1 point of trained random search in seconds, which is the evaluator-only benefit.
 
