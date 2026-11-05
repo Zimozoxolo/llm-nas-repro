@@ -39,6 +39,11 @@
 \section{Introduction}
 Hardware-aware neural architecture search (HW-NAS) seeks architectures that trade off task performance against on-device cost. Supernet-based methods are effective but cost GPU-days per dataset. LLM-NAS \cite{llmnas} replaces both the supernet and the evolutionary operator with a large language model that (a)~is confined to \emph{complexity niches} to counteract its tendency to repeat familiar designs (\emph{exploration bias}), (b)~co-evolves a textual \emph{knowledge base} of design rules alongside the architectures, and (c)~scores candidates with a training-free zero-cost (ZC) predictor. The paper reports near-perfect Pareto fronts (hypervolume $\approx0.99$) at a cost of 120 API calls per search.
 
+Scoring candidates with a trained predictor and a latency lookup table, instead of training each one, is not specific to LLMs. ChamNet \cite{chamnet} searched the hyper-parameters (filter and bottleneck counts) of an existing efficient network with a genetic algorithm whose fitness came from a Gaussian-process accuracy predictor (built from 240 trained networks), an energy predictor and a lookup table of operator latencies (about 350{,}000 records for a device). Its authors report that, once these predictors exist, an architecture for a new platform or constraint takes minutes, and they state the total cost as $O(m+n)$ rather than $O(mnk)$ for $m$ networks, $n$ platforms and $k$ constraints. In this recipe the saving comes from the evaluator; the search operator is a conventional genetic algorithm. LLM-NAS keeps the evaluator-based design and changes the operator to an LLM. Whether that change improves on a conventional operator that uses the same evaluator is the question this study tests.
+
+Automated search has also been found to need human design knowledge. MobileNetV3 \cite{mobilenetv3} combined platform-aware search in the style of MnasNet \cite{mnasnet}, whose Large-model result it reused as the starting point, with layer-wise adaptation by NetAdapt \cite{netadapt}, and then improved the result by hand: its authors state that redesigning the expensive first and last layers and adding the h-swish nonlinearity lay outside the search space, and they call the best way to blend automated search with human intuition an open question. An LLM operator is attractive because it promises to supply part of this design knowledge as a prior and to give a reason for each choice. Whether it does so is the second question tested here.
+
+
 This study has three goals:
 \begin{enumerate}[nosep]
   \item Build an \emph{organised, re-runnable} reproduction: one command per paper table or figure, exact replay without API access, and an explicit record of every assumption.
@@ -438,6 +443,10 @@ the mean distance from each true-front point to its nearest discovered point (no
 \bibitem{llmtool} M.~Yoshimura, Z.~Sun, Y.~Sakuma, J.~Otsuka, A.~Irie, T.~Ohashi. LLM as a Tool, Not an Agent: Code-Mined Tree Transformations for Neural Architecture Search. arXiv:2604.16555, 2026.
 \bibitem{hierarchical} H.~Liu, K.~Simonyan, O.~Vinyals, C.~Fernando, K.~Kavukcuoglu. Hierarchical Representations for Efficient Architecture Search. \emph{ICLR}, 2018 (arXiv:1711.00436).
 \bibitem{llmatic} M.~U.~Nasir, S.~Earle, J.~Togelius, S.~James, C.~Cleghorn. LLMatic: Neural Architecture Search via Large Language Models and Quality Diversity Optimization. arXiv:2306.01102.
+\bibitem{chamnet} X.~Dai, P.~Zhang, B.~Wu, H.~Yin, F.~Sun, Y.~Wang, M.~Dukhan, Y.~Hu, Y.~Wu, Y.~Jia, P.~Vajda, M.~Uyttendaele, N.~K.~Jha. ChamNet: Towards Efficient Network Design through Platform-Aware Model Adaptation. \emph{CVPR}, 2019 (arXiv:1812.08934).
+\bibitem{mobilenetv3} A.~Howard, M.~Sandler, G.~Chu, L.-C.~Chen, B.~Chen, M.~Tan, W.~Wang, Y.~Zhu, R.~Pang, V.~Vasudevan, Q.~V.~Le, H.~Adam. Searching for MobileNetV3. \emph{ICCV}, 2019 (arXiv:1905.02244).
+\bibitem{mnasnet} M.~Tan, B.~Chen, R.~Pang, V.~Vasudevan, M.~Sandler, A.~Howard, Q.~V.~Le. MnasNet: Platform-Aware Neural Architecture Search for Mobile. \emph{CVPR}, 2019 (arXiv:1807.11626).
+\bibitem{netadapt} T.-J.~Yang, A.~Howard, B.~Chen, X.~Zhang, A.~Go, M.~Sandler, V.~Sze, H.~Adam. NetAdapt: Platform-Aware Neural Network Adaptation for Mobile Applications. \emph{ECCV}, 2018 (arXiv:1804.03230).
 \end{thebibliography}
 
 \end{document}
