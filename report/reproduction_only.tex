@@ -224,6 +224,78 @@ Paper: PEA (Table 5) & \multicolumn{6}{c}{--} & 0.843 & 0.165 \\
 \end{figure}
 
 %=====================================================================
+\section{Is the LLM operator justified? Comparison with traditional search}\label{sec:justification}
+This section asks what an LLM contributes that a traditional NAS method does not. It first sets out the justification given in the paper and in related work, then separates the claimed benefits so that each can be tested, and finally reports the evidence from our runs.
+
+\paragraph{What the paper offers as justification.} The paper makes four arguments \cite{llmnas}. (i)~\emph{Cost}: supernet-based NAS needs GPU-days (Table~4 of the paper, per dataset and device on a V100: LLMatic 17 GPU-days, FairNAS 10, DARTS 4, PRP-NAS-BA 2), whereas LLM-NAS needs ``3\,mins (API calls)''. (ii)~\emph{No supernet, no training}: the LLM replaces the supernet-based sampler, and candidates are scored by zero-cost proxies. (iii)~\emph{Knowledge and feedback}: the LLM brings prior architectural knowledge and, through the co-evolved knowledge base, accumulates design rules from past evaluations, which the paper argues ``avoids random guesswork'' and improves efficiency. (iv)~\emph{Interface}: the operator needs only a textual description of the search space and returns a rationale for each design, so it does not require a hand-written mutation or crossover operator. The paper positions LLMs against two alternatives: supernet-based methods (OFA, FairNAS) and earlier LLM-driven search (LLMatic, which trains every candidate). Classical multi-objective evolutionary algorithms such as NSGA-II are cited as the natural fit for the problem, but no equal-budget evolutionary baseline using the same predictor appears in its comparison, apart from the PEA ablation (random operators inside the same framework).
+
+\paragraph{The benefits are not all due to the LLM.} Two of the four arguments concern the \emph{evaluator}, not the \emph{search operator}. The cost reduction in argument~(i) comes from training-free evaluation: a zero-cost predictor plus a latency lookup table. Any search algorithm can use the same evaluator, including random sampling and evolution with random operators. Table~4 of the paper compares LLM-NAS (training-free) with methods that train a supernet or every candidate, so it cannot tell whether the LLM contributes anything beyond what a training-free evaluator already provides. The fair question is therefore: \emph{given the same training-free evaluator, does an LLM operator find better fronts, or find them with fewer evaluations, than a cheap non-LLM operator?} Our controls answer exactly this. They share the paper's partitioning, predictor and archive logic, and differ only in the operator (random mutation and crossover, or uniform random sampling inside each niche).
+
+\paragraph{Evidence 1: quality at the same number of evaluated architectures.} An LLM operator is justified on sample-efficiency grounds if it reaches a given front quality after fewer evaluations than a non-LLM operator. The LLM runs evaluated fewer distinct architectures than the controls (GPT-4.1: 129--161 per search; Claude Haiku~4.5: 68--96; PEA: 149--209; random sampling: about 270), partly because many proposals are duplicates or fall outside their niche. To compare fairly we read each control's hypervolume at the point of its search trajectory where it had evaluated as many architectures as the LLM run (linear interpolation between generations; controls averaged over three seeds). Table~\ref{tab:matched} gives the result, on all six devices, CIFAR-10.
+
+\begin{table}[h]\centering\footnotesize
+\caption{Hypervolume (default convention) of the LLM run and of the controls at the \emph{same number of evaluated architectures} $N$, CIFAR-10, seed~0 for LLMs and mean of three seeds for controls (RS = random sampling in niches, PEA = random operators). Bold: the LLM run exceeds the control mean. Edge TPU is scored after excluding failed compilations.}\label{tab:matched}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{l|cccc|cccc}
+\toprule
+ & \multicolumn{4}{c|}{GPT-4.1} & \multicolumn{4}{c}{Claude Haiku~4.5} \\
+Device & $N$ & LLM & RS@$N$ & PEA@$N$ & $N$ & LLM & RS@$N$ & PEA@$N$ \\
+\midrule
+Edge GPU       & 129 & 0.964 & 0.985 & 0.969 & 96 & 0.913 & 0.961 & 0.967 \\
+Raspberry Pi 4 & 161 & 0.983 & 0.987 & 0.990 & 90 & \textbf{0.986} & 0.984 & 0.986 \\
+Edge TPU       & 141 & 0.902 & 0.902 & 0.915 & 82 & 0.844 & 0.864 & 0.880 \\
+Pixel 3        & 151 & \textbf{0.986} & 0.980 & 0.987 & 92 & 0.938 & 0.972 & 0.980 \\
+Eyeriss        & 140 & \textbf{0.896} & 0.864 & 0.899 & 86 & \textbf{0.840} & 0.802 & 0.867 \\
+FPGA           & 148 & 0.839 & 0.859 & 0.904 & 68 & \textbf{0.807} & 0.804 & 0.817 \\
+\midrule
+Mean           & 145 & 0.928 & 0.930 & 0.944 & 86 & 0.888 & 0.898 & 0.916 \\
+LLM above control & & & 2/6 & 0/6 & & & 3/6 & 1/6 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+At equal evaluations GPT-4.1 matches random sampling (mean 0.928 against 0.930) and is below random-operator evolution (0.944); it exceeds the latter on none of the six devices. Haiku is 0.010 below random sampling and 0.028 below PEA. The control s.d.\ over three seeds is 0.001--0.03, so most differences, including the few in the LLM's favour, are within noise; there is no device on which an LLM is clearly ahead by more than the spread of the controls. Each LLM has a single seed, so this is a statement about these runs, not a proof that no advantage exists.
+
+\paragraph{Evidence 2: cost.} Table~\ref{tab:costcmp} puts the quality and cost of one search side by side.
+\begin{table}[h]\centering\footnotesize
+\caption{One search (120 LLM calls, or none) on CIFAR-10 / Edge GPU unless noted. Prices are list prices for the measured token counts. The local models ran on a 4\,GB laptop GPU.}\label{tab:costcmp}
+\begin{tabular}{lcccc}
+\toprule
+Operator & HV (default) & HV ($\ge80\%$ acc.) & Cost & Wall time \\
+\midrule
+Random sampling in niches (3 seeds) & $0.991\pm0.001$ & $0.931\pm0.018$ & \$0 & about 1\,s \\
+Random operators, PEA (3 seeds)      & $0.989\pm0.004$ & $0.904\pm0.045$ & \$0 & seconds \\
+GPT-4.1                              & 0.964 & 0.752 & \$0.85 & 8.6\,min \\
+Claude Haiku~4.5 (Edge GPU)          & 0.913 & 0.710 & \$1.62 & 43\,min \\
+Claude Opus~5.5                      & 0.980 & 0.961 & \$10.77 & 71\,min \\
+Qwen2.5-7B (local)                   & 0.888 & 0.709 & \$0 (electricity) & 153\,min \\
+DeepSeek-Coder-V2-16B (local)        & 0.988 & 0.901 & \$0 (electricity) & 71\,min \\
+\bottomrule
+\end{tabular}
+\end{table}
+Across six devices the GPT-4.1 searches cost \$0.80--0.88 each and the Haiku searches \$1.44--1.62. The non-LLM controls cost nothing and finish in about a second, which is more than $400\times$ faster than the fastest LLM search. A user who accepts the zero-cost evaluator therefore pays between \$0.85 and \$10.77, and between 8 and 150 minutes, per search for an operator that, on this benchmark, does not reach a better front. The only configuration with a clear advantage over the controls in our data is Claude Opus~5.5 under the 80\% floor, at the highest price (Section~\ref{sec:degenerate}).
+
+\paragraph{Evidence 3: proposal quality.} A useful prior should make proposals that are valid, novel and in the requested niche. In our runs only 16--55\% of the LLM proposals were usable (valid, in-niche and not already seen), against 65\% for PEA and 100\% for random sampling inside niches (the exception is Claude Opus~5.5, 80\%). The duplicates show that the LLMs repeatedly returned architectures they had been shown, which is the ``safe and familiar patterns'' behaviour the paper calls exploration bias and attributes to mode collapse. The niche partitioning is what enforces diversity here, and the non-LLM controls use it too; in our runs the diversity does not appear to come from the LLM.
+
+\paragraph{What other studies report.} Our finding is consistent with, though not proof of, the wider literature.
+\begin{itemize}[nosep]
+  \item The authors of CoLLM-NAS state that most existing LLM-based NAS methods face ``architectural invalidity, computational inefficiency, and inferior performance compared to traditional NAS'' \cite{collmnas}. Their remedy is a two-model collaboration with knowledge guidance, which suggests that a single prompted LLM, as in LLM-NAS, is not sufficient on its own.
+  \item Yoshimura et al.\ report that LLM proposals ``are often biased toward a narrow set of patterns observed in their training data'' and assign coarse-level planning to a diversity-guided Bayesian algorithm, using the LLM only to fill in the remaining degrees of freedom \cite{llmtool}. This is the same remedy in spirit as the paper's partitioning, achieved by a conventional algorithm.
+  \item In earlier, non-LLM work, uniform random search in a well-designed space was only slightly worse than evolution: 0.3 percentage points lower top-1 accuracy on CIFAR-10 and 0.1 on ImageNet \cite{hierarchical}. This is relevant because it shows that a strong random baseline is the standard that a new operator must beat.
+  \item LLMatic does not rely on prompting alone: its authors report that LLMs struggle to conduct NAS directly through prompts, so it wraps LLM-generated variations in a quality-diversity algorithm, and it trains every candidate, which is why its search cost in Table~4 of the paper is the highest \cite{llmatic}.
+\end{itemize}
+We did not find a study that compares prompted-LLM search with strong evolutionary and random baselines under equal budgets and the same evaluator across several benchmarks. LLM-NAS does not provide one either; this is the gap that the controls in this report begin to fill.
+
+\paragraph{Where an LLM operator could still be justified.} The data above do not show that the LLM is useless, only that, on this benchmark, with this evaluator and this budget, it does not beat cheap alternatives. Four conditions under which it might do so are untested:
+\begin{enumerate}[nosep]
+  \item \emph{Expensive evaluations.} Here an evaluation costs about a millisecond (predictor plus lookup), so using fewer of them saves nothing and a second of random search is cheaper than any API call. If each evaluation meant training a network (hours), an operator that needed 30\% fewer evaluations would pay for its API cost. Our data show no such reduction, but the test was not run in that regime.
+  \item \emph{Search spaces without a natural encoding.} NAS-Bench-201 has six categorical variables, for which random mutation is easy to write. In open-ended spaces (code, transformer variants, hardware-software co-design) writing a valid mutation operator is itself hard, and a text interface lets the LLM operate without one. The paper's Vision-Transformer experiment is of this kind; we did not reproduce it.
+  \item \emph{Interpretability.} The knowledge base and the per-design rationales give a human-readable record of why designs were chosen. This is a real property that random operators lack. In our runs only the strongest model (Claude) produced rules backed by its own evidence; the others produced generic, sometimes self-contradicting rules, so the benefit depends on the model.
+  \item \emph{Small spaces versus large spaces.} NAS-Bench-201 contains 15{,}625 architectures and our random baseline evaluates about 270 of them (1.7\%); in so small a space random search is a strong baseline. In spaces many orders of magnitude larger, a good prior could matter more. Whether the LLMs saw these benchmark tables during pre-training is unknown; if they did, the prior would be inflated rather than informative, and it is another reason to test on a held-out space.
+\end{enumerate}
+
+\paragraph{What would settle the question.} Run the framework with (a)~a strong evolutionary baseline (NSGA-II or regularised evolution) and Bayesian optimisation, all with the same predictor and budget; (b)~at least three seeds for every LLM; (c)~a larger, non-tabular search space; and (d)~a setting where each evaluation is a short training run. If the LLM operator reaches the same front with markedly fewer evaluations in (d), the cost argument becomes valid. Until then the more defensible reading of the paper's cost saving is that it comes from the zero-cost predictor, and that the LLM operator contributes interpretability and interface flexibility rather than a measurable gain in front quality on HW-NAS-Bench.
+
 \section{Discussion: what was discovered}\label{sec:discussion}
 \begin{enumerate}
   \item \textbf{The paper's data and encoding are recoverable, with two caveats.} Eleven of twelve Table-2 points are reproduced exactly; one (Edge GPU 94.37\% @ 4.35\,ms) does not exist in HW-NAS-Bench. The Edge TPU column contains 4{,}699 architectures that failed compilation and are stored as $-1$ \cite{hwnasissue}; they must be excluded, the paper does not say how it handled them, and excluding them materially changes Edge TPU numbers.
@@ -231,6 +303,8 @@ Paper: PEA (Table 5) & \multicolumn{6}{c}{--} & 0.843 & 0.165 \\
   \item \textbf{Whether the LLM operator helps depends on the convention and on the model.} Under the default convention no LLM exceeds the zero-cost controls. With the degenerate cell excluded, Claude Opus~5.5 is at or above the controls (HV 0.961 vs.\ 0.904--0.931 on average; IGD 0.041 vs.\ 0.076--0.094, lower than every control run), while GPT-4.1, the paper's own model, is clearly below them (0.752 / 0.171) and Qwen2.5-7B further below (0.709 / 0.230); DeepSeek-Coder-V2 is level with the controls (0.901 / 0.124). On this setting and with one seed per LLM we therefore see no advantage for the paper's own model under either convention, and parity or an advantage only for the strongest model. This is a statement about our conventions and budget, not a refutation of the paper (Section~\ref{sec:threats}).
   \item \textbf{The knowledge base tracks the model and is not self-correcting.} Claude's rules cite its own evidence; GPT-4.1's were sensible but generic; Qwen's and DeepSeek's were generic, sometimes contradicted by the data, and (for DeepSeek) often malformed, and the co-evolution loop did not reliably remove them.
   \item \textbf{Quality per dollar is the relevant axis.} On the restricted front the best LLM (Claude, HV 0.961) costs \$10.77 and 71 minutes per search; GPT-4.1 costs \$0.85 and scores 0.752; the free local models score 0.709 (Qwen) and 0.901 (DeepSeek); non-LLM controls score 0.904--0.931 at no cost. Only Claude exceeds what free random search reaches, at about \$11 per search and with a $6.7\times$ larger output budget than GPT-4.1, a different trade-off from the paper's selling point of a three-minute search.
+  \item \textbf{The evidence does not support the LLM as the source of the method's benefit on this benchmark.} The paper's cost saving comes from the training-free evaluator, which the non-LLM controls also use; at the same number of evaluated architectures GPT-4.1 and Claude Haiku~4.5 match or fall below random sampling and random-operator evolution (Table~\ref{tab:matched}), at \$0.85--\$1.62 and 8--43 minutes per search against \$0 and one second. What remains attributable to the LLM is interpretability, the text interface, and, for the strongest model, a better restricted front. Whether an LLM operator pays off with expensive evaluations or in spaces without a natural mutation operator is untested (Section~\ref{sec:justification}).
+  \item \textbf{The evidence does not support the LLM as the source of the method's benefit on this benchmark.} The paper's cost saving comes from the training-free evaluator, which the non-LLM controls also use; at the same number of evaluated architectures GPT-4.1 and Claude Haiku~4.5 match or fall below random sampling and random-operator evolution (Table~\ref{tab:matched}), at \$0.85--\$1.62 and 8--43 minutes per search against \$0 and one second. What remains attributable to the LLM is interpretability, the text interface, and, for the strongest model, a better restricted front. Whether an LLM operator pays off with expensive evaluations or in spaces without a natural mutation operator is untested (Section~\ref{sec:justification}).
 \end{enumerate}
 
 \section{Threats to validity}\label{sec:threats}
@@ -321,6 +395,10 @@ the mean distance from each true-front point to its nearest discovered point (no
 \bibitem{hwnasissue} minhquoc0712 and licj15 (maintainer). Issue \#11, ``Edge TPU latency'', GATECH-EIC/HW-NAS-Bench, GitHub, 12 January 2024. \url{https://github.com/GATECH-EIC/HW-NAS-Bench/issues/11} (accessed 4 November 2026).
 \bibitem{nbsz} A.~Krishnakumar, C.~White, A.~Zela, R.~Tu, M.~Safari, F.~Hutter. NAS-Bench-Suite-Zero: Accelerating Research on Zero Cost Proxies. \emph{NeurIPS Datasets and Benchmarks}, 2022.
 \bibitem{nats} X.~Dong, L.~Liu, K.~Musial, B.~Gabrys. NATS-Bench: Benchmarking NAS Algorithms for Architecture Topology and Size. \emph{IEEE TPAMI}, 2021.
+\bibitem{collmnas} CoLLM-NAS: Collaborative Large Language Models for Efficient Knowledge-Guided Neural Architecture Search. arXiv:2509.26037, 2025.
+\bibitem{llmtool} M.~Yoshimura, Z.~Sun, Y.~Sakuma, J.~Otsuka, A.~Irie, T.~Ohashi. LLM as a Tool, Not an Agent: Code-Mined Tree Transformations for Neural Architecture Search. arXiv:2604.16555, 2026.
+\bibitem{hierarchical} H.~Liu, K.~Simonyan, O.~Vinyals, C.~Fernando, K.~Kavukcuoglu. Hierarchical Representations for Efficient Architecture Search. \emph{ICLR}, 2018 (arXiv:1711.00436).
+\bibitem{llmatic} M.~U.~Nasir, S.~Earle, J.~Togelius, S.~James, C.~Cleghorn. LLMatic: Neural Architecture Search via Large Language Models and Quality Diversity Optimization. arXiv:2306.01102.
 \end{thebibliography}
 
 \end{document}

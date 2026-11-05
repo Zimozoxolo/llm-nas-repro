@@ -1,0 +1,12 @@
+# LLM-NAS with a chosen LLM across devices (CIFAR-10, seed 0). Model is set on the command line, e.g.
+#   python -m llmnas run llm_devices --set llm.model=gpt-4.1 --devices edgetpu
+#   python -m llmnas run llm_devices --set llm.backend=anthropic llm.model=claude-haiku-4-5 --devices fpga
+# Local models: --set llm.model=qwen2.5-7b-8k llm.base_url=http://localhost:11434/v1
+# Defaults come from base.yaml (same as the GPT-4.1 / Qwen / DeepSeek runs on Edge GPU).
+name: llm_devices
+type: search
+datasets: [cifar10]
+devices: [edgegpu, raspi4, edgetpu, pixel3, eyeriss, fpga]
+seeds: [0]
+variants:
+  llmnas: {}
