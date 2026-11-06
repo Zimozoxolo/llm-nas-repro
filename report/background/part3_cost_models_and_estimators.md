@@ -28,7 +28,7 @@ OpenAlex citation counts (queried 2026-11-05; they run lower than Google Scholar
 
 **Gaps to know about.**
 1. **Paleo** (an analytic performance model, 154 citations) could not be downloaded (the server returned a web page, not a PDF), so it is not summarised.
-2. NATS-Bench (173) and NAS-Bench-301 are not covered; NAS-Bench-201 is the benchmark that matters here.
+2. NATS-Bench (173 citations) and NAS-Bench-301 were added after your review and are read in sections 3.1b and 3.1c (NATS-Bench: introduction, benchmark description, analysis and search results read; NAS-Bench-301: abstract through the case study and limitations read, appendices only searched).
 3. HELP (latency prediction by meta-learning, 14-17 citations) is not covered.
 4. For SynFlow and Domhan I read the abstract and opening only; for NAS-Bench-Suite-Zero I read the abstract, introduction and tables of contents, not the analysis sections.
 
@@ -107,6 +107,30 @@ This is the table your reproduction queries, so it is covered in more detail.
 - *Isomorphism (author-stated, appendix).* Only **12,751** of the 15,625 cells are unique topologies if skip-connect isomorphism is considered, and only **6,466** if zeroize is also considered, yet every architecture was trained separately, so numerically the duplicates have slightly different accuracies.
 - *Relevance.* The 15,625-architecture space is small and contains many functionally equivalent cells; random methods can sample a large fraction of it (our controls evaluate about 270, 1.7%). The all-skip collapse of DARTS is a related kind of degenerate cell to the roughly 10%-accuracy architecture we found on the true fronts of three devices (I have not checked that they are the same architecture).
 
+### 3.1b NATS-Bench (Dong, Liu, Musial, Gabrys; arXiv 2009.00437; IEEE TPAMI 2021)
+- **What it is.** An extension of NAS-Bench-201 to two search spaces: a **topology** space St (the same 15,625 cells; the paper's Table 1 lists 6.5k unique) and a new **size** space Ss (8 channel choices for each of 5 channel settings = 8^5 = 32,768 architectures). Each is trained on CIFAR-10, CIFAR-100 and ImageNet-16-120. Topology space: 12 epochs (H0) and 200 epochs (H1); size space: 12 epochs and 90 epochs (H2). Per-epoch loss and accuracy, parameters, FLOPs, **latency**, and training/evaluation times are released (author-stated). I did not read which hardware or method the latency refers to.
+- **Why it matters here.** The LLM-NAS search space is NATS-Bench's topology space (NB201), so this is the benchmark paper for the space we use.
+- **Findings useful to us (author-stated).**
+  - Accuracy varies "even when the number of parameters or FLOPs stays the same" (Fig. 3), so cell connectivity and operators matter beyond size.
+  - Rankings are fairly consistent across the three datasets for topology but quite different for size; Kendall rank correlation between datasets drops when only top architectures are compared, so "the best architecture on one dataset" does not transfer reliably.
+  - **Seed noise:** ranking by one random trial versus the average of trials gives Kendall tau about 0.77, 0.70 and 0.77 on CIFAR-10, CIFAR-100 and ImageNet-16-120 for the top 20% of topologies.
+  - 13 algorithms benchmarked (500 runs each for multi-trial methods). Topology space: on CIFAR-10 "most methods have similar performance"; on CIFAR-100 the order at the longest budget is REA ≥ BOHB ≥ REINFORCE ≥ RANDOM. **Size space:** REA "significantly outperforms" the others and RANDOM is worst on CIFAR-100 and ImageNet-16-120. The authors recommend REA when compute allows.
+  - DARTS (first and second order) converge on CIFAR-10 to an architecture with many skip connections that "performs poorly", while doing "relatively well" on CIFAR-100 and ImageNet-16-120 (author explanation: more search data).
+- **Pitfalls (author-stated or my reading, marked).** The authors say their re-implemented size-space methods may differ from the originals and that whether the observations generalise is "under investigation". *My reading:* the topology space has only 6.5k unique cells, so a method that samples a few thousand architectures covers a large share of it.
+- **Tension with Part 2's random-search hook.** NATS-Bench finds random search *behind* REA and BOHB on CIFAR-100 and ImageNet-16-120, so "random search is a strong baseline" is not uniform in this benchmark. In our six-device runs the controls were scored on a different setup (zero-cost predictor, HW-NAS-Bench latency), so the two results do not contradict, but the hook should be worded with this in mind.
+
+### 3.1c NAS-Bench-301 and surrogate benchmarks (Zela, Siems, Zimmer, Lukasik, Keuper, Hutter; arXiv 2008.09777; ICLR 2022)
+- **Problem stated by the authors.** Tabular benchmarks need exhaustive evaluation, so they are limited to small spaces (6k to 423k architectures), while standard spaces exceed 10^18. They warn that this "can cause results gained on tabular NAS benchmarks to not generalize to realistic search spaces", citing local search, which looked good on tabular benchmarks but not in a realistic space (White et al. 2020).
+- **Method.** Fit a regression model (a *surrogate*) on a sampled subset of architectures and query it like a table. Built for the DARTS space (>10^18 architectures, about 60k trained for the surrogate, CIFAR-10) and the FBNet space (9^22 ≈ 10^21, 25k random architectures, CIFAR-100).
+- **Evidence (author-stated).**
+  - On NAS-Bench-101, a GIN surrogate trained on one seed predicts the mean of two other seeds with mean absolute error 3.45e-3, against 4.53e-3 for a table lookup; the surrogate overtakes the table once trained on more than about 21,500 architectures.
+  - Best surrogates on DARTS: LGBoost (R2 0.892, sparse Kendall tau 0.816), XGBoost (0.832, 0.817), GIN (0.832, 0.778). Runtime is predicted well (sKT 0.936).
+  - Optimiser trajectories on the surrogate "closely resemble" those on the real benchmark, so runs that cost thousands of GPU hours can be simulated in seconds.
+  - FBNet space: random search "cannot identify a good architecture even when evaluating 2500 architectures"; regularised evolution and HEBO are at least 8 and 16 times faster to find a better one, with a 1-2% absolute error gap over random search. The DARTS space shows the same pattern with a smaller gap.
+  - Case study: a conclusion from a 11.8 GPU-day run (local search is poor on DARTS) was revised with the surrogate; with a longer budget local search becomes among the best.
+- **Pitfalls (author-stated).** Algorithms may overfit the surrogate; the surrogate should be a black box and methods using the same model internally should not be benchmarked on it; versions must be stated; surrogates fitted on random data predict well-performing regions less well.
+- **Why it matters here.** (1) The same recipe LLM-NAS uses, a gradient-boosted regressor as the estimate of accuracy, is the standard way to make large spaces cheap, so it is prior art. (2) *My reading:* random search looking strong may be a property of a small, tabular space like NB201; in a 10^18 to 10^21 space the benchmark paper finds it far behind. This is a limit on how far our "controls match the LLM" result can be extended and belongs in the discussion, not as a retraction. (3) HW-NAS-Bench is cited as one of the tabular benchmarks with this size limit.
+
 ### 3.2 Learning-curve extrapolation (Domhan, Springenberg, Hutter; IJCAI 2015)
 - *Idea (abstract only).* Mimic a human who stops a bad run early: fit a probabilistic model to the first part of the learning curve and terminate runs predicted to be poor.
 - *Result (author-stated):* roughly **twofold** speed-up of hyper-parameter optimisation methods.
@@ -156,6 +180,8 @@ This is the table your reproduction queries, so it is covered in more detail.
 | Hardware | Precomputed table (HW-NAS-Bench) | lookup | reproducible, no hardware needed | 2 of 6 devices simulated; one software stack; fixed spaces |
 | Quality | Train to convergence | hours-days | exact | cost |
 | Quality | Tabulated benchmark (NAS-Bench-101/201) | lookup | reproducible, cheap | small spaces; one training recipe |
+| Quality | Tabulated benchmark with size space (NATS-Bench) | lookup | adds channel-size space, 3 datasets, 13 algorithms | topology space has 6.5k unique cells; seed noise (tau 0.70-0.77 on top 20%) |
+| Quality | Surrogate benchmark (NAS-Bench-301) | milliseconds | works for spaces of 10^18-10^21; beats table lookup on noise | surrogate bias; risk of overfitting algorithms to it |
 | Quality | Learning-curve extrapolation (Domhan) | partial training | about 2× faster | still trains |
 | Quality | Learned predictor (BANANAS, BRP-NAS) | milliseconds after data | sample-efficient | needs trained architectures |
 | Quality | Zero-cost proxy (SynFlow, NASWOT, etc.) | seconds, one minibatch | needs no training | size bias; not consistent across benchmarks |
@@ -169,20 +195,25 @@ This is the table your reproduction queries, so it is covered in more detail.
 3. **The estimator may carry much of the result.** Proxies are biased toward larger architectures and parameter count is competitive with them (NAS-Bench-Suite-Zero); predicted-vs-true latency can change which models are Pareto optimal (BRP-NAS). A natural, untested check for our work: compare the 13-proxy predictor with a parameter-count-only predictor. *This is a suggestion, not a finding.*
 4. **Report wording to check:** Eyeriss and FPGA latencies are simulator estimates in HW-NAS-Bench; the Edge TPU data have the compile-failure −1 records and the weakest approximation; the benchmark uses one compiler/runtime per device.
 5. **Why hardware-awareness is needed at all** has independent numerical support: FLOPs correlate weakly with latency on some devices (0.18 on Edge TPU), and the best architecture differs across devices.
-6. **Search-space caveats** (NAS-Bench-201 has only 6,466 distinct topologies after isomorphism; DARTS collapses to an all-skip cell) fit the degenerate-cell finding already in the reports.
+6. **Search-space caveats** (NAS-Bench-201 has only 6,466 distinct topologies after isomorphism; DARTS collapses to an all-skip cell) fit the degenerate-cell finding already in the reports. NATS-Bench independently reports DARTS converging to a skip-heavy cell on CIFAR-10.
+7. **Scope limit on our random-search result (added with NATS-Bench and NAS-Bench-301).** Random search is behind REA/BOHB on CIFAR-100 and ImageNet-16-120 in NATS-Bench, and far behind in the 10^18-10^21 spaces of NAS-Bench-301. Our result (LLM operators do not beat random-operator evolution, 0 of 24) holds for the small NB201 space with a cheap predictor; the reports should not suggest it applies to large spaces.
+8. **The estimator recipe is standard.** A boosted-tree regressor as the quality estimate is how NAS-Bench-301 makes large spaces cheap, so LLM-NAS's XGBoost predictor is a recognised technique, not a novel one.
 
 ## 6. What is unverified or not covered
-- Paleo, NATS-Bench, NAS-Bench-301 and HELP are not covered; Paleo could not be downloaded.
+- Paleo and HELP are not covered; Paleo could not be downloaded.
+- NATS-Bench: I did not read its appendices (hyper-parameter details, per-algorithm tables) or which device its latency field comes from; "6.5k unique" is from its Table 1. NAS-Bench-301: appendices were only searched; the numbers above come from the main text.
+- NATS-Bench and NAS-Bench-301 citation counts: NATS-Bench 173 (OpenAlex, queried earlier); NAS-Bench-301 not queried.
 - SynFlow and Domhan: abstract and opening only. NAS-Bench-Suite-Zero: abstract and introduction only; the bias and information-theory analyses are described from the authors' summary.
 - BRP-NAS numeric prediction errors were not extracted; nn-Meter's per-model results beyond the headline percentages were not read.
 - HW-NAS-Bench's appendix (per-device pipeline details) was not read; the Edge TPU compile-failure issue comes from the benchmark's GitHub issue \#11 used earlier in this project.
 - Citation counts are OpenAlex values; HW-NAS-Bench has none.
 
 ## 7. Questions for your review
-1. Are these twelve sources enough for the estimation background, or should I add NATS-Bench, NAS-Bench-301 or HELP?
-2. Hook 4 (Eyeriss and FPGA are simulated) needs a change in our reports if they currently say "measured latency" for all six devices. Do you want me to check and correct both reports now?
-3. Hook 3 suggests an extra check (parameter-count-only predictor vs the 13-proxy predictor). Is that in scope, or a future-work item?
-4. After this, shall I go to Part 4: the gap that LLM guidance claims to fill (LLM-NAS and the related LLM-NAS papers) and how it connects to Parts 1-3?
+1. NATS-Bench and NAS-Bench-301 are now added (fourteen sources). Is HELP still wanted, or is this enough?
+2. Hook 4 (Eyeriss and FPGA simulated): done, both reports corrected.
+3. Hook 3 (parameter-count-only predictor): recommended as future work, awaiting your decision.
+4. Hook 7 changes how far we can generalise the random-search result. Do you want that limit stated in the introduction as well as the discussion?
+5. After this, shall I go to Part 4: the gap that LLM guidance claims to fill (LLM-NAS and the related LLM-NAS papers) and how it connects to Parts 1-3?
 
 ## Sources
 - HW-NAS-Bench: https://arxiv.org/abs/2103.10584
@@ -191,6 +222,8 @@ This is the table your reproduction queries, so it is covered in more detail.
 - NeuralPower: https://arxiv.org/abs/1710.05420
 - NAS-Bench-101: https://arxiv.org/abs/1902.09635
 - NAS-Bench-201: https://arxiv.org/abs/2001.00326
+- NATS-Bench: https://arxiv.org/abs/2009.00437
+- NAS-Bench-301: https://arxiv.org/abs/2008.09777
 - Domhan et al.: https://www.ijcai.org/Proceedings/15/Papers/487.pdf
 - SynFlow: https://arxiv.org/abs/2006.05467
 - NASWOT: https://arxiv.org/abs/2006.04647
