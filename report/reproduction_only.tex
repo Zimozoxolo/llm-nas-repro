@@ -67,7 +67,7 @@ This study asks two questions of LLM-NAS and builds a framework to answer them: 
 Section~\ref{sec:method} describes the method and framework, Section~\ref{sec:results} the results, Section~\ref{sec:discussion} what was discovered, and Section~\ref{sec:future} next steps. Appendix~\ref{sec:glossary} defines all technical terms and formulas.
 
 %=====================================================================
-\section{The LLM-NAS method (Zhu, Zhang and Huang, 2025)}\label{sec:background}
+\section{The LLM-NAS method}\label{sec:background}
 
 \subsection{Overview}
 LLM-NAS \cite{llmnas} treats hardware-aware search as a bi-objective problem, accuracy against latency, whose answer is a Pareto front. The authors' starting observation is that a language model asked to propose architectures for a large, unstructured space shows \emph{exploration bias}, an analogue of mode collapse: its proposals cluster in a narrow region and miss the low-latency end of the front (their Figure~1 and Appendix~D), even when it is prompted to aim for diverse latencies. Their remedy has three components, shown in Figure~\ref{fig:pipeline}: complexity-driven partitioning of the search space into niches that are searched separately; an LLM operator that in each generation first rewrites a textual knowledge base from the previous results and then proposes new architectures conditioned on it; and a training-free evaluator, so that no candidate is trained. The paper's claim is that this finds near-complete Pareto fronts on six hardware devices in 120 API calls and about three minutes, where supernet-based methods need GPU-days.
