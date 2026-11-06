@@ -12,6 +12,10 @@
 \usepackage{url}
 \usepackage[hidelinks]{hyperref}
 \usepackage{microtype}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
 \graphicspath{{figures/}}
 \setlength{\parskip}{4pt}
 \captionsetup{font=small,labelfont=bf}
@@ -63,16 +67,108 @@ This study asks two questions of LLM-NAS and builds a framework to answer them: 
 Section~\ref{sec:method} describes the method and framework, Section~\ref{sec:results} the results, Section~\ref{sec:discussion} what was discovered, and Section~\ref{sec:future} next steps. Appendix~\ref{sec:glossary} defines all technical terms and formulas.
 
 %=====================================================================
-\section{The method being reproduced}\label{sec:background}
-The search space is the NAS-Bench-201 cell: six edges, each carrying one of five operators (\code{none}, \code{skip\_connect}, \code{nor\_conv\_1x1}, \code{nor\_conv\_3x3}, \code{avg\_pool\_3x3}), giving $5^6=15{,}625$ architectures. HW-NAS-Bench \cite{hwnasbench} supplies latency for every architecture on six devices (Edge GPU, Raspberry~Pi~4, Edge TPU, Pixel~3, Eyeriss, FPGA). The first four are measured on hardware; Eyeriss and the FPGA are simulator estimates \cite{hwnasbench}.
+\section{The LLM-NAS method (Zhu, Zhang and Huang, 2025)}\label{sec:background}
 
-\paragraph{Complexity niches.} The space is partitioned into six disjoint niches by the number of $3{\times}3$ convolutions (Table~1 of the paper): S0 none and no $1{\times}1$; S1 none but at least one $1{\times}1$; S2, S3, S4 exactly one, two, three $3{\times}3$; S5 four or more. The niches contain 729, 3{,}367, 6{,}144, 3{,}840, 1{,}280 and 265 architectures respectively.
+\subsection{Overview}
+LLM-NAS \cite{llmnas} treats hardware-aware search as a bi-objective problem, accuracy against latency, whose answer is a Pareto front. The authors' starting observation is that a language model asked to propose architectures for a large, unstructured space shows \emph{exploration bias}, an analogue of mode collapse: its proposals cluster in a narrow region and miss the low-latency end of the front (their Figure~1 and Appendix~D), even when it is prompted to aim for diverse latencies. Their remedy has three components, shown in Figure~\ref{fig:pipeline}: complexity-driven partitioning of the search space into niches that are searched separately; an LLM operator that in each generation first rewrites a textual knowledge base from the previous results and then proposes new architectures conditioned on it; and a training-free evaluator, so that no candidate is trained. The paper's claim is that this finds near-complete Pareto fronts on six hardware devices in 120 API calls and about three minutes, where supernet-based methods need GPU-days.
 
-\paragraph{Search (Algorithm 1).} Each niche keeps its own Pareto archive over (predicted accuracy, latency). In each of 10 generations and for each niche the LLM is called twice: \emph{Stage~1} rewrites the knowledge base from the previous cycle's results; \emph{Stage~2} proposes children by crossover (two parents) or mutation (one parent) under the niche's constraint, with the knowledge base in the prompt. Children are evaluated, the niche archive is updated, and after the last generation the archives are merged and filtered by non-dominated sorting. This is $6\times10\times2=120$ calls.
+\begin{figure}[!ht]\centering
+\begin{tikzpicture}[font=\footnotesize,>={Stealth[length=2mm]},
+  box/.style={draw,rounded corners=2pt,align=center,fill=gray!10,inner sep=3pt,minimum height=9mm},
+  llm/.style={box,fill=blue!10},
+  ev/.style={box,fill=green!10}]
+\node[box] (space) {Search space\\$15{,}625$ cells};
+\node[box,right=8mm of space] (part) {Complexity-driven\\partitioning};
+\node[box,right=8mm of part] (niches) {Six niches\\S0 \ldots\ S5};
+\draw[->] (space)--(part); \draw[->] (part)--(niches);
+\node[llm,below=16mm of space.south west,anchor=north west] (s1) {Stage 1\\LLM updates\\knowledge base};
+\node[llm,right=7mm of s1] (s2) {Stage 2\\LLM proposes\\children};
+\node[ev,right=7mm of s2] (eval) {Evaluate:\\predictor and\\latency lookup};
+\node[box,right=7mm of eval] (arch) {Update niche\\Pareto archive};
+\draw[->] (s1)--(s2); \draw[->] (s2)--(eval); \draw[->] (eval)--(arch);
+\draw[->] (arch.south) -- ++(0,-5mm) -| (s1.south);
+\path (s1.south) -- (arch.south) node[midway,yshift=-9mm,font=\scriptsize] {next generation (10 in all)};
+\node[draw,dashed,rounded corners=3pt,fit=(s1)(s2)(eval)(arch),inner sep=7mm,inner ysep=11mm] (loop) {};
+\node[font=\scriptsize,anchor=south west] at (loop.north west) {repeated independently in each niche};
+\draw[->] (niches.south) -- (niches.south |- loop.north);
+\node[box,below=9mm of loop] (agg) {Merge the six archives,\\non-dominated sort};
+\node[box,right=10mm of agg] (front) {Final Pareto front\\$P_{\mathrm{final}}$};
+\draw[->] (loop.south) -- (agg.north);
+\draw[->] (agg)--(front);
+\end{tikzpicture}
+\caption{The LLM-NAS pipeline as described in the paper (our redrawing).}\label{fig:pipeline}
+\end{figure}
 
-\paragraph{Training-free evaluation.} Latency comes from the HW-NAS-Bench lookup table. Accuracy is predicted by an XGBoost regressor over the 13 zero-cost proxies of NAS-Bench-Suite-Zero \cite{nbsz}.
+\subsection{Search space and objectives}
+The search space is the NAS-Bench-201 cell: four nodes joined by six edges, each carrying one of five operators (\code{none}, \code{skip\_connect}, \code{nor\_conv\_1x1}, \code{nor\_conv\_3x3}, \code{avg\_pool\_3x3}), which gives $5^6=15{,}625$ architectures. The paper encodes a cell as a six-tuple with 0 for zeroize, 1 for skip connection, 2 for $1{\times}1$ convolution, 3 for $3{\times}3$ convolution and 4 for average pooling, for example $(2,2,3,1,0,3)$ (its Figure~2). HW-NAS-Bench \cite{hwnasbench} supplies the latency of every cell on six devices (Edge GPU, Raspberry~Pi~4, Edge TPU, Pixel~3, Eyeriss, FPGA), of which the first four are measured on hardware and Eyeriss and the FPGA are simulator estimates, together with ground-truth accuracy on CIFAR-10, CIFAR-100 and ImageNet16-120. The two objectives of a candidate $A$ are its latency $l(A)$ on the target device and its predicted accuracy $z_{\mathrm{pred}}(A)$. Quality is judged against the true Pareto front $P^\ast$ of the benchmark, the set of cells for which no other cell is both more accurate and faster.
 
-\paragraph{Metrics.} Hypervolume (HV) and inverted generational distance (IGD) of the discovered front against the true front (definitions in Appendix~\ref{sec:glossary}).
+\subsection{Complexity-driven partitioning}
+The space is divided into six disjoint niches by the number of $3{\times}3$ convolutions, the operator with the most parameters (a $3{\times}3$ kernel has nine times the parameters of a $1{\times}1$ kernel per channel pair); the authors report that this count drives a step-like growth in parameters (their Figure~3) and, typically, in latency. Table~\ref{tab:niches} gives the niches. Each niche keeps its own population and Pareto archive, and its definition enters the prompt as a hard constraint (for niche S3: exactly two $3{\times}3$ convolutions, any number of $1{\times}1$ convolutions, the remaining edges drawn from the other three operators). This forces the LLM to produce designs across the whole complexity range instead of settling on familiar ones.
+
+\begin{table}[h]\centering\small
+\caption{The six niches of LLM-NAS (Table~1 of the paper). The last column, the number of cells in each niche, is computed from the benchmark and sums to $15{,}625$.}\label{tab:niches}
+\begin{tabular}{lccp{5.6cm}r}
+\toprule
+Niche & $3{\times}3$ convs & $1{\times}1$ convs & Rationale given in the paper & Cells \\
+\midrule
+S0 & 0 & 0 & non-convolutional architectures & 729 \\
+S1 & 0 & $\ge1$ & simple, low-latency models & 3{,}367 \\
+S2 & 1 & any & entry-level complex architectures & 6{,}144 \\
+S3 & 2 & any & mid-level complexity & 3{,}840 \\
+S4 & 3 & any & high-level complexity & 1{,}280 \\
+S5 & $\ge4$ & any & the most complex designs & 265 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{LLM co-evolution of knowledge and architectures}
+In every generation and in every niche the LLM is called twice (Appendix~E of the paper). In \emph{Stage~1} it acts as an analyst: given the device and dataset, the niche definition and the current Pareto parents with their accuracy, latency and rationales, it is asked to identify operator or connection patterns that consistently help or hurt, to write them as rules of the form ``use/avoid \ldots\ because \ldots'', and to drop or revise earlier rules that the new evidence contradicts; its output is the updated knowledge base. In \emph{Stage~2} it acts as an architect: given the niche constraints, the parents with their metrics and the updated knowledge base, it produces new candidates, deciding for each whether to apply crossover (combine two parents) or mutation (modify one), describing which edges it changes, and justifying the change by its expected effect on accuracy and latency; the output is a list of JSON objects holding an identifier, the operation, the architecture code and the rationale. The candidates are evaluated at once, and their metrics and rationales feed Stage~1 of the next generation, which the authors call the co-evolution of prompts and architectures. Their example is a rule that average pooling costs latency for little accuracy gain, replacing an earlier rule that it always helps. The search runs for 10 generations with crossover probability $p_c=0.5$ and GPT-4.1 as the LLM, so one search makes $6\times10\times2=120$ calls. Algorithm~\ref{alg:llmnas} paraphrases the procedure.
+
+\begin{algorithm}[t]
+\caption{LLM-NAS, paraphrasing Algorithm~1 and Appendix~E of the paper.}\label{alg:llmnas}
+\begin{algorithmic}[1]
+\Require generations $G=10$, LLM $L$, niches $S_0,\dots,S_5$, latency table $l(\cdot)$
+\State fit the accuracy predictor $M$ on a sample of architectures (offline, once)
+\For{each niche $k=0,\dots,5$}
+  \State sample an initial population from $S_k$, score each member with $(M(A),l(A))$ and keep the non-dominated ones as the archive $P_k$
+\EndFor
+\For{generation $g=1,\dots,G$}
+  \For{each niche $k$ (independently)}
+    \State \textbf{Stage 1:} $K_k\gets L(\text{device, dataset, }S_k,\text{ parents from }P_k\text{ with metrics and rationales})$
+    \State \textbf{Stage 2:} choose parents from $P_k$; $\text{children}\gets L(S_k,\text{parents},K_k)$, each by crossover or mutation, with a rationale
+    \For{each child $A$ that is valid, novel and inside $S_k$}
+      \State $(z,l)\gets(M(A),l(A))$; add $A$ to $P_k$ and remove the members it dominates
+    \EndFor
+  \EndFor
+\EndFor
+\State \Return NonDominatedSort$\big(\bigcup_k P_k\big)$
+\end{algorithmic}
+\end{algorithm}
+
+Several details of the paper matter for a reproduction. Its Algorithm~1 shows one child per niche per generation and omits Stage~1, whereas Appendix~E asks for $N_{\text{child}}$ children per call and describes both stages; it samples an initial population without giving its size; and it does not say how the knowledge base starts. Section~\ref{sec:assumed} records how we resolved these.
+
+\subsection{Training-free evaluation}
+No candidate is trained. Latency is a lookup in HW-NAS-Bench, which the paper describes as simulating rapid, noise-free hardware measurements. Accuracy is predicted by a surrogate: an XGBoost regressor that takes the 13 zero-cost proxies of NAS-Bench-Suite-Zero \cite{nbsz} as features, following that paper's ensemble strategy and trained once offline on a sample of architectures; the authors report a Spearman rank correlation of about 0.90 with the true accuracy. A search therefore costs the LLM calls and nothing else, which is the source of the paper's cost claim. Section~\ref{sec:justification} compares the LLM operator with conventional operators on this same evaluator.
+
+\subsection{Aggregation and metrics}
+After the last generation the six niche archives are merged and non-dominated sorting gives the final front $P_{\mathrm{final}}$, which is scored against the true front by two metrics. Hypervolume, $\HV(S,r)=\mathrm{volume}\big(\bigcup_{s\in S}[s_1,r_1]\times[s_2,r_2]\big)$ for a reference point $r$, measures the area dominated by the discovered front $S$ (larger is better). Inverted generational distance, $\IGD(S,P^\ast)=\frac{1}{|P^\ast|}\sum_{p\in P^\ast}\min_{s\in S}d(p,s)$, is the mean distance from each point of the true front to the nearest discovered point (smaller is better). The paper states neither the normalisation of the objectives nor the reference point; Section~\ref{sec:assumed} gives our reading.
+
+\subsection{What the paper reports}
+Table~\ref{tab:claims} lists the headline claims of the paper that this study checks. The paper also extends the method to a Vision Transformer space derived from AutoFormer on ImageNet-1k, with a different accuracy predictor; that part is not reproduced here.
+
+\begin{table}[h]\centering\small
+\caption{Headline claims of the LLM-NAS paper and where this study checks them.}\label{tab:claims}
+\begin{tabular}{p{3.4cm}p{8.2cm}p{3.0cm}}
+\toprule
+Claim & Value in the paper & Checked in \\
+\midrule
+Front quality (paper's Table~3) & HV of $0.931$--$0.997$ on CIFAR-10, $0.962$--$0.994$ on CIFAR-100 and $0.943$--$0.988$ on ImageNet16-120 across six devices, above LLMatic, FairNAS and PRP-NAS in every cell & Section~\ref{sec:results}, Table~\ref{tab:cnn} \\
+Selected architectures (paper's Table~2) & CIFAR-10, four devices; for example 94.37\% at 4.35\,ms on Edge GPU, and a fastest model of 1.78\,ms at 89.18\% & Section~\ref{sec:align} \\
+Ablation (paper's Table~5) & CIFAR-100, HV averaged over six devices: full model $0.978$; without partitioning $0.516$; partitioned evolutionary algorithm instead of the LLM $0.843$; Synflow instead of the ensemble $0.819$ & Section~\ref{sec:results}, Table~\ref{tab:abl} \\
+Search cost (paper's Table~4) & 120 API calls and about 3 minutes per dataset and device, against 2--17 GPU-days for PRP-NAS-BA, DARTS, FairNAS and LLMatic & Section~\ref{sec:justification} \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 %=====================================================================
 \section{Reproduction methodology}\label{sec:method}
