@@ -90,3 +90,13 @@ def test_anthropic_backend_requires_key(monkeypatch, tmp_path):
     monkeypatch.setattr("pathlib.Path.home", lambda: tmp_path)
     with _pytest.raises(SystemExit):
         AnthropicBackend()
+
+
+def test_conventional_baselines_use_exact_budget(synthetic_data_dir, tmp_path):
+    from llmnas.baselines import run_nsga2, run_regevo
+
+    for i, fn in enumerate([run_nsga2, run_regevo]):
+        cfg = _cfg(synthetic_data_dir, search={"partitioning": False})
+        res = fn(cfg, "cifar10", "edgegpu", 0, tmp_path / str(i))
+        assert res["n_evaluated"] == 30 + 24 * 2
+        assert len(res["trajectory"]) == 3 and 0 < res["hv"] <= 1.0 + 1e-9

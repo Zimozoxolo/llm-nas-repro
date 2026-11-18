@@ -43,9 +43,13 @@ def method_of(r: dict) -> str | None:
     s = c["search"]
     if c["llm"].get("backend") == "mock":
         return None
+    if c["predictor"].get("n_train", 1000) != 1000:
+        return None  # predictor-size sensitivity runs are reported by llmnas.sensitivity
     op = s["operator"]
     if op == "nsga2":
         return "NSGA-II (no LLM)"
+    if op == "regevo":
+        return "Reg. evolution (no LLM)"
     if not s["partitioning"] or c["predictor"]["kind"] != "zc_ensemble":
         return None  # ablated variants are not compared here
     if op == "llm":
@@ -62,7 +66,7 @@ def load_runs(datasets, root: Path | None = None) -> list[dict]:
     for ds in datasets:
         for f in sorted((root / "runs").glob(f"*/{ds}/*/seed*/run.json")):
             r = json.loads(f.read_text())
-            if r["config"].get("type", "search") not in ("search", "nsga2"):
+            if r["config"].get("type", "search") not in ("search", "nsga2", "regevo"):
                 continue
             m = method_of(r)
             if m is None:
@@ -105,7 +109,7 @@ def score_run(item: dict, conv: dict) -> dict:
     return dict(hv=s["hv"], igd=s["igd"])
 
 
-def table(datasets=("cifar10", "cifar100")) -> pd.DataFrame:
+def table(datasets=("cifar10", "cifar100", "ImageNet16-120")) -> pd.DataFrame:
     rows = []
     for item in load_runs(datasets):
         for c in CONVENTIONS:
@@ -114,56 +118,119 @@ def table(datasets=("cifar10", "cifar100")) -> pd.DataFrame:
     return pd.DataFrame(rows)
 
 
-def report(datasets=("cifar10", "cifar100"), out: Path | None = None) -> str:
+def _signflip_p(diffs) -> float:
+    """Exact one-sided sign-flip permutation p-value: share of sign flips whose mean is <= the observed mean."""
+    diffs = np.asarray(diffs, float)
+    obs = diffs.mean()
+    signs = np.array(list(itertools.product([1, -1], repeat=len(diffs))))
+    return float(np.mean((signs * np.abs(diffs)).mean(axis=1) <= obs + 1e-12))
+
+
+def head_to_head(per_dev: pd.DataFrame, llms, ctl: str, conv: str, metric: str) -> dict:
+    """LLM runs against one control on the same device and convention; higher HV / lower IGD is better.
+
+    Returns wins/total, a pooled one-sided binomial sign test (treats the pairs as independent, which they are
+    not: every LLM on a device faces the same control mean), a Wilcoxon signed-rank test on the same pairs, and
+    a device-clustered exact sign-flip test on the per-device mean difference (the conservative one: six devices
+    give a smallest possible p of 1/64 = 0.016).
+    """
+    from scipy.stats import binom, wilcoxon
+
+    pc = per_dev[per_dev.convention == conv].set_index(["method", "device"])[metric]
+    sign = 1.0 if metric == "hv" else -1.0
+    pairs = []  # (device, LLM advantage)
+    for m in llms:
+        for dev in per_dev[per_dev.method == m].device.unique():
+            if (ctl, dev) in pc.index and np.isfinite(pc[(m, dev)]) and np.isfinite(pc[(ctl, dev)]):
+                pairs.append((dev, sign * (pc[(m, dev)] - pc[(ctl, dev)])))
+    if not pairs:
+        return {}
+    d = np.array([x for _, x in pairs])
+    wins, n = int((d > 0).sum()), len(d)
+    p_binom = float(binom.cdf(wins, n, 0.5))
+    try:
+        p_wil = float(wilcoxon(d, alternative="less").pvalue) if np.any(d != 0) else 1.0
+    except ValueError:
+        p_wil = float("nan")
+    by_dev = pd.Series(d, index=[k for k, _ in pairs]).groupby(level=0).mean()
+    return dict(wins=wins, n=n, p_binom=p_binom, p_wilcoxon=p_wil, n_dev=len(by_dev),
+                dev_wins=int((by_dev > 0).sum()), p_cluster=_signflip_p(by_dev.values), mean_diff=float(d.mean()))
+
+
+def _fmt_p(p: float) -> str:
+    return "n/a" if not np.isfinite(p) else (f"{p:.1e}" if p < 1e-3 else f"{p:.3f}")
+
+
+CONTROLS = ["PEA (no LLM)", "Random sampling (no LLM)", "NSGA-II (no LLM)", "Reg. evolution (no LLM)"]
+
+
+def report(datasets=("cifar10", "cifar100", "ImageNet16-120"), out: Path | None = None) -> str:
     df = table(datasets)
     out = out or REPO / "results" / "reports" / "conventions.md"
     out.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(out.with_suffix(".csv"), index=False)
-    controls = ["PEA (no LLM)", "Random sampling (no LLM)", "NSGA-II (no LLM)"]
+    controls = CONTROLS
     lines = ["# Robustness of the results to the hypervolume convention\n",
              "Every archived run re-scored under 16 conventions (normalisation x reference point x scored set x "
              f"accuracy floor at {int(FLOOR_FRAC * 100)}% of the best accuracy). Device-level values are means over "
-             "seeds; the table gives the mean over devices that the method was run on. LLM rows are single runs "
-             "per device. No search was re-run.\n"]
+             "seeds; the tables give the mean over the devices that the method was run on. Higher HV and lower IGD "
+             "are better. No search was re-run and no LLM was called.\n",
+             "Significance (one-sided, H1: the LLM runs are worse than the control): *pooled sign* = binomial test "
+             "on the wins, treating every LLM-device pair as independent; *Wilcoxon* = signed-rank test on the same "
+             "pairs; *device-clustered* = exact sign-flip permutation test on the mean LLM-minus-control difference "
+             "per device (pairs on one device share the control, so this is the conservative test; with six devices "
+             "its smallest possible p is 1/64 = 0.016).\n"]
+    convs = [conv_name(c) for c in CONVENTIONS]
+    sig_rows = []
     for ds in datasets:
         d = df[df.dataset == ds]
         if d.empty:
             continue
-        per_dev = d.groupby(["method", "device", "convention"]).hv.mean().reset_index()
-        piv = per_dev.groupby(["method", "convention"]).hv.mean().unstack("convention")
+        per_dev = d.groupby(["method", "device", "convention"])[["hv", "igd"]].mean().reset_index()
         ndev = per_dev.groupby("method").device.nunique()
-        lines.append(f"\n## {ds}: mean HV over devices\n")
-        convs = [conv_name(c) for c in CONVENTIONS]
-        lines.append("| Method | Devices | " + " | ".join(c.replace("/", " / ") for c in convs) + " |")
-        lines.append("|---|---|" + "---|" * len(convs))
-        for m in sorted(piv.index, key=lambda m: (m in controls, m)):
-            lines.append(f"| {m} | {ndev[m]} | " + " | ".join(f"{piv.loc[m, c]:.3f}" for c in convs) + " |")
-        # head-to-head: each LLM run against each control's seed mean, same device and convention
-        llms = [m for m in piv.index if m not in controls]
-        lines.append(f"\n### {ds}: LLM runs that beat each control (same device and convention)\n")
-        lines.append("| Convention | " + " | ".join(f"beats {c}" for c in controls if c in piv.index) + " |")
-        lines.append("|---|" + "---|" * sum(c in piv.index for c in controls))
-        for c in convs:
-            pc = per_dev[per_dev.convention == c].set_index(["method", "device"]).hv
-            cells = []
-            for ctl in controls:
-                if ctl not in piv.index:
-                    continue
-                wins = tot = 0
-                for m in llms:
-                    for dev in per_dev[(per_dev.method == m)].device.unique():
-                        if (ctl, dev) in pc.index:
-                            tot += 1
-                            wins += pc[(m, dev)] > pc[(ctl, dev)]
-                cells.append(f"{wins}/{tot}")
-            lines.append(f"| {c.replace('/', ' / ')} | " + " | ".join(cells) + " |")
-        # ranking stability
-        ranks = piv.rank(ascending=False)
-        lines.append(f"\n### {ds}: rank of each method under each convention (1 = best)\n")
-        lines.append("| Method | best rank | worst rank |")
-        lines.append("|---|---|---|")
-        for m in ranks.index:
-            lines.append(f"| {m} | {int(ranks.loc[m].min())} | {int(ranks.loc[m].max())} |")
+        present = [c for c in controls if c in set(per_dev.method)]
+        llms = sorted(m for m in set(per_dev.method) if m not in controls)
+        for metric, label in (("hv", "HV"), ("igd", "IGD")):
+            piv = per_dev.groupby(["method", "convention"])[metric].mean().unstack("convention")
+            lines.append(f"\n## {ds}: mean {label} over devices\n")
+            lines.append("| Method | Devices | " + " | ".join(c.replace("/", " / ") for c in convs) + " |")
+            lines.append("|---|---|" + "---|" * len(convs))
+            for m in sorted(piv.index, key=lambda m: (m in controls, m)):
+                lines.append(f"| {m} | {ndev[m]} | " + " | ".join(f"{piv.loc[m, c]:.3f}" for c in convs) + " |")
+            ranks = piv.rank(ascending=(metric == "igd"))
+            lines.append(f"\n### {ds}: rank by {label} under each convention (1 = best)\n")
+            lines.append("| Method | best rank | worst rank |")
+            lines.append("|---|---|---|")
+            for m in ranks.index:
+                lines.append(f"| {m} | {int(ranks.loc[m].min())} | {int(ranks.loc[m].max())} |")
+            if not llms:
+                continue
+            lines.append(f"\n### {ds}: LLM runs that beat each control by {label} (same device and convention)\n")
+            lines.append("| Convention | " + " | ".join(f"beats {c}" for c in present) + " |")
+            lines.append("|---|" + "---|" * len(present))
+            for c in convs:
+                cells = []
+                for ctl in present:
+                    h = head_to_head(per_dev, llms, ctl, c, metric)
+                    cells.append(f"{h['wins']}/{h['n']}" if h else "-")
+                    if h:
+                        sig_rows.append(dict(dataset=ds, metric=label, convention=c, control=ctl, **h))
+                lines.append(f"| {c.replace('/', ' / ')} | " + " | ".join(cells) + " |")
+    if sig_rows:
+        sig = pd.DataFrame(sig_rows)
+        sig.to_csv(out.with_name("conventions_significance.csv"), index=False)
+        lines.append("\n## Significance of the head-to-head results\n")
+        lines.append("Default convention (front / r=1.1 / archive / no floor), then the range over all 16 "
+                     "conventions.\n")
+        lines.append("| Dataset | Metric | Control | LLM wins (default) | pooled sign p | Wilcoxon p | devices won "
+                     "| device-clustered p | wins over 16 conv. | max device-clustered p over 16 conv. |")
+        lines.append("|---|---|---|---|---|---|---|---|---|---|")
+        default = conv_name(CONVENTIONS[0])
+        for (ds, met, ctl), g in sig.groupby(["dataset", "metric", "control"], sort=False):
+            r0 = g[g.convention == default].iloc[0]
+            lines.append(f"| {ds} | {met} | {ctl} | {r0.wins}/{r0.n} | {_fmt_p(r0.p_binom)} | "
+                         f"{_fmt_p(r0.p_wilcoxon)} | {r0.dev_wins}/{r0.n_dev} | {_fmt_p(r0.p_cluster)} | "
+                         f"{g.wins.min()}-{g.wins.max()} of {r0.n} | {_fmt_p(g.p_cluster.max())} |")
     text = "\n".join(lines) + "\n"
     out.write_text(text, encoding="utf-8")
     return text

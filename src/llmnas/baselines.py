@@ -174,3 +174,101 @@ def _traj(gen, ev, bench, device, e_cfg) -> dict:
     s = _cached_evaluator(bench, device, e_cfg).score(
         objectives([ev[c]["lat"] for c in front], [bench.accuracy(c, kind) for c in front]))
     return dict(gen=gen, n_evaluated=len(ev), **s)
+
+
+def run_regevo(cfg: dict, dataset: str, device: str, seed: int, run_dir: Path) -> dict:
+    """Multi-objective regularised (aging) evolution (Real et al., 2019), same evaluator and budget as NSGA-II.
+
+    A population of ``init_pop_per_niche x 6`` (30) random cells; then, until the budget of 270 evaluations is
+    used, draw a tournament of ``regevo_sample`` (default 10) members, take the one with the best (Pareto rank,
+    crowding distance) inside the current population, mutate one edge, add the child and remove the *oldest*
+    member. Mutation only, as in the original method. Trajectory points are recorded every ``n_child x 6`` (24)
+    children so they line up with the generations of the other methods.
+    """
+    import collections
+
+    t0 = time.perf_counter()
+    run_dir = Path(run_dir)
+    run_dir.mkdir(parents=True, exist_ok=True)
+    s_cfg, p_cfg, e_cfg = cfg["search"], cfg["predictor"], cfg["evaluation"]
+    rng = random.Random(seed)
+    bench = load_benchmark(dataset, cfg.get("data_dir"))
+    lat_all = bench.latencies(device)
+    predictor = build_predictor(bench, kind=p_cfg["kind"], n_train=p_cfg["n_train"], seed=seed,
+                                target=p_cfg.get("target", "val"), xgb_params=p_cfg.get("xgb_params"))  # fmt: skip
+    pop_size = s_cfg["init_pop_per_niche"] * len(PAPER_NICHES)
+    per_gen = s_cfg["n_child"] * len(PAPER_NICHES)
+    budget = pop_size + per_gen * s_cfg["generations"]
+    sample_size = min(s_cfg.get("regevo_sample", 10), pop_size)
+    unmeasured = bench.unmeasured(device)
+    ev: dict[tuple, dict] = {}
+    stats = dict(proposed=0, invalid=0, out_of_niche=0, duplicate=0, no_latency=0, accepted=0, parse_failures=0)
+
+    def evaluate(code, gen, origin):
+        ev[code] = dict(pred=predictor(code), lat=float(lat_all[bench.row_of[code]]), niche="FULL", gen=gen,
+                        origin=origin)
+
+    def F_of(codes):
+        return objectives([ev[c]["lat"] for c in codes], [ev[c]["pred"] for c in codes])
+
+    pop = collections.deque(FULL_SPACE.sample(rng, pop_size, exclude=unmeasured))
+    for c in pop:
+        evaluate(c, 0, "init")
+    trajectory = [_traj(0, ev, bench, device, e_cfg)]
+    n_children = 0
+    while len(ev) < budget:
+        members = list(pop)
+        rank, crowd = _rank_and_crowd(F_of(members))
+        cand = rng.sample(range(len(members)), sample_size)
+        parent = members[min(cand, key=lambda i: (rank[i], -crowd[i]))]
+        child = None
+        for _ in range(50):
+            c = random_mutation(parent, FULL_SPACE, rng)
+            stats["proposed"] += 1
+            if c is None:
+                stats["invalid"] += 1
+            elif c in ev:
+                stats["duplicate"] += 1
+            elif c in unmeasured:
+                stats["no_latency"] += 1
+            else:
+                child = c
+                stats["accepted"] += 1
+                break
+        if child is None:  # rare: keep the budget exact with a fresh random cell
+            extra = FULL_SPACE.sample(rng, 1, exclude=set(ev) | unmeasured)
+            if not extra:
+                break
+            child = extra[0]
+        gen = 1 + n_children // per_gen
+        evaluate(child, gen, "regevo")
+        pop.append(child)
+        pop.popleft()  # aging: the oldest member dies, whatever its quality
+        n_children += 1
+        if n_children % per_gen == 0:
+            trajectory.append(_traj(gen, ev, bench, device, e_cfg))
+    print(f"  [{dataset}/{device}/seed{seed}] regevo: evaluated={len(ev)} HV={trajectory[-1]['hv']:.3f}")
+    return _finish(cfg, dataset, device, seed, run_dir, t0, bench, ev, predictor, stats, trajectory, e_cfg, "regevo")
+
+
+def _finish(cfg, dataset, device, seed, run_dir, t0, bench, ev, predictor, stats, trajectory, e_cfg, default):
+    codes = list(ev)
+    final = [c for c, keep in zip(codes, pareto_mask(objectives([ev[c]["lat"] for c in codes],
+                                                                [ev[c]["pred"] for c in codes]))) if keep]  # fmt: skip
+    kind = e_cfg.get("acc", "test")
+    score = _cached_evaluator(bench, device, e_cfg).score(
+        objectives([ev[c]["lat"] for c in final], [bench.accuracy(c, kind) for c in final]))
+    result = dict(
+        dataset=dataset, device=device, seed=seed, variant=cfg.get("variant", default),
+        hv=score["hv"], igd=score["igd"], n_front=score["n_front"], n_evaluated=len(ev),
+        search_time_s=round(time.perf_counter() - t0, 2), llm_usage=None, proposal_stats=stats,
+        predictor=predictor.report.__dict__,
+        final_front=sorted([dict(code=format_code(c), pred_acc=round(ev[c]["pred"], 3),
+                                 true_acc=bench.accuracy(c, kind), lat=ev[c]["lat"], niche="FULL") for c in final],
+                           key=lambda d: d["lat"]),
+        evaluated=[dict(code=format_code(c), **e, true_acc=bench.accuracy(c, kind)) for c, e in ev.items()],
+        knowledge_base={}, trajectory=trajectory, config=cfg,
+    )  # fmt: skip
+    with open(run_dir / "run.json", "w") as f:
+        json.dump(result, f, indent=1, default=str)
+    return result

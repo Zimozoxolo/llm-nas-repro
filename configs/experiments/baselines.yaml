@@ -1,11 +1,14 @@
-# Conventional multi-objective baseline (no LLM, no API cost): NSGA-II with the same evaluator
+# Conventional multi-objective baselines (no LLM, no API cost), with the same evaluator
 # (HW-NAS-Bench latency + 13-proxy XGBoost predictor) and the same 270 evaluations as a partitioned
-# LLM-NAS run. Uses crowding distance instead of the six niches. See llmnas/baselines.py.
+# LLM-NAS run. Neither uses the six niches. See llmnas/baselines.py.
 #   python -m llmnas run baselines
 name: baselines
 type: nsga2
-datasets: [cifar10, cifar100]
+datasets: [cifar10, cifar100, ImageNet16-120]
 devices: [edgegpu, raspi4, edgetpu, pixel3, eyeriss, fpga]
 seeds: [0, 1, 2]
 variants:
+  # NSGA-II: non-dominated sorting + crowding distance, mutation and uniform crossover
   nsga2: {search: {operator: nsga2, partitioning: false}}
+  # multi-objective regularised (aging) evolution, tournament of 10, mutation only
+  regevo: {type: regevo, search: {operator: regevo, partitioning: false}}

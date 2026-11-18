@@ -61,7 +61,9 @@ def main(argv=None) -> None:
     p.add_argument("--min-acc", type=float, default=80.0, help="also score with architectures below this test accuracy removed")
 
     p = sub.add_parser("conventions", help="re-score every archived run under 16 hypervolume conventions")
-    p.add_argument("--datasets", nargs="*", default=["cifar10", "cifar100"])
+    p.add_argument("--datasets", nargs="*", default=["cifar10", "cifar100", "ImageNet16-120"])
+
+    sub.add_parser("sensitivity", help="controls re-run with predictor n_train 200 / 1000 / 5000")
 
     p = sub.add_parser("slm-reference", help="check reference SLMs: parameter counts and modelled costs")
     p.add_argument("--device", default="jetson_orin_nx_16gb")
@@ -105,6 +107,10 @@ def main(argv=None) -> None:
         from .conventions import report as conventions_report
 
         print(conventions_report(tuple(a.datasets)))
+    elif a.cmd == "sensitivity":
+        from .sensitivity import report as sensitivity_report
+
+        print(sensitivity_report())
     elif a.cmd == "slm-reference":
         from .slm.cli import reference
 
