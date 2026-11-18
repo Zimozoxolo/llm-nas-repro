@@ -23,10 +23,12 @@
 
 \title{Does the Language Model Matter? A Reproduction Study of LLM-NAS for Hardware-Aware Neural Architecture Search}
 
-\author[inst1]{Siyabonga Mjali\corref{cor1}}
-\ead{[email of corresponding author]}
+\author[up_cs]{Siyabonga Zimozoxolo Mjali\corref{cor1}}
+\ead{u12167283@up.ac.za}
+\author[up_cs]{Thambo Nyathi}
+\ead{t.nyathi@up.ac.za}
 \cortext[cor1]{Corresponding author}
-\affiliation[inst1]{organization={[Department, Institution]}, city={[City]}, country={[Country]}}
+\affiliation[up_cs]{organization={Department of Computer Science, University of Pretoria}, addressline={Corner of Lynnwood Road and Roper Street, Hatfield}, city={Pretoria}, postcode={0002}, country={South Africa}}
 
 \begin{abstract}
 LLM-NAS uses a large language model (LLM) as the variation operator of a hardware-aware neural architecture search and reports near-optimal Pareto fronts on HW-NAS-Bench from 120 calls to the language model per search. No reference implementation was available, so we reimplemented the method from the paper's text, algorithm and prompts in a configuration-driven framework that logs every call for exact replay. We first validated the benchmark data: eleven of the paper's twelve reported architectures were recovered exactly, one reported point does not exist in the benchmark, and 4{,}699 architectures carry an invalid Edge TPU latency. We then compared searches driven by GPT-4.1, Claude Opus~5.5, Claude Haiku~4.5, DeepSeek-Coder-V2 and Qwen2.5-7B with non-LLM controls that share the evaluator and the niche structure, using hypervolume (HV) and inverted generational distance. Under the default convention GPT-4.1 reached HV~0.964 (paper: 0.997) and the controls 0.989--0.991. The ranking depends on the normalisation: one degenerate architecture on the true front compresses all sensible architectures into 9\% of the accuracy axis, and excluding architectures below 80\% accuracy places Claude Opus~5.5 first (0.961) and GPT-4.1 below the controls (0.752). Across six devices, none of 24 LLM runs exceeded random-operator evolution and one exceeded random sampling. On this small tabulated space with a cheap evaluator, the method's cost advantage comes from the training-free evaluator rather than from the language model; whether the LLM operator pays off with expensive evaluations or in larger spaces remains open.
@@ -512,16 +514,16 @@ Ordered by cost and by how much each would change the conclusions:
 All code, configurations and run logs are in the repository given in the Data availability statement. Benchmark data (2\,GB) is re-created by \code{python -m llmnas prepare-data}. The archived \path{results/runs/} directory (per run: \code{config.yaml}, \code{run.json}, \code{llm\_calls.jsonl}) is the evidence behind every number in this paper; \code{python -m llmnas report <experiment>} regenerates the tables and figures, and \code{--set llm.mode=replay} re-executes any LLM search without API access. A Colab notebook performs the same steps with data and results on Google Drive. Each run records the commit that produced it: the GPT-4.1 run used commit \code{1b5cf55}, the Qwen run and the non-LLM controls \code{bd5df23} (both 2 October 2026); neither commit changes the search or metric code relative to the other. The Claude run used commit \code{1474a23} (25 October 2026) and is one command, \code{python -m llmnas run claude\_cnn}; the DeepSeek run recorded \code{1474a23-dirty} because an untracked Modelfile was present at launch (no search or metric code differed); \code{python -m llmnas compare-llms} produces the side-by-side LLM table, with and without the accuracy floor (Tables~\ref{tab:cnn} and~\ref{tab:floor} are derived from it).
 
 \section*{CRediT authorship contribution statement}
-\textbf{Siyabonga Mjali:} [Conceptualization, Methodology, Software, Investigation, Formal analysis, Data curation, Writing -- original draft, Writing -- review \& editing.]
+\textbf{Siyabonga Zimozoxolo Mjali:} Conceptualization, Methodology, Software, Investigation, Formal analysis, Data curation, Visualization, Writing -- original draft, Writing -- review \& editing. \textbf{Thambo Nyathi:} [TO CONFIRM] Supervision, Writing -- review \& editing.
 
 \section*{Declaration of competing interest}
-[The author declares that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.]
+[The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.]
 
 \section*{Data availability}
 The benchmark data are public: HW-NAS-Bench, NAS-Bench-Suite-Zero and NATS-Bench. The code, configurations and archived run logs behind every number are available at [repository URL and archive DOI].
 
 \section*{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}
-During the preparation of this work the author used Claude Code (Anthropic), an AI coding assistant, to write and run the implementation and analysis code and to draft and edit parts of the manuscript text. After using this tool, the author reviewed and edited the content as needed and takes full responsibility for the content of the published article. [TO CONFIRM: adjust to describe the actual use.]
+During the preparation of this work the first author used Claude Code (Anthropic), an AI coding assistant, to write and run the implementation and analysis code and to draft and edit parts of the manuscript text. After using this tool, the authors reviewed and edited the content as needed and take full responsibility for the content of the published article. [TO CONFIRM: adjust to describe the actual use.]
 
 \section*{Acknowledgements}
 [Funding sources and acknowledgements, if any.]

@@ -5,6 +5,8 @@ Targets: tmlr/, gpem/ (Springer Nature sn-jnl), rescience/ (ReScience C template
 Run from report/journals:  python -I build_versions.py
 """
 import re, shutil, sys
+sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parent))
+import authors as au  # noqa: E402
 from pathlib import Path
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -114,7 +116,7 @@ def build_tmlr(main, glossary):
         + PREAMBLE_PKGS +
         f"\\title{{{TITLE}}}\n"
         "% Authors are hidden by tmlr.sty in submission mode (double-blind review).\n"
-        "\\author{\\name Siyabonga Mjali \\email [email] \\\\ \\addr [Department, Institution, Country]}\n"
+        + au.tmlr() +
         "\\def\\month{MM}\n\\def\\year{YYYY}\n\\def\\openreview{\\url{https://openreview.net/forum?id=XXXX}}\n"
         "\\begin{document}\n\\maketitle\n"
         f"\\begin{{abstract}}\n{ABSTRACT}\n\\end{{abstract}}\n\n"
@@ -200,17 +202,7 @@ def build_rescience(main, glossary):
 # use "[Re]" instead if the editor and you judge the replication successful.
 title: "[¬Re] LLM-NAS: LLM-Driven Hardware-Aware Neural Architecture Search"
 
-authors:
-  - name: Siyabonga Mjali
-    orcid: ""
-    email: "[email]"
-    affiliations: 1,*
-
-affiliations:
-  - code:    1
-    name:    "[Department, Institution]"
-    address: "[City, Country]"
-
+{au.rescience_yaml()}
 keywords: {kw}
 
 code:
@@ -278,6 +270,6 @@ if __name__ == "__main__":
     main, glossary = load_body()
     print("abstract words:", word_count(ABSTRACT))
     build_tmlr(main, glossary)
-    build_gpem(main, glossary)
+    # GPEM is now built (flat, no subfolders) by build_more.py
     build_rescience(main, glossary)
     print("built tmlr/, gpem/, rescience/")

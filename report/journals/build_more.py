@@ -17,6 +17,7 @@ sys.stdout.reconfigure(encoding="utf-8")
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import build_versions as bv  # noqa: E402
+import authors as au  # noqa: E402
 
 FIGS = ("cnn_fronts_edgegpu.png", "hv_floor.png", "fronts_cifar100.png")
 SEP = " \\sep "
@@ -33,9 +34,9 @@ HIGHLIGHTS = [
 assert 3 <= len(HIGHLIGHTS) <= 5 and all(len(h) <= 85 for h in HIGHLIGHTS), [len(h) for h in HIGHLIGHTS]
 
 AI_ELSEVIER = (
-    "During the preparation of this work the author used Claude Code (Anthropic), an AI coding assistant, "
+    "During the preparation of this work the first author used Claude Code (Anthropic), an AI coding assistant, "
     "to write and run the implementation and analysis code and to draft and edit parts of the manuscript text. "
-    "After using this tool, the author reviewed and edited the content as needed and takes full responsibility "
+    "After using this tool, the authors reviewed and edited the content as needed and take full responsibility "
     "for the content of the published article. [TO CONFIRM: adjust to describe the actual use.]"
 )
 DATA_STMT = (
@@ -196,10 +197,7 @@ def build_elsevier(name, journal, main, glossary, authoryear=False, ga=False, ma
         "\\usepackage{hyperref}\n"
         f"\\journal{{{journal}}}\n\n\\begin{{document}}\n\\begin{{frontmatter}}\n\n"
         f"\\title{{{bv.TITLE}}}\n\n"
-        "\\author[inst1]{Siyabonga Mjali\\corref{cor1}}\n"
-        "\\ead{[email of corresponding author]}\n"
-        "\\cortext[cor1]{Corresponding author}\n"
-        "\\affiliation[inst1]{organization={[Department, Institution]}, city={[City]}, country={[Country]}}\n\n"
+        + au.elsarticle() + "\n"
         f"\\begin{{abstract}}\n{bv.ABSTRACT}\n\\end{{abstract}}\n\n"
         + gab +
         f"\\begin{{highlights}}\n{hl}\n\\end{{highlights}}\n\n"
@@ -207,10 +205,9 @@ def build_elsevier(name, journal, main, glossary, authoryear=False, ga=False, ma
         "\\end{frontmatter}\n\n"
         + body +
         "\n\n\\section*{CRediT authorship contribution statement}\n"
-        "\\textbf{Siyabonga Mjali:} [Conceptualization, Methodology, Software, Investigation, Formal analysis, "
-        "Data curation, Writing -- original draft, Writing -- review \\& editing.]\n\n"
+        + au.credit_elsevier() + "\n\n"
         "\\section*{Declaration of competing interest}\n"
-        "[The author declares that they have no known competing financial interests or personal relationships "
+        "[The authors declare that they have no known competing financial interests or personal relationships "
         "that could have appeared to influence the work reported in this paper.]\n\n"
         f"\\section*{{Data availability}}\n{DATA_STMT}\n\n"
         "\\section*{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}\n"
@@ -239,23 +236,22 @@ def build_springer(name, main, glossary, style, authoryear, heading):
         + bv.DECL_NOTE + "\\usepackage{amsmath,amssymb,amsfonts}\n" + pre + "\\raggedbottom\n"
         "\\begin{document}\n\n"
         f"\\title[{bv.TITLE_SHORT}]{{{bv.TITLE}}}\n\n"
-        "\\author*[1]{\\fnm{Siyabonga} \\sur{Mjali}}\\email{[email of corresponding author]}\n"
-        "\\affil*[1]{\\orgdiv{[Department]}, \\orgname{[Institution]}, \\orgaddress{\\city{[City]}, \\country{[Country]}}}\n\n"
+        + au.sn_jnl() + "\n"
         f"\\abstract{{{bv.ABSTRACT}}}\n\n\\keywords{{{', '.join(bv.KEYWORDS)}}}\n\n\\maketitle\n\n"
         + body +
         "\n\n\\backmatter\n\n"
         f"\\section*{{{heading}}}\n"
         "\\begin{itemize}\n"
-        "\\item \\textbf{Funding.} [State the funding sources, or: The author received no specific funding for this work.]\n"
-        "\\item \\textbf{Competing interests.} [The author has no relevant financial or non-financial interests to disclose.]\n"
+        "\\item \\textbf{Funding.} [State the funding sources, or: The authors received no specific funding for this work.]\n"
+        "\\item \\textbf{Competing interests.} [The authors have no relevant financial or non-financial interests to disclose.]\n"
         "\\item \\textbf{Ethics approval and consent to participate.} Not applicable; no human or animal subjects were involved.\n"
         f"\\item \\textbf{{Data availability.}} {DATA_STMT}\n"
         "\\item \\textbf{Code availability.} [Public repository URL and archive DOI, e.g.\\ Zenodo.]\n"
         "\\item \\textbf{Use of large language models.} Large language models are the object of study and are documented in "
         "Sections~\\ref{sec:background}--\\ref{sec:results}. An AI coding assistant (Claude Code) was used to write the "
-        "implementation and to draft and edit parts of the text (Section~\\ref{sec:method}); the author reviewed all code "
-        "and text and is accountable for them. [TO CONFIRM.]\n"
-        "\\item \\textbf{Author contributions.} [S.M.: conceptualisation, software, investigation, analysis, writing.]\n"
+        "implementation and to draft and edit parts of the text (Section~\\ref{sec:method}); the authors reviewed all code "
+        "and text and are accountable for them. [TO CONFIRM.]\n"
+        "\\item \\textbf{Author contributions.} " + au.credit_springer() + "\n"
         "\\end{itemize}\n\n"
         "\\begin{appendices}\n" + glossary + "\n\\end{appendices}\n\n"
         "\\bibliography{refs}\n\n\\end{document}\n"
@@ -281,7 +277,7 @@ def build_tevc(main, glossary):
         "\\begin{document}\n"
         f"\\title{{{TEVC_TITLE}}}\n"
         "% Authors' names and affiliations must not appear in the review version.\n"
-        "\\author{Anonymous Authors}\n"
+        "\\author{Anonymous Authors}\n" + au.ieee_camera_ready() +
         "\\maketitle\n"
         f"\\begin{{abstract}}\n{TEVC_ABSTRACT}\n\\end{{abstract}}\n"
         f"\\begin{{IEEEkeywords}}\n{', '.join(TEVC_KEYWORDS)}\n\\end{{IEEEkeywords}}\n\n"

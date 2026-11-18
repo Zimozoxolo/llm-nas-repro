@@ -20,8 +20,9 @@
 
 \title[A Reproduction Study of LLM-NAS]{Does the Language Model Matter? A Reproduction Study of LLM-NAS for Hardware-Aware Neural Architecture Search}
 
-\author*[1]{\fnm{Siyabonga} \sur{Mjali}}\email{[email of corresponding author]}
-\affil*[1]{\orgdiv{[Department]}, \orgname{[Institution]}, \orgaddress{\city{[City]}, \country{[Country]}}}
+\author*[1]{\fnm{Siyabonga Zimozoxolo} \sur{Mjali}}\email{u12167283@up.ac.za}
+\author[1]{\fnm{Thambo} \sur{Nyathi}}\email{t.nyathi@up.ac.za}
+\affil*[1]{\orgdiv{Department of Computer Science}, \orgname{University of Pretoria}, \orgaddress{\street{Corner of Lynnwood Road and Roper Street, Hatfield}, \city{Pretoria}, \postcode{0002}, \country{South Africa}}}
 
 \abstract{LLM-NAS uses a large language model (LLM) as the variation operator of a hardware-aware neural architecture search and reports near-optimal Pareto fronts on HW-NAS-Bench from 120 calls to the language model per search. No reference implementation was available, so we reimplemented the method from the paper's text, algorithm and prompts in a configuration-driven framework that logs every call for exact replay. We first validated the benchmark data: eleven of the paper's twelve reported architectures were recovered exactly, one reported point does not exist in the benchmark, and 4{,}699 architectures carry an invalid Edge TPU latency. We then compared searches driven by GPT-4.1, Claude Opus~5.5, Claude Haiku~4.5, DeepSeek-Coder-V2 and Qwen2.5-7B with non-LLM controls that share the evaluator and the niche structure, using hypervolume (HV) and inverted generational distance. Under the default convention GPT-4.1 reached HV~0.964 (paper: 0.997) and the controls 0.989--0.991. The ranking depends on the normalisation: one degenerate architecture on the true front compresses all sensible architectures into 9\% of the accuracy axis, and excluding architectures below 80\% accuracy places Claude Opus~5.5 first (0.961) and GPT-4.1 below the controls (0.752). Across six devices, none of 24 LLM runs exceeded random-operator evolution and one exceeded random sampling. On this small tabulated space with a cheap evaluator, the method's cost advantage comes from the training-free evaluator rather than from the language model; whether the LLM operator pays off with expensive evaluations or in larger spaces remains open.}
 
@@ -480,13 +481,13 @@ All code, configurations and run logs are in the public repository given in the 
 
 \section*{Statements and Declarations}
 \begin{itemize}
-\item \textbf{Funding.} [State the funding sources, or: The author received no specific funding for this work.]
-\item \textbf{Competing interests.} [The author has no relevant financial or non-financial interests to disclose.]
+\item \textbf{Funding.} [State the funding sources, or: The authors received no specific funding for this work.]
+\item \textbf{Competing interests.} [The authors have no relevant financial or non-financial interests to disclose.]
 \item \textbf{Ethics approval and consent to participate.} Not applicable; no human or animal subjects were involved.
 \item \textbf{Data availability.} The benchmark data are public: HW-NAS-Bench, NAS-Bench-Suite-Zero and NATS-Bench. The code, configurations and archived run logs behind every number are available at [repository URL and archive DOI].
 \item \textbf{Code availability.} [Public repository URL and archive DOI, e.g.\ Zenodo.]
-\item \textbf{Use of large language models.} Large language models are the object of study and are documented in Sections~\ref{sec:background}--\ref{sec:results}. An AI coding assistant (Claude Code) was used to write the implementation and to draft and edit parts of the text (Section~\ref{sec:method}); the author reviewed all code and text and is accountable for them. [TO CONFIRM.]
-\item \textbf{Author contributions.} [S.M.: conceptualisation, software, investigation, analysis, writing.]
+\item \textbf{Use of large language models.} Large language models are the object of study and are documented in Sections~\ref{sec:background}--\ref{sec:results}. An AI coding assistant (Claude Code) was used to write the implementation and to draft and edit parts of the text (Section~\ref{sec:method}); the authors reviewed all code and text and are accountable for them. [TO CONFIRM.]
+\item \textbf{Author contributions.} S.Z.M.: Conceptualization, Methodology, Software, Investigation, Formal analysis, Data curation, Visualization, Writing -- original draft, Writing -- review \& editing; T.N.: [TO CONFIRM] Supervision, Writing -- review \& editing.
 \end{itemize}
 
 \begin{appendices}
