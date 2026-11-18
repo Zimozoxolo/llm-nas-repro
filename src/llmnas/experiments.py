@@ -104,7 +104,9 @@ def run_experiment(exp: dict, force: bool = False, **filters) -> None:
     from .search import run_search
     from .slm.search import run_slm_search
 
-    runners = {"bias": run_bias, "search": run_search, "slm": run_slm_search}
+    from .baselines import run_nsga2
+
+    runners = {"bias": run_bias, "search": run_search, "slm": run_slm_search, "nsga2": run_nsga2}
 
     todo = list(iter_runs(exp, **filters))
     version = code_version()

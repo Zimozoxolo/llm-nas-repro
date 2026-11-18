@@ -60,6 +60,9 @@ def main(argv=None) -> None:
     p.add_argument("--device", default="edgegpu")
     p.add_argument("--min-acc", type=float, default=80.0, help="also score with architectures below this test accuracy removed")
 
+    p = sub.add_parser("conventions", help="re-score every archived run under 16 hypervolume conventions")
+    p.add_argument("--datasets", nargs="*", default=["cifar10", "cifar100"])
+
     p = sub.add_parser("slm-reference", help="check reference SLMs: parameter counts and modelled costs")
     p.add_argument("--device", default="jetson_orin_nx_16gb")
     p = sub.add_parser("slm-calibrate", help="measure random transformers and fit the latency model")
@@ -98,6 +101,10 @@ def main(argv=None) -> None:
         from .compare import compare_llms
 
         print(compare_llms(a.dataset, a.device, min_acc=a.min_acc))
+    elif a.cmd == "conventions":
+        from .conventions import report as conventions_report
+
+        print(conventions_report(tuple(a.datasets)))
     elif a.cmd == "slm-reference":
         from .slm.cli import reference
 
