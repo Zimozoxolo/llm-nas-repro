@@ -33,7 +33,7 @@ def sn_jnl():
     out = []
     for a in AUTHORS:
         star = "*" if a["corresponding"] else ""
-        orcid = f"[orcid={a['orcid']}]" if a["orcid"] else ""
+        orcid = ""  # sn-jnl has no ORCID field; Springer collects ORCID iDs in the submission system
         out.append(f"\\author{star}{orcid}[{codes[a['affiliation']]}]{{\\fnm{{{a['given']}}} \\sur{{{a['family']}}}}}"
                    f"\\email{{{a['email']}}}")
     for k, f in AFF.items():
