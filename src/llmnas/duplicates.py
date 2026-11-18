@@ -5,7 +5,7 @@ the search rejected as a duplicate, by where the repeated cell had been seen bef
 
     parent shown     one of the Pareto parents listed in this very prompt
     last cycle shown one of the previous cycle's children listed in this prompt
-    sibling          an earlier child in the same reply
+    sibling          an earlier accepted child in the same reply
     hidden history   evaluated earlier in this niche but not shown in this prompt
 
 and also records, for each generate call, how full the niche is (evaluated / niche size) and which operation
@@ -21,6 +21,7 @@ from pathlib import Path
 
 import pandas as pd
 
+from .benchmark import load_benchmark
 from .conventions import load_runs
 from .experiments import REPO
 from .prompts import parse_children
@@ -46,6 +47,7 @@ def classify_run(item: dict) -> list[dict]:
         return []
     ev = {tuple(int(x) for x in e["code"].strip("()").split(", ")): e for e in r["evaluated"]}
     seen = {c for c, e in ev.items() if e["gen"] == 0}  # initial population
+    unmeasured = load_benchmark(item["dataset"]).unmeasured(item["device"])
     n_child = r["config"]["search"]["n_child"]
     rows = []
     for line in calls_f.read_text(encoding="utf-8").splitlines():
@@ -69,12 +71,13 @@ def classify_run(item: dict) -> list[dict]:
                 row["outcome"] = "duplicate"
                 row["source"] = ("parent shown" if code in parents else "last cycle shown" if code in last
                                  else "sibling" if code in batch else "hidden history")  # fmt: skip
+            elif code in unmeasured:
+                row["outcome"] = "no_latency"
             else:
-                row["outcome"] = "new"  # accepted, or rejected for having no latency
-            if code is not None:
+                row["outcome"] = "new"
                 batch.append(code)
             rows.append(row)
-        seen |= {x for x in batch if niche.contains(x)}
+        seen |= set(batch)
     return rows
 
 
@@ -92,6 +95,12 @@ def report(out: Path | None = None) -> str:
     df.to_csv(out.with_suffix(".csv"), index=False)
     lines = ["# Where duplicate LLM proposals come from\n",
              "Replayed from the archived prompts and replies (no LLM called). Shares are of all proposals.\n"]
+    outs = ["new", "duplicate", "out_of_niche", "no_latency", "invalid"]
+    lines.append("| Model | proposals | " + " | ".join(outs) + " |")
+    lines.append("|---|---|" + "---|" * len(outs))
+    for m, g in df.groupby("method"):
+        lines.append(f"| {m} | {len(g)} | " + " | ".join(f"{(g.outcome == o).mean():.1%}" for o in outs) + " |")
+    lines.append("")
     srcs = ["parent shown", "last cycle shown", "sibling", "hidden history"]
     lines.append("| Model | proposals | duplicates | " + " | ".join(srcs) + " |")
     lines.append("|---|---|---|" + "---|" * len(srcs))
