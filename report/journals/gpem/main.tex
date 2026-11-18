@@ -1,4 +1,4 @@
-%Springer Nature LaTeX template (sn-jnl), Math and Physical Sciences numbered reference style.
+%Springer Nature LaTeX template (sn-jnl), style sn-mathphys-num.
 \documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
 % [TO CONFIRM] statements in square brackets must be checked or completed by the author before submission.
 \usepackage{amsmath,amssymb,amsfonts}
@@ -10,10 +10,11 @@
 \usetikzlibrary{arrows.meta,positioning,fit}
 \usepackage{algorithm}
 \usepackage{algpseudocode}
-\graphicspath{{figures/}}
 \newcommand{\code}[1]{\texttt{#1}}
 \newcommand{\HV}{\mathrm{HV}}
 \newcommand{\IGD}{\mathrm{IGD}}
+\usepackage{adjustbox}
+\setlength{\emergencystretch}{3em}
 \raggedbottom
 \begin{document}
 
@@ -60,6 +61,7 @@ Section~\ref{sec:method} describes the method and framework, Section~\ref{sec:re
 LLM-NAS \cite{llmnas} treats hardware-aware search as a bi-objective problem, accuracy against latency, whose answer is a Pareto front. The authors' starting observation is that a language model asked to propose architectures for a large, unstructured space shows \emph{exploration bias}, an analogue of mode collapse: its proposals cluster in a narrow region and miss the low-latency end of the front (their Figure~1 and Appendix~D), even when it is prompted to aim for diverse latencies. Their remedy has three components, shown in Figure~\ref{fig:pipeline}: complexity-driven partitioning of the search space into niches that are searched separately; an LLM operator that in each generation first rewrites a textual knowledge base from the previous results and then proposes new architectures conditioned on it; and a training-free evaluator, so that no candidate is trained. The paper's claim is that this finds near-complete Pareto fronts on six hardware devices in 120 API calls and about three minutes, where supernet-based methods need GPU-days.
 
 \begin{figure}[!ht]\centering
+\begin{adjustbox}{max width=\linewidth}
 \begin{tikzpicture}[font=\footnotesize,>={Stealth[length=2mm]},
   box/.style={draw,rounded corners=2pt,align=center,fill=gray!10,inner sep=3pt,minimum height=9mm},
   llm/.style={box,fill=blue!10},
@@ -83,6 +85,7 @@ LLM-NAS \cite{llmnas} treats hardware-aware search as a bi-objective problem, ac
 \draw[->] (loop.south) -- (agg.north);
 \draw[->] (agg)--(front);
 \end{tikzpicture}
+\end{adjustbox}
 \caption{The LLM-NAS pipeline as described in the paper (our redrawing).}\label{fig:pipeline}
 \end{figure}
 
@@ -92,9 +95,9 @@ The search space is the NAS-Bench-201 cell: four nodes joined by six edges, each
 \subsection{Complexity-driven partitioning}
 The space is divided into six disjoint niches by the number of $3{\times}3$ convolutions, the operator with the most parameters (a $3{\times}3$ kernel has nine times the parameters of a $1{\times}1$ kernel per channel pair); the authors report that this count drives a step-like growth in parameters (their Figure~3) and, typically, in latency. Table~\ref{tab:niches} gives the niches. Each niche keeps its own population and Pareto archive, and its definition enters the prompt as a hard constraint (for niche S3: exactly two $3{\times}3$ convolutions, any number of $1{\times}1$ convolutions, the remaining edges drawn from the other three operators). This forces the LLM to produce designs across the whole complexity range instead of settling on familiar ones.
 
-\begin{table}[h]\centering\small
+\begin{table}[h]\centering\footnotesize\setlength{\tabcolsep}{3pt}
 \caption{The six niches of LLM-NAS (Table~1 of the paper). The last column, the number of cells in each niche, is computed from the benchmark and sums to $15{,}625$.}\label{tab:niches}
-\begin{tabular}{lccp{5.6cm}r}
+\begin{tabular}{lccp{4.4cm}r}
 \toprule
 Niche & $3{\times}3$ convs & $1{\times}1$ convs & Rationale given in the paper & Cells \\
 \midrule
@@ -121,7 +124,7 @@ In every generation and in every niche the LLM is called twice (Appendix~E of th
 \EndFor
 \For{generation $g=1,\dots,G$}
   \For{each niche $k$ (independently)}
-    \State \textbf{Stage 1:} $K_k\gets L(\text{device, dataset, }S_k,\text{ parents from }P_k\text{ with metrics and rationales})$
+    \State \textbf{Stage 1:} $K_k\gets L(\cdot)$, given the device, dataset, niche $S_k$ and the parents from $P_k$ with their metrics and rationales
     \State \textbf{Stage 2:} choose parents from $P_k$; $\text{children}\gets L(S_k,\text{parents},K_k)$, each by crossover or mutation, with a rationale
     \For{each child $A$ that is valid, novel and inside $S_k$}
       \State $(z,l)\gets(M(A),l(A))$; add $A$ to $P_k$ and remove the members it dominates
@@ -143,9 +146,9 @@ After the last generation the six niche archives are merged and non-dominated so
 \subsection{What the paper reports}
 Table~\ref{tab:claims} lists the headline claims of the paper that this study checks. The paper also extends the method to a Vision Transformer space derived from AutoFormer on ImageNet-1k, with a different accuracy predictor; that part is not reproduced here.
 
-\begin{table}[h]\centering\small
+\begin{table}[h]\centering\footnotesize\setlength{\tabcolsep}{3pt}
 \caption{Headline claims of the LLM-NAS paper and where this study checks them.}\label{tab:claims}
-\begin{tabular}{p{3.4cm}p{8.2cm}p{3.0cm}}
+\begin{tabular}{p{2.7cm}p{6.4cm}p{2.3cm}}
 \toprule
 Claim & Value in the paper & Checked in \\
 \midrule
@@ -181,9 +184,9 @@ Three public sources were merged into one table per dataset (15{,}625 rows): HW-
 \noindent\textbf{Variants.} Switches for each ablation: \code{partitioning} (six niches vs.\ the whole space), \code{operator} (\code{llm}; \code{random} = the paper's PEA ablation; \code{random\_sample} = uniform sampling within niches, our added floor), \code{knowledge\_base} on/off, and \code{predictor.kind}. Un-partitioned variants receive the same evaluation budget as partitioned ones. Prompts follow Appendix~E of the paper verbatim where text is given; the architecture legend and the parent tables fill the paper's placeholders.
 
 \subsection{Unspecified details and the choices made}\label{sec:assumed}
-\begin{table}[h]\centering\small
+\begin{table}[h]\centering\footnotesize\setlength{\tabcolsep}{3pt}
 \caption{Choices not specified by the paper (all exposed in \code{configs/base.yaml}); these are the first things to vary in a sensitivity study.}\label{tab:assumed}
-\begin{tabular}{p{4.6cm}p{4.0cm}p{6.2cm}}
+\begin{tabular}{p{3.6cm}p{3.1cm}p{4.8cm}}
 \toprule
 Item & Choice & Rationale \\
 \midrule
@@ -208,9 +211,9 @@ Seeds & 3 for non-LLM runs; 1 for LLM runs & paper reports $\pm$ without a count
 
 \subsection{Scope of what was run}
 Table~\ref{tab:scope} states exactly which paper items were and were not reproduced. We report this explicitly because the LLM runs are expensive and were limited to one seed.
-\begin{table}[h]\centering\small
+\begin{table}[h]\centering\footnotesize\setlength{\tabcolsep}{3pt}
 \caption{Reproduction status by paper item.}\label{tab:scope}
-\begin{tabular}{p{4.3cm}p{2.3cm}p{8.1cm}}
+\begin{tabular}{p{3.4cm}p{1.8cm}p{6.3cm}}
 \toprule
 Paper item & Status & What was done \\
 \midrule
@@ -241,7 +244,7 @@ Table~\ref{tab:cnn} and Figure~\ref{fig:cnnfronts} compare the full method under
 
 \begin{table}[h]\centering\footnotesize
 \caption{CIFAR-10, Edge GPU. HV$\uparrow$ as a fraction of the true front's HV; IGD$\downarrow$ in normalised units. ``Usable'' = proposals that were valid, inside their niche and not duplicates; ``Eval.'' = distinct architectures evaluated (both are means over seeds for the controls). Paper values from its Table~3, which also reports FairNAS 0.892\,/\,0.073, PRP-NAS 0.843\,/\,0.116 and LLMatic 0.191\,/\,0.542 (HV\,/\,IGD).}\label{tab:cnn}
-\setlength{\tabcolsep}{4pt}
+\setlength{\tabcolsep}{2pt}
 \begin{tabular}{llccccc}
 \toprule
 Method & LLM & Seeds & HV & IGD & Usable & Eval. \\
@@ -268,18 +271,20 @@ Four observations follow. First, by the default HV the LLMs order DeepSeek 0.988
 To test whether the Edge GPU result generalises, GPT-4.1, Claude Haiku~4.5, Qwen2.5-7B and DeepSeek-Coder-V2-16B were each run once on every device (CIFAR-10, seed~0, the same configuration as above; the Edge GPU entries for GPT-4.1, Qwen and DeepSeek are the runs of Table~\ref{tab:cnn}). Claude Haiku~4.5 (no extended thinking, reply limit 4{,}096 tokens) replaces Opus~5.5 here because Opus costs \$10.77 per search; a Haiku search cost \$1.44--\$1.62 and took 38--43 minutes, a GPT-4.1 search \$0.80--\$0.88 and about 8 minutes. The non-LLM controls were run with three seeds on every device.
 
 \begin{table}[h]\centering\footnotesize
-\caption{Hypervolume (default convention) on CIFAR-10, all six devices. LLM rows: one run each; control rows: mean $\pm$ s.d.\ over three seeds. Edge TPU is scored after excluding failed compilations.}\label{tab:multidevice}
+\caption{Hypervolume (default convention) on CIFAR-10, all six devices (EGPU: Edge GPU; Pi4: Raspberry Pi 4; ETPU: Edge TPU; Pix3: Pixel 3). LLM rows: one run each; control rows: mean $\pm$ s.d.\ over three seeds. Edge TPU is scored after excluding failed compilations.}\label{tab:multidevice}
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{lcccccc}
 \toprule
-Method & Edge~GPU & Raspberry~Pi~4 & Edge~TPU & Pixel~3 & Eyeriss & FPGA \\
+Method & EGPU & Pi4 & ETPU & Pix3 & Eyeriss & FPGA \\
 \midrule
 GPT-4.1 & 0.964 & 0.983 & 0.902 & 0.986 & 0.896 & 0.839 \\
 Claude Haiku~4.5 & 0.913 & 0.986 & 0.844 & 0.938 & 0.840 & 0.807 \\
 Qwen2.5-7B & 0.888 & 0.981 & 0.850 & 0.979 & 0.811 & 0.838 \\
 DeepSeek-Coder-V2 & 0.988 & 0.955 & 0.793 & 0.982 & 0.829 & 0.836 \\
-PEA (3 seeds) & 0.989$\pm$0.004 & 0.990$\pm$0.004 & 0.919$\pm$0.019 & 0.990$\pm$0.003 & 0.918$\pm$0.019 & 0.904$\pm$0.022 \\
-Random sampling (3 seeds) & 0.991$\pm$0.001 & 0.989$\pm$0.001 & 0.939$\pm$0.006 & 0.987$\pm$0.003 & 0.893$\pm$0.021 & 0.899$\pm$0.022 \\
+PEA (3 seeds) & 0.989 & 0.990 & 0.919 & 0.990 & 0.918 & 0.904 \\
+ & $\pm$0.004 & $\pm$0.004 & $\pm$0.019 & $\pm$0.003 & $\pm$0.019 & $\pm$0.022 \\
+Random sampling (3 seeds) & 0.991 & 0.989 & 0.939 & 0.987 & 0.893 & 0.899 \\
+ & $\pm$0.001 & $\pm$0.001 & $\pm$0.006 & $\pm$0.003 & $\pm$0.021 & $\pm$0.022 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -289,14 +294,16 @@ Random sampling (3 seeds) & 0.991$\pm$0.001 & 0.989$\pm$0.001 & 0.939$\pm$0.006 
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{lcccccc}
 \toprule
-Method & Edge~GPU & Raspberry~Pi~4 & Edge~TPU & Pixel~3 & Eyeriss & FPGA \\
+Method & EGPU & Pi4 & ETPU & Pix3 & Eyeriss & FPGA \\
 \midrule
 GPT-4.1 & 0.752 & 0.875 & 0.902 & 0.895 & 0.896 & 0.839 \\
 Claude Haiku~4.5 & 0.710 & 0.865 & 0.844 & 0.858 & 0.840 & 0.807 \\
 Qwen2.5-7B & 0.709 & 0.813 & 0.850 & 0.821 & 0.811 & 0.838 \\
 DeepSeek-Coder-V2 & 0.901 & 0.859 & 0.793 & 0.856 & 0.829 & 0.836 \\
-PEA (3 seeds) & 0.904$\pm$0.045 & 0.912$\pm$0.032 & 0.919$\pm$0.019 & 0.911$\pm$0.024 & 0.918$\pm$0.019 & 0.904$\pm$0.022 \\
-Random sampling (3 seeds) & 0.931$\pm$0.018 & 0.904$\pm$0.014 & 0.939$\pm$0.006 & 0.875$\pm$0.014 & 0.893$\pm$0.021 & 0.899$\pm$0.022 \\
+PEA (3 seeds) & 0.904 & 0.912 & 0.919 & 0.911 & 0.918 & 0.904 \\
+ & $\pm$0.045 & $\pm$0.032 & $\pm$0.019 & $\pm$0.024 & $\pm$0.019 & $\pm$0.022 \\
+Random sampling (3 seeds) & 0.931 & 0.904 & 0.939 & 0.875 & 0.893 & 0.899 \\
+ & $\pm$0.018 & $\pm$0.014 & $\pm$0.006 & $\pm$0.014 & $\pm$0.021 & $\pm$0.022 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -310,7 +317,7 @@ We therefore re-scored every run with architectures below 80\% test accuracy rem
 
 \begin{table}[h]\centering\footnotesize
 \caption{CIFAR-10, Edge GPU: default scores and scores re-scored on architectures with test accuracy $\ge80\%$ only. ``Cell'' = the final front contains an architecture below 20\% accuracy. Generated by \code{compare-llms}.}\label{tab:floor}
-\setlength{\tabcolsep}{4pt}
+\setlength{\tabcolsep}{2pt}
 \begin{tabular}{lcccccc}
 \toprule
 Method & Seeds & HV & IGD & HV ($\ge80\%$) & IGD ($\ge80\%$) & Cell \\
@@ -338,7 +345,7 @@ The paper reports 3 minutes and 120 API calls per search. Our GPT-4.1 run made 1
 \subsection{Ablation on CIFAR-100 (paper's Table 5)}
 The paper reports that removing the LLM operator (PEA) lowers average HV on CIFAR-100 from 0.978 to $0.843\pm0.075$. We could only run the non-LLM variants. With our normalisation, PEA achieves $0.946\pm0.031$ averaged over the six devices (three seeds each), and uniform random sampling within niches $0.931\pm0.047$ (Table~\ref{tab:abl}, Figure~\ref{fig:abl}). Our PEA is $\approx0.10$ above the paper's PEA, a gap as large as the one the paper attributes to the LLM. The HV convention, not the operator, is therefore the dominant unknown. We also noticed that the paper's Table-5 average HV for the full model (0.978) is not the mean of its six Table-3 CIFAR-100 values (0.982), although the IGD average does match.
 
-\begin{table}[h]\centering\small
+\begin{table}[h]\centering\footnotesize\setlength{\tabcolsep}{3pt}
 \caption{CIFAR-100, non-LLM variants, mean over 3 seeds. Edge TPU is scored after excluding architectures that failed compilation (latency $-1$).}\label{tab:abl}
 \begin{tabular}{lcccccccc}
 \toprule
@@ -369,7 +376,7 @@ This section asks what an LLM contributes that a traditional NAS method does not
 
 \begin{table}[h]\centering\footnotesize
 \caption{Hypervolume (default convention) of the LLM run and of the controls at the \emph{same number of evaluated architectures} $N$, CIFAR-10, seed~0 for LLMs and mean of three seeds for controls (RS = random sampling in niches, PEA = random operators). Bold: the LLM run exceeds the control mean. Edge TPU is scored after excluding failed compilations.}\label{tab:matched}
-\setlength{\tabcolsep}{4pt}
+\setlength{\tabcolsep}{2pt}
 \begin{tabular}{l|cccc|cccc}
 \toprule
  & \multicolumn{4}{c|}{GPT-4.1} & \multicolumn{4}{c}{Claude Haiku~4.5} \\
@@ -474,11 +481,11 @@ All code, configurations and run logs are in the public repository given in the 
 \section*{Declarations}
 \begin{itemize}
 \item \textbf{Funding.} [State the funding sources, or: The author received no specific funding for this work.]
-\item \textbf{Competing interests.} [The author declares no competing interests.]
+\item \textbf{Competing interests.} [The author has no relevant financial or non-financial interests to disclose.]
 \item \textbf{Ethics approval and consent to participate.} Not applicable; no human or animal subjects were involved.
-\item \textbf{Data availability.} All benchmark data are public: HW-NAS-Bench, NAS-Bench-Suite-Zero and NATS-Bench. The archived run logs behind every number are available in the code repository.
+\item \textbf{Data availability.} The benchmark data are public: HW-NAS-Bench, NAS-Bench-Suite-Zero and NATS-Bench. The code, configurations and archived run logs behind every number are available at [repository URL and archive DOI].
 \item \textbf{Code availability.} [Public repository URL and archive DOI, e.g.\ Zenodo.]
-\item \textbf{Use of large language models.} Large language models are the object of study and are documented in Sections~\ref{sec:background}--\ref{sec:results}; an AI coding tool assisted the implementation, as stated in Section~\ref{sec:method}. The author reviewed all code and text and is accountable for them.
+\item \textbf{Use of large language models.} Large language models are the object of study and are documented in Sections~\ref{sec:background}--\ref{sec:results}. An AI coding assistant (Claude Code) was used to write the implementation and to draft and edit parts of the text (Section~\ref{sec:method}); the author reviewed all code and text and is accountable for them. [TO CONFIRM.]
 \item \textbf{Author contributions.} [S.M.: conceptualisation, software, investigation, analysis, writing.]
 \end{itemize}
 
