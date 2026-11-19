@@ -88,6 +88,20 @@ class Niche:
         n1 = sum(1 for c in code if c == CONV1)
         return self.conv3_min <= n3 <= self.conv3_max and self.conv1_min <= n1 <= self.conv1_max
 
+    def violation(self, code: Sequence[int]) -> str | None:
+        """Why ``code`` breaks this niche's operator counts (None if it does not)."""
+
+        def bound(lo: int, hi: int) -> str:
+            return f"exactly {lo}" if lo == hi else f"at least {lo}" if hi >= NUM_EDGES else f"{lo}-{hi}"
+
+        n3 = sum(1 for c in code if c == CONV3)
+        n1 = sum(1 for c in code if c == CONV1)
+        if not self.conv3_min <= n3 <= self.conv3_max:
+            return f"has {n3} x nor_conv_3x3, needs {bound(self.conv3_min, self.conv3_max)}"
+        if not self.conv1_min <= n1 <= self.conv1_max:
+            return f"has {n1} x nor_conv_1x1, needs {bound(self.conv1_min, self.conv1_max)}"
+        return None
+
     def members(self) -> list[Code]:
         return _members(self)
 

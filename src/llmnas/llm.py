@@ -168,7 +168,7 @@ class LLMSession:
         self.input_tokens += resp.input_tokens
         self.output_tokens += resp.output_tokens
         self.wall_time_s += dt
-        public_meta = {k: v for k, v in meta.items() if k in ("stage", "generation", "niche_name")}
+        public_meta = {k: v for k, v in meta.items() if k in ("stage", "generation", "niche_name", "retry")}
         rec = dict(call=idx, model=self.backend.model, prompt_hash=h, **public_meta, system=system, user=user,
                    response=resp.text, input_tokens=resp.input_tokens, output_tokens=resp.output_tokens,
                    wall_time_s=round(dt, 3))  # fmt: skip

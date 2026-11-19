@@ -8,6 +8,14 @@ config switches so every ablation shares exactly the same code path:
                                                             | random_sample -> uniform sampling
     search.knowledge_base true  -> Stage 1 KB update        | false -> static prompt
     predictor.kind        zc_ensemble | synflow | oracle
+
+Duplicate fixes (PREREGISTRATION_duplicate_fix.md). All are off unless set, so the configs of earlier runs, and
+therefore their content hashes and results, are unchanged:
+
+    search.show_history        true -> the generate prompt lists the niche's evaluated cells (fix 1)
+    search.reprompt_retries    k>0  -> re-ask the LLM for the missing children, at most k times per call (fix 2)
+    search.refill_attempts     k>0  -> PEA / random sampling redraw a rejected child, at most k draws per slot
+    search.budget_evaluations  N    -> stop accepting children once N architectures have been evaluated
 """
 
 from __future__ import annotations
@@ -24,7 +32,7 @@ from .llm import LLMSession, make_backend
 from .metrics import FrontEvaluator, objectives, pareto_mask
 from .predictor import build_predictor
 from .prompts import (GEN_SYSTEM, KB_SYSTEM, generation_prompt, kb_update_prompt, parse_children,
-                      parse_knowledge_base)  # fmt: skip
+                      parse_knowledge_base, retry_prompt)  # fmt: skip
 from .search_space import PAPER_NICHES, Niche, format_code, get_niches, random_crossover, random_mutation
 
 
@@ -78,6 +86,14 @@ def run_search(cfg: dict, dataset: str, device: str, seed: int, run_dir: Path) -
     ev: dict[tuple, dict] = {}  # every evaluated architecture
     unmeasured = bench.unmeasured(device)  # no latency on this device -> not in the search space
     stats = dict(proposed=0, invalid=0, out_of_niche=0, duplicate=0, no_latency=0, accepted=0, parse_failures=0)
+    show_history = bool(s_cfg.get("show_history", False))
+    max_retries = int(s_cfg.get("reprompt_retries", 0) or 0)
+    refill = int(s_cfg.get("refill_attempts", 0) or 0)
+    budget = s_cfg.get("budget_evaluations")
+    if max_retries:
+        stats.update(retry_calls=0, retry_proposed=0, retry_accepted=0, slots_unfilled=0)
+    if refill:
+        stats.update(refill_extra_draws=0, slots_unfilled=0)
 
     def evaluate(code, niche_name, gen, origin, rationale=""):
         ev[code] = dict(pred=predictor(code), lat=float(lat_all[bench.row_of[code]]), niche=niche_name,
@@ -105,6 +121,38 @@ def run_search(cfg: dict, dataset: str, device: str, seed: int, run_dir: Path) -
             ops = ["crossover" if len(parents) >= 2 and rng.random() < s_cfg["crossover_prob"] else "mutation"
                    for _ in range(n_child)]  # fmt: skip
 
+            room = None if budget is None else int(budget) - len(ev)
+            if room is not None and room <= 0:
+                st.last_cycle = []
+                continue
+            n_slots = n_child if room is None else min(n_child, room)
+            shown = {c: str(i) for i, c in enumerate(parents)}
+            st.last_cycle = []
+
+            def check(code, batch, st=st, shown=shown):
+                """-> (stats key, reason shown to the LLM on a retry); key 'accepted' means usable."""
+                if code is None:
+                    return "invalid", "not a valid code"
+                why = st.niche.violation(code)
+                if why:
+                    return "out_of_niche", f"breaks niche rule: {why}"
+                if code in batch:
+                    return "duplicate", "repeated in this reply"
+                if code in shown:
+                    return "duplicate", f"identical to parent {shown[code]}"
+                if code in ev:
+                    return "duplicate", "already evaluated"
+                if code in unmeasured:
+                    return "no_latency", "no latency on this device"
+                return "accepted", ""
+
+            def accept(ch, batch, st=st, gen=gen):
+                stats["accepted"] += 1
+                evaluate(ch["code"], st.niche.name, gen, ch.get("operation") or "llm", ch.get("rationale", ""))
+                st.update_archive(ch["code"], ev)
+                st.last_cycle.append(ch["code"])
+                batch.add(ch["code"])
+
             if use_llm:
                 meta = dict(generation=gen, niche_name=st.niche.name, niche=st.niche, parents=parents,
                             n_child=n_child, operations=ops)  # fmt: skip
@@ -116,32 +164,81 @@ def run_search(cfg: dict, dataset: str, device: str, seed: int, run_dir: Path) -
                         st.knowledge_base = kb
                     st.kb_history.append(list(st.knowledge_base))
                 limit = _latency_limit(s_cfg, st.niche, lat_all, bench)
-                text = session(GEN_SYSTEM, generation_prompt(device, dataset, st.niche, p_entries, lc_entries,
-                                                            st.knowledge_base, ops, limit), {**meta, "stage": "generate"})  # fmt: skip
-                children = parse_children(text)
+                history = [c for c, e in ev.items() if e["niche"] == st.niche.name] if show_history else None
+                prompt = generation_prompt(device, dataset, st.niche, p_entries, lc_entries, st.knowledge_base,
+                                           ops, limit, history)  # fmt: skip
+                children = parse_children(session(GEN_SYSTEM, prompt, {**meta, "stage": "generate"}))
                 if not children:
                     stats["parse_failures"] += 1
+                batch: set = set()
+                missing: list[str] = []  # operations of the slots still empty
+                rejected: list[tuple[str, str]] = []
+
+                def consider(ch, op, still, retry=False):
+                    if ch is None:  # the reply had fewer children than requested
+                        still.append(op)
+                        return
+                    stats["proposed"] += 1
+                    if retry:
+                        stats["retry_proposed"] += 1
+                    key, why = check(ch["code"], batch)
+                    if key == "accepted":
+                        if retry:
+                            stats["retry_accepted"] += 1
+                        accept(ch, batch)
+                    else:
+                        stats[key] += 1
+                        still.append(op)
+                        rejected.append((format_code(ch["code"]) if ch["code"] else "(unreadable)", why))
+
+                for k in range(n_slots):
+                    consider(children[k] if k < len(children) else None, ops[k], missing)
+                for attempt in range(1, max_retries + 1):
+                    if not missing:
+                        break
+                    if not rejected:
+                        rejected.append(("(none given)", f"the reply had fewer than {n_slots} children"))
+                    stats["retry_calls"] += 1
+                    children = parse_children(session(
+                        GEN_SYSTEM, retry_prompt(prompt, rejected, missing),
+                        {**meta, "operations": missing, "n_child": len(missing), "stage": "generate_retry",
+                         "retry": attempt}))  # fmt: skip
+                    if not children:
+                        stats["parse_failures"] += 1
+                    still: list[str] = []
+                    for k, op in enumerate(missing):
+                        consider(children[k] if k < len(children) else None, op, still, retry=True)
+                    missing = still
+                if max_retries:
+                    stats["slots_unfilled"] += len(missing)
             else:
                 sample_only = s_cfg["operator"] == "random_sample"
-                children = _random_children(parents, ops, st.niche, rng, set(ev) | unmeasured, sample_only)
-
-            st.last_cycle = []
-            for ch in children[:n_child]:
-                stats["proposed"] += 1
-                code = ch["code"]
-                if code is None:
-                    stats["invalid"] += 1
-                elif not st.niche.contains(code):
-                    stats["out_of_niche"] += 1
-                elif code in ev:
-                    stats["duplicate"] += 1
-                elif code in unmeasured:
-                    stats["no_latency"] += 1
-                else:
-                    stats["accepted"] += 1
-                    evaluate(code, st.niche.name, gen, ch.get("operation") or "llm", ch.get("rationale", ""))
-                    st.update_archive(code, ev)
-                    st.last_cycle.append(code)
+                batch = set()
+                if not refill:  # exactly the original behaviour: one draw per slot, exclusions fixed per call
+                    children = _random_children(parents, ops[:n_slots], st.niche, rng, set(ev) | unmeasured,
+                                                sample_only)  # fmt: skip
+                    for ch in children:
+                        stats["proposed"] += 1
+                        key, _ = check(ch["code"], batch)
+                        if key == "accepted":
+                            accept(ch, batch)
+                        else:
+                            stats[key] += 1
+                else:  # refill: redraw a rejected child, at most `refill` draws per slot
+                    for k in range(n_slots):
+                        for attempt in range(refill):
+                            ch = _random_children(parents, [ops[k]], st.niche, rng, set(ev) | unmeasured,
+                                                  sample_only)[0]  # fmt: skip
+                            stats["proposed"] += 1
+                            if attempt:
+                                stats["refill_extra_draws"] += 1
+                            key, _ = check(ch["code"], batch)
+                            if key == "accepted":
+                                accept(ch, batch)
+                                break
+                            stats[key] += 1
+                        else:
+                            stats["slots_unfilled"] += 1
         trajectory.append(_trajectory_point(gen, states, ev, bench, device, e_cfg))
         print(f"  [{dataset}/{device}/seed{seed}] gen {gen:2d}: evaluated={len(ev):4d} "
               f"HV={trajectory[-1]['hv']:.3f} IGD={trajectory[-1]['igd']:.4f}")  # fmt: skip

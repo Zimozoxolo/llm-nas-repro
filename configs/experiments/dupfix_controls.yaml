@@ -1,0 +1,15 @@
+# Duplicate-fix test, controls (PREREGISTRATION_duplicate_fix.md, Section 3). No LLM, no API cost.
+# CIFAR-10, six devices, 10 seeds. random_sampling, nsga2 and regevo have exactly the configs of
+# table5_ablation / baselines, so their seeds 0-2 are reused and only seeds 3-9 are new.
+#   python -m llmnas run dupfix_controls
+name: dupfix_controls
+type: search
+datasets: [cifar10]
+devices: [edgegpu, raspi4, edgetpu, pixel3, eyeriss, fpga]
+seeds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+variants:
+  # main comparator: random operators in the same framework, a rejected child is redrawn (<= 50 draws per slot)
+  pea_refill: {search: {operator: random, refill_attempts: 50, budget_evaluations: 270}}
+  random_sampling: {search: {operator: random_sample}}
+  nsga2: {type: nsga2, search: {operator: nsga2, partitioning: false}}
+  regevo: {type: regevo, search: {operator: regevo, partitioning: false}}

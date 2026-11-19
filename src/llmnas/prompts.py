@@ -81,7 +81,9 @@ search inside a given niche under hardware constraints."""
 
 
 def generation_prompt(device: str, dataset: str, niche: Niche, parents: list[dict], last_cycle: list[dict],
-                      knowledge_base: list[str], operations: list[str], latency_limit: float | None) -> str:  # fmt: skip
+                      knowledge_base: list[str], operations: list[str], latency_limit: float | None,
+                      history: list[tuple] | None = None) -> str:  # fmt: skip
+    """Stage-2 prompt. ``history`` (duplicate fix 1, off by default) lists the niche's evaluated cells."""
     limit = f"\\le {latency_limit:.3f} ms" if latency_limit else "as low as possible"
     ops_plan = "\n".join(f"  child {i}: {op}" for i, op in enumerate(operations))
     constraints = niche.constraint_text()
@@ -95,7 +97,7 @@ def generation_prompt(device: str, dataset: str, niche: Niche, parents: list[dic
 - Current Pareto parents with metrics:
 {_table(parents, with_rationale=False)}
 - Crossover & mutation results from the last cycle:
-{_table(last_cycle, with_rationale=True)}
+{_table(last_cycle, with_rationale=True)}{_history_block(history)}
 
 [Knowledge Base]
 {json.dumps(knowledge_base, indent=1) if knowledge_base else "(empty)"}
@@ -122,6 +124,32 @@ Return a list of JSON objects:
 }},
 ...
 ]"""
+
+
+HISTORY_CAP = 45  # 5 initial cells + 10 generations x 4 children = the most a niche can hold at 270 evaluations
+
+
+def _history_block(history: list[tuple] | None) -> str:
+    if history is None:
+        return ""
+    shown = list(history)[-HISTORY_CAP:]
+    body = "\n".join(f"  {format_code(c)}" for c in shown) if shown else "  (none)"
+    return f"\n- Architectures already evaluated in this niche ({len(shown)}); do not propose any of them:\n{body}"
+
+
+def retry_prompt(base_prompt: str, rejected: list[tuple[str, str]], operations: list[str]) -> str:
+    """Duplicate fix 2: the original prompt plus the rejected cells, why, and how many children are still needed."""
+    lines = "\n".join(f"  {code}: {reason}" for code, reason in rejected)
+    plan = "\n".join(f"  child {i}: {op}" for i, op in enumerate(operations))
+    return f"""{base_prompt}
+
+[Rejected proposals]
+Some of the children you proposed for this request could not be used:
+{lines}
+Propose {len(operations)} replacement children, with these operations:
+{plan}
+Each must satisfy the niche constraints, must differ from every architecture listed in this prompt, and must
+differ from the rejected ones above. Use the same output format."""
 
 
 # --------------------------------------------------------------------------- exploration-bias study (Fig. 1)

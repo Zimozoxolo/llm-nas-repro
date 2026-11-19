@@ -1,0 +1,16 @@
+# Duplicate-fix test, LLM arms (PREREGISTRATION_duplicate_fix.md, Section 2). GPT-4.1 costs money:
+# run ONLY after the paid arms are approved and the implementation commit is recorded in the pre-registration.
+#   python -m llmnas run dupfix_arms --variants arm_a     (about $7.50 for six devices)
+#   python -m llmnas run dupfix_arms --variants arm_b     (about $5.40)
+# Offline check of the wiring: add --set llm.backend=mock (writes to a different run hash).
+# The reference arm is the existing llm_devices run (llmnas-a3a92e57); it is not re-run.
+name: dupfix_arms
+type: search
+datasets: [cifar10]
+devices: [edgegpu, raspi4, edgetpu, pixel3, eyeriss, fpga]
+seeds: [0]
+variants:
+  # A: niche history in the prompt + re-prompt for missing children (<= 5 retries), budget 270 evaluations
+  arm_a: {search: {show_history: true, reprompt_retries: 5, budget_evaluations: 270}}
+  # B: niche history in the prompt only, the paper's 120 calls
+  arm_b: {search: {show_history: true}}
