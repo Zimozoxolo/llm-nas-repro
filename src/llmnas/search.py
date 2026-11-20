@@ -15,6 +15,8 @@ therefore their content hashes and results, are unchanged:
     search.show_history        true -> the generate prompt lists the niche's evaluated cells (fix 1)
     search.reprompt_retries    k>0  -> re-ask the LLM for the missing children, at most k times per call (fix 2)
     search.refill_attempts     k>0  -> PEA / random sampling redraw a rejected child, at most k draws per slot
+    search.refill_fallback     random -> after the last rejected draw, take a random unevaluated cell of the niche
+                                       (as NSGA-II and regularised evolution do; never used for the LLM)
     search.budget_evaluations  N    -> stop accepting children once N architectures have been evaluated
 """
 
@@ -92,8 +94,9 @@ def run_search(cfg: dict, dataset: str, device: str, seed: int, run_dir: Path) -
     budget = s_cfg.get("budget_evaluations")
     if max_retries:
         stats.update(retry_calls=0, retry_proposed=0, retry_accepted=0, slots_unfilled=0)
+    fallback = s_cfg.get("refill_fallback") == "random"
     if refill:
-        stats.update(refill_extra_draws=0, slots_unfilled=0)
+        stats.update(refill_extra_draws=0, refill_fallbacks=0, slots_unfilled=0)
 
     def evaluate(code, niche_name, gen, origin, rationale=""):
         ev[code] = dict(pred=predictor(code), lat=float(lat_all[bench.row_of[code]]), niche=niche_name,
@@ -237,8 +240,14 @@ def run_search(cfg: dict, dataset: str, device: str, seed: int, run_dir: Path) -
                                 accept(ch, batch)
                                 break
                             stats[key] += 1
-                        else:
-                            stats["slots_unfilled"] += 1
+                        else:  # every draw rejected: optionally take a random unevaluated cell of the niche
+                            pool = st.niche.sample(rng, 1, exclude=set(ev) | unmeasured) if fallback else []
+                            if pool:
+                                stats["proposed"] += 1
+                                stats["refill_fallbacks"] += 1
+                                accept({"code": pool[0], "operation": "random_fill", "rationale": ""}, batch)
+                            else:
+                                stats["slots_unfilled"] += 1
         trajectory.append(_trajectory_point(gen, states, ev, bench, device, e_cfg))
         print(f"  [{dataset}/{device}/seed{seed}] gen {gen:2d}: evaluated={len(ev):4d} "
               f"HV={trajectory[-1]['hv']:.3f} IGD={trajectory[-1]['igd']:.4f}")  # fmt: skip

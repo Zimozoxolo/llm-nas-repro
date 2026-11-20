@@ -8,8 +8,9 @@ datasets: [cifar10]
 devices: [edgegpu, raspi4, edgetpu, pixel3, eyeriss, fpga]
 seeds: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 variants:
-  # main comparator: random operators in the same framework, a rejected child is redrawn (<= 50 draws per slot)
-  pea_refill: {search: {operator: random, refill_attempts: 50, budget_evaluations: 270}}
+  # main comparator: random operators in the same framework, a rejected child is redrawn (<= 50 draws per slot);
+  # (amendment 2026-11-20) if all 50 draws fail, a random unevaluated cell of the niche, as in NSGA-II / regevo
+  pea_refill: {search: {operator: random, refill_attempts: 50, refill_fallback: random, budget_evaluations: 270}}
   random_sampling: {search: {operator: random_sample}}
   nsga2: {type: nsga2, search: {operator: nsga2, partitioning: false}}
   regevo: {type: regevo, search: {operator: regevo, partitioning: false}}

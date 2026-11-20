@@ -40,7 +40,8 @@ device.
 - Fix 2 can stop at 270 evaluations before generation 10 ends only if every slot is full; generations are not
   extended beyond 10.
 
-Paid arms run only after explicit approval. Estimated cost: A about $7.50, B about $5.40 (6 searches each).
+Paid arms run only after explicit approval. Estimated cost: A about $7.50, B about $5.40 (6 searches each);
+A revised to about $11, at most about $17 (amendment 1).
 The same arms may also be run on the local models (DeepSeek-Coder-V2-16B, Qwen2.5-7B) at no API cost; those
 results are secondary.
 
@@ -50,7 +51,8 @@ All with the same evaluator, CIFAR-10, six devices, **10 seeds (0-9)** each, so 
 estimated properly (these runs are free):
 
 - **PEA with refill** (main comparator: the same framework and niches, only the operator differs). Rejected
-  random children are regenerated, up to 50 attempts per slot, until each slot has 4 new children.
+  random children are regenerated, up to 50 attempts per slot, until each slot has 4 new children. If all 50
+  draws are rejected, the slot takes a random unevaluated cell of the niche (amendment 1).
 - Random sampling in niches (already never repeats).
 - NSGA-II and regularised evolution (already refill to 270).
 
@@ -58,7 +60,8 @@ estimated properly (these runs are free):
 
 - **Primary:** hypervolume under the default convention (front normalisation, reference point 1.1, archived
   front, no accuracy floor, Edge TPU failed compilations excluded), read from the search trajectory at
-  **N = 270** evaluations (Q2) and **N = 120** (Q3), by linear interpolation between generations.
+  **N = 270** evaluations (Q2) and **N = 120** (Q3), by linear interpolation between generations. A run that
+  ends before N is scored at its final value (amendment 1).
 - **Secondary:** IGD at the same points; HV with the 85% accuracy floor; the 16-convention robustness table.
 - **Process (Q1):** duplicate rate and its sources, out-of-niche rate, evaluations reached, LLM calls,
   input/output tokens, cost, wall time.
@@ -112,3 +115,23 @@ with the reference runs.
 - Pre-registration commit: this file's first commit.
 - Implementation commit (frozen before paid runs): _to be filled in_.
 - Approval of paid arms: _to be filled in (date, amount)_.
+
+## 9. Amendments (made before any paid run)
+
+**Amendment 1, 2026-11-20.** Found in an offline dry run on the real benchmark with the mock LLM (no paid call,
+no GPT-4.1 result seen). With 50 random draws per slot and no fallback, PEA with refill filled only 217-265 of
+its 270 evaluations (Edge GPU 260, Raspberry Pi 4 265, Edge TPU 260, Eyeriss 239, FPGA 233, Pixel 3 217): once
+every in-niche neighbour of a niche's few parents has been evaluated, mutation and crossover can produce nothing
+new. The main comparator could then not be read at N = 270. Changes:
+
+1. PEA with refill: if all 50 draws for a slot are rejected, the slot takes a random unevaluated cell of the
+   niche (`search.refill_fallback: random`), the rule NSGA-II and regularised evolution already use. With it the
+   dry run reaches 270 on all six devices.
+2. The LLM arms are unchanged: no padding with random cells, because padding would credit the LLM with random
+   proposals.
+3. Reading rule: a run that ends before N evaluations is scored at its final value (unused budget earns nothing).
+4. Q1 is unchanged (arm A must reach N >= 265 on every device). The same dry run with the mock LLM, which ignores
+   the retry feedback, reached 217-256; GPT-4.1 is not limited to single-edge changes, so this does not predict
+   its result.
+5. Cost: the mock needed 224-330 calls per arm-A search, more than the 195-270 assumed. Revised estimate for
+   arm A: about $11 for six devices, at most about $17 if every retry is used. Arm B unchanged.

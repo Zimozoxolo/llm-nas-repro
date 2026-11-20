@@ -169,6 +169,11 @@ def test_pea_refill_fills_budget(synthetic_data_dir, tmp_path):
     assert res["n_evaluated"] == 270 - st["slots_unfilled"] and res["n_evaluated"] >= 255
     assert st["accepted"] == 240 - st["slots_unfilled"]
     assert st["proposed"] == 240 + st["refill_extra_draws"]  # one first draw per slot, plus redraws
+    full = run_search(deep_merge(cfg, {"search": {"refill_fallback": "random"}}), "cifar10", "edgegpu", 0,
+                      tmp_path / "f")  # fmt: skip
+    fs = full["proposal_stats"]
+    assert full["n_evaluated"] == 270 and fs["slots_unfilled"] == 0 and fs["refill_fallbacks"] > 0
+    assert sum(e["origin"] == "random_fill" for e in full["evaluated"]) == fs["refill_fallbacks"]
     plain = run_search(_cfg(synthetic_data_dir, gens=10, operator="random"), "cifar10", "edgegpu", 0, tmp_path / "p")
     assert plain["n_evaluated"] < 270  # without refill PEA loses its duplicates, as in the archived runs
 
@@ -197,5 +202,7 @@ def test_experiment_files_load(name):
 
     e = load_experiment(name)
     hashes = {v: config_hash(variant_config(e, v)) for v in e["variants"]}
+    if name == "dupfix_arms":  # the LLM arms are never padded with random cells
+        assert all("refill_fallback" not in variant_config(e, v)["search"] for v in e["variants"])
     if name == "dupfix_controls":  # identical configs to the archived controls, so seeds 0-2 are reused
         assert (hashes["random_sampling"], hashes["nsga2"], hashes["regevo"]) == ("c18f639e", "a77208c7", "7830069e")
