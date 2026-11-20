@@ -37,6 +37,8 @@ def table(root: Path | None = None) -> pd.DataFrame:
             continue
         if op in ("random", "random_sample") and not c["search"]["partitioning"]:
             continue
+        if any(c["search"].get(k) for k in ("refill_attempts", "show_history", "reprompt_retries")):
+            continue  # duplicate-fix runs are compared by llmnas.dupfix
         p = r.get("predictor") or {}
         rows.append(dict(method=LABELS[op], dataset=r["dataset"], device=r["device"], seed=r["seed"],
                          n_train=c["predictor"]["n_train"], hv=r["hv"], igd=r["igd"],

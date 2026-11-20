@@ -56,7 +56,12 @@ def method_of(r: dict) -> str | None:
         if not s.get("knowledge_base", True):
             return None
         m = c["llm"]["model"]
-        return m + (f" [effort={c['llm']['effort']}]" if c["llm"].get("effort") else "")
+        m += f" [effort={c['llm']['effort']}]" if c["llm"].get("effort") else ""
+        fix = [t for t, on in (("history", s.get("show_history")), ("re-prompt", s.get("reprompt_retries")))
+               if on]  # fmt: skip
+        return m + (f" [{' + '.join(fix)}]" if fix else "")  # duplicate-fix arms are separate methods
+    if op == "random" and s.get("refill_attempts"):
+        return "PEA with refill (no LLM)"
     return {"random": "PEA (no LLM)", "random_sample": "Random sampling (no LLM)"}.get(op)
 
 
@@ -161,7 +166,8 @@ def _fmt_p(p: float) -> str:
     return "n/a" if not np.isfinite(p) else (f"{p:.1e}" if p < 1e-3 else f"{p:.3f}")
 
 
-CONTROLS = ["PEA (no LLM)", "Random sampling (no LLM)", "NSGA-II (no LLM)", "Reg. evolution (no LLM)"]
+CONTROLS = ["PEA (no LLM)", "Random sampling (no LLM)", "NSGA-II (no LLM)", "Reg. evolution (no LLM)",
+            "PEA with refill (no LLM)"]
 
 
 def report(datasets=("cifar10", "cifar100", "ImageNet16-120"), out: Path | None = None) -> str:

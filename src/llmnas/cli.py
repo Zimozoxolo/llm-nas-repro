@@ -65,6 +65,7 @@ def main(argv=None) -> None:
 
     sub.add_parser("duplicates", help="classify duplicate LLM proposals by where the cell was seen before")
     sub.add_parser("sensitivity", help="controls re-run with predictor n_train 200 / 1000 / 5000")
+    sub.add_parser("dupfix", help="pre-registered analysis of the duplicate-fix test (no LLM called)")
 
     p = sub.add_parser("slm-reference", help="check reference SLMs: parameter counts and modelled costs")
     p.add_argument("--device", default="jetson_orin_nx_16gb")
@@ -116,6 +117,10 @@ def main(argv=None) -> None:
         from .sensitivity import report as sensitivity_report
 
         print(sensitivity_report())
+    elif a.cmd == "dupfix":
+        from .dupfix import report as dupfix_report
+
+        print(dupfix_report())
     elif a.cmd == "slm-reference":
         from .slm.cli import reference
 
