@@ -113,7 +113,9 @@ with the reference runs.
 ## 8. Record
 
 - Pre-registration commit: this file's first commit.
-- Implementation commit (frozen before paid runs): _to be filled in_.
+- Implementation commit (frozen before paid runs): `754bc79` (2026-11-20; switches added in `67b262d`, amendment 1
+  in `754bc79`). Checked with the mock backend and by replaying archived runs. Prompt wording and retry rules
+  are fixed from this commit on.
 - Approval of paid arms: _to be filled in (date, amount)_.
 
 ## 9. Amendments (made before any paid run)
