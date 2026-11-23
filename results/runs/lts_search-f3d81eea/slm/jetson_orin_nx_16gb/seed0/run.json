@@ -1,0 +1,2876 @@
+{
+ "kind": "slm",
+ "dataset": "slm",
+ "device": "jetson_orin_nx_16gb",
+ "seed": 0,
+ "variant": "lts_search",
+ "objectives": [
+  "quality",
+  "latency",
+  "memory"
+ ],
+ "n_front": 54,
+ "n_evaluated": 74,
+ "search_time_s": 0.03,
+ "llm_usage": null,
+ "proposal_stats": {
+  "proposed": 72,
+  "invalid": 0,
+  "repaired": 0,
+  "out_of_niche": 0,
+  "duplicate": 3,
+  "infeasible": 0,
+  "accepted": 69,
+  "parse_failures": 0
+ },
+ "final_front": [
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3072,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":17}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3072,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":27}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3584,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":20}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4992,\"n_head\":24,\"n_kv_head\":\"n_head\"}],\"n_layer\":16}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4992,\"n_head\":24,\"n_kv_head\":\"n_head\"}],\"n_layer\":17}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":12,\"n_kv_head\":\"n_head\"}],\"n_layer\":17}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":17}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5376,\"n_head\":12,\"n_kv_head\":\"n_head\"}],\"n_layer\":14}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":12,\"n_kv_head\":\"n_head\"}],\"n_layer\":27}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":24,\"n_kv_head\":\"n_head\"}],\"n_layer\":17}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5376,\"n_head\":26,\"n_kv_head\":\"n_head\"}],\"n_layer\":16}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":21}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":25}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":27}",
+  "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3840,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":17}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":16,\"n_kv_head\":4}],\"n_layer\":21}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":34}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":32,\"n_kv_head\":4}],\"n_layer\":16}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":32,\"n_kv_head\":8}],\"n_layer\":34}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5248,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":27}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5248,\"n_head\":32,\"n_kv_head\":8}],\"n_layer\":34}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5376,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":16}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5632,\"n_head\":16,\"n_kv_head\":1}],\"n_layer\":34}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5632,\"n_head\":16,\"n_kv_head\":2}],\"n_layer\":16}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5632,\"n_head\":16,\"n_kv_head\":2}],\"n_layer\":34}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5632,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":24}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6528,\"n_head\":16,\"n_kv_head\":2}],\"n_layer\":27}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6528,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":25}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6656,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":27}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":16,\"n_kv_head\":2}],\"n_layer\":16}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":16,\"n_kv_head\":4}],\"n_layer\":21}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":16,\"n_kv_head\":8}],\"n_layer\":27}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":32,\"n_kv_head\":1}],\"n_layer\":24}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":27}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":32,\"n_kv_head\":4}],\"n_layer\":21}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":32,\"n_kv_head\":4}],\"n_layer\":24}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":32,\"n_kv_head\":4}],\"n_layer\":27}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":32,\"n_kv_head\":4}],\"n_layer\":34}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":32,\"n_kv_head\":8}],\"n_layer\":24}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":32,\"n_kv_head\":8}],\"n_layer\":27}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6912,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":18}",
+  "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":20,\"n_kv_head\":\"n_head\"}],\"n_layer\":16}",
+  "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":20,\"n_kv_head\":\"n_head\"}],\"n_layer\":17}",
+  "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":20,\"n_kv_head\":1}],\"n_layer\":16}",
+  "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":20,\"n_kv_head\":\"n_head\"}],\"n_layer\":14}",
+  "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":40,\"n_kv_head\":\"n_head\"}],\"n_layer\":16}",
+  "{\"d_model\":2816,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5632,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":16}",
+  "{\"d_model\":2816,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5632,\"n_head\":44,\"n_kv_head\":2}],\"n_layer\":15}",
+  "{\"d_model\":2816,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":16}",
+  "{\"d_model\":2816,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":21}",
+  "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6144,\"n_head\":48,\"n_kv_head\":4}],\"n_layer\":17}",
+  "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":21}",
+  "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":16}",
+  "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":48,\"n_kv_head\":4}],\"n_layer\":21}"
+ ],
+ "evaluated": [
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5248,\"n_head\":32,\"n_kv_head\":8}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5248,
+      "n_head": 32,
+      "n_kv_head": 8
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1452.94336,
+    "total_params_m": 1518.47936,
+    "est_loss": 2.3091374407287417,
+    "prefill_ms": 89.72013885778276,
+    "decode_ms_per_token": 48.046934523809526,
+    "latency_ms": 2492.066865048259,
+    "memory_mb": 1013.0758056640625,
+    "kv_cache_mb": 136.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3091374407287417,
+    2492.066865048259,
+    1013.0758056640625
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 32,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1366.145024,
+    "total_params_m": 1431.681024,
+    "est_loss": 2.3199729752210665,
+    "prefill_ms": 83.77007525195968,
+    "decode_ms_per_token": 44.54480357142857,
+    "latency_ms": 2311.0102538233878,
+    "memory_mb": 857.5135498046875,
+    "kv_cache_mb": 27.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3199729752210665,
+    2311.0102538233878,
+    857.5135498046875
+   ]
+  },
+  {
+   "key": "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":20,\"n_kv_head\":\"n_head\"}],\"n_layer\":16}",
+   "arch": {
+    "n_layer": 16,
+    "d_model": 2560,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 20,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1048.66048,
+    "total_params_m": 1130.58048,
+    "est_loss": 2.367077245287646,
+    "prefill_ms": 64.32199776035834,
+    "decode_ms_per_token": 35.50697172619048,
+    "latency_ms": 1839.6705840698821,
+    "memory_mb": 988.9906311035156,
+    "kv_cache_mb": 320.0,
+    "feasible": true
+   },
+   "obj": [
+    2.367077245287646,
+    1839.6705840698821,
+    988.9906311035156
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3072,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":17}",
+   "arch": {
+    "n_layer": 17,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3072,
+      "n_head": 12,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 347.656704,
+    "total_params_m": 396.808704,
+    "est_loss": 2.5742649100519963,
+    "prefill_ms": 25.14380425531915,
+    "decode_ms_per_token": 16.043025297619046,
+    "latency_ms": 827.2950691362715,
+    "memory_mb": 343.3647766113281,
+    "kv_cache_mb": 68.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5742649100519963,
+    827.2950691362715,
+    343.3647766113281
+   ]
+  },
+  {
+   "key": "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":48,\"n_kv_head\":4}],\"n_layer\":21}",
+   "arch": {
+    "n_layer": 21,
+    "d_model": 3072,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8192,
+      "n_head": 48,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 2014.97088,
+    "total_params_m": 2113.27488,
+    "est_loss": 2.252455689442458,
+    "prefill_ms": 119.26100559910415,
+    "decode_ms_per_token": 61.49888392857143,
+    "latency_ms": 3194.2052020276756,
+    "memory_mb": 1238.1489868164062,
+    "kv_cache_mb": 42.0,
+    "feasible": true
+   },
+   "obj": [
+    2.252455689442458,
+    3194.2052020276756,
+    1238.1489868164062
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":32,\"n_kv_head\":4}],\"n_layer\":21}",
+   "arch": {
+    "n_layer": 21,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 32,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1073.567744,
+    "total_params_m": 1139.103744,
+    "est_loss": 2.362858118634855,
+    "prefill_ms": 66.45396774916014,
+    "decode_ms_per_token": 36.01658928571429,
+    "latency_ms": 1867.2834320348747,
+    "memory_mb": 715.5628662109375,
+    "kv_cache_mb": 42.0,
+    "feasible": true
+   },
+   "obj": [
+    2.362858118634855,
+    1867.2834320348747,
+    715.5628662109375
+   ]
+  },
+  {
+   "key": "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":20,\"n_kv_head\":\"n_head\"}],\"n_layer\":14}",
+   "arch": {
+    "n_layer": 14,
+    "d_model": 2560,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 20,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 917.57824,
+    "total_params_m": 999.49824,
+    "est_loss": 2.391221500820717,
+    "prefill_ms": 56.668232922732365,
+    "decode_ms_per_token": 31.711465773809525,
+    "latency_ms": 1642.2415216132088,
+    "memory_mb": 878.6726379394531,
+    "kv_cache_mb": 280.0,
+    "feasible": true
+   },
+   "obj": [
+    2.391221500820717,
+    1642.2415216132088,
+    878.6726379394531
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5376,\"n_head\":32,\"n_kv_head\":8}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5376,
+      "n_head": 32,
+      "n_kv_head": 8
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1479.682048,
+    "total_params_m": 1545.218048,
+    "est_loss": 2.305939370532036,
+    "prefill_ms": 91.21726584546471,
+    "decode_ms_per_token": 48.746363095238095,
+    "latency_ms": 2528.5354206073694,
+    "memory_mb": 1027.4195556640625,
+    "kv_cache_mb": 136.0,
+    "feasible": true
+   },
+   "obj": [
+    2.305939370532036,
+    2528.5354206073694,
+    1027.4195556640625
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5248,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5248,
+      "n_head": 32,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1111.341056,
+    "total_params_m": 1176.877056,
+    "est_loss": 2.3566564907657033,
+    "prefill_ms": 69.50333572228443,
+    "decode_ms_per_token": 37.87966071428571,
+    "latency_ms": 1963.4863714365702,
+    "memory_mb": 720.8260498046875,
+    "kv_cache_mb": 27.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3566564907657033,
+    1963.4863714365702,
+    720.8260498046875
+   ]
+  },
+  {
+   "key": "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":20,\"n_kv_head\":1}],\"n_layer\":16}",
+   "arch": {
+    "n_layer": 16,
+    "d_model": 2560,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 20,
+      "n_kv_head": 1
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 849.43104,
+    "total_params_m": 931.35104,
+    "est_loss": 2.4052872293169316,
+    "prefill_ms": 53.16693393057111,
+    "decode_ms_per_token": 29.788876488095237,
+    "latency_ms": 1542.610758335333,
+    "memory_mb": 578.1156311035156,
+    "kv_cache_mb": 16.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4052872293169316,
+    1542.610758335333,
+    578.1156311035156
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3328,\"n_head\":26,\"n_kv_head\":\"n_head\"}],\"n_layer\":17}",
+   "arch": {
+    "n_layer": 17,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3328,
+      "n_head": 26,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 470.77056,
+    "total_params_m": 524.01856,
+    "est_loss": 2.5156323826696005,
+    "prefill_ms": 32.04775587905935,
+    "decode_ms_per_token": 19.625571056547617,
+    "latency_ms": 1013.3263087064402,
+    "memory_mb": 564.6054611206055,
+    "kv_cache_mb": 221.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5156323826696005,
+    1013.3263087064402,
+    564.6054611206055
+   ]
+  },
+  {
+   "key": "{\"d_model\":2816,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5632,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":16}",
+   "arch": {
+    "n_layer": 16,
+    "d_model": 2816,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5632,
+      "n_head": 22,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1038.183168,
+    "total_params_m": 1128.295168,
+    "est_loss": 2.3688843584872052,
+    "prefill_ms": 63.75600268756999,
+    "decode_ms_per_token": 34.96719270833333,
+    "latency_ms": 1812.1156381042363,
+    "memory_mb": 699.7646942138672,
+    "kv_cache_mb": 32.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3688843584872052,
+    1812.1156381042363,
+    699.7646942138672
+   ]
+  },
+  {
+   "key": "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":20,\"n_kv_head\":\"n_head\"}],\"n_layer\":17}",
+   "arch": {
+    "n_layer": 17,
+    "d_model": 2560,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 20,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1114.2016,
+    "total_params_m": 1196.1216,
+    "est_loss": 2.3561961171803025,
+    "prefill_ms": 68.14888017917133,
+    "decode_ms_per_token": 37.40472470238095,
+    "latency_ms": 1938.385115298219,
+    "memory_mb": 1044.1496276855469,
+    "kv_cache_mb": 340.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3561961171803025,
+    1938.385115298219,
+    1044.1496276855469
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6528,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":25}",
+   "arch": {
+    "n_layer": 25,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6528,
+      "n_head": 32,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1225.627648,
+    "total_params_m": 1291.163648,
+    "est_loss": 2.339189648042854,
+    "prefill_ms": 75.59089406494961,
+    "decode_ms_per_token": 40.56582738095238,
+    "latency_ms": 2103.8822631125686,
+    "memory_mb": 780.1341552734375,
+    "kv_cache_mb": 25.0,
+    "feasible": true
+   },
+   "obj": [
+    2.339189648042854,
+    2103.8822631125686,
+    780.1341552734375
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":32,\"n_kv_head\":8}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 32,
+      "n_kv_head": 8
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1408.612352,
+    "total_params_m": 1474.148352,
+    "est_loss": 2.3145817776374056,
+    "prefill_ms": 86.14786517357223,
+    "decode_ms_per_token": 45.790660714285714,
+    "latency_ms": 2375.680900887858,
+    "memory_mb": 961.2947998046875,
+    "kv_cache_mb": 108.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3145817776374056,
+    2375.680900887858,
+    961.2947998046875
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6528,\"n_head\":16,\"n_kv_head\":2}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6528,
+      "n_head": 16,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1337.833472,
+    "total_params_m": 1403.369472,
+    "est_loss": 2.3236682647815035,
+    "prefill_ms": 82.18488197088466,
+    "decode_ms_per_token": 43.84923214285714,
+    "latency_ms": 2274.6464891137416,
+    "memory_mb": 869.3260498046875,
+    "kv_cache_mb": 54.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3236682647815035,
+    2274.6464891137416,
+    869.3260498046875
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5760,\"n_head\":32,\"n_kv_head\":8}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5760,
+      "n_head": 32,
+      "n_kv_head": 8
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1559.898112,
+    "total_params_m": 1625.434112,
+    "est_loss": 2.2967058119981316,
+    "prefill_ms": 95.70864680851062,
+    "decode_ms_per_token": 50.84464880952381,
+    "latency_ms": 2637.9410872847016,
+    "memory_mb": 1070.4508056640625,
+    "kv_cache_mb": 136.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2967058119981316,
+    2637.9410872847016,
+    1070.4508056640625
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":12,\"n_kv_head\":\"n_head\"}],\"n_layer\":17}",
+   "arch": {
+    "n_layer": 17,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 12,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 561.566208,
+    "total_params_m": 610.718208,
+    "est_loss": 2.482139635901966,
+    "prefill_ms": 37.12082015677492,
+    "decode_ms_per_token": 21.865120535714286,
+    "latency_ms": 1130.3768469424892,
+    "memory_mb": 594.1147766113281,
+    "kv_cache_mb": 204.0,
+    "feasible": true
+   },
+   "obj": [
+    2.482139635901966,
+    1130.3768469424892,
+    594.1147766113281
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":25}",
+   "arch": {
+    "n_layer": 25,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 26,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 995.822464,
+    "total_params_m": 1049.070464,
+    "est_loss": 2.376396243772332,
+    "prefill_ms": 62.68322642777156,
+    "decode_ms_per_token": 34.23317224702381,
+    "latency_ms": 1774.341838778962,
+    "memory_mb": 650.265251159668,
+    "kv_cache_mb": 25.0,
+    "feasible": true
+   },
+   "obj": [
+    2.376396243772332,
+    1774.341838778962,
+    650.265251159668
+   ]
+  },
+  {
+   "key": "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":16}",
+   "arch": {
+    "n_layer": 16,
+    "d_model": 3072,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8192,
+      "n_head": 24,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1560.382464,
+    "total_params_m": 1658.686464,
+    "est_loss": 2.29665162297935,
+    "prefill_ms": 93.01512564389698,
+    "decode_ms_per_token": 48.894461309523805,
+    "latency_ms": 2537.7381911200873,
+    "memory_mb": 1016.2887573242188,
+    "kv_cache_mb": 64.0,
+    "feasible": true
+   },
+   "obj": [
+    2.29665162297935,
+    2537.7381911200873,
+    1016.2887573242188
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3584,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":20}",
+   "arch": {
+    "n_layer": 20,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3584,
+      "n_head": 24,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 440.464896,
+    "total_params_m": 489.616896,
+    "est_loss": 2.528386274916513,
+    "prefill_ms": 30.80313191489362,
+    "decode_ms_per_token": 18.87402827380952,
+    "latency_ms": 974.5045456053697,
+    "memory_mb": 365.1509704589844,
+    "kv_cache_mb": 40.0,
+    "feasible": true
+   },
+   "obj": [
+    2.528386274916513,
+    974.5045456053697,
+    365.1509704589844
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":24,\"n_kv_head\":\"n_head\"}],\"n_layer\":17}",
+   "arch": {
+    "n_layer": 17,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 24,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 561.566208,
+    "total_params_m": 610.718208,
+    "est_loss": 2.482139635901966,
+    "prefill_ms": 37.12082015677492,
+    "decode_ms_per_token": 21.865120535714286,
+    "latency_ms": 1130.3768469424892,
+    "memory_mb": 594.1147766113281,
+    "kv_cache_mb": 204.0,
+    "feasible": true
+   },
+   "obj": [
+    2.482139635901966,
+    1130.3768469424892,
+    594.1147766113281
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5248,\"n_head\":16,\"n_kv_head\":4}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5248,
+      "n_head": 16,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1452.94336,
+    "total_params_m": 1518.47936,
+    "est_loss": 2.3091374407287417,
+    "prefill_ms": 89.72013885778276,
+    "decode_ms_per_token": 48.046934523809526,
+    "latency_ms": 2492.066865048259,
+    "memory_mb": 1013.0758056640625,
+    "kv_cache_mb": 136.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3091374407287417,
+    2492.066865048259,
+    1013.0758056640625
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3072,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3072,
+      "n_head": 24,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 530.92608,
+    "total_params_m": 580.07808,
+    "est_loss": 2.4927463819952576,
+    "prefill_ms": 36.94824860022396,
+    "decode_ms_per_token": 22.313638392857143,
+    "latency_ms": 1152.630168243081,
+    "memory_mb": 427.6781311035156,
+    "kv_cache_mb": 54.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4927463819952576,
+    1152.630168243081,
+    427.6781311035156
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6656,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6656,
+      "n_head": 32,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1344.91136,
+    "total_params_m": 1410.44736,
+    "est_loss": 2.322736607970158,
+    "prefill_ms": 82.5811802911534,
+    "decode_ms_per_token": 43.989374999999995,
+    "latency_ms": 2282.0499302911535,
+    "memory_mb": 846.1229248046875,
+    "kv_cache_mb": 27.0,
+    "feasible": true
+   },
+   "obj": [
+    2.322736607970158,
+    2282.0499302911535,
+    846.1229248046875
+   ]
+  },
+  {
+   "key": "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3840,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":17}",
+   "arch": {
+    "n_layer": 17,
+    "d_model": 1920,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3840,
+      "n_head": 30,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 509.77344,
+    "total_params_m": 571.21344,
+    "est_loss": 2.500460599076495,
+    "prefill_ms": 34.25292497200448,
+    "decode_ms_per_token": 20.520091145833334,
+    "latency_ms": 1060.2574822636711,
+    "memory_mb": 385.92276763916016,
+    "kv_cache_mb": 17.0,
+    "feasible": true
+   },
+   "obj": [
+    2.500460599076495,
+    1060.2574822636711,
+    385.92276763916016
+   ]
+  },
+  {
+   "key": "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":21}",
+   "arch": {
+    "n_layer": 21,
+    "d_model": 3072,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 24,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1948.910592,
+    "total_params_m": 2047.214592,
+    "est_loss": 2.2581692929028687,
+    "prefill_ms": 115.56222127659575,
+    "decode_ms_per_token": 59.84088392857143,
+    "latency_ms": 3107.606417705167,
+    "memory_mb": 1244.7114868164062,
+    "kv_cache_mb": 84.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2581692929028687,
+    3107.606417705167,
+    1244.7114868164062
+   ]
+  },
+  {
+   "key": "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6144,\"n_head\":48,\"n_kv_head\":4}],\"n_layer\":17}",
+   "arch": {
+    "n_layer": 17,
+    "d_model": 3072,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6144,
+      "n_head": 48,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1310.303232,
+    "total_params_m": 1408.607232,
+    "est_loss": 2.327343170085185,
+    "prefill_ms": 79.17152922732362,
+    "decode_ms_per_token": 42.452907738095234,
+    "latency_ms": 2201.8169161320857,
+    "memory_mb": 852.1358032226562,
+    "kv_cache_mb": 34.0,
+    "feasible": true
+   },
+   "obj": [
+    2.327343170085185,
+    2201.8169161320857,
+    852.1358032226562
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5376,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":16}",
+   "arch": {
+    "n_layer": 16,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5376,
+      "n_head": 16,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 796.985344,
+    "total_params_m": 862.521344,
+    "est_loss": 2.416965535203244,
+    "prefill_ms": 50.189163717805144,
+    "decode_ms_per_token": 28.388434523809522,
+    "latency_ms": 1469.6108899082813,
+    "memory_mb": 781.1925048828125,
+    "kv_cache_mb": 256.0,
+    "feasible": true
+   },
+   "obj": [
+    2.416965535203244,
+    1469.6108899082813,
+    781.1925048828125
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":32,\"n_kv_head\":8}],\"n_layer\":24}",
+   "arch": {
+    "n_layer": 24,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 32,
+      "n_kv_head": 8
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1252.100096,
+    "total_params_m": 1317.636096,
+    "est_loss": 2.3353937594642025,
+    "prefill_ms": 76.91738051511759,
+    "decode_ms_per_token": 41.226625,
+    "latency_ms": 2138.2486305151174,
+    "memory_mb": 865.3350830078125,
+    "kv_cache_mb": 96.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3353937594642025,
+    2138.2486305151174,
+    865.3350830078125
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":16,\"n_kv_head\":4}],\"n_layer\":21}",
+   "arch": {
+    "n_layer": 21,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 16,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1095.58784,
+    "total_params_m": 1161.12384,
+    "est_loss": 2.359214863170441,
+    "prefill_ms": 67.68689585666294,
+    "decode_ms_per_token": 36.66258928571428,
+    "latency_ms": 1900.816360142377,
+    "memory_mb": 769.3753662109375,
+    "kv_cache_mb": 84.0,
+    "feasible": true
+   },
+   "obj": [
+    2.359214863170441,
+    1900.816360142377,
+    769.3753662109375
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":32,\"n_kv_head\":8}],\"n_layer\":21}",
+   "arch": {
+    "n_layer": 21,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 32,
+      "n_kv_head": 8
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1095.58784,
+    "total_params_m": 1161.12384,
+    "est_loss": 2.359214863170441,
+    "prefill_ms": 67.68689585666294,
+    "decode_ms_per_token": 36.66258928571428,
+    "latency_ms": 1900.816360142377,
+    "memory_mb": 769.3753662109375,
+    "kv_cache_mb": 84.0,
+    "feasible": true
+   },
+   "obj": [
+    2.359214863170441,
+    1900.816360142377,
+    769.3753662109375
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":32,\"n_kv_head\":4}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 32,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1380.3008,
+    "total_params_m": 1445.8368,
+    "est_loss": 2.3181561092433665,
+    "prefill_ms": 84.5626718924972,
+    "decode_ms_per_token": 44.96008928571428,
+    "latency_ms": 2332.5671361782115,
+    "memory_mb": 892.1072998046875,
+    "kv_cache_mb": 54.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3181561092433665,
+    2332.5671361782115,
+    892.1072998046875
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5376,\"n_head\":32,\"n_kv_head\":8}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5376,
+      "n_head": 32,
+      "n_kv_head": 8
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1175.042048,
+    "total_params_m": 1240.578048,
+    "est_loss": 2.346694870794093,
+    "prefill_ms": 73.07002060470325,
+    "decode_ms_per_token": 39.680946428571424,
+    "latency_ms": 2057.1173420332743,
+    "memory_mb": 835.9979248046875,
+    "kv_cache_mb": 108.0,
+    "feasible": true
+   },
+   "obj": [
+    2.346694870794093,
+    2057.1173420332743,
+    835.9979248046875
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6912,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":18}",
+   "arch": {
+    "n_layer": 18,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6912,
+      "n_head": 32,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 924.919808,
+    "total_params_m": 990.455808,
+    "est_loss": 2.3897736761512087,
+    "prefill_ms": 57.663814557670776,
+    "decode_ms_per_token": 31.638267857142857,
+    "latency_ms": 1639.5772074148135,
+    "memory_mb": 611.8218994140625,
+    "kv_cache_mb": 18.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3897736761512087,
+    1639.5772074148135,
+    611.8218994140625
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":16,\"n_kv_head\":8}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 16,
+      "n_kv_head": 8
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1465.235456,
+    "total_params_m": 1530.771456,
+    "est_loss": 2.307659452558381,
+    "prefill_ms": 89.31825173572228,
+    "decode_ms_per_token": 47.45180357142857,
+    "latency_ms": 2461.908430307151,
+    "memory_mb": 1099.6697998046875,
+    "kv_cache_mb": 216.0,
+    "feasible": true
+   },
+   "obj": [
+    2.307659452558381,
+    2461.908430307151,
+    1099.6697998046875
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":12,\"n_kv_head\":\"n_head\"}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 12,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1098.926592,
+    "total_params_m": 1148.078592,
+    "est_loss": 2.3586693478859986,
+    "prefill_ms": 68.75118880179171,
+    "decode_ms_per_token": 37.62135267857143,
+    "latency_ms": 1949.8188227303629,
+    "memory_mb": 1002.3773498535156,
+    "kv_cache_mb": 324.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3586693478859986,
+    1949.8188227303629,
+    1002.3773498535156
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":32,\"n_kv_head\":8}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 32,
+      "n_kv_head": 8
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1426.204672,
+    "total_params_m": 1491.740672,
+    "est_loss": 2.3123994750922274,
+    "prefill_ms": 88.22301187010078,
+    "decode_ms_per_token": 47.347505952380956,
+    "latency_ms": 2455.5983094891485,
+    "memory_mb": 998.7320556640625,
+    "kv_cache_mb": 136.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3123994750922274,
+    2455.5983094891485,
+    998.7320556640625
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":21}",
+   "arch": {
+    "n_layer": 21,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 26,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 836.491136,
+    "total_params_m": 889.739136,
+    "est_loss": 2.408095027929952,
+    "prefill_ms": 53.14346562150055,
+    "decode_ms_per_token": 29.458728794642855,
+    "latency_ms": 1526.0799053536434,
+    "memory_mb": 560.7932662963867,
+    "kv_cache_mb": 21.0,
+    "feasible": true
+   },
+   "obj": [
+    2.408095027929952,
+    1526.0799053536434,
+    560.7932662963867
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5376,\"n_head\":32,\"n_kv_head\":8}],\"n_layer\":21}",
+   "arch": {
+    "n_layer": 21,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5376,
+      "n_head": 32,
+      "n_kv_head": 8
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 913.922048,
+    "total_params_m": 979.458048,
+    "est_loss": 2.3919471920370325,
+    "prefill_ms": 57.51523896976484,
+    "decode_ms_per_token": 31.910589285714284,
+    "latency_ms": 1653.0447032554791,
+    "memory_mb": 671.9222412109375,
+    "kv_cache_mb": 84.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3919471920370325,
+    1653.0447032554791,
+    671.9222412109375
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":24,\"n_kv_head\":\"n_head\"}],\"n_layer\":17}",
+   "arch": {
+    "n_layer": 17,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 24,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 691.917312,
+    "total_params_m": 741.069312,
+    "est_loss": 2.4430736753624167,
+    "prefill_ms": 44.41931422172452,
+    "decode_ms_per_token": 25.274834821428573,
+    "latency_ms": 1308.1610552931531,
+    "memory_mb": 664.0405578613281,
+    "kv_cache_mb": 204.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4430736753624167,
+    1308.1610552931531,
+    664.0405578613281
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":17}",
+   "arch": {
+    "n_layer": 17,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 12,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 508.088832,
+    "total_params_m": 557.240832,
+    "est_loss": 2.5010897118018014,
+    "prefill_ms": 34.12656618141098,
+    "decode_ms_per_token": 20.239596726190477,
+    "latency_ms": 1046.106402490935,
+    "memory_mb": 429.4272766113281,
+    "kv_cache_mb": 68.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5010897118018014,
+    1046.106402490935,
+    429.4272766113281
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5376,\"n_head\":16,\"n_kv_head\":8}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5376,
+      "n_head": 16,
+      "n_kv_head": 8
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1550.985216,
+    "total_params_m": 1616.521216,
+    "est_loss": 2.2977062261589065,
+    "prefill_ms": 95.20960447928331,
+    "decode_ms_per_token": 50.83817261904762,
+    "latency_ms": 2637.1182354316643,
+    "memory_mb": 1201.6695556640625,
+    "kv_cache_mb": 272.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2977062261589065,
+    2637.1182354316643,
+    1201.6695556640625
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5376,\"n_head\":12,\"n_kv_head\":\"n_head\"}],\"n_layer\":14}",
+   "arch": {
+    "n_layer": 14,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5376,
+      "n_head": 12,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 478.981632,
+    "total_params_m": 528.133632,
+    "est_loss": 2.5123286430708,
+    "prefill_ms": 32.03392340425532,
+    "decode_ms_per_token": 19.194879464285716,
+    "latency_ms": 991.7778966185411,
+    "memory_mb": 513.8129577636719,
+    "kv_cache_mb": 168.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5123286430708,
+    991.7778966185411,
+    513.8129577636719
+   ]
+  },
+  {
+   "key": "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":20,\"n_kv_head\":\"n_head\"}],\"n_layer\":18}",
+   "arch": {
+    "n_layer": 18,
+    "d_model": 2560,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 20,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1179.74272,
+    "total_params_m": 1261.66272,
+    "est_loss": 2.345982930402852,
+    "prefill_ms": 71.97576259798431,
+    "decode_ms_per_token": 39.30247767857143,
+    "latency_ms": 2037.0996465265557,
+    "memory_mb": 1099.3086242675781,
+    "kv_cache_mb": 360.0,
+    "feasible": true
+   },
+   "obj": [
+    2.345982930402852,
+    2037.0996465265557,
+    1099.3086242675781
+   ]
+  },
+  {
+   "key": "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":20,\"n_kv_head\":\"n_head\"}],\"n_layer\":14}",
+   "arch": {
+    "n_layer": 14,
+    "d_model": 2560,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 20,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1096.49152,
+    "total_params_m": 1178.41152,
+    "est_loss": 2.3590670354434384,
+    "prefill_ms": 66.6857737961926,
+    "decode_ms_per_token": 36.39146577380952,
+    "latency_ms": 1886.2590624866687,
+    "memory_mb": 974.6492004394531,
+    "kv_cache_mb": 280.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3590670354434384,
+    1886.2590624866687,
+    974.6492004394531
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":16,\"n_kv_head\":4}],\"n_layer\":21}",
+   "arch": {
+    "n_layer": 21,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 16,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 880.891904,
+    "total_params_m": 946.427904,
+    "est_loss": 2.3986482422273654,
+    "prefill_ms": 55.665846808510636,
+    "decode_ms_per_token": 31.046589285714283,
+    "latency_ms": 1607.995311094225,
+    "memory_mb": 654.2034912109375,
+    "kv_cache_mb": 84.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3986482422273654,
+    1607.995311094225,
+    654.2034912109375
+   ]
+  },
+  {
+   "key": "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":40,\"n_kv_head\":\"n_head\"}],\"n_layer\":16}",
+   "arch": {
+    "n_layer": 16,
+    "d_model": 2560,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 40,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1253.1328,
+    "total_params_m": 1335.0528,
+    "est_loss": 2.335247434685634,
+    "prefill_ms": 75.77061590145577,
+    "decode_ms_per_token": 40.855543154761904,
+    "latency_ms": 2118.547773639551,
+    "memory_mb": 1098.6781311035156,
+    "kv_cache_mb": 320.0,
+    "feasible": true
+   },
+   "obj": [
+    2.335247434685634,
+    2118.547773639551,
+    1098.6781311035156
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 14,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1182.990592,
+    "total_params_m": 1240.334592,
+    "est_loss": 2.3454928046307737,
+    "prefill_ms": 73.4865437849944,
+    "decode_ms_per_token": 39.584578125,
+    "latency_ms": 2052.7154500349943,
+    "memory_mb": 781.8673248291016,
+    "kv_cache_mb": 54.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3454928046307737,
+    2052.7154500349943,
+    781.8673248291016
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":32,\"n_kv_head\":4}],\"n_layer\":16}",
+   "arch": {
+    "n_layer": 16,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 32,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 654.379008,
+    "total_params_m": 719.915008,
+    "est_loss": 2.453452486129212,
+    "prefill_ms": 42.20448645016797,
+    "decode_ms_per_token": 24.284815476190474,
+    "latency_ms": 1256.4452602596916,
+    "memory_mb": 480.6925048828125,
+    "kv_cache_mb": 32.0,
+    "feasible": true
+   },
+   "obj": [
+    2.453452486129212,
+    1256.4452602596916,
+    480.6925048828125
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4992,\"n_head\":24,\"n_kv_head\":\"n_head\"}],\"n_layer\":17}",
+   "arch": {
+    "n_layer": 17,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4992,
+      "n_head": 24,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 551.5392,
+    "total_params_m": 600.6912,
+    "est_loss": 2.4855406934604347,
+    "prefill_ms": 36.55939753639417,
+    "decode_ms_per_token": 21.602834821428573,
+    "latency_ms": 1116.701138607823,
+    "memory_mb": 588.7358703613281,
+    "kv_cache_mb": 204.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4855406934604347,
+    1116.701138607823,
+    588.7358703613281
+   ]
+  },
+  {
+   "key": "{\"d_model\":2816,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5632,\"n_head\":44,\"n_kv_head\":2}],\"n_layer\":15}",
+   "arch": {
+    "n_layer": 15,
+    "d_model": 2816,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5632,
+      "n_head": 44,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 962.483456,
+    "total_params_m": 1052.595456,
+    "est_loss": 2.3825542288753767,
+    "prefill_ms": 59.359613437849944,
+    "decode_ms_per_token": 32.808712053571426,
+    "latency_ms": 1699.7952161164212,
+    "memory_mb": 642.1562042236328,
+    "kv_cache_mb": 15.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3825542288753767,
+    1699.7952161164212,
+    642.1562042236328
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5632,\"n_head\":16,\"n_kv_head\":2}],\"n_layer\":16}",
+   "arch": {
+    "n_layer": 16,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5632,
+      "n_head": 16,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 704.710656,
+    "total_params_m": 770.246656,
+    "est_loss": 2.439674345376094,
+    "prefill_ms": 45.0226078387458,
+    "decode_ms_per_token": 25.601386904761902,
+    "latency_ms": 1325.091953076841,
+    "memory_mb": 507.6925048828125,
+    "kv_cache_mb": 32.0,
+    "feasible": true
+   },
+   "obj": [
+    2.439674345376094,
+    1325.091953076841,
+    507.6925048828125
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":16,\"n_kv_head\":4}],\"n_layer\":24}",
+   "arch": {
+    "n_layer": 24,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 16,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1252.100096,
+    "total_params_m": 1317.636096,
+    "est_loss": 2.3353937594642025,
+    "prefill_ms": 76.91738051511759,
+    "decode_ms_per_token": 41.226625,
+    "latency_ms": 2138.2486305151174,
+    "memory_mb": 865.3350830078125,
+    "kv_cache_mb": 96.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3353937594642025,
+    2138.2486305151174,
+    865.3350830078125
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":32,\"n_kv_head\":1}],\"n_layer\":24}",
+   "arch": {
+    "n_layer": 24,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 32,
+      "n_kv_head": 1
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1208.059904,
+    "total_params_m": 1273.595904,
+    "est_loss": 2.3417577131088287,
+    "prefill_ms": 74.45152430011198,
+    "decode_ms_per_token": 39.934625000000004,
+    "latency_ms": 2071.182774300112,
+    "memory_mb": 757.7100830078125,
+    "kv_cache_mb": 12.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3417577131088287,
+    2071.182774300112,
+    757.7100830078125
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":16,\"n_kv_head\":2}],\"n_layer\":16}",
+   "arch": {
+    "n_layer": 16,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 16,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 817.956864,
+    "total_params_m": 883.492864,
+    "est_loss": 2.4121992194320114,
+    "prefill_ms": 51.36338096304591,
+    "decode_ms_per_token": 28.56367261904762,
+    "latency_ms": 1479.547011915427,
+    "memory_mb": 568.4425048828125,
+    "kv_cache_mb": 32.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4121992194320114,
+    1479.547011915427,
+    568.4425048828125
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5632,\"n_head\":16,\"n_kv_head\":2}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5632,
+      "n_head": 16,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1497.50784,
+    "total_params_m": 1563.04384,
+    "est_loss": 2.3038416803289414,
+    "prefill_ms": 92.21535050391937,
+    "decode_ms_per_token": 49.099315476190476,
+    "latency_ms": 2547.1811243134434,
+    "memory_mb": 968.9820556640625,
+    "kv_cache_mb": 68.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3038416803289414,
+    2547.1811243134434,
+    968.9820556640625
+   ]
+  },
+  {
+   "key": "{\"d_model\":2816,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":16}",
+   "arch": {
+    "n_layer": 16,
+    "d_model": 2816,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 22,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1193.896704,
+    "total_params_m": 1284.008704,
+    "est_loss": 2.343857530125662,
+    "prefill_ms": 72.47456573348265,
+    "decode_ms_per_token": 39.04033556547619,
+    "latency_ms": 2024.4913440072921,
+    "memory_mb": 783.2959442138672,
+    "kv_cache_mb": 32.0,
+    "feasible": true
+   },
+   "obj": [
+    2.343857530125662,
+    2024.4913440072921,
+    783.2959442138672
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4864,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":37}",
+   "arch": {
+    "n_layer": 37,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4864,
+      "n_head": 16,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1726.633984,
+    "total_params_m": 1792.169984,
+    "est_loss": 2.2790479439578597,
+    "prefill_ms": 105.51156237402016,
+    "decode_ms_per_token": 56.416113095238096,
+    "latency_ms": 2926.317217135925,
+    "memory_mb": 1615.8948974609375,
+    "kv_cache_mb": 592.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2790479439578597,
+    2926.317217135925,
+    1615.8948974609375
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4992,\"n_head\":16,\"n_kv_head\":8}],\"n_layer\":24}",
+   "arch": {
+    "n_layer": 24,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4992,
+      "n_head": 16,
+      "n_kv_head": 8
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1038.190592,
+    "total_params_m": 1103.726592,
+    "est_loss": 2.368883071068658,
+    "prefill_ms": 64.94036461366181,
+    "decode_ms_per_token": 35.791196428571425,
+    "latency_ms": 1854.500186042233,
+    "memory_mb": 846.5850830078125,
+    "kv_cache_mb": 192.0,
+    "feasible": true
+   },
+   "obj": [
+    2.368883071068658,
+    1854.500186042233,
+    846.5850830078125
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5376,\"n_head\":26,\"n_kv_head\":\"n_head\"}],\"n_layer\":16}",
+   "arch": {
+    "n_layer": 16,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5376,
+      "n_head": 26,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 606.656128,
+    "total_params_m": 659.904128,
+    "est_loss": 2.467612981697029,
+    "prefill_ms": 39.5014718924972,
+    "decode_ms_per_token": 23.00838876488095,
+    "latency_ms": 1189.9209101365448,
+    "memory_mb": 624.5001602172852,
+    "kv_cache_mb": 208.0,
+    "feasible": true
+   },
+   "obj": [
+    2.467612981697029,
+    1189.9209101365448,
+    624.5001602172852
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5632,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":24}",
+   "arch": {
+    "n_layer": 24,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5632,
+      "n_head": 32,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1044.482048,
+    "total_params_m": 1110.018048,
+    "est_loss": 2.367795596821193,
+    "prefill_ms": 65.29262978723405,
+    "decode_ms_per_token": 35.67576785714286,
+    "latency_ms": 1849.081022644377,
+    "memory_mb": 681.9600830078125,
+    "kv_cache_mb": 24.0,
+    "feasible": true
+   },
+   "obj": [
+    2.367795596821193,
+    1849.081022644377,
+    681.9600830078125
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 32,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1372.727296,
+    "total_params_m": 1438.263296,
+    "est_loss": 2.3191256462286636,
+    "prefill_ms": 85.22875789473684,
+    "decode_ms_per_token": 45.77864880952381,
+    "latency_ms": 2374.161198370927,
+    "memory_mb": 868.0445556640625,
+    "kv_cache_mb": 34.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3191256462286636,
+    2374.161198370927,
+    868.0445556640625
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":28,\"n_kv_head\":\"n_head\"}],\"n_layer\":17}",
+   "arch": {
+    "n_layer": 17,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 28,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 686.355712,
+    "total_params_m": 743.699712,
+    "est_loss": 2.4445726013813047,
+    "prefill_ms": 44.12927166853303,
+    "decode_ms_per_token": 25.400307291666667,
+    "latency_ms": 1314.1446362518664,
+    "memory_mb": 699.4516143798828,
+    "kv_cache_mb": 238.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4445726013813047,
+    1314.1446362518664,
+    699.4516143798828
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":32,\"n_kv_head\":4}],\"n_layer\":24}",
+   "arch": {
+    "n_layer": 24,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 32,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1226.934272,
+    "total_params_m": 1292.470272,
+    "est_loss": 2.339000229658393,
+    "prefill_ms": 75.50831982082866,
+    "decode_ms_per_token": 40.48833928571429,
+    "latency_ms": 2099.925284106543,
+    "memory_mb": 803.8350830078125,
+    "kv_cache_mb": 48.0,
+    "feasible": true
+   },
+   "obj": [
+    2.339000229658393,
+    2099.925284106543,
+    803.8350830078125
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":24,\"n_kv_head\":8}],\"n_layer\":17}",
+   "arch": {
+    "n_layer": 17,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 24,
+      "n_kv_head": 8
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 508.088832,
+    "total_params_m": 557.240832,
+    "est_loss": 2.5010897118018014,
+    "prefill_ms": 34.12656618141098,
+    "decode_ms_per_token": 20.239596726190477,
+    "latency_ms": 1046.106402490935,
+    "memory_mb": 429.4272766113281,
+    "kv_cache_mb": 68.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5010897118018014,
+    1046.106402490935,
+    429.4272766113281
+   ]
+  },
+  {
+   "key": "{\"d_model\":2816,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5632,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":24}",
+   "arch": {
+    "n_layer": 24,
+    "d_model": 2816,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5632,
+      "n_head": 22,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1557.273344,
+    "total_params_m": 1647.385344,
+    "est_loss": 2.2969997847547137,
+    "prefill_ms": 94.0834705487122,
+    "decode_ms_per_token": 49.77218080357143,
+    "latency_ms": 2582.6925107272837,
+    "memory_mb": 994.2263641357422,
+    "kv_cache_mb": 48.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2969997847547137,
+    2582.6925107272837,
+    994.2263641357422
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":32,\"n_kv_head\":4}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 32,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1738.156032,
+    "total_params_m": 1803.692032,
+    "est_loss": 2.277896237893232,
+    "prefill_ms": 105.6894933930571,
+    "decode_ms_per_token": 55.39417261904762,
+    "latency_ms": 2875.398124345438,
+    "memory_mb": 1098.0758056640625,
+    "kv_cache_mb": 68.0,
+    "feasible": true
+   },
+   "obj": [
+    2.277896237893232,
+    2875.398124345438,
+    1098.0758056640625
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4608,\"n_head\":28,\"n_kv_head\":4}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4608,
+      "n_head": 28,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1091.953408,
+    "total_params_m": 1149.297408,
+    "est_loss": 2.3598107264448345,
+    "prefill_ms": 69.47439462486003,
+    "decode_ms_per_token": 38.27656770833333,
+    "latency_ms": 1983.3027800415266,
+    "memory_mb": 747.0311737060547,
+    "kv_cache_mb": 68.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3598107264448345,
+    1983.3027800415266,
+    747.0311737060547
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":16,\"n_kv_head\":8}],\"n_layer\":24}",
+   "arch": {
+    "n_layer": 24,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 16,
+      "n_kv_head": 8
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1302.431744,
+    "total_params_m": 1367.967744,
+    "est_loss": 2.328409192286613,
+    "prefill_ms": 79.7355019036954,
+    "decode_ms_per_token": 42.70319642857143,
+    "latency_ms": 2214.895323332267,
+    "memory_mb": 988.3350830078125,
+    "kv_cache_mb": 192.0,
+    "feasible": true
+   },
+   "obj": [
+    2.328409192286613,
+    2214.895323332267,
+    988.3350830078125
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4992,\"n_head\":32,\"n_kv_head\":8}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4992,
+      "n_head": 32,
+      "n_kv_head": 8
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1399.465984,
+    "total_params_m": 1465.001984,
+    "est_loss": 2.31572798875739,
+    "prefill_ms": 86.72588488241881,
+    "decode_ms_per_token": 46.64807738095238,
+    "latency_ms": 2419.129753930038,
+    "memory_mb": 984.3883056640625,
+    "kv_cache_mb": 136.0,
+    "feasible": true
+   },
+   "obj": [
+    2.31572798875739,
+    2419.129753930038,
+    984.3883056640625
+   ]
+  },
+  {
+   "key": "{\"d_model\":2816,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":21}",
+   "arch": {
+    "n_layer": 21,
+    "d_model": 2816,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 22,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1566.988544,
+    "total_params_m": 1657.100544,
+    "est_loss": 2.2959143402508997,
+    "prefill_ms": 94.15378409854424,
+    "decode_ms_per_token": 49.56631026785714,
+    "latency_ms": 2572.4692974914014,
+    "memory_mb": 993.4380035400391,
+    "kv_cache_mb": 42.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2959143402508997,
+    2572.4692974914014,
+    993.4380035400391
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5632,\"n_head\":16,\"n_kv_head\":1}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5632,
+      "n_head": 16,
+      "n_kv_head": 1
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1479.682048,
+    "total_params_m": 1545.218048,
+    "est_loss": 2.305939370532036,
+    "prefill_ms": 91.21726584546471,
+    "decode_ms_per_token": 48.576363095238094,
+    "latency_ms": 2520.0354206073694,
+    "memory_mb": 925.4195556640625,
+    "kv_cache_mb": 34.0,
+    "feasible": true
+   },
+   "obj": [
+    2.305939370532036,
+    2520.0354206073694,
+    925.4195556640625
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4992,\"n_head\":24,\"n_kv_head\":\"n_head\"}],\"n_layer\":16}",
+   "arch": {
+    "n_layer": 16,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4992,
+      "n_head": 24,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "crossover",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 519.095808,
+    "total_params_m": 568.247808,
+    "est_loss": 2.49701914081266,
+    "prefill_ms": 34.588558118701,
+    "decode_ms_per_token": 20.584183035714286,
+    "latency_ms": 1063.7977099044153,
+    "memory_mb": 559.3318786621094,
+    "kv_cache_mb": 192.0,
+    "feasible": true
+   },
+   "obj": [
+    2.49701914081266,
+    1063.7977099044153,
+    559.3318786621094
+   ]
+  }
+ ],
+ "knowledge_base": {
+  "FULL": []
+ },
+ "hv": NaN,
+ "igd": NaN,
+ "config": {
+  "type": "slm",
+  "data_dir": null,
+  "results_dir": "results",
+  "spaces": {
+   "slm": {
+    "spec": {
+     "heterogeneous": false,
+     "n_layer": [
+      8,
+      40,
+      1
+     ],
+     "d_model": [
+      512,
+      3072,
+      128
+     ],
+     "d_inner": [
+      1024,
+      16384,
+      128
+     ],
+     "ffn_ratio": [
+      2,
+      8
+     ],
+     "n_head": [
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18,
+      20,
+      22,
+      24,
+      26,
+      28,
+      30,
+      32,
+      36,
+      40,
+      44,
+      48
+     ],
+     "head_dims": [
+      64,
+      128
+     ],
+     "n_kv_head": [
+      1,
+      2,
+      4,
+      8,
+      "n_head"
+     ],
+     "ffn": [
+      "gated"
+     ],
+     "vocab_size": 32000,
+     "tie_embeddings": true
+    },
+    "niches": [
+     0,
+     250,
+     500,
+     1000,
+     2000,
+     3000
+    ],
+    "niche_labels": [
+     "<250M",
+     "250-500M",
+     "0.5-1B",
+     "1-2B",
+     "2-3B",
+     ">=3B"
+    ]
+   },
+   "lts_gpt2": {
+    "spec": {
+     "heterogeneous": true,
+     "n_layer": [
+      2,
+      16,
+      1
+     ],
+     "d_model": [
+      128,
+      1024,
+      64
+     ],
+     "d_inner": [
+      256,
+      4096,
+      64
+     ],
+     "ffn_ratio": [
+      2,
+      32
+     ],
+     "n_head": [
+      2,
+      4,
+      8
+     ],
+     "head_dims": [],
+     "n_kv_head": [
+      "n_head"
+     ],
+     "ffn": [
+      "standard"
+     ],
+     "vocab_size": 50257,
+     "tie_embeddings": true
+    },
+    "niches": [
+     0,
+     10,
+     25,
+     50,
+     75,
+     100
+    ],
+    "niche_labels": [
+     "<10M",
+     "10-25M",
+     "25-50M",
+     "50-75M",
+     "75-100M",
+     ">=100M"
+    ]
+   }
+  },
+  "devices": {
+   "jetson_orin_nx_16gb": {
+    "profile": "jetson_orin_nx_16gb"
+   },
+   "snapdragon_8gen1_cpu": {
+    "profile": "snapdragon_8gen1_cpu"
+   },
+   "rtx3050ti_laptop": {
+    "profile": "rtx3050ti_laptop",
+    "calibration": "configs/slm/devices/rtx3050ti_laptop.json"
+   },
+   "local_cpu": {
+    "profile": "generic_cpu",
+    "calibration": "configs/slm/devices/local_cpu.json"
+   }
+  },
+  "workload": {
+   "prompt_tokens": 50,
+   "gen_tokens": 50,
+   "context": 2048,
+   "weight_dtype": "q4_k_m",
+   "kv_dtype": "f16",
+   "compute_buffer_tokens": 512
+  },
+  "objectives": [
+   "quality",
+   "latency",
+   "memory"
+  ],
+  "hardware": {
+   "source": "analytical",
+   "measure_device": "cpu",
+   "cache_dir": null,
+   "latency_limit_ms": null
+  },
+  "search": {
+   "generations": 3,
+   "crossover_prob": 0.5,
+   "partitioning": false,
+   "operator": "random",
+   "knowledge_base": true,
+   "kb_seed": "none",
+   "init_pop_per_niche": 5,
+   "n_child": 4,
+   "n_parents_shown": 6,
+   "mutation_prob": 0.3,
+   "match_budget": true
+  },
+  "llm": {
+   "backend": "mock",
+   "model": "gpt-4.1",
+   "temperature": 0.7,
+   "base_url": null,
+   "api_key_env": "OPENAI_API_KEY",
+   "max_tokens": 4096,
+   "mode": "record"
+  },
+  "variant": "lts_search",
+  "code_version": "bd5df23-dirty"
+ }
+}

@@ -1,0 +1,5452 @@
+{
+ "kind": "slm",
+ "dataset": "slm",
+ "device": "snapdragon_8gen1_cpu",
+ "seed": 0,
+ "variant": "no_partitioning",
+ "objectives": [
+  "quality",
+  "latency",
+  "memory"
+ ],
+ "n_front": 113,
+ "n_evaluated": 143,
+ "search_time_s": 6989.81,
+ "llm_usage": {
+  "api_calls": 20,
+  "input_tokens": 71234,
+  "output_tokens": 37788,
+  "llm_wall_time_s": 6988.3,
+  "replay_mismatches": 0
+ },
+ "proposal_stats": {
+  "proposed": 237,
+  "invalid": 0,
+  "repaired": 171,
+  "out_of_niche": 0,
+  "duplicate": 124,
+  "infeasible": 0,
+  "accepted": 113,
+  "parse_failures": 0
+ },
+ "final_front": [
+  "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":27}",
+  "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":16,\"n_kv_head\":2}],\"n_layer\":29}",
+  "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6912,\"n_head\":16,\"n_kv_head\":2}],\"n_layer\":27}",
+  "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":28}",
+  "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":29}",
+  "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":28}",
+  "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":22}",
+  "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":29}",
+  "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":8,\"n_kv_head\":\"n_head\"}],\"n_layer\":17}",
+  "{\"d_model\":1152,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":2944,\"n_head\":18,\"n_kv_head\":2}],\"n_layer\":29}",
+  "{\"d_model\":1152,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":18,\"n_kv_head\":2}],\"n_layer\":28}",
+  "{\"d_model\":1152,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":18,\"n_kv_head\":1}],\"n_layer\":10}",
+  "{\"d_model\":1152,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9216,\"n_head\":18,\"n_kv_head\":1}],\"n_layer\":29}",
+  "{\"d_model\":1152,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9216,\"n_head\":18,\"n_kv_head\":2}],\"n_layer\":23}",
+  "{\"d_model\":1152,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9216,\"n_head\":18,\"n_kv_head\":2}],\"n_layer\":34}",
+  "{\"d_model\":1280,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":10240,\"n_head\":10,\"n_kv_head\":\"n_head\"}],\"n_layer\":22}",
+  "{\"d_model\":1280,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9856,\"n_head\":20,\"n_kv_head\":\"n_head\"}],\"n_layer\":11}",
+  "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5632,\"n_head\":22,\"n_kv_head\":\"n_head\"}],\"n_layer\":27}",
+  "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7552,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":29}",
+  "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":28}",
+  "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":29}",
+  "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8320,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3072,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":17}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":28}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":29}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":29}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7296,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":28}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7424,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":29}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":24,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":24,\"n_kv_head\":1}],\"n_layer\":30}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":28}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":29}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":28}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":29}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":30}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7808,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":29}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7808,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7808,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":29}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7936,\"n_head\":24,\"n_kv_head\":\"n_head\"}],\"n_layer\":28}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7936,\"n_head\":24,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7936,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":29}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7936,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":24,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8320,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8448,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8576,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8960,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":30}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":13312,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":29}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":28}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":26,\"n_kv_head\":\"n_head\"}],\"n_layer\":29}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":28}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":29}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8576,\"n_head\":26,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":26,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":26,\"n_kv_head\":\"n_head\"}],\"n_layer\":34}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":31}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":34}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8960,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":10624,\"n_head\":28,\"n_kv_head\":2}],\"n_layer\":15}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":14,\"n_kv_head\":\"n_head\"}],\"n_layer\":21}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8320,\"n_head\":28,\"n_kv_head\":\"n_head\"}],\"n_layer\":28}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8320,\"n_head\":28,\"n_kv_head\":2}],\"n_layer\":29}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8320,\"n_head\":28,\"n_kv_head\":4}],\"n_layer\":28}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8320,\"n_head\":28,\"n_kv_head\":4}],\"n_layer\":29}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8320,\"n_head\":28,\"n_kv_head\":4}],\"n_layer\":30}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8448,\"n_head\":28,\"n_kv_head\":\"n_head\"}],\"n_layer\":28}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8576,\"n_head\":28,\"n_kv_head\":\"n_head\"}],\"n_layer\":28}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8576,\"n_head\":28,\"n_kv_head\":\"n_head\"}],\"n_layer\":29}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8576,\"n_head\":28,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8576,\"n_head\":28,\"n_kv_head\":4}],\"n_layer\":29}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8576,\"n_head\":28,\"n_kv_head\":4}],\"n_layer\":30}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":28,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":28,\"n_kv_head\":2}],\"n_layer\":34}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":28,\"n_kv_head\":4}],\"n_layer\":29}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8960,\"n_head\":28,\"n_kv_head\":\"n_head\"}],\"n_layer\":29}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9088,\"n_head\":28,\"n_kv_head\":4}],\"n_layer\":29}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9216,\"n_head\":28,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9216,\"n_head\":28,\"n_kv_head\":4}],\"n_layer\":30}",
+  "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":27}",
+  "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":30,\"n_kv_head\":\"n_head\"}],\"n_layer\":35}",
+  "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8320,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":10624,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":10624,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":34}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":14848,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":25}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5760,\"n_head\":16,\"n_kv_head\":2}],\"n_layer\":28}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":27}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9216,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":2304,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6144,\"n_head\":36,\"n_kv_head\":4}],\"n_layer\":13}",
+  "{\"d_model\":2304,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":36,\"n_kv_head\":4}],\"n_layer\":17}",
+  "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":20,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+  "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":20,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9216,\"n_head\":20,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+  "{\"d_model\":2816,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5632,\"n_head\":22,\"n_kv_head\":1}],\"n_layer\":15}",
+  "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":48,\"n_kv_head\":4}],\"n_layer\":21}",
+  "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4096,\"n_head\":8,\"n_kv_head\":\"n_head\"}],\"n_layer\":38}",
+  "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4224,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":14}",
+  "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4864,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":25}",
+  "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":10,\"n_kv_head\":1}],\"n_layer\":8}",
+  "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":14}",
+  "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4608,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":24}",
+  "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":\"n_head\"}],\"n_layer\":27}",
+  "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":\"n_head\"}],\"n_layer\":28}",
+  "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":\"n_head\"}],\"n_layer\":34}",
+  "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":29}"
+ ],
+ "evaluated": [
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5248,\"n_head\":32,\"n_kv_head\":8}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5248,
+      "n_head": 32,
+      "n_kv_head": 8
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1452.94336,
+    "total_params_m": 1518.47936,
+    "est_loss": 2.3091374407287417,
+    "prefill_ms": 1463.13568,
+    "decode_ms_per_token": 61.32570833333333,
+    "latency_ms": 4529.421096666667,
+    "memory_mb": 1013.0758056640625,
+    "kv_cache_mb": 136.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3091374407287417,
+    4529.421096666667,
+    1013.0758056640625
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 32,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1366.145024,
+    "total_params_m": 1431.681024,
+    "est_loss": 2.3199729752210665,
+    "prefill_ms": 1374.920544,
+    "decode_ms_per_token": 57.192725,
+    "latency_ms": 4234.556794,
+    "memory_mb": 857.5135498046875,
+    "kv_cache_mb": 27.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3199729752210665,
+    4234.556794,
+    857.5135498046875
+   ]
+  },
+  {
+   "key": "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":20,\"n_kv_head\":\"n_head\"}],\"n_layer\":16}",
+   "arch": {
+    "n_layer": 16,
+    "d_model": 2560,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 20,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1048.66048,
+    "total_params_m": 1130.58048,
+    "est_loss": 2.367077245287646,
+    "prefill_ms": 1055.94688,
+    "decode_ms_per_token": 45.74976041666667,
+    "latency_ms": 3343.4349008333334,
+    "memory_mb": 988.9906311035156,
+    "kv_cache_mb": 320.0,
+    "feasible": true
+   },
+   "obj": [
+    2.367077245287646,
+    3343.4349008333334,
+    988.9906311035156
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3072,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":17}",
+   "arch": {
+    "n_layer": 17,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3072,
+      "n_head": 12,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 347.656704,
+    "total_params_m": 396.808704,
+    "est_loss": 2.5742649100519963,
+    "prefill_ms": 353.64534399999997,
+    "decode_ms_per_token": 18.390235416666666,
+    "latency_ms": 1273.1571148333333,
+    "memory_mb": 343.3647766113281,
+    "kv_cache_mb": 68.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5742649100519963,
+    1273.1571148333333,
+    343.3647766113281
+   ]
+  },
+  {
+   "key": "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":48,\"n_kv_head\":4}],\"n_layer\":21}",
+   "arch": {
+    "n_layer": 21,
+    "d_model": 3072,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8192,
+      "n_head": 48,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 2014.97088,
+    "total_params_m": 2113.27488,
+    "est_loss": 2.252455689442458,
+    "prefill_ms": 2024.2625600000001,
+    "decode_ms_per_token": 81.5884375,
+    "latency_ms": 6103.684435,
+    "memory_mb": 1238.1489868164062,
+    "kv_cache_mb": 42.0,
+    "feasible": true
+   },
+   "obj": [
+    2.252455689442458,
+    6103.684435,
+    1238.1489868164062
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":10,\"n_kv_head\":1}],\"n_layer\":8}",
+   "arch": {
+    "n_layer": 8,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 10,
+      "n_kv_head": 1
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 85.86304,
+    "total_params_m": 106.34304,
+    "est_loss": 2.862934468319375,
+    "prefill_ms": 89.32864000000001,
+    "decode_ms_per_token": 6.7037317708333335,
+    "latency_ms": 424.51522854166666,
+    "memory_mb": 123.5468521118164,
+    "kv_cache_mb": 4.0,
+    "feasible": true
+   },
+   "obj": [
+    2.862934468319375,
+    424.51522854166666,
+    123.5468521118164
+   ]
+  },
+  {
+   "key": "{\"d_model\":1280,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":10240,\"n_head\":10,\"n_kv_head\":\"n_head\"}],\"n_layer\":22}",
+   "arch": {
+    "n_layer": 22,
+    "d_model": 1280,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 10240,
+      "n_head": 10,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1009.312,
+    "total_params_m": 1050.272,
+    "est_loss": 2.373967395015564,
+    "prefill_ms": 1015.7392000000001,
+    "decode_ms_per_token": 43.175442708333335,
+    "latency_ms": 3174.511335416667,
+    "memory_mb": 845.9098052978516,
+    "kv_cache_mb": 220.0,
+    "feasible": true
+   },
+   "obj": [
+    2.373967395015564,
+    3174.511335416667,
+    845.9098052978516
+   ]
+  },
+  {
+   "key": "{\"d_model\":2304,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6144,\"n_head\":36,\"n_kv_head\":4}],\"n_layer\":13}",
+   "arch": {
+    "n_layer": 13,
+    "d_model": 2304,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6144,
+      "n_head": 36,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 705.491712,
+    "total_params_m": 779.219712,
+    "est_loss": 2.439468965473174,
+    "prefill_ms": 711.763872,
+    "decode_ms_per_token": 31.896544791666667,
+    "latency_ms": 2306.5911115833333,
+    "memory_mb": 506.5060272216797,
+    "kv_cache_mb": 26.0,
+    "feasible": true
+   },
+   "obj": [
+    2.439468965473174,
+    2306.5911115833333,
+    506.5060272216797
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":\"n_head\"}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 14,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 606.978176,
+    "total_params_m": 635.650176,
+    "est_loss": 2.4675134538409917,
+    "prefill_ms": 613.461216,
+    "decode_ms_per_token": 28.4192046875,
+    "latency_ms": 2034.421450375,
+    "memory_mb": 592.4893264770508,
+    "kv_cache_mb": 189.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4675134538409917,
+    2034.421450375,
+    592.4893264770508
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":14,\"n_kv_head\":\"n_head\"}],\"n_layer\":21}",
+   "arch": {
+    "n_layer": 21,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8192,
+      "n_head": 14,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1194.667264,
+    "total_params_m": 1252.011264,
+    "est_loss": 2.3437426000350197,
+    "prefill_ms": 1201.795744,
+    "decode_ms_per_token": 50.636021875000004,
+    "latency_ms": 3733.5968377500003,
+    "memory_mb": 1028.1311798095703,
+    "kv_cache_mb": 294.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3437426000350197,
+    3733.5968377500003,
+    1028.1311798095703
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5760,\"n_head\":16,\"n_kv_head\":2}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5760,
+      "n_head": 16,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1255.262208,
+    "total_params_m": 1320.798208,
+    "est_loss": 2.3349461260837723,
+    "prefill_ms": 1264.240128,
+    "decode_ms_per_token": 53.29974166666666,
+    "latency_ms": 3929.227211333333,
+    "memory_mb": 827.0313720703125,
+    "kv_cache_mb": 56.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3349461260837723,
+    3929.227211333333,
+    827.0313720703125
+   ]
+  },
+  {
+   "key": "{\"d_model\":1152,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":18,\"n_kv_head\":1}],\"n_layer\":10}",
+   "arch": {
+    "n_layer": 10,
+    "d_model": 1152,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8704,
+      "n_head": 18,
+      "n_kv_head": 1
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 328.851072,
+    "total_params_m": 365.715072,
+    "est_loss": 2.5851678078692535,
+    "prefill_ms": 333.164352,
+    "decode_ms_per_token": 16.404552604166668,
+    "latency_ms": 1153.3919822083335,
+    "memory_mb": 263.68485260009766,
+    "kv_cache_mb": 5.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5851678078692535,
+    1153.3919822083335,
+    263.68485260009766
+   ]
+  },
+  {
+   "key": "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":8,\"n_kv_head\":\"n_head\"}],\"n_layer\":17}",
+   "arch": {
+    "n_layer": 17,
+    "d_model": 1024,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8192,
+      "n_head": 8,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 499.158016,
+    "total_params_m": 531.926016,
+    "est_loss": 2.5044628346417372,
+    "prefill_ms": 504.383776,
+    "decode_ms_per_token": 23.49704583333333,
+    "latency_ms": 1679.2360676666667,
+    "memory_mb": 483.84735107421875,
+    "kv_cache_mb": 136.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5044628346417372,
+    1679.2360676666667,
+    483.84735107421875
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":14848,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":25}",
+   "arch": {
+    "n_layer": 25,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 14848,
+      "n_head": 16,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 2700.187648,
+    "total_params_m": 2765.723648,
+    "est_loss": 2.2028997983256167,
+    "prefill_ms": 2708.558368,
+    "decode_ms_per_token": 106.71715833333333,
+    "latency_ms": 8044.416284666667,
+    "memory_mb": 1946.1497802734375,
+    "kv_cache_mb": 400.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2028997983256167,
+    8044.416284666667,
+    1946.1497802734375
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":10624,\"n_head\":28,\"n_kv_head\":2}],\"n_layer\":15}",
+   "arch": {
+    "n_layer": 15,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 10624,
+      "n_head": 28,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 959.994112,
+    "total_params_m": 1017.338112,
+    "est_loss": 2.383023207446265,
+    "prefill_ms": 965.984992,
+    "decode_ms_per_token": 40.791034375,
+    "latency_ms": 3005.53671075,
+    "memory_mb": 623.2426910400391,
+    "kv_cache_mb": 15.0,
+    "feasible": true
+   },
+   "obj": [
+    2.383023207446265,
+    3005.53671075,
+    623.2426910400391
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":2816,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 2816,
+      "n_head": 22,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 146.008192,
+    "total_params_m": 191.064192,
+    "est_loss": 2.7497170977650653,
+    "prefill_ms": 150.442912,
+    "decode_ms_per_token": 9.9179796875,
+    "latency_ms": 646.341896375,
+    "memory_mb": 173.99481964111328,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.7497170977650653,
+    646.341896375,
+    173.99481964111328
+   ]
+  },
+  {
+   "key": "{\"d_model\":1152,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9216,\"n_head\":18,\"n_kv_head\":1}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1152,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 9216,
+      "n_head": 18,
+      "n_kv_head": 1
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1004.980608,
+    "total_params_m": 1041.844608,
+    "est_loss": 2.3747434543284878,
+    "prefill_ms": 1012.288288,
+    "decode_ms_per_token": 43.08732239583333,
+    "latency_ms": 3166.654407791667,
+    "memory_mb": 635.8889999389648,
+    "kv_cache_mb": 14.5,
+    "feasible": true
+   },
+   "obj": [
+    2.3747434543284878,
+    3166.654407791667,
+    635.8889999389648
+   ]
+  },
+  {
+   "key": "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":22}",
+   "arch": {
+    "n_layer": 22,
+    "d_model": 1024,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8192,
+      "n_head": 16,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 645.968896,
+    "total_params_m": 678.736896,
+    "est_loss": 2.4558656288315452,
+    "prefill_ms": 651.9506560000001,
+    "decode_ms_per_token": 29.466754166666664,
+    "latency_ms": 2125.2883643333334,
+    "memory_mb": 602.6028442382812,
+    "kv_cache_mb": 176.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4558656288315452,
+    2125.2883643333334,
+    602.6028442382812
+   ]
+  },
+  {
+   "key": "{\"d_model\":2816,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5632,\"n_head\":22,\"n_kv_head\":1}],\"n_layer\":15}",
+   "arch": {
+    "n_layer": 15,
+    "d_model": 2816,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5632,
+      "n_head": 22,
+      "n_kv_head": 1
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 962.483456,
+    "total_params_m": 1052.595456,
+    "est_loss": 2.3825542288753767,
+    "prefill_ms": 969.897696,
+    "decode_ms_per_token": 42.082196875,
+    "latency_ms": 3074.00753975,
+    "memory_mb": 642.1562042236328,
+    "kv_cache_mb": 15.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3825542288753767,
+    3074.00753975,
+    642.1562042236328
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3968,\"n_head\":10,\"n_kv_head\":\"n_head\"}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3968,
+      "n_head": 10,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 83.3248,
+    "total_params_m": 103.8048,
+    "est_loss": 2.8694709858260854,
+    "prefill_ms": 86.9224,
+    "decode_ms_per_token": 6.8064453125,
+    "latency_ms": 427.244665625,
+    "memory_mb": 163.18523406982422,
+    "kv_cache_mb": 45.0,
+    "feasible": true
+   },
+   "obj": [
+    2.8694709858260854,
+    427.244665625,
+    163.18523406982422
+   ]
+  },
+  {
+   "key": "{\"d_model\":1280,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9856,\"n_head\":20,\"n_kv_head\":\"n_head\"}],\"n_layer\":11}",
+   "arch": {
+    "n_layer": 11,
+    "d_model": 1280,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 9856,
+      "n_head": 20,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 488.43648,
+    "total_params_m": 529.39648,
+    "est_loss": 2.5085991341336027,
+    "prefill_ms": 493.05968,
+    "decode_ms_per_token": 22.743744791666668,
+    "latency_ms": 1630.2469195833335,
+    "memory_mb": 456.4904022216797,
+    "kv_cache_mb": 110.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5085991341336027,
+    1630.2469195833335,
+    456.4904022216797
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4608,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":24}",
+   "arch": {
+    "n_layer": 24,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4608,
+      "n_head": 14,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 341.355392,
+    "total_params_m": 370.027392,
+    "est_loss": 2.5778459978718895,
+    "prefill_ms": 347.404032,
+    "decode_ms_per_token": 18.0068078125,
+    "latency_ms": 1247.744422625,
+    "memory_mb": 284.99816131591797,
+    "kv_cache_mb": 24.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5778459978718895,
+    1247.744422625,
+    284.99816131591797
+   ]
+  },
+  {
+   "key": "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3840,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":35}",
+   "arch": {
+    "n_layer": 35,
+    "d_model": 1920,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3840,
+      "n_head": 30,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1049.53152,
+    "total_params_m": 1110.97152,
+    "est_loss": 2.3669278849751114,
+    "prefill_ms": 1059.62032,
+    "decode_ms_per_token": 46.266658854166664,
+    "latency_ms": 3372.953262708333,
+    "memory_mb": 693.471565246582,
+    "kv_cache_mb": 35.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3669278849751114,
+    3372.953262708333,
+    693.471565246582
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4224,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":14}",
+   "arch": {
+    "n_layer": 14,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4224,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 127.32224,
+    "total_params_m": 147.80224,
+    "est_loss": 2.778484372906208,
+    "prefill_ms": 131.57984,
+    "decode_ms_per_token": 8.845346354166667,
+    "latency_ms": 573.8471577083333,
+    "memory_mb": 155.78730010986328,
+    "kv_cache_mb": 14.0,
+    "feasible": true
+   },
+   "obj": [
+    2.778484372906208,
+    573.8471577083333,
+    155.78730010986328
+   ]
+  },
+  {
+   "key": "{\"d_model\":1152,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":2944,\"n_head\":18,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1152,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 2944,
+      "n_head": 18,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 380.651904,
+    "total_params_m": 417.515904,
+    "est_loss": 2.5565868725468914,
+    "prefill_ms": 387.959584,
+    "decode_ms_per_token": 20.257555729166665,
+    "latency_ms": 1400.8373704583332,
+    "memory_mb": 315.47298431396484,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5565868725468914,
+    1400.8373704583332,
+    315.47298431396484
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4096,\"n_head\":8,\"n_kv_head\":\"n_head\"}],\"n_layer\":38}",
+   "arch": {
+    "n_layer": 38,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4096,
+      "n_head": 8,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 278.96064,
+    "total_params_m": 295.34464,
+    "est_loss": 2.6176972716602163,
+    "prefill_ms": 286.06111999999996,
+    "decode_ms_per_token": 16.970510416666666,
+    "latency_ms": 1134.5866408333331,
+    "memory_mb": 372.9352111816406,
+    "kv_cache_mb": 152.0,
+    "feasible": true
+   },
+   "obj": [
+    2.6176972716602163,
+    1134.5866408333331,
+    372.9352111816406
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":13312,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 13312,
+      "n_head": 26,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 2172.619904,
+    "total_params_m": 2225.867904,
+    "est_loss": 2.239597209943577,
+    "prefill_ms": 2181.180864,
+    "decode_ms_per_token": 86.5837171875,
+    "latency_ms": 6510.366723375,
+    "memory_mb": 1286.5485916137695,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.239597209943577,
+    6510.366723375,
+    1286.5485916137695
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4864,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":25}",
+   "arch": {
+    "n_layer": 25,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4864,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 258.08064,
+    "total_params_m": 278.56064,
+    "est_loss": 2.6332207616339893,
+    "prefill_ms": 263.79024,
+    "decode_ms_per_token": 14.759528645833333,
+    "latency_ms": 1001.7666722916667,
+    "memory_mb": 236.93157196044922,
+    "kv_cache_mb": 25.0,
+    "feasible": true
+   },
+   "obj": [
+    2.6332207616339893,
+    1001.7666722916667,
+    236.93157196044922
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4096,\"n_head\":16,\"n_kv_head\":4}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4096,
+      "n_head": 16,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1212.295168,
+    "total_params_m": 1277.831168,
+    "est_loss": 2.3411349403041224,
+    "prefill_ms": 1222.487488,
+    "decode_ms_per_token": 52.51290833333333,
+    "latency_ms": 3848.132904666666,
+    "memory_mb": 883.9820556640625,
+    "kv_cache_mb": 136.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3411349403041224,
+    3848.132904666666,
+    883.9820556640625
+   ]
+  },
+  {
+   "key": "{\"d_model\":1152,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9216,\"n_head\":18,\"n_kv_head\":2}],\"n_layer\":23}",
+   "arch": {
+    "n_layer": 23,
+    "d_model": 1152,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 9216,
+      "n_head": 18,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 800.445312,
+    "total_params_m": 837.309312,
+    "est_loss": 2.416169937897651,
+    "prefill_ms": 806.8073919999999,
+    "decode_ms_per_token": 35.016849479166666,
+    "latency_ms": 2557.649865958333,
+    "memory_mb": 534.6677169799805,
+    "kv_cache_mb": 23.0,
+    "feasible": true
+   },
+   "obj": [
+    2.416169937897651,
+    2557.649865958333,
+    534.6677169799805
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8704,
+      "n_head": 26,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (decoder_params=2172.6M) and ID 3 (decoder_params=1366.1M). This combination aims to balance the decoder parameters and latency while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 1680.195712,
+    "total_params_m": 1733.443712,
+    "est_loss": 2.2837750962002334,
+    "prefill_ms": 1689.489472,
+    "decode_ms_per_token": 68.95993802083333,
+    "latency_ms": 5137.486373041666,
+    "memory_mb": 1026.3916702270508,
+    "kv_cache_mb": 34.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2837750962002334,
+    5137.486373041666,
+    1026.3916702270508
+   ]
+  },
+  {
+   "key": "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1024,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8192,
+      "n_head": 16,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "This mutation slightly reduces the number of layers and d_model while keeping a large d_inner. This helps in maintaining a good balance between decoder parameters, latency, and memory.",
+   "costs": {
+    "decoder_params_m": 851.504128,
+    "total_params_m": 884.272128,
+    "est_loss": 2.404841675161705,
+    "prefill_ms": 858.544288,
+    "decode_ms_per_token": 37.82434583333333,
+    "latency_ms": 2749.761579666667,
+    "memory_mb": 768.8605346679688,
+    "kv_cache_mb": 232.0,
+    "feasible": true
+   },
+   "obj": [
+    2.404841675161705,
+    2749.761579666667,
+    768.8605346679688
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5632,\"n_head\":22,\"n_kv_head\":\"n_head\"}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5632,
+      "n_head": 22,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "This mutation increases the d_model while keeping a moderate number of layers and a large d_inner. This helps in achieving better performance at the cost of slightly higher decoder parameters.",
+   "costs": {
+    "decoder_params_m": 856.501888,
+    "total_params_m": 901.557888,
+    "est_loss": 2.4037723230245724,
+    "prefill_ms": 864.0038079999999,
+    "decode_ms_per_token": 38.4090359375,
+    "latency_ms": 2784.455604875,
+    "memory_mb": 843.1333389282227,
+    "kv_cache_mb": 297.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4037723230245724,
+    2784.455604875,
+    843.1333389282227
+   ]
+  },
+  {
+   "key": "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9216,\"n_head\":20,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 2560,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 9216,
+      "n_head": 20,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "This mutation increases both the number of layers and d_model. The large d_inner helps in balancing performance and resource usage.",
+   "costs": {
+    "decoder_params_m": 2909.95456,
+    "total_params_m": 2991.87456,
+    "est_loss": 2.1904095855167305,
+    "prefill_ms": 2920.43296,
+    "decode_ms_per_token": 115.96571875,
+    "latency_ms": 8718.718897499999,
+    "memory_mb": 2267.466583251953,
+    "kv_cache_mb": 600.0,
+    "feasible": true
+   },
+   "obj": [
+    2.1904095855167305,
+    8718.718897499999,
+    2267.466583251953
+   ]
+  },
+  {
+   "key": "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 1024,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8192,
+      "n_head": 16,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "This mutation decreases the d_model while keeping a large number of layers and a large d_inner. This helps in maintaining a good balance between decoder parameters, latency, and memory.",
+   "costs": {
+    "decoder_params_m": 998.315008,
+    "total_params_m": 1031.083008,
+    "est_loss": 2.3759447942943317,
+    "prefill_ms": 1006.111168,
+    "decode_ms_per_token": 43.79405416666666,
+    "latency_ms": 3195.813876333333,
+    "memory_mb": 887.6160278320312,
+    "kv_cache_mb": 272.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3759447942943317,
+    3195.813876333333,
+    887.6160278320312
+   ]
+  },
+  {
+   "key": "{\"d_model\":2304,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":36,\"n_kv_head\":4}],\"n_layer\":17}",
+   "arch": {
+    "n_layer": 17,
+    "d_model": 2304,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8192,
+      "n_head": 36,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 7 (decoder_params=705.5M) and ID 3 (decoder_params=1366.1M). This combination aims to balance the decoder parameters and latency while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 1163.213568,
+    "total_params_m": 1236.941568,
+    "est_loss": 2.3484999981640082,
+    "prefill_ms": 1170.346528,
+    "decode_ms_per_token": 49.07748645833334,
+    "latency_ms": 3624.220850916667,
+    "memory_mb": 760.0471649169922,
+    "kv_cache_mb": 34.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3484999981640082,
+    3624.220850916667,
+    760.0471649169922
+   ]
+  },
+  {
+   "key": "{\"d_model\":1152,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9216,\"n_head\":18,\"n_kv_head\":2}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 1152,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 9216,
+      "n_head": 18,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "This mutation decreases the d_model while keeping a large number of layers and a large d_inner. The reduction in d_model helps in maintaining a good balance between decoder parameters, latency, and memory.",
+   "costs": {
+    "decoder_params_m": 1183.266432,
+    "total_params_m": 1220.130432,
+    "est_loss": 2.345451245239737,
+    "prefill_ms": 1191.362112,
+    "decode_ms_per_token": 50.161844270833335,
+    "latency_ms": 3699.4543255416665,
+    "memory_mb": 751.0289688110352,
+    "kv_cache_mb": 34.0,
+    "feasible": true
+   },
+   "obj": [
+    2.345451245239737,
+    3699.4543255416665,
+    751.0289688110352
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":10624,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 10624,
+      "n_head": 32,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 4 (decoder_params=1452.9M) and ID 7 (decoder_params=705.5M). This combination aims to balance the decoder parameters and latency while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 2522.49088,
+    "total_params_m": 2588.02688,
+    "est_loss": 2.2143263756805123,
+    "prefill_ms": 2532.6832,
+    "decode_ms_per_token": 100.25570833333335,
+    "latency_ms": 7545.468616666667,
+    "memory_mb": 1484.8258056640625,
+    "kv_cache_mb": 34.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2143263756805123,
+    7545.468616666667,
+    1484.8258056640625
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5760,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5760,
+      "n_head": 16,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "This mutation slightly reduces the d_inner while keeping a large number of layers and a large d_model. This helps in maintaining a good balance between decoder parameters, latency, and memory.",
+   "costs": {
+    "decoder_params_m": 1773.807616,
+    "total_params_m": 1839.343616,
+    "est_loss": 2.2743839813433295,
+    "prefill_ms": 1783.9999360000002,
+    "decode_ms_per_token": 74.02810833333334,
+    "latency_ms": 5485.405352666667,
+    "memory_mb": 1593.2008056640625,
+    "kv_cache_mb": 544.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2743839813433295,
+    5485.405352666667,
+    1593.2008056640625
+   ]
+  },
+  {
+   "key": "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":30,\"n_kv_head\":\"n_head\"}],\"n_layer\":35}",
+   "arch": {
+    "n_layer": 35,
+    "d_model": 1920,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 30,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "This mutation slightly increases the number of layers and d_model while keeping a large d_inner. This helps in achieving better performance at the cost of slightly higher decoder parameters.",
+   "costs": {
+    "decoder_params_m": 2064.52032,
+    "total_params_m": 2125.96032,
+    "est_loss": 2.248300860972843,
+    "prefill_ms": 2074.6091199999996,
+    "decode_ms_per_token": 84.5799921875,
+    "latency_ms": 6303.608729374999,
+    "memory_mb": 1727.953987121582,
+    "kv_cache_mb": 525.0,
+    "feasible": true
+   },
+   "obj": [
+    2.248300860972843,
+    6303.608729374999,
+    1727.953987121582
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8704,
+      "n_head": 26,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (decoder_params=2172.6M) and ID 3 (decoder_params=1366.1M). This combination aims to balance the decoder parameters and latency while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 1482.525824,
+    "total_params_m": 1535.773824,
+    "est_loss": 2.305602905626691,
+    "prefill_ms": 1491.086784,
+    "decode_ms_per_token": 61.3117171875,
+    "latency_ms": 4556.672643375,
+    "memory_mb": 916.3532791137695,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.305602905626691,
+    4556.672643375,
+    916.3532791137695
+   ]
+  },
+  {
+   "key": "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 1920,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 30,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 2 (decoder_params=1049.5M) and ID 3 (decoder_params=1366.1M). This combination aims to balance the decoder parameters and latency while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 1267.48992,
+    "total_params_m": 1328.92992,
+    "est_loss": 2.3332264981108164,
+    "prefill_ms": 1276.01072,
+    "decode_ms_per_token": 53.4298671875,
+    "latency_ms": 3947.5040793750004,
+    "memory_mb": 802.3935623168945,
+    "kv_cache_mb": 27.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3332264981108164,
+    3947.5040793750004,
+    802.3935623168945
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 16,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "This mutation slightly reduces the number of layers and d_head while keeping a large d_inner. This helps in maintaining a good balance between decoder parameters, latency, and memory.",
+   "costs": {
+    "decoder_params_m": 1703.00416,
+    "total_params_m": 1768.54016,
+    "est_loss": 2.2814359946503338,
+    "prefill_ms": 1711.98208,
+    "decode_ms_per_token": 70.61120833333334,
+    "latency_ms": 5242.542496666667,
+    "memory_mb": 1459.2188720703125,
+    "kv_cache_mb": 448.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2814359946503338,
+    5242.542496666667,
+    1459.2188720703125
+   ]
+  },
+  {
+   "key": "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":20,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 2560,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8704,
+      "n_head": 20,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 2 (decoder_params=1049.5M) and ID 5 (decoder_params=2172.6M). This combination aims to balance the decoder parameters and latency while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 2438.09536,
+    "total_params_m": 2520.01536,
+    "est_loss": 2.220060607383012,
+    "prefill_ms": 2448.57376,
+    "decode_ms_per_token": 97.42571875,
+    "latency_ms": 7319.8596975,
+    "memory_mb": 1474.3415832519531,
+    "kv_cache_mb": 60.0,
+    "feasible": true
+   },
+   "obj": [
+    2.220060607383012,
+    7319.8596975,
+    1474.3415832519531
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 26,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "This mutation slightly reduces the d_model while keeping a large number of layers and a large d_inner. The reduction in d_model helps in maintaining a good balance between decoder parameters, latency, and memory.",
+   "costs": {
+    "decoder_params_m": 1194.986624,
+    "total_params_m": 1248.234624,
+    "est_loss": 2.3436949904265822,
+    "prefill_ms": 1203.547584,
+    "decode_ms_per_token": 50.7817171875,
+    "latency_ms": 3742.633443375,
+    "memory_mb": 762.1052322387695,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3436949904265822,
+    3742.633443375,
+    762.1052322387695
+   ]
+  },
+  {
+   "key": "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":20,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 2560,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8704,
+      "n_head": 20,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "This mutation slightly increases the number of layers and d_model while keeping a large d_inner. This helps in achieving better performance at the cost of slightly higher decoder parameters.",
+   "costs": {
+    "decoder_params_m": 2791.98976,
+    "total_params_m": 2873.90976,
+    "est_loss": 2.197309496463843,
+    "prefill_ms": 2802.4681600000004,
+    "decode_ms_per_token": 111.64571875,
+    "latency_ms": 8384.754097500001,
+    "memory_mb": 2204.185333251953,
+    "kv_cache_mb": 600.0,
+    "feasible": true
+   },
+   "obj": [
+    2.197309496463843,
+    8384.754097500001,
+    2204.185333251953
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":28,\"n_kv_head\":2}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8704,
+      "n_head": 28,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 3 (decoder_params=1366.1M) and ID 9 (decoder_params=960.0M). This combination aims to balance the decoder parameters and latency while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 1825.039104,
+    "total_params_m": 1882.383104,
+    "est_loss": 2.269467657020592,
+    "prefill_ms": 1834.632384,
+    "decode_ms_per_token": 74.41426145833334,
+    "latency_ms": 5555.345456916667,
+    "memory_mb": 1106.2889862060547,
+    "kv_cache_mb": 34.0,
+    "feasible": true
+   },
+   "obj": [
+    2.269467657020592,
+    5555.345456916667,
+    1106.2889862060547
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":26,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8704,
+      "n_head": 26,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "This mutation slightly increases the number of layers and d_model while keeping a large d_inner. The increase in parameters helps in achieving better performance at the cost of higher latency.",
+   "costs": {
+    "decoder_params_m": 1635.880064,
+    "total_params_m": 1689.128064,
+    "est_loss": 2.288419143443782,
+    "prefill_ms": 1644.441024,
+    "decode_ms_per_token": 67.7677171875,
+    "latency_ms": 5032.826883375,
+    "memory_mb": 1358.6189041137695,
+    "kv_cache_mb": 390.0,
+    "feasible": true
+   },
+   "obj": [
+    2.288419143443782,
+    5032.826883375,
+    1358.6189041137695
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":\"n_head\"}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 14,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "Increased the number of layers from 27 to 28 and d_model from 896 to 960. This helps in slightly improving performance while maintaining a reasonable decoder parameter count.",
+   "costs": {
+    "decoder_params_m": 629.458816,
+    "total_params_m": 658.130816,
+    "est_loss": 2.4607028186495388,
+    "prefill_ms": 636.086656,
+    "decode_ms_per_token": 29.358803645833333,
+    "latency_ms": 2104.0268382916665,
+    "memory_mb": 611.5488815307617,
+    "kv_cache_mb": 196.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4607028186495388,
+    2104.0268382916665,
+    611.5488815307617
+   ]
+  },
+  {
+   "key": "{\"d_model\":1280,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":20,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1280,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 20,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (decoder_params=2172.6M) and ID 2 (decoder_params=856.5M). This combination aims to balance the decoder parameters and latency while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 1081.42208,
+    "total_params_m": 1122.38208,
+    "est_loss": 2.3615494577741,
+    "prefill_ms": 1089.16128,
+    "decode_ms_per_token": 46.802859375,
+    "latency_ms": 3429.3042487499997,
+    "memory_mb": 964.5926666259766,
+    "kv_cache_mb": 300.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3615494577741,
+    3429.3042487499997,
+    964.5926666259766
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":22,\"n_kv_head\":\"n_head\"}],\"n_layer\":31}",
+   "arch": {
+    "n_layer": 31,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 22,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (decoder_params=2172.6M) and ID 2 (decoder_params=856.5M). Increased the number of layers from 30 to 31 and d_model from 1408 to 1408, while keeping a large d_inner.",
+   "costs": {
+    "decoder_params_m": 1251.56416,
+    "total_params_m": 1296.62016,
+    "est_loss": 2.335469747919599,
+    "prefill_ms": 1259.74768,
+    "decode_ms_per_token": 53.379315104166665,
+    "latency_ms": 3928.713435208333,
+    "memory_mb": 1099.0612564086914,
+    "kv_cache_mb": 341.0,
+    "feasible": true
+   },
+   "obj": [
+    2.335469747919599,
+    3928.713435208333,
+    1099.0612564086914
+   ]
+  },
+  {
+   "key": "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 1024,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 16,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 960 to 1024 and n_head from 15 to 17. This helps in slightly improving performance while maintaining a reasonable decoder parameter count.",
+   "costs": {
+    "decoder_params_m": 675.994624,
+    "total_params_m": 708.762624,
+    "est_loss": 2.447400230940842,
+    "prefill_ms": 682.732384,
+    "decode_ms_per_token": 31.1596625,
+    "latency_ms": 2240.715509,
+    "memory_mb": 658.7098999023438,
+    "kv_cache_mb": 216.0,
+    "feasible": true
+   },
+   "obj": [
+    2.447400230940842,
+    2240.715509,
+    658.7098999023438
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":\"n_head\"}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 14,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 960 to 928 and n_head from 18 to 18. This helps in slightly improving performance while maintaining a reasonable decoder parameter count.",
+   "costs": {
+    "decoder_params_m": 764.342656,
+    "total_params_m": 793.014656,
+    "est_loss": 2.424659663936174,
+    "prefill_ms": 771.839296,
+    "decode_ms_per_token": 34.996397395833334,
+    "latency_ms": 2521.6591657916665,
+    "memory_mb": 725.9062118530273,
+    "kv_cache_mb": 238.0,
+    "feasible": true
+   },
+   "obj": [
+    2.424659663936174,
+    2521.6591657916665,
+    725.9062118530273
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":26,\"n_kv_head\":\"n_head\"}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8704,
+      "n_head": 26,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (decoder_params=2172.6M) and ID 3 (decoder_params=1366.1M). This combination aims to balance the decoder parameters and latency while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 1853.997184,
+    "total_params_m": 1907.245184,
+    "est_loss": 2.2667540155304695,
+    "prefill_ms": 1863.290944,
+    "decode_ms_per_token": 76.27673802083333,
+    "latency_ms": 5677.127845041667,
+    "memory_mb": 1527.6260452270508,
+    "kv_cache_mb": 442.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2667540155304695,
+    5677.127845041667,
+    1527.6260452270508
+   ]
+  },
+  {
+   "key": "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1024,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 16,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 1024 to 1088 and n_head from 19 to 20. This helps in slightly improving performance while maintaining a reasonable decoder parameter count.",
+   "costs": {
+    "decoder_params_m": 760.278016,
+    "total_params_m": 793.046016,
+    "est_loss": 2.4256424153686735,
+    "prefill_ms": 767.3181759999999,
+    "decode_ms_per_token": 34.48354583333333,
+    "latency_ms": 2491.4954676666666,
+    "memory_mb": 719.9230346679688,
+    "kv_cache_mb": 232.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4256424153686735,
+    2491.4954676666666,
+    719.9230346679688
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":22,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 22,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 1392 to 1408 and n_head from 24 to 25. This helps in slightly improving performance while maintaining a reasonable decoder parameter count.",
+   "costs": {
+    "decoder_params_m": 1097.650048,
+    "total_params_m": 1142.706048,
+    "est_loss": 2.3588777102661997,
+    "prefill_ms": 1105.663168,
+    "decode_ms_per_token": 47.6171453125,
+    "latency_ms": 3486.520433625,
+    "memory_mb": 1005.4952926635742,
+    "kv_cache_mb": 330.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3588777102661997,
+    3486.520433625,
+    1005.4952926635742
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8320,\"n_head\":28,\"n_kv_head\":\"n_head\"}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8320,
+      "n_head": 28,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (decoder_params=2172.6M) and ID 7 (decoder_params=2522.5M). This combination aims to balance the decoder parameters and latency while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 1669.733632,
+    "total_params_m": 1727.077632,
+    "est_loss": 2.284859481965769,
+    "prefill_ms": 1678.3789120000001,
+    "decode_ms_per_token": 69.09480520833334,
+    "latency_ms": 5133.119172416667,
+    "memory_mb": 1394.9766387939453,
+    "kv_cache_mb": 406.0,
+    "feasible": true
+   },
+   "obj": [
+    2.284859481965769,
+    5133.119172416667,
+    1394.9766387939453
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":26,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8192,
+      "n_head": 26,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "Increased the n_head from 26 to 27. This helps in slightly improving performance while maintaining a reasonable decoder parameter count.",
+   "costs": {
+    "decoder_params_m": 1559.202944,
+    "total_params_m": 1612.450944,
+    "est_loss": 2.2967836186356974,
+    "prefill_ms": 1567.7639040000001,
+    "decode_ms_per_token": 64.95971718749999,
+    "latency_ms": 4815.749763375,
+    "memory_mb": 1317.4860916137695,
+    "kv_cache_mb": 390.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2967836186356974,
+    4815.749763375,
+    1317.4860916137695
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":24,\"n_kv_head\":\"n_head\"}],\"n_layer\":34}",
+   "arch": {
+    "n_layer": 34,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 24,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (decoder_params=2172.6M) and ID 3 (decoder_params=1366.1M). This combination aims to balance the decoder parameters and latency while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 1443.995136,
+    "total_params_m": 1493.147136,
+    "est_loss": 2.3102218526437106,
+    "prefill_ms": 1452.9893760000002,
+    "decode_ms_per_token": 61.032681249999996,
+    "latency_ms": 4504.6234385,
+    "memory_mb": 1271.4865417480469,
+    "kv_cache_mb": 408.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3102218526437106,
+    4504.6234385,
+    1271.4865417480469
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":22,\"n_kv_head\":\"n_head\"}],\"n_layer\":32}",
+   "arch": {
+    "n_layer": 32,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 22,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (decoder_params=2172.6M) and ID 3 (decoder_params=1366.1M). This combination aims to balance the decoder parameters and latency while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 1291.937152,
+    "total_params_m": 1336.993152,
+    "est_loss": 2.3298412898809504,
+    "prefill_ms": 1300.291072,
+    "decode_ms_per_token": 54.983484895833335,
+    "latency_ms": 4049.4653167916667,
+    "memory_mb": 1131.7190170288086,
+    "kv_cache_mb": 352.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3298412898809504,
+    4049.4653167916667,
+    1131.7190170288086
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":10624,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 10624,
+      "n_head": 16,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (decoder_params=2172.6M) and ID 3 (decoder_params=1366.1M). This combination aims to balance the decoder parameters and latency while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 2461.657088,
+    "total_params_m": 2527.193088,
+    "est_loss": 2.218438475895234,
+    "prefill_ms": 2471.039808,
+    "decode_ms_per_token": 98.668575,
+    "latency_ms": 7404.4685580000005,
+    "memory_mb": 1898.1920166015625,
+    "kv_cache_mb": 480.0,
+    "feasible": true
+   },
+   "obj": [
+    2.218438475895234,
+    7404.4685580000005,
+    1898.1920166015625
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":26,\"n_kv_head\":\"n_head\"}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 26,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (decoder_params=2172.6M) and ID 3 (decoder_params=1366.1M). This combination aims to balance the decoder parameters and latency while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 1433.108352,
+    "total_params_m": 1486.356352,
+    "est_loss": 2.3115509854323824,
+    "prefill_ms": 1441.4861120000003,
+    "decode_ms_per_token": 60.211661979166664,
+    "latency_ms": 4452.069210958333,
+    "memory_mb": 1236.8436813354492,
+    "kv_cache_mb": 377.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3115509854323824,
+    4452.069210958333,
+    1236.8436813354492
+   ]
+  },
+  {
+   "key": "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 1024,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 16,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "Decreased the d_model from 1024 to 992 and n_head from 24 to 24. This helps in slightly improving performance while maintaining a reasonable decoder parameter count.",
+   "costs": {
+    "decoder_params_m": 778.10176,
+    "total_params_m": 810.86976,
+    "est_loss": 2.4213742346518026,
+    "prefill_ms": 784.99072,
+    "decode_ms_per_token": 35.017604166666665,
+    "latency_ms": 2535.8709283333333,
+    "memory_mb": 721.4844360351562,
+    "kv_cache_mb": 224.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4213742346518026,
+    2535.8709283333333,
+    721.4844360351562
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":28,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8704,
+      "n_head": 28,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (decoder_params=2172.6M) and ID 3 (decoder_params=1366.1M). This combination aims to balance the decoder parameters and latency while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 1789.242112,
+    "total_params_m": 1846.586112,
+    "est_loss": 2.2728869265696585,
+    "prefill_ms": 1798.076992,
+    "decode_ms_per_token": 73.604003125,
+    "latency_ms": 5478.27714825,
+    "memory_mb": 1473.0859832763672,
+    "kv_cache_mb": 420.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2728869265696585,
+    5478.27714825,
+    1473.0859832763672
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":26,\"n_kv_head\":\"n_head\"}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8704,
+      "n_head": 26,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (decoder_params=2172.6M) and ID 3 (decoder_params=1366.1M). This combination aims to balance the decoder parameters and latency while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 1581.350784,
+    "total_params_m": 1634.598784,
+    "est_loss": 2.2943228925757353,
+    "prefill_ms": 1589.728544,
+    "decode_ms_per_token": 65.64046197916667,
+    "latency_ms": 4871.751642958334,
+    "memory_mb": 1316.3671188354492,
+    "kv_cache_mb": 377.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2943228925757353,
+    4871.751642958334,
+    1316.3671188354492
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":22,\"n_kv_head\":\"n_head\"}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 22,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 1392 to 1408 and n_head from 22 to 23. This helps in slightly improving performance while maintaining a reasonable decoder parameter count.",
+   "costs": {
+    "decoder_params_m": 1170.818176,
+    "total_params_m": 1215.874176,
+    "est_loss": 2.3473372163596142,
+    "prefill_ms": 1178.660896,
+    "decode_ms_per_token": 50.17097552083333,
+    "latency_ms": 3687.2096720416666,
+    "memory_mb": 1033.745735168457,
+    "kv_cache_mb": 319.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3473372163596142,
+    3687.2096720416666,
+    1033.745735168457
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":24,\"n_kv_head\":\"n_head\"}],\"n_layer\":31}",
+   "arch": {
+    "n_layer": 31,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 24,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (decoder_params=2172.6M) and ID 3 (decoder_params=1366.1M). This combination aims to balance the decoder parameters and latency while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 1389.722112,
+    "total_params_m": 1438.874112,
+    "est_loss": 2.316957979883378,
+    "prefill_ms": 1398.185952,
+    "decode_ms_per_token": 58.66114375,
+    "latency_ms": 4331.2431395,
+    "memory_mb": 1206.3722229003906,
+    "kv_cache_mb": 372.0,
+    "feasible": true
+   },
+   "obj": [
+    2.316957979883378,
+    4331.2431395,
+    1206.3722229003906
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":22,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 22,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 1392 to 1456 and n_head from 23 to 24. This helps in slightly improving performance while maintaining a reasonable decoder parameter count.",
+   "costs": {
+    "decoder_params_m": 1211.191168,
+    "total_params_m": 1256.247168,
+    "est_loss": 2.34129705171983,
+    "prefill_ms": 1219.204288,
+    "decode_ms_per_token": 51.7751453125,
+    "latency_ms": 3807.961553625,
+    "memory_mb": 1066.4034957885742,
+    "kv_cache_mb": 330.0,
+    "feasible": true
+   },
+   "obj": [
+    2.34129705171983,
+    3807.961553625,
+    1066.4034957885742
+   ]
+  },
+  {
+   "key": "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 1024,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 16,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 928 to 1056 and n_head from 24 to 24. This helps in slightly improving performance while maintaining a reasonable decoder parameter count.",
+   "costs": {
+    "decoder_params_m": 734.061568,
+    "total_params_m": 766.829568,
+    "est_loss": 2.432120083952134,
+    "prefill_ms": 740.950528,
+    "decode_ms_per_token": 33.404804166666665,
+    "latency_ms": 2411.190736333333,
+    "memory_mb": 697.8594360351562,
+    "kv_cache_mb": 224.0,
+    "feasible": true
+   },
+   "obj": [
+    2.432120083952134,
+    2411.190736333333,
+    697.8594360351562
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":14}",
+   "arch": {
+    "n_layer": 14,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "Increased the d_inner to 5120 for better performance while keeping a reasonable number of layers and heads. This is within the allowed range and helps balance latency and memory.",
+   "costs": {
+    "decoder_params_m": 151.40672,
+    "total_params_m": 171.88672,
+    "est_loss": 2.742140174645847,
+    "prefill_ms": 155.66432,
+    "decode_ms_per_token": 9.727346354166666,
+    "latency_ms": 642.0316377083333,
+    "memory_mb": 168.70722198486328,
+    "kv_cache_mb": 14.0,
+    "feasible": true
+   },
+   "obj": [
+    2.742140174645847,
+    642.0316377083333,
+    168.70722198486328
+   ]
+  },
+  {
+   "key": "{\"d_model\":1280,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":20,\"n_kv_head\":4}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1280,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 20,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (decoder_params=1251.6M) and ID 2 (decoder_params=705.5M). Increased the number of layers from 28 to 30, d_model from 960 to 1280, and n_head from 14 to 20 for a balanced performance while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 1002.77888,
+    "total_params_m": 1043.73888,
+    "est_loss": 2.375139320722895,
+    "prefill_ms": 1010.51808,
+    "decode_ms_per_token": 43.362859375,
+    "latency_ms": 3178.66104875,
+    "memory_mb": 682.4051666259766,
+    "kv_cache_mb": 60.0,
+    "feasible": true
+   },
+   "obj": [
+    2.375139320722895,
+    3178.66104875,
+    682.4051666259766
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":31}",
+   "arch": {
+    "n_layer": 31,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8704,
+      "n_head": 26,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (decoder_params=1251.6M) and ID 3 (decoder_params=1081.4M). Increased the number of layers from 30 to 31, d_model from 1408 to 1664, and n_head from 22 to 28 for a balanced performance while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 1531.943296,
+    "total_params_m": 1585.191296,
+    "est_loss": 2.2998644415163567,
+    "prefill_ms": 1540.6874559999999,
+    "decode_ms_per_token": 63.223772395833336,
+    "latency_ms": 4701.876075791667,
+    "memory_mb": 943.8628768920898,
+    "kv_cache_mb": 31.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2998644415163567,
+    4701.876075791667,
+    943.8628768920898
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":24,\"n_kv_head\":1}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 24,
+      "n_kv_head": 1
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 1280 to 1536 and n_head from 20 to 24. Using n_kv_head = 1 reduces complexity while maintaining a reasonable performance.",
+   "costs": {
+    "decoder_params_m": 1209.232896,
+    "total_params_m": 1258.384896,
+    "est_loss": 2.341584996001104,
+    "prefill_ms": 1217.5199360000001,
+    "decode_ms_per_token": 51.11843125,
+    "latency_ms": 3773.4414985000003,
+    "memory_mb": 752.5502624511719,
+    "kv_cache_mb": 15.0,
+    "feasible": true
+   },
+   "obj": [
+    2.341584996001104,
+    3773.4414985000003,
+    752.5502624511719
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 14,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 896 to 928 and n_head from 14 to 15. This helps in slightly improving performance while maintaining a balanced decoder parameter count.",
+   "costs": {
+    "decoder_params_m": 612.028032,
+    "total_params_m": 640.700032,
+    "est_loss": 2.465960201730182,
+    "prefill_ms": 618.800672,
+    "decode_ms_per_token": 28.430802604166665,
+    "latency_ms": 2040.3408022083331,
+    "memory_mb": 435.19828033447266,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.465960201730182,
+    2040.3408022083331,
+    435.19828033447266
+   ]
+  },
+  {
+   "key": "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":16,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1024,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 16,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 960 to 1024 and n_head from 14 to 15. This helps in slightly improving performance while maintaining a balanced decoder parameter count.",
+   "costs": {
+    "decoder_params_m": 672.852992,
+    "total_params_m": 705.620992,
+    "est_loss": 2.44826683091452,
+    "prefill_ms": 679.893152,
+    "decode_ms_per_token": 30.808279166666665,
+    "latency_ms": 2220.307110333333,
+    "memory_mb": 470.02459716796875,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.44826683091452,
+    2220.307110333333,
+    470.02459716796875
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 26,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "Increased the n_head from 24 to 25 while keeping a large d_model and a balanced number of layers. This helps in slightly improving performance while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 1252.494464,
+    "total_params_m": 1305.742464,
+    "est_loss": 2.335337865778975,
+    "prefill_ms": 1261.055424,
+    "decode_ms_per_token": 52.8877171875,
+    "latency_ms": 3905.4412833750002,
+    "memory_mb": 792.9548416137695,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.335337865778975,
+    3905.4412833750002,
+    792.9548416137695
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8320,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8320,
+      "n_head": 22,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (decoder_params=1251.6M) and ID 7 (decoder_params=1669.7M). Increased the d_model from 1408 to 1472, n_head from 22 to 23 for a balanced performance while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 1184.157568,
+    "total_params_m": 1229.213568,
+    "est_loss": 2.345317053576215,
+    "prefill_ms": 1192.170688,
+    "decode_ms_per_token": 50.0851453125,
+    "latency_ms": 3696.4279536250006,
+    "memory_mb": 751.9015426635742,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.345317053576215,
+    3696.4279536250006,
+    751.9015426635742
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 22,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "Increased the n_head from 22 to 23 while keeping a large d_model and a balanced number of layers. This helps in slightly improving performance while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 989.515648,
+    "total_params_m": 1034.571648,
+    "est_loss": 2.377543986217884,
+    "prefill_ms": 997.528768,
+    "decode_ms_per_token": 42.9571453125,
+    "latency_ms": 3145.3860336250004,
+    "memory_mb": 647.4874801635742,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.377543986217884,
+    3145.3860336250004,
+    647.4874801635742
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 22,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 1280 to 1456 and n_head from 21 to 22. This helps in slightly improving performance while maintaining a balanced decoder parameter count.",
+   "costs": {
+    "decoder_params_m": 1103.056768,
+    "total_params_m": 1148.112768,
+    "est_loss": 2.357996984928238,
+    "prefill_ms": 1111.069888,
+    "decode_ms_per_token": 47.1151453125,
+    "latency_ms": 3466.827153625,
+    "memory_mb": 708.3956832885742,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.357996984928238,
+    3466.827153625,
+    708.3956832885742
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8320,\"n_head\":28,\"n_kv_head\":4}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8320,
+      "n_head": 28,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 1664 to 1792 and n_head from 26 to 27. This helps in slightly improving performance while maintaining a balanced decoder parameter count.",
+   "costs": {
+    "decoder_params_m": 1510.087936,
+    "total_params_m": 1567.431936,
+    "est_loss": 2.3023773967598182,
+    "prefill_ms": 1518.733216,
+    "decode_ms_per_token": 62.43640520833333,
+    "latency_ms": 4640.553476416667,
+    "memory_mb": 961.3360137939453,
+    "kv_cache_mb": 58.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3023773967598182,
+    4640.553476416667,
+    961.3360137939453
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 24,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 1408 to 1536 and n_head from 22 to 23. This helps in slightly improving performance while maintaining a balanced decoder parameter count.",
+   "costs": {
+    "decoder_params_m": 1226.927616,
+    "total_params_m": 1276.079616,
+    "est_loss": 2.339001194013844,
+    "prefill_ms": 1235.214656,
+    "decode_ms_per_token": 51.87143125,
+    "latency_ms": 3828.7862185000004,
+    "memory_mb": 807.0424499511719,
+    "kv_cache_mb": 60.0,
+    "feasible": true
+   },
+   "obj": [
+    2.339001194013844,
+    3828.7862185000004,
+    807.0424499511719
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 22,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "Increased the n_head from 22 to 23 while keeping a large d_model and a balanced number of layers. This helps in slightly improving performance while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 1066.288256,
+    "total_params_m": 1111.344256,
+    "est_loss": 2.3640802319666916,
+    "prefill_ms": 1074.1309760000001,
+    "decode_ms_per_token": 45.666308854166665,
+    "latency_ms": 3357.446418708333,
+    "memory_mb": 687.671516418457,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3640802319666916,
+    3357.446418708333,
+    687.671516418457
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 26,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "Increased the n_head from 24 to 25 while keeping a large d_model and a balanced number of layers. This helps in slightly improving performance while maintaining a reasonable memory footprint.",
+   "costs": {
+    "decoder_params_m": 1329.171584,
+    "total_params_m": 1382.419584,
+    "est_loss": 2.324815665636962,
+    "prefill_ms": 1337.732544,
+    "decode_ms_per_token": 55.6957171875,
+    "latency_ms": 4122.518403375,
+    "memory_mb": 834.0876541137695,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.324815665636962,
+    4122.518403375,
+    834.0876541137695
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 24,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 1408 to 1536 and n_head from 22 to 23. This helps in slightly improving performance while maintaining a balanced decoder parameter count.",
+   "costs": {
+    "decoder_params_m": 1186.03008,
+    "total_params_m": 1235.18208,
+    "est_loss": 2.345035435165578,
+    "prefill_ms": 1194.14032,
+    "decode_ms_per_token": 50.269052083333335,
+    "latency_ms": 3707.5929241666668,
+    "memory_mb": 783.1033020019531,
+    "kv_cache_mb": 58.0,
+    "feasible": true
+   },
+   "obj": [
+    2.345035435165578,
+    3707.5929241666668,
+    783.1033020019531
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 22,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 4,
+   "origin": "mutation",
+   "rationale": "Mutation on ID L9 (decoder_params=1103.1M). Decreased the number of layers from 30 to 28 for a slight reduction in decoder parameters and latency.",
+   "costs": {
+    "decoder_params_m": 1029.519744,
+    "total_params_m": 1074.575744,
+    "est_loss": 2.3703934991500515,
+    "prefill_ms": 1037.1920639999998,
+    "decode_ms_per_token": 44.21747239583333,
+    "latency_ms": 3248.0656837916663,
+    "memory_mb": 666.9473495483398,
+    "kv_cache_mb": 28.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3703934991500515,
+    3248.0656837916663,
+    666.9473495483398
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8320,\"n_head\":28,\"n_kv_head\":4}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8320,
+      "n_head": 28,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 4,
+   "origin": "mutation",
+   "rationale": "Mutation on ID L10 (decoder_params=1510.1M). Increased the d_model from 1664 to 1792 and n_head from 28 to 27 for better performance.",
+   "costs": {
+    "decoder_params_m": 1562.159872,
+    "total_params_m": 1619.503872,
+    "est_loss": 2.296452922568617,
+    "prefill_ms": 1570.9947519999998,
+    "decode_ms_per_token": 64.448003125,
+    "latency_ms": 4793.394908249999,
+    "memory_mb": 991.2695770263672,
+    "kv_cache_mb": 60.0,
+    "feasible": true
+   },
+   "obj": [
+    2.296452922568617,
+    4793.394908249999,
+    991.2695770263672
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 24,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 4,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L9 (decoder_params=1103.1M) and ID L11 (decoder_params=1510.1M). Maintained the same architecture for a balanced performance.",
+   "costs": {
+    "decoder_params_m": 1215.131136,
+    "total_params_m": 1264.283136,
+    "est_loss": 2.340719233681113,
+    "prefill_ms": 1223.418176,
+    "decode_ms_per_token": 51.36943125,
+    "latency_ms": 3791.8897385,
+    "memory_mb": 770.7143249511719,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.340719233681113,
+    3791.8897385,
+    770.7143249511719
+   ]
+  },
+  {
+   "key": "{\"d_model\":1152,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":18,\"n_kv_head\":2}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 1152,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 18,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 4,
+   "origin": "mutation",
+   "rationale": "Mutation on ID L3 (decoder_params=1209.2M). Decreased the number of layers from 30 to 28 and reduced d_model from 1536 to 1152 for a slight reduction in decoder parameters.",
+   "costs": {
+    "decoder_params_m": 825.819264,
+    "total_params_m": 862.683264,
+    "est_loss": 2.410446087207001,
+    "prefill_ms": 832.969344,
+    "decode_ms_per_token": 36.45773802083333,
+    "latency_ms": 2655.8562450416666,
+    "memory_mb": 553.2793655395508,
+    "kv_cache_mb": 28.0,
+    "feasible": true
+   },
+   "obj": [
+    2.410446087207001,
+    2655.8562450416666,
+    553.2793655395508
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 24,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 4,
+   "origin": "mutation",
+   "rationale": "Mutation on ID L9 (decoder_params=1103.1M). Decreased the number of layers from 30 to 28 and increased d_model from 1456 to 1536 for better performance.",
+   "costs": {
+    "decoder_params_m": 1145.132544,
+    "total_params_m": 1194.284544,
+    "est_loss": 2.351297843454249,
+    "prefill_ms": 1153.065984,
+    "decode_ms_per_token": 48.66667291666666,
+    "latency_ms": 3586.399629833333,
+    "memory_mb": 759.1641540527344,
+    "kv_cache_mb": 56.0,
+    "feasible": true
+   },
+   "obj": [
+    2.351297843454249,
+    3586.399629833333,
+    759.1641540527344
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 24,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 4,
+   "origin": "mutation",
+   "rationale": "Mutation on ID L9 (decoder_params=1103.1M). Increased the n_head from 22 to 23 for better performance.",
+   "costs": {
+    "decoder_params_m": 1174.626816,
+    "total_params_m": 1223.778816,
+    "est_loss": 2.346757907019909,
+    "prefill_ms": 1182.7370560000002,
+    "decode_ms_per_token": 49.78378541666667,
+    "latency_ms": 3671.9263268333334,
+    "memory_mb": 747.9861145019531,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.346757907019909,
+    3671.9263268333334,
+    747.9861145019531
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 26,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 5,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L9 (decoder_params=1103.1M) and ID L1 (decoder_params=1562.2M). This combination maintains a large number of layers while slightly reducing d_model and n_head for better performance.",
+   "costs": {
+    "decoder_params_m": 1155.153792,
+    "total_params_m": 1208.401792,
+    "est_loss": 2.3497413399409615,
+    "prefill_ms": 1163.531552,
+    "decode_ms_per_token": 49.220661979166664,
+    "latency_ms": 3624.564650958333,
+    "memory_mb": 739.7372360229492,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3497413399409615,
+    3624.564650958333,
+    739.7372360229492
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9216,\"n_head\":28,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 9216,
+      "n_head": 28,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 5,
+   "origin": "mutation",
+   "rationale": "Mutation on ID L1 (decoder_params=1562.2M). Increased the d_model from 1792 to 1856 and n_head from 28 to 27 for better performance while keeping a reasonable ffn size.",
+   "costs": {
+    "decoder_params_m": 1692.904192,
+    "total_params_m": 1750.248192,
+    "est_loss": 2.282467604225679,
+    "prefill_ms": 1701.7390719999999,
+    "decode_ms_per_token": 69.166003125,
+    "latency_ms": 5160.03922825,
+    "memory_mb": 1031.4062957763672,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.282467604225679,
+    5160.03922825,
+    1031.4062957763672
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9216,\"n_head\":28,\"n_kv_head\":4}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 9216,
+      "n_head": 28,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 5,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L9 (decoder_params=1103.1M) and ID L3 (decoder_params=1562.2M). This combination increases d_model and n_head for better performance while maintaining a reasonable ffn size.",
+   "costs": {
+    "decoder_params_m": 1706.666752,
+    "total_params_m": 1764.010752,
+    "est_loss": 2.2810635234763432,
+    "prefill_ms": 1715.501632,
+    "decode_ms_per_token": 69.740003125,
+    "latency_ms": 5202.50178825,
+    "memory_mb": 1068.7891082763672,
+    "kv_cache_mb": 60.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2810635234763432,
+    5202.50178825,
+    1068.7891082763672
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8320,\"n_head\":28,\"n_kv_head\":4}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8320,
+      "n_head": 28,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 5,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L9 (decoder_params=1103.1M) and ID L5 (decoder_params=1174.6M). This combination maintains a similar number of layers while increasing d_model for better performance.",
+   "costs": {
+    "decoder_params_m": 1458.016,
+    "total_params_m": 1515.36,
+    "est_loss": 2.3085258875969275,
+    "prefill_ms": 1466.4716799999999,
+    "decode_ms_per_token": 60.42480729166667,
+    "latency_ms": 4487.712044583333,
+    "memory_mb": 931.4024505615234,
+    "kv_cache_mb": 56.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3085258875969275,
+    4487.712044583333,
+    931.4024505615234
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9216,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 9216,
+      "n_head": 32,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 5,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L9 (decoder_params=1562.2M) and ID L4 (decoder_params=1145.1M). This combination increases d_model for better performance while maintaining a reasonable ffn size.",
+   "costs": {
+    "decoder_params_m": 1966.204928,
+    "total_params_m": 2031.740928,
+    "est_loss": 2.25665358181048,
+    "prefill_ms": 1975.587648,
+    "decode_ms_per_token": 79.474575,
+    "latency_ms": 5949.316398,
+    "memory_mb": 1182.4107666015625,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.25665358181048,
+    5949.316398,
+    1182.4107666015625
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 24,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 5,
+   "origin": "mutation",
+   "rationale": "Mutation on ID L9 (decoder_params=1103.1M). Increased the d_model from 1536 to 1600 for a slight reduction in decoder parameters and latency.",
+   "costs": {
+    "decoder_params_m": 1134.122496,
+    "total_params_m": 1183.274496,
+    "est_loss": 2.353024915082875,
+    "prefill_ms": 1142.055936,
+    "decode_ms_per_token": 48.19813958333333,
+    "latency_ms": 3551.962915166667,
+    "memory_mb": 725.2579040527344,
+    "kv_cache_mb": 28.0,
+    "feasible": true
+   },
+   "obj": [
+    2.353024915082875,
+    3551.962915166667,
+    725.2579040527344
+   ]
+  },
+  {
+   "key": "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8320,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1920,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8320,
+      "n_head": 30,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 5,
+   "origin": "mutation",
+   "rationale": "Mutation on ID L1 (decoder_params=1562.2M). Increased the d_model from 1664 to 1920 for a slight reduction in decoder parameters and latency.",
+   "costs": {
+    "decoder_params_m": 1673.74272,
+    "total_params_m": 1735.18272,
+    "est_loss": 2.2844430816510655,
+    "prefill_ms": 1682.85152,
+    "decode_ms_per_token": 68.6142890625,
+    "latency_ms": 5113.565973125001,
+    "memory_mb": 1023.3245468139648,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2844430816510655,
+    5113.565973125001,
+    1023.3245468139648
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 24,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 6,
+   "origin": "mutation",
+   "rationale": "Mutation on ID L9 (decoder_params=1103.1M). Increased the d_model from 1536 to 1600 for a slight reduction in decoder parameters and latency.",
+   "costs": {
+    "decoder_params_m": 1068.062208,
+    "total_params_m": 1117.214208,
+    "est_loss": 2.3637815874135244,
+    "prefill_ms": 1075.9956479999998,
+    "decode_ms_per_token": 45.77893958333333,
+    "latency_ms": 3364.942627166666,
+    "memory_mb": 689.8204040527344,
+    "kv_cache_mb": 28.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3637815874135244,
+    3364.942627166666,
+    689.8204040527344
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":28,\"n_kv_head\":2}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 28,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 6,
+   "origin": "mutation",
+   "rationale": "Mutation on ID L3 (decoder_params=1458.0M). Reduced the d_model from 1792 to 1760 for a slight reduction in decoder parameters and latency.",
+   "costs": {
+    "decoder_params_m": 1213.959936,
+    "total_params_m": 1271.303936,
+    "est_loss": 2.340890785815439,
+    "prefill_ms": 1222.415616,
+    "decode_ms_per_token": 51.42187395833333,
+    "latency_ms": 3793.5093139166665,
+    "memory_mb": 772.4805755615234,
+    "kv_cache_mb": 28.0,
+    "feasible": true
+   },
+   "obj": [
+    2.340890785815439,
+    3793.5093139166665,
+    772.4805755615234
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 26,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 6,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L9 (decoder_params=1103.1M) and ID L5 (decoder_params=1134.1M). This combination maintains a similar number of layers while slightly increasing d_model for better performance.",
+   "costs": {
+    "decoder_params_m": 1168.994944,
+    "total_params_m": 1222.242944,
+    "est_loss": 2.3476152553114416,
+    "prefill_ms": 1177.189504,
+    "decode_ms_per_token": 49.62520677083333,
+    "latency_ms": 3658.4498425416664,
+    "memory_mb": 746.1622085571289,
+    "kv_cache_mb": 28.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3476152553114416,
+    3658.4498425416664,
+    746.1622085571289
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8320,\"n_head\":28,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8320,
+      "n_head": 28,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 6,
+   "origin": "mutation",
+   "rationale": "Mutation on ID L5 (decoder_params=1134.1M). Increased the d_model from 1600 to 1792 and n_head from 25 to 27 for better performance while maintaining a reasonable ffn size.",
+   "costs": {
+    "decoder_params_m": 1496.784128,
+    "total_params_m": 1554.128128,
+    "est_loss": 2.303926320363801,
+    "prefill_ms": 1505.4294080000002,
+    "decode_ms_per_token": 61.881538541666664,
+    "latency_ms": 4599.506335083333,
+    "memory_mb": 925.1992950439453,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.303926320363801,
+    4599.506335083333,
+    925.1992950439453
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8960,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8960,
+      "n_head": 24,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 6,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L1 (decoder_params=1692.9M) and ID L3 (decoder_params=1458.0M). This combination maintains a reasonable number of layers while slightly reducing d_model and increasing n_kv_head for better performance.",
+   "costs": {
+    "decoder_params_m": 1403.874816,
+    "total_params_m": 1453.026816,
+    "est_loss": 2.3151744765100624,
+    "prefill_ms": 1412.1618560000002,
+    "decode_ms_per_token": 58.35143125,
+    "latency_ms": 4329.7334185,
+    "memory_mb": 901.9643249511719,
+    "kv_cache_mb": 60.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3151744765100624,
+    4329.7334185,
+    901.9643249511719
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 24,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 6,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L3 (decoder_params=1458.0M) and ID L5 (decoder_params=1134.1M). This combination maintains a similar number of layers while slightly reducing d_model and increasing n_kv_head for better performance.",
+   "costs": {
+    "decoder_params_m": 1117.610496,
+    "total_params_m": 1166.762496,
+    "est_loss": 2.3556491502457386,
+    "prefill_ms": 1125.720736,
+    "decode_ms_per_token": 47.763452083333334,
+    "latency_ms": 3513.8933401666663,
+    "memory_mb": 746.4001770019531,
+    "kv_cache_mb": 58.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3556491502457386,
+    3513.8933401666663,
+    746.4001770019531
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 26,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 6,
+   "origin": "mutation",
+   "rationale": "Mutation on ID L5 (decoder_params=1134.1M). Increased the d_model from 1600 to 1664 and n_head from 25 to 26 for better performance while maintaining a reasonable ffn size.",
+   "costs": {
+    "decoder_params_m": 1284.86592,
+    "total_params_m": 1338.11392,
+    "est_loss": 2.330813310441798,
+    "prefill_ms": 1293.2436800000003,
+    "decode_ms_per_token": 53.97086197916666,
+    "latency_ms": 3991.7867789583333,
+    "memory_mb": 809.3202438354492,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.330813310441798,
+    3991.7867789583333,
+    809.3202438354492
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 24,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 7,
+   "origin": "mutation",
+   "rationale": "Increased the n_kv_head from 2 to 4 while keeping d_model and other parameters constant. This can help in improving the model's performance at a slight cost to memory usage.",
+   "costs": {
+    "decoder_params_m": 1156.148736,
+    "total_params_m": 1205.300736,
+    "est_loss": 2.349587598372522,
+    "prefill_ms": 1164.435776,
+    "decode_ms_per_token": 49.27943125,
+    "latency_ms": 3628.4073385,
+    "memory_mb": 769.0736999511719,
+    "kv_cache_mb": 60.0,
+    "feasible": true
+   },
+   "obj": [
+    2.349587598372522,
+    3628.4073385,
+    769.0736999511719
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 26,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 7,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L3 (decoder_params=1169.0M) and ID L5 (decoder_params=1496.8M). This combination maintains a similar number of layers while slightly increasing d_model for better performance.",
+   "costs": {
+    "decoder_params_m": 1240.560256,
+    "total_params_m": 1293.808256,
+    "est_loss": 2.337037738600012,
+    "prefill_ms": 1248.754816,
+    "decode_ms_per_token": 52.24600677083333,
+    "latency_ms": 3861.0551545416665,
+    "memory_mb": 784.5528335571289,
+    "kv_cache_mb": 28.0,
+    "feasible": true
+   },
+   "obj": [
+    2.337037738600012,
+    3861.0551545416665,
+    784.5528335571289
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 24,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 7,
+   "origin": "mutation",
+   "rationale": "Increased the n_head from 24 to 26 while keeping d_model and other parameters constant. This can help in slightly improving performance with a minimal increase in decoder parameters.",
+   "costs": {
+    "decoder_params_m": 1106.207232,
+    "total_params_m": 1155.359232,
+    "est_loss": 2.35748593072299,
+    "prefill_ms": 1114.3174720000002,
+    "decode_ms_per_token": 47.278185416666666,
+    "latency_ms": 3478.2267428333334,
+    "memory_mb": 711.2829895019531,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.35748593072299,
+    3478.2267428333334,
+    711.2829895019531
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7808,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7808,
+      "n_head": 24,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L2 (decoder_params=1106.2M) and ID L5 (decoder_params=1403.9M). This combination maintains a balanced number of layers while increasing n_kv_head from 2 to 4 for better performance and slightly reducing d_model.",
+   "costs": {
+    "decoder_params_m": 1203.134976,
+    "total_params_m": 1252.286976,
+    "est_loss": 2.3424848583101388,
+    "prefill_ms": 1211.2452160000003,
+    "decode_ms_per_token": 50.89545208333333,
+    "latency_ms": 3756.0178201666668,
+    "memory_mb": 792.2790832519531,
+    "kv_cache_mb": 58.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3424848583101388,
+    3756.0178201666668,
+    792.2790832519531
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7808,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7808,
+      "n_head": 24,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L1 (decoder_params=1240.6M) and ID L5 (decoder_params=1403.9M). This combination maintains the same number of layers while slightly reducing n_kv_head from 4 to 2.",
+   "costs": {
+    "decoder_params_m": 1232.825856,
+    "total_params_m": 1281.977856,
+    "est_loss": 2.33814882711082,
+    "prefill_ms": 1241.112896,
+    "decode_ms_per_token": 52.01743125,
+    "latency_ms": 3841.9844585,
+    "memory_mb": 780.2065124511719,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.33814882711082,
+    3841.9844585,
+    780.2065124511719
+   ]
+  },
+  {
+   "key": "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6912,\"n_head\":16,\"n_kv_head\":2}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 1024,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6912,
+      "n_head": 16,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L0 (decoder_params=1156.1M) and ID L2 (decoder_params=1106.2M). This combination maintains a similar number of layers while slightly increasing d_model and n_head.",
+   "costs": {
+    "decoder_params_m": 637.06624,
+    "total_params_m": 669.83424,
+    "est_loss": 2.4584572125833692,
+    "prefill_ms": 643.8040000000001,
+    "decode_ms_per_token": 29.293062499999998,
+    "latency_ms": 2108.457125,
+    "memory_mb": 448.82708740234375,
+    "kv_cache_mb": 27.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4584572125833692,
+    2108.457125,
+    448.82708740234375
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7424,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7424,
+      "n_head": 24,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "mutation",
+   "rationale": "Increased the n_head from 24 to 25 while keeping d_model and other parameters constant. This can help in slightly improving performance with a minimal increase in decoder parameters.",
+   "costs": {
+    "decoder_params_m": 1140.417024,
+    "total_params_m": 1189.569024,
+    "est_loss": 2.3520353381423997,
+    "prefill_ms": 1148.527264,
+    "decode_ms_per_token": 48.53098541666667,
+    "latency_ms": 3575.0765348333334,
+    "memory_mb": 729.6345520019531,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3520353381423997,
+    3575.0765348333334,
+    729.6345520019531
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7296,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7296,
+      "n_head": 24,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 1536 to 1600 while keeping other parameters constant. This can help in slightly improving performance with a minimal increase in decoder parameters.",
+   "costs": {
+    "decoder_params_m": 1084.57728,
+    "total_params_m": 1133.72928,
+    "est_loss": 2.3610266266532913,
+    "prefill_ms": 1092.51072,
+    "decode_ms_per_token": 46.38373958333333,
+    "latency_ms": 3411.697699166666,
+    "memory_mb": 698.6797790527344,
+    "kv_cache_mb": 28.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3610266266532913,
+    3411.697699166666,
+    698.6797790527344
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7936,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7936,
+      "n_head": 24,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "mutation",
+   "rationale": "Increased the d_inner from 7168 to 8000 while keeping other parameters constant. This can help in slightly improving performance but may increase latency and memory usage.",
+   "costs": {
+    "decoder_params_m": 1208.836608,
+    "total_params_m": 1257.988608,
+    "est_loss": 2.3416433272224104,
+    "prefill_ms": 1216.946848,
+    "decode_ms_per_token": 51.03658541666667,
+    "latency_ms": 3768.7761188333334,
+    "memory_mb": 766.3376770019531,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3416433272224104,
+    3768.7761188333334,
+    766.3376770019531
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8192,
+      "n_head": 24,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "mutation",
+   "rationale": "Increased the d_inner from 7824 to 8208 while keeping other parameters constant. This can help in slightly improving performance but may increase latency and memory usage.",
+   "costs": {
+    "decoder_params_m": 1285.910016,
+    "total_params_m": 1335.062016,
+    "est_loss": 2.3306694259781784,
+    "prefill_ms": 1294.197056,
+    "decode_ms_per_token": 53.96143125,
+    "latency_ms": 3992.2686185,
+    "memory_mb": 808.6830749511719,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3306694259781784,
+    3992.2686185,
+    808.6830749511719
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7552,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7552,
+      "n_head": 22,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L3 (decoder_params=1106.2M) and a hypothetical parent with d_model=1408. This combination maintains a similar number of layers while slightly reducing d_model.",
+   "costs": {
+    "decoder_params_m": 1050.608768,
+    "total_params_m": 1095.664768,
+    "est_loss": 2.3667433498208874,
+    "prefill_ms": 1058.4514880000002,
+    "decode_ms_per_token": 45.09210885416667,
+    "latency_ms": 3313.0569307083338,
+    "memory_mb": 679.260383605957,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3667433498208874,
+    3313.0569307083338,
+    679.260383605957
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7936,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7936,
+      "n_head": 24,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "mutation",
+   "rationale": "Increased the d_inner from 7824 to 7920 while keeping other parameters constant. This can help in slightly improving performance but may increase latency and memory usage.",
+   "costs": {
+    "decoder_params_m": 1250.520576,
+    "total_params_m": 1299.672576,
+    "est_loss": 2.3356178144924358,
+    "prefill_ms": 1258.807616,
+    "decode_ms_per_token": 52.66543125,
+    "latency_ms": 3892.0791785,
+    "memory_mb": 789.6986999511719,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3356178144924358,
+    3892.0791785,
+    789.6986999511719
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7808,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7808,
+      "n_head": 24,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "mutation",
+   "rationale": "Increased the d_inner from 7168 to 7840 while keeping other parameters constant. This can help in slightly improving performance with a minimal increase in decoder parameters.",
+   "costs": {
+    "decoder_params_m": 1191.731712,
+    "total_params_m": 1240.883712,
+    "est_loss": 2.3441808693319204,
+    "prefill_ms": 1199.841952,
+    "decode_ms_per_token": 50.410185416666664,
+    "latency_ms": 3720.351222833333,
+    "memory_mb": 757.1618957519531,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3441808693319204,
+    3720.351222833333,
+    757.1618957519531
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8320,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8320,
+      "n_head": 24,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L1 (decoder_params=1240.6M) and a hypothetical parent with d_model=1536 and n_layer=30. This combination maintains the same number of layers while slightly increasing d_inner.",
+   "costs": {
+    "decoder_params_m": 1303.604736,
+    "total_params_m": 1352.756736,
+    "est_loss": 2.328249897110083,
+    "prefill_ms": 1311.8917760000002,
+    "decode_ms_per_token": 54.60943125,
+    "latency_ms": 4042.3633385000003,
+    "memory_mb": 818.1752624511719,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.328249897110083,
+    4042.3633385000003,
+    818.1752624511719
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8448,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8448,
+      "n_head": 24,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L1 (decoder_params=1240.6M) and a hypothetical parent with d_model=1536 and n_layer=30. This combination maintains the same number of layers while slightly increasing d_inner.",
+   "costs": {
+    "decoder_params_m": 1321.299456,
+    "total_params_m": 1370.451456,
+    "est_loss": 2.3258654509872803,
+    "prefill_ms": 1329.586496,
+    "decode_ms_per_token": 55.25743125,
+    "latency_ms": 4092.4580585,
+    "memory_mb": 827.6674499511719,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3258654509872803,
+    4092.4580585,
+    827.6674499511719
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8576,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8576,
+      "n_head": 24,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "mutation",
+   "rationale": "Increased the d_inner from 8224 to 8560 while keeping other parameters constant. This can help in slightly improving performance but may increase latency and memory usage.",
+   "costs": {
+    "decoder_params_m": 1338.994176,
+    "total_params_m": 1388.146176,
+    "est_loss": 2.3235151191892274,
+    "prefill_ms": 1347.2812159999999,
+    "decode_ms_per_token": 55.90543125,
+    "latency_ms": 4142.5527784999995,
+    "memory_mb": 837.1596374511719,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3235151191892274,
+    4142.5527784999995,
+    837.1596374511719
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8576,\"n_head\":28,\"n_kv_head\":4}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8576,
+      "n_head": 28,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 9,
+   "origin": "mutation",
+   "rationale": "Mutation on ID L5 (decoder_params=1706.7M). Increased the d_model from 1536 to 1792 while keeping other parameters constant. This can help in slightly improving performance with a minimal increase in decoder parameters.",
+   "costs": {
+    "decoder_params_m": 1549.99936,
+    "total_params_m": 1607.34336,
+    "est_loss": 2.297817261817995,
+    "prefill_ms": 1558.64464,
+    "decode_ms_per_token": 63.89800520833333,
+    "latency_ms": 4753.544900416667,
+    "memory_mb": 982.7461700439453,
+    "kv_cache_mb": 58.0,
+    "feasible": true
+   },
+   "obj": [
+    2.297817261817995,
+    4753.544900416667,
+    982.7461700439453
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8576,\"n_head\":28,\"n_kv_head\":4}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8576,
+      "n_head": 28,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 9,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L5 (decoder_params=1706.7M) and a hypothetical parent with d_model=1792 and n_layer=30. This combination increases the number of heads to explore better performance trade-offs.",
+   "costs": {
+    "decoder_params_m": 1603.447552,
+    "total_params_m": 1660.791552,
+    "est_loss": 2.291904521582023,
+    "prefill_ms": 1612.2824320000002,
+    "decode_ms_per_token": 65.960003125,
+    "latency_ms": 4910.28258825,
+    "memory_mb": 1013.4180145263672,
+    "kv_cache_mb": 60.0,
+    "feasible": true
+   },
+   "obj": [
+    2.291904521582023,
+    4910.28258825,
+    1013.4180145263672
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8960,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8960,
+      "n_head": 26,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 9,
+   "origin": "mutation",
+   "rationale": "Mutation on ID L7 (decoder_params=1050.6M). Increased the d_model from 1536 to 1664 while keeping other parameters constant. This can help in slightly improving performance with a minimal increase in decoder parameters.",
+   "costs": {
+    "decoder_params_m": 1520.864384,
+    "total_params_m": 1574.112384,
+    "est_loss": 2.3011334519402507,
+    "prefill_ms": 1529.425344,
+    "decode_ms_per_token": 62.7157171875,
+    "latency_ms": 4665.211203375,
+    "memory_mb": 936.9196853637695,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3011334519402507,
+    4665.211203375,
+    936.9196853637695
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8704,\"n_head\":28,\"n_kv_head\":4}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8704,
+      "n_head": 28,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 9,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L5 (decoder_params=1706.7M) and a hypothetical parent with d_model=1856 and n_layer=29. This combination increases the number of layers and d_model to further improve performance while maintaining reasonable ffn size.",
+   "costs": {
+    "decoder_params_m": 1569.955072,
+    "total_params_m": 1627.299072,
+    "est_loss": 2.295584343302138,
+    "prefill_ms": 1578.600352,
+    "decode_ms_per_token": 64.62880520833333,
+    "latency_ms": 4810.040612416667,
+    "memory_mb": 993.4512481689453,
+    "kv_cache_mb": 58.0,
+    "feasible": true
+   },
+   "obj": [
+    2.295584343302138,
+    4810.040612416667,
+    993.4512481689453
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9088,\"n_head\":28,\"n_kv_head\":4}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 9088,
+      "n_head": 28,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 9,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L12 (decoder_params=1339.0M) and a hypothetical parent with d_model=1856 and n_layer=29. This combination maintains the same number of layers while slightly increasing d_inner.",
+   "costs": {
+    "decoder_params_m": 1629.822208,
+    "total_params_m": 1687.166208,
+    "est_loss": 2.2890644755070944,
+    "prefill_ms": 1638.467488,
+    "decode_ms_per_token": 66.82120520833334,
+    "latency_ms": 4979.527748416667,
+    "memory_mb": 1025.5664825439453,
+    "kv_cache_mb": 58.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2890644755070944,
+    4979.527748416667,
+    1025.5664825439453
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8576,\"n_head\":28,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8576,
+      "n_head": 28,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 9,
+   "origin": "mutation",
+   "rationale": "Mutation on ID L7 (decoder_params=1050.6M). Increased the d_inner from 7552 to 8576 while keeping other parameters constant. This can help in slightly improving performance but may increase latency and memory usage.",
+   "costs": {
+    "decoder_params_m": 1589.684992,
+    "total_params_m": 1647.028992,
+    "est_loss": 2.293406512634949,
+    "prefill_ms": 1598.5198719999999,
+    "decode_ms_per_token": 65.386003125,
+    "latency_ms": 4867.82002825,
+    "memory_mb": 976.0352020263672,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.293406512634949,
+    4867.82002825,
+    976.0352020263672
+   ]
+  },
+  {
+   "key": "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":16,\"n_kv_head\":\"n_head\"}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 1024,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8192,
+      "n_head": 16,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 896 to 1024 while keeping other parameters constant. This can help in slightly improving performance with a minimal increase in decoder parameters.",
+   "costs": {
+    "decoder_params_m": 792.779776,
+    "total_params_m": 825.547776,
+    "est_loss": 2.4179375974411426,
+    "prefill_ms": 799.5175360000001,
+    "decode_ms_per_token": 35.4364625,
+    "latency_ms": 2571.340661,
+    "memory_mb": 721.3583374023438,
+    "kv_cache_mb": 216.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4179375974411426,
+    2571.340661,
+    721.3583374023438
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8576,\"n_head\":28,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8576,
+      "n_head": 28,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L5 (decoder_params=1603.4M) and a hypothetical parent with d_model=1792 and n_layer=30. This combination balances the number of layers and d_model to explore better performance trade-offs.",
+   "costs": {
+    "decoder_params_m": 1768.598272,
+    "total_params_m": 1825.942272,
+    "est_loss": 2.274892422787941,
+    "prefill_ms": 1777.433152,
+    "decode_ms_per_token": 72.848003125,
+    "latency_ms": 5419.83330825,
+    "memory_mb": 1462.0117645263672,
+    "kv_cache_mb": 420.0,
+    "feasible": true
+   },
+   "obj": [
+    2.274892422787941,
+    5419.83330825,
+    1462.0117645263672
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8576,\"n_head\":26,\"n_kv_head\":\"n_head\"}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8576,
+      "n_head": 26,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 1664 to 1792 while keeping other parameters constant. This can help in slightly improving performance with a minimal increase in decoder parameters.",
+   "costs": {
+    "decoder_params_m": 1562.82048,
+    "total_params_m": 1616.06848,
+    "est_loss": 2.2963791337254986,
+    "prefill_ms": 1571.1982400000002,
+    "decode_ms_per_token": 64.96186197916666,
+    "latency_ms": 4819.291338958334,
+    "memory_mb": 1306.4266891479492,
+    "kv_cache_mb": 377.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2963791337254986,
+    4819.291338958334,
+    1306.4266891479492
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8960,\"n_head\":26,\"n_kv_head\":\"n_head\"}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8960,
+      "n_head": 26,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L3 (decoder_params=1570.0M) and a hypothetical parent with d_model=1664 and n_layer=27. This combination explores a balanced set of parameters to balance performance and resource usage.",
+   "costs": {
+    "decoder_params_m": 1506.796928,
+    "total_params_m": 1560.044928,
+    "est_loss": 2.3027591884582885,
+    "prefill_ms": 1514.8082880000002,
+    "decode_ms_per_token": 62.6495515625,
+    "latency_ms": 4647.285866125,
+    "memory_mb": 1250.3733139038086,
+    "kv_cache_mb": 351.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3027591884582885,
+    4647.285866125,
+    1250.3733139038086
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":24,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 24,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L9 (decoder_params=1144.2M) and a hypothetical parent with d_model=1536 and n_layer=30. This combination aims to explore lower d_model while maintaining the number of layers.",
+   "costs": {
+    "decoder_params_m": 1344.892416,
+    "total_params_m": 1394.044416,
+    "est_loss": 2.3227390945068453,
+    "prefill_ms": 1353.179456,
+    "decode_ms_per_token": 56.89143125,
+    "latency_ms": 4197.7510185,
+    "memory_mb": 1170.3236999511719,
+    "kv_cache_mb": 360.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3227390945068453,
+    4197.7510185,
+    1170.3236999511719
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8448,\"n_head\":28,\"n_kv_head\":\"n_head\"}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8448,
+      "n_head": 28,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "mutation",
+   "rationale": "Increased the n_layer from 27 to 28 while keeping other parameters constant. This can help in slightly improving performance with a minimal increase in decoder parameters.",
+   "costs": {
+    "decoder_params_m": 1631.424256,
+    "total_params_m": 1688.768256,
+    "est_loss": 2.2888935616255286,
+    "prefill_ms": 1639.8799359999998,
+    "decode_ms_per_token": 67.55920729166667,
+    "latency_ms": 5017.840300583333,
+    "memory_mb": 1360.4258880615234,
+    "kv_cache_mb": 392.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2888935616255286,
+    5017.840300583333,
+    1360.4258880615234
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8960,\"n_head\":28,\"n_kv_head\":\"n_head\"}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8960,
+      "n_head": 28,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L3 (decoder_params=1570.0M) and a hypothetical parent with d_model=1856 and n_layer=29. This combination increases the number of layers and d_model to further improve performance while maintaining reasonable ffn size.",
+   "costs": {
+    "decoder_params_m": 1769.512192,
+    "total_params_m": 1826.856192,
+    "est_loss": 2.274803106075455,
+    "prefill_ms": 1778.157472,
+    "decode_ms_per_token": 72.74880520833334,
+    "latency_ms": 5415.597732416667,
+    "memory_mb": 1448.5020294189453,
+    "kv_cache_mb": 406.0,
+    "feasible": true
+   },
+   "obj": [
+    2.274803106075455,
+    5415.597732416667,
+    1448.5020294189453
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7936,\"n_head\":24,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7936,
+      "n_head": 24,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 1536 to 1600 while keeping other parameters constant. This can help in slightly improving performance with a minimal increase in decoder parameters.",
+   "costs": {
+    "decoder_params_m": 1380.281856,
+    "total_params_m": 1429.433856,
+    "est_loss": 2.31815852724964,
+    "prefill_ms": 1388.568896,
+    "decode_ms_per_token": 58.18743125,
+    "latency_ms": 4297.9404585,
+    "memory_mb": 1189.3080749511719,
+    "kv_cache_mb": 360.0,
+    "feasible": true
+   },
+   "obj": [
+    2.31815852724964,
+    4297.9404585,
+    1189.3080749511719
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8320,\"n_head\":28,\"n_kv_head\":\"n_head\"}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8320,
+      "n_head": 28,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "mutation",
+   "rationale": "Increased the n_head from 24 to 26 while keeping other parameters constant. This can help in slightly improving performance with a minimal increase in decoder parameters.",
+   "costs": {
+    "decoder_params_m": 1612.156672,
+    "total_params_m": 1669.500672,
+    "est_loss": 2.290961191977832,
+    "prefill_ms": 1620.612352,
+    "decode_ms_per_token": 66.85360729166666,
+    "latency_ms": 4963.2927165833335,
+    "memory_mb": 1350.0899505615234,
+    "kv_cache_mb": 392.0,
+    "feasible": true
+   },
+   "obj": [
+    2.290961191977832,
+    4963.2927165833335,
+    1350.0899505615234
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8576,\"n_head\":28,\"n_kv_head\":\"n_head\"}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8576,
+      "n_head": 28,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 1536 to 1792 while keeping other parameters constant. This can help in slightly improving performance with a minimal increase in decoder parameters.",
+   "costs": {
+    "decoder_params_m": 1650.69184,
+    "total_params_m": 1708.03584,
+    "est_loss": 2.2868520411240554,
+    "prefill_ms": 1659.14752,
+    "decode_ms_per_token": 68.26480729166667,
+    "latency_ms": 5072.387884583333,
+    "memory_mb": 1370.7618255615234,
+    "kv_cache_mb": 392.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2868520411240554,
+    5072.387884583333,
+    1370.7618255615234
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7936,\"n_head\":24,\"n_kv_head\":\"n_head\"}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7936,
+      "n_head": 24,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "mutation",
+   "rationale": "Increased the n_layer from 27 to 28 while keeping other parameters constant. This can help in slightly improving performance with a minimal increase in decoder parameters.",
+   "costs": {
+    "decoder_params_m": 1288.263168,
+    "total_params_m": 1337.415168,
+    "est_loss": 2.330345603915295,
+    "prefill_ms": 1296.1966079999997,
+    "decode_ms_per_token": 54.56160625,
+    "latency_ms": 4024.2769204999995,
+    "memory_mb": 1115.9454040527344,
+    "kv_cache_mb": 336.0,
+    "feasible": true
+   },
+   "obj": [
+    2.330345603915295,
+    4024.2769204999995,
+    1115.9454040527344
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8320,\"n_head\":26,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8320,
+      "n_head": 26,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 1600 to 1664 while keeping other parameters constant. This can help in slightly improving performance with a minimal increase in decoder parameters.",
+   "costs": {
+    "decoder_params_m": 1578.372224,
+    "total_params_m": 1631.620224,
+    "est_loss": 2.294651658433448,
+    "prefill_ms": 1586.933184,
+    "decode_ms_per_token": 65.6617171875,
+    "latency_ms": 4870.0190433749995,
+    "memory_mb": 1327.7692947387695,
+    "kv_cache_mb": 390.0,
+    "feasible": true
+   },
+   "obj": [
+    2.294651658433448,
+    4870.0190433749995,
+    1327.7692947387695
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8448,\"n_head\":28,\"n_kv_head\":\"n_head\"}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8448,
+      "n_head": 28,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "mutation",
+   "rationale": "Increased the n_layer from 28 to 29 while keeping other parameters constant. This can help in slightly improving performance with a minimal increase in decoder parameters.",
+   "costs": {
+    "decoder_params_m": 1689.689344,
+    "total_params_m": 1747.033344,
+    "est_loss": 2.282797358429094,
+    "prefill_ms": 1698.334624,
+    "decode_ms_per_token": 69.82560520833334,
+    "latency_ms": 5189.614884416667,
+    "memory_mb": 1405.6817169189453,
+    "kv_cache_mb": 406.0,
+    "feasible": true
+   },
+   "obj": [
+    2.282797358429094,
+    5189.614884416667,
+    1405.6817169189453
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":24,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8192,
+      "n_head": 24,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "mutation",
+   "rationale": "Increased the d_model from 1536 to 1600 while keeping other parameters constant. This can help in slightly improving performance with a minimal increase in decoder parameters.",
+   "costs": {
+    "decoder_params_m": 1415.671296,
+    "total_params_m": 1464.823296,
+    "est_loss": 2.313702621617834,
+    "prefill_ms": 1423.958336,
+    "decode_ms_per_token": 59.48343125,
+    "latency_ms": 4398.1298985,
+    "memory_mb": 1208.2924499511719,
+    "kv_cache_mb": 360.0,
+    "feasible": true
+   },
+   "obj": [
+    2.313702621617834,
+    4398.1298985,
+    1208.2924499511719
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8576,\"n_head\":28,\"n_kv_head\":\"n_head\"}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8576,
+      "n_head": 28,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L5 (decoder_params=1589.7M) and a hypothetical parent with d_model=1792 and n_layer=29. This combination balances the number of layers and d_model to explore better performance trade-offs.",
+   "costs": {
+    "decoder_params_m": 1709.645056,
+    "total_params_m": 1766.989056,
+    "est_loss": 2.280761275204655,
+    "prefill_ms": 1718.290336,
+    "decode_ms_per_token": 70.55640520833335,
+    "latency_ms": 5246.110596416667,
+    "memory_mb": 1416.3867950439453,
+    "kv_cache_mb": 406.0,
+    "feasible": true
+   },
+   "obj": [
+    2.280761275204655,
+    5246.110596416667,
+    1416.3867950439453
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8448,\"n_head\":24,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8448,
+      "n_head": 24,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "mutation",
+   "rationale": "Increased the n_layer from 29 to 30 while keeping other parameters constant. This can help in slightly improving performance with a minimal increase in decoder parameters.",
+   "costs": {
+    "decoder_params_m": 1451.060736,
+    "total_params_m": 1500.212736,
+    "est_loss": 2.309364993011093,
+    "prefill_ms": 1459.347776,
+    "decode_ms_per_token": 60.77943125,
+    "latency_ms": 4498.3193384999995,
+    "memory_mb": 1227.2768249511719,
+    "kv_cache_mb": 360.0,
+    "feasible": true
+   },
+   "obj": [
+    2.309364993011093,
+    4498.3193384999995,
+    1227.2768249511719
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8576,\"n_head\":26,\"n_kv_head\":\"n_head\"}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8576,
+      "n_head": 26,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L3 (decoder_params=1570.0M) and a hypothetical parent with d_model=1664 and n_layer=30. This combination balances the number of layers and d_model to explore better performance trade-offs.",
+   "costs": {
+    "decoder_params_m": 1616.710784,
+    "total_params_m": 1669.958784,
+    "est_loss": 2.290470093548487,
+    "prefill_ms": 1625.2717440000001,
+    "decode_ms_per_token": 67.0657171875,
+    "latency_ms": 4978.557603375,
+    "memory_mb": 1348.3357009887695,
+    "kv_cache_mb": 390.0,
+    "feasible": true
+   },
+   "obj": [
+    2.290470093548487,
+    4978.557603375,
+    1348.3357009887695
+   ]
+  }
+ ],
+ "knowledge_base": {
+  "FULL": [
+   [
+    "Use d_model >= 512 and n_layer <= 30 because smaller models perform poorly in latency and memory.",
+    "Avoid using n_head > 32 unless absolutely necessary due to increased decoder parameters and latency.",
+    "Use large d_inner (>= 4096) for models with fewer layers (< 20) as it helps balance performance and resource usage.",
+    "Use n_kv_head = 'n_head' or 1 when possible to reduce complexity without significant loss in model performance.",
+    "Avoid using very high d_model (> 3072) unless there is a substantial increase in decoder parameters, as this can significantly hurt latency.",
+    "Use gated ffn with d_inner values between 5120 and 8192 for models with more than 16 layers to maintain reasonable performance.",
+    "Avoid models where n_layer * (n_head + d_model / 2) > 32k as this leads to excessive decoder parameters and poor latency.",
+    "Use n_layer between 10-30 for optimal trade-off in terms of decoder parameters, latency, and memory."
+   ],
+   [
+    "Use d_model >= 512 and n_layer <= 30 because smaller models perform poorly in latency and memory.",
+    "Avoid using n_head > 32 unless absolutely necessary due to increased decoder parameters and latency.",
+    "Use large d_inner (>= 4096) for models with fewer layers (< 20) as it helps balance performance and resource usage.",
+    "Use n_kv_head = 'n_head' or 1 when possible to reduce complexity without significant loss in model performance.",
+    "Avoid using very high d_model (> 3072) unless there is a substantial increase in decoder parameters, as this can significantly hurt latency.",
+    "Use gated ffn with d_inner values between 5120 and 8192 for models with more than 16 layers to maintain reasonable performance.",
+    "Avoid models where n_layer * (n_head + d_model / 2) > 32k as this leads to excessive decoder parameters and poor latency.",
+    "Use n_layer between 15-25 for optimal trade-off in terms of decoder parameters, latency, and memory."
+   ],
+   [
+    "Use d_model >= 512 and n_layer <= 30 because smaller models perform poorly in latency and memory.",
+    "Avoid using n_head > 32 unless absolutely necessary due to increased decoder parameters and latency.",
+    "Use large d_inner (>= 4096) for models with fewer layers (< 20) as it helps balance performance and resource usage.",
+    "Use n_kv_head = 'n_head' or 1 when possible to reduce complexity without significant loss in model performance.",
+    "Avoid using very high d_model (> 3072) unless there is a substantial increase in decoder parameters, as this can significantly hurt latency.",
+    "Use gated ffn with d_inner values between 5120 and 8192 for models with more than 16 layers to maintain reasonable performance.",
+    "Avoid models where n_layer * (n_head + d_model / 2) > 32k as this leads to excessive decoder parameters and poor latency.",
+    "Use n_layer between 15-25 for optimal trade-off in terms of decoder parameters, latency, and memory."
+   ],
+   [
+    "Use d_model >= 512 and n_layer <= 30 because smaller models perform poorly in latency and memory.",
+    "Avoid using n_head > 32 unless absolutely necessary due to increased decoder parameters and latency.",
+    "Use large d_inner (>= 4096) for models with fewer layers (< 20) as it helps balance performance and resource usage.",
+    "Use n_kv_head = 'n_head' or 1 when possible to reduce complexity without significant loss in model performance.",
+    "Avoid using very high d_model (> 3072) unless there is a substantial increase in decoder parameters, as this can significantly hurt latency.",
+    "Use gated ffn with d_inner values between 5120 and 8192 for models with more than 16 layers to maintain reasonable performance.",
+    "Avoid models where n_layer * (n_head + d_model / 2) > 32k as this leads to excessive decoder parameters and poor latency.",
+    "Use n_layer between 15-25 for optimal trade-off in terms of decoder parameters, latency, and memory."
+   ],
+   [
+    "Use d_model between 512 and 3072 in steps of 128 to balance performance and resource usage.",
+    "Avoid using n_layer > 25 as it significantly increases latency without substantial gain in decoder parameters or performance.",
+    "Use n_head <= 24 unless there is a clear need for more heads due to increased complexity, especially when d_model < 1024.",
+    "Set n_kv_head = 'n_head' or 1 when possible to reduce complexity and maintain good performance.",
+    "Avoid using very high d_inner (> 8192) for models with fewer layers (< 20) as this can hurt latency without significant benefit.",
+    "Use gated ffn with d_inner in the range of 5120 to 8192 for models with more than 16 layers and n_layer <= 30 to maintain reasonable performance.",
+    "Avoid models where n_layer * (n_head + d_model / 2) > 24k as this leads to excessive decoder parameters and poor latency."
+   ],
+   [
+    "Use d_model between 512 and 3072 in steps of 128 to balance performance and resource usage.",
+    "Avoid using n_layer > 25 as it significantly increases latency without substantial gain in decoder parameters or performance.",
+    "Use n_head <= 24 unless there is a clear need for more heads due to increased complexity, especially when d_model < 1024.",
+    "Set n_kv_head = 'n_head' or 1 when possible to reduce complexity and maintain good performance.",
+    "Avoid using very high d_inner (> 8192) for models with fewer layers (< 20) as this can hurt latency without significant benefit.",
+    "Use gated ffn with d_inner in the range of 5120 to 8192 for models with more than 16 layers and n_layer <= 30 to maintain reasonable performance.",
+    "Avoid models where n_layer * (n_head + d_model / 2) > 24k as this leads to excessive decoder parameters and poor latency."
+   ],
+   [
+    "Use d_model between 512 and 3072 in steps of 128 to balance performance and resource usage.",
+    "Avoid using n_layer > 25 as it significantly increases latency without substantial gain in decoder parameters or performance.",
+    "Use n_head <= 24 unless there is a clear need for more heads due to increased complexity, especially when d_model < 1024.",
+    "Set n_kv_head = 'n_head' or 1 when possible to reduce complexity and maintain good performance.",
+    "Avoid using very high d_inner (> 8192) for models with fewer layers (< 20) as this can hurt latency without significant benefit.",
+    "Use gated ffn with d_inner in the range of 5120 to 8192 for models with more than 16 layers and n_layer <= 30 to maintain reasonable performance.",
+    "Avoid models where n_layer * (n_head + d_model / 2) > 24k as this leads to excessive decoder parameters and poor latency."
+   ],
+   [
+    "Use d_model between 512 and 3072 in steps of 128 to balance performance and resource usage.",
+    "Avoid using n_layer > 25 as it significantly increases latency without substantial gain in decoder parameters or performance.",
+    "Use n_head <= 24 unless there is a clear need for more heads due to increased complexity, especially when d_model < 1024.",
+    "Set n_kv_head = 'n_head' or 1 when possible to reduce complexity and maintain good performance.",
+    "Avoid using very high d_inner (> 8192) for models with fewer layers (< 20) as this can hurt latency without significant benefit.",
+    "Use gated ffn with d_inner in the range of 5120 to 8192 for models with more than 16 layers and n_layer <= 30 to maintain reasonable performance.",
+    "Avoid models where n_layer * (n_head + d_model / 2) > 24k as this leads to excessive decoder parameters and poor latency."
+   ],
+   [
+    "Use d_model between 512 and 3072 in steps of 128 to balance performance and resource usage.",
+    "Avoid using n_layer > 25 as it significantly increases latency without substantial gain in decoder parameters or performance.",
+    "Use n_head <= 24 unless there is a clear need for more heads due to increased complexity, especially when d_model < 1024.",
+    "Set n_kv_head = 'n_head' or 1 when possible to reduce complexity and maintain good performance.",
+    "Avoid using very high d_inner (> 8192) for models with fewer layers (< 20) as this can hurt latency without significant benefit.",
+    "Use gated ffn with d_inner in the range of 5120 to 8192 for models with more than 16 layers and n_layer <= 30 to maintain reasonable performance.",
+    "Avoid models where n_layer * (n_head + d_model / 2) > 24k as this leads to excessive decoder parameters and poor latency."
+   ],
+   [
+    "Use d_model between 512 and 3072 in steps of 128 to balance performance and resource usage.",
+    "Avoid using n_layer > 25 as it significantly increases latency without substantial gain in decoder parameters or performance.",
+    "Use n_head <= 24 unless there is a clear need for more heads due to increased complexity, especially when d_model < 1024.",
+    "Set n_kv_head = 'n_head' or 1 when possible to reduce complexity and maintain good performance.",
+    "Avoid using very high d_inner (> 8192) for models with fewer layers (< 20) as this can hurt latency without significant benefit.",
+    "Use gated ffn with d_inner in the range of 5120 to 8192 for models with more than 16 layers and n_layer <= 30 to maintain reasonable performance.",
+    "Avoid models where n_layer * (n_head + d_model / 2) > 24k as this leads to excessive decoder parameters and poor latency."
+   ]
+  ]
+ },
+ "hv": NaN,
+ "igd": NaN,
+ "config": {
+  "type": "slm",
+  "data_dir": null,
+  "results_dir": "results",
+  "spaces": {
+   "slm": {
+    "spec": {
+     "heterogeneous": false,
+     "n_layer": [
+      8,
+      40,
+      1
+     ],
+     "d_model": [
+      512,
+      3072,
+      128
+     ],
+     "d_inner": [
+      1024,
+      16384,
+      128
+     ],
+     "ffn_ratio": [
+      2,
+      8
+     ],
+     "n_head": [
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18,
+      20,
+      22,
+      24,
+      26,
+      28,
+      30,
+      32,
+      36,
+      40,
+      44,
+      48
+     ],
+     "head_dims": [
+      64,
+      128
+     ],
+     "n_kv_head": [
+      1,
+      2,
+      4,
+      8,
+      "n_head"
+     ],
+     "ffn": [
+      "gated"
+     ],
+     "vocab_size": 32000,
+     "tie_embeddings": true
+    },
+    "niches": [
+     0,
+     250,
+     500,
+     1000,
+     2000,
+     3000
+    ],
+    "niche_labels": [
+     "<250M",
+     "250-500M",
+     "0.5-1B",
+     "1-2B",
+     "2-3B",
+     ">=3B"
+    ]
+   },
+   "lts_gpt2": {
+    "spec": {
+     "heterogeneous": true,
+     "n_layer": [
+      2,
+      16,
+      1
+     ],
+     "d_model": [
+      128,
+      1024,
+      64
+     ],
+     "d_inner": [
+      256,
+      4096,
+      64
+     ],
+     "ffn_ratio": [
+      2,
+      32
+     ],
+     "n_head": [
+      2,
+      4,
+      8
+     ],
+     "head_dims": [],
+     "n_kv_head": [
+      "n_head"
+     ],
+     "ffn": [
+      "standard"
+     ],
+     "vocab_size": 50257,
+     "tie_embeddings": true
+    },
+    "niches": [
+     0,
+     10,
+     25,
+     50,
+     75,
+     100
+    ],
+    "niche_labels": [
+     "<10M",
+     "10-25M",
+     "25-50M",
+     "50-75M",
+     "75-100M",
+     ">=100M"
+    ]
+   }
+  },
+  "devices": {
+   "jetson_orin_nx_16gb": {
+    "profile": "jetson_orin_nx_16gb"
+   },
+   "snapdragon_8gen1_cpu": {
+    "profile": "snapdragon_8gen1_cpu"
+   },
+   "rtx3050ti_laptop": {
+    "profile": "rtx3050ti_laptop",
+    "calibration": "configs/slm/devices/rtx3050ti_laptop.json"
+   },
+   "local_cpu": {
+    "profile": "generic_cpu",
+    "calibration": "configs/slm/devices/local_cpu.json"
+   }
+  },
+  "workload": {
+   "prompt_tokens": 50,
+   "gen_tokens": 50,
+   "context": 2048,
+   "weight_dtype": "q4_k_m",
+   "kv_dtype": "f16",
+   "compute_buffer_tokens": 512
+  },
+  "objectives": [
+   "quality",
+   "latency",
+   "memory"
+  ],
+  "hardware": {
+   "source": "analytical",
+   "measure_device": "cpu",
+   "cache_dir": null,
+   "latency_limit_ms": null
+  },
+  "search": {
+   "generations": 10,
+   "crossover_prob": 0.5,
+   "partitioning": false,
+   "operator": "llm",
+   "knowledge_base": true,
+   "kb_seed": "none",
+   "init_pop_per_niche": 5,
+   "n_child": 4,
+   "n_parents_shown": 6,
+   "mutation_prob": 0.3,
+   "match_budget": true
+  },
+  "llm": {
+   "backend": "openai",
+   "model": "qwen2.5-7b-16k",
+   "temperature": 0.7,
+   "base_url": "http://localhost:11434/v1",
+   "api_key_env": "OPENAI_API_KEY",
+   "max_tokens": 8192,
+   "mode": "record",
+   "timeout": 3600
+  },
+  "variant": "no_partitioning",
+  "code_version": "569f7f8"
+ }
+}

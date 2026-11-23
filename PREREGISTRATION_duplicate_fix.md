@@ -155,3 +155,22 @@ never be met: the test could return "Worse" but never "Better". Changes:
    0.029, 0.029, 0.041), NSGA-II and regularised evolution; the analysis report lists them per control.
 4. Implemented in `llmnas.dupfix.verdict` with a test; the verdicts for the archived reference runs at N = 120
    are the same under the old and new rule.
+
+## 10. Outcome (recorded 2026-11-23, after all paid runs; no rule above was changed)
+
+Paid arms ran 2026-11-23 on commit `3e2dd02` (search code as frozen in `754bc79`), with no API failures and no
+re-runs. Cost: arm A $14.07 (1,644 calls), arm B $5.53 (720 calls), total $19.60 of the $23 approved. Full
+tables: `results/reports/dupfix.md` (`python -m llmnas dupfix`).
+
+- **Q1: fails for both arms.** Arm A reached N = 231-251 (161 slots left empty after five retries; needed
+  >= 265) and its duplicate rate rose to 48.3% (reference 42.7%; needed <= 22.7%). Arm B lowered it to 35.9%
+  (needed <= 32.7%).
+- **Q2 (N = 270):** arm A **Worse** than all four controls (p = 0.016 against PEA with refill, NSGA-II and
+  regularised evolution, 0.031 against random sampling). Because Q1 failed, Section 6 applies: Q2 is reported
+  but not answered by this test, since arm A never had the full budget.
+- **Q3 (N = 120):** arm A **Parity** with PEA with refill, random sampling and NSGA-II, **Worse** than
+  regularised evolution; the same pattern as the reference runs.
+- **Q4:** arm B against the reference runs **Parity** (3 devices above, 1 below the 0.010 margin, mean
+  +0.014, p (better) = 0.078).
+- Against the result stated in advance (Section 6): Q2 and Q3 as expected, apart from Worse (not Parity)
+  against PEA with refill and random sampling at N = 270; Q1 not as expected; Q4 as expected.

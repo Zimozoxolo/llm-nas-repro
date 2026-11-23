@@ -1,0 +1,1081 @@
+{
+ "dataset": "cifar10",
+ "device": "edgegpu",
+ "seed": 0,
+ "variant": "llmnas",
+ "hv": 0.9358341696299393,
+ "igd": 0.05939923003164909,
+ "n_front": 7,
+ "n_evaluated": 90,
+ "search_time_s": 1.8,
+ "llm_usage": {
+  "api_calls": 36,
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "llm_wall_time_s": 0.01,
+  "replay_mismatches": 0
+ },
+ "proposal_stats": {
+  "proposed": 72,
+  "invalid": 0,
+  "out_of_niche": 0,
+  "duplicate": 12,
+  "no_latency": 0,
+  "accepted": 60,
+  "parse_failures": 0
+ },
+ "predictor": {
+  "kind": "zc_ensemble",
+  "n_train": 1000,
+  "spearman_val": 0.960995758720007,
+  "spearman_test": 0.9594134649615795,
+  "kendall_test": 0.829736024250167
+ },
+ "final_front": [
+  {
+   "code": "(0, 0, 1, 0, 1, 4)",
+   "pred_acc": 10.024,
+   "true_acc": 10.0,
+   "lat": 0.7176017761230469,
+   "niche": "S0"
+  },
+  {
+   "code": "(2, 1, 2, 2, 0, 0)",
+   "pred_acc": 85.567,
+   "true_acc": 88.78999999999999,
+   "lat": 1.755995750427246,
+   "niche": "S1"
+  },
+  {
+   "code": "(0, 3, 3, 3, 1, 0)",
+   "pred_acc": 88.637,
+   "true_acc": 92.095,
+   "lat": 2.7848386764526367,
+   "niche": "S4"
+  },
+  {
+   "code": "(0, 3, 3, 3, 4, 0)",
+   "pred_acc": 88.773,
+   "true_acc": 92.03,
+   "lat": 3.254356384277344,
+   "niche": "S4"
+  },
+  {
+   "code": "(3, 1, 3, 3, 1, 0)",
+   "pred_acc": 88.812,
+   "true_acc": 92.05666666666666,
+   "lat": 4.230566024780273,
+   "niche": "S4"
+  },
+  {
+   "code": "(3, 1, 0, 2, 1, 2)",
+   "pred_acc": 88.91,
+   "true_acc": 92.21,
+   "lat": 5.312972068786621,
+   "niche": "S2"
+  },
+  {
+   "code": "(3, 1, 3, 1, 1, 3)",
+   "pred_acc": 89.957,
+   "true_acc": 93.615,
+   "lat": 5.332555770874023,
+   "niche": "S4"
+  },
+  {
+   "code": "(3, 1, 3, 1, 4, 3)",
+   "pred_acc": 90.371,
+   "true_acc": 93.46333333333332,
+   "lat": 5.547604560852051,
+   "niche": "S4"
+  },
+  {
+   "code": "(3, 1, 3, 1, 3, 3)",
+   "pred_acc": 90.949,
+   "true_acc": 93.83,
+   "lat": 5.834164619445801,
+   "niche": "S5"
+  },
+  {
+   "code": "(2, 3, 3, 1, 3, 3)",
+   "pred_acc": 91.108,
+   "true_acc": 94.3,
+   "lat": 6.805200576782227,
+   "niche": "S5"
+  }
+ ],
+ "evaluated": [
+  {
+   "code": "(1, 1, 4, 1, 4, 1)",
+   "pred": 60.58589172363281,
+   "lat": 4.464998245239258,
+   "niche": "S0",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 56.03333333333334
+  },
+  {
+   "code": "(1, 4, 0, 4, 4, 1)",
+   "pred": 58.09479904174805,
+   "lat": 4.323902130126953,
+   "niche": "S0",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 58.78
+  },
+  {
+   "code": "(0, 0, 1, 1, 1, 4)",
+   "pred": 83.92103576660156,
+   "lat": 4.083356857299805,
+   "niche": "S0",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 86.22000000000001
+  },
+  {
+   "code": "(1, 0, 0, 4, 1, 1)",
+   "pred": 72.92942810058594,
+   "lat": 3.770227432250977,
+   "niche": "S0",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 80.02666666666667
+  },
+  {
+   "code": "(4, 0, 1, 1, 0, 1)",
+   "pred": 71.98011016845703,
+   "lat": 3.7915849685668954,
+   "niche": "S0",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 79.955
+  },
+  {
+   "code": "(2, 1, 2, 2, 4, 0)",
+   "pred": 86.38812255859375,
+   "lat": 4.66458797454834,
+   "niche": "S1",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 89.79666666666667
+  },
+  {
+   "code": "(2, 0, 1, 2, 0, 0)",
+   "pred": 85.32672119140625,
+   "lat": 1.920924186706543,
+   "niche": "S1",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 88.98
+  },
+  {
+   "code": "(4, 4, 0, 2, 1, 0)",
+   "pred": 85.1562271118164,
+   "lat": 3.748917579650879,
+   "niche": "S1",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 89.05333333333333
+  },
+  {
+   "code": "(1, 2, 1, 2, 4, 4)",
+   "pred": 81.05992889404297,
+   "lat": 6.288022994995117,
+   "niche": "S1",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 86.20333333333333
+  },
+  {
+   "code": "(2, 1, 2, 0, 1, 2)",
+   "pred": 85.73881530761719,
+   "lat": 5.434317588806152,
+   "niche": "S1",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 89.21333333333332
+  },
+  {
+   "code": "(2, 1, 2, 2, 3, 2)",
+   "pred": 89.14151000976562,
+   "lat": 6.934008598327637,
+   "niche": "S2",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.10333333333334
+  },
+  {
+   "code": "(3, 4, 2, 2, 2, 4)",
+   "pred": 88.4762191772461,
+   "lat": 7.807645797729492,
+   "niche": "S2",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 91.665
+  },
+  {
+   "code": "(1, 1, 4, 4, 3, 2)",
+   "pred": 86.84504699707031,
+   "lat": 5.025262832641602,
+   "niche": "S2",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 91.24333333333334
+  },
+  {
+   "code": "(3, 1, 0, 2, 1, 2)",
+   "pred": 88.91046905517578,
+   "lat": 5.312972068786621,
+   "niche": "S2",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.21
+  },
+  {
+   "code": "(0, 4, 2, 2, 3, 1)",
+   "pred": 84.47331237792969,
+   "lat": 6.75541877746582,
+   "niche": "S2",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 88.85000000000001
+  },
+  {
+   "code": "(1, 3, 4, 2, 2, 3)",
+   "pred": 89.52821350097656,
+   "lat": 6.510200500488281,
+   "niche": "S3",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.78
+  },
+  {
+   "code": "(0, 4, 2, 3, 1, 3)",
+   "pred": 87.72594451904297,
+   "lat": 5.932836532592773,
+   "niche": "S3",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.36
+  },
+  {
+   "code": "(3, 4, 3, 0, 1, 4)",
+   "pred": 86.29337310791016,
+   "lat": 5.832324028015137,
+   "niche": "S3",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 90.795
+  },
+  {
+   "code": "(0, 3, 2, 0, 3, 1)",
+   "pred": 89.0113754272461,
+   "lat": 5.662569999694824,
+   "niche": "S3",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.165
+  },
+  {
+   "code": "(3, 2, 2, 0, 3, 1)",
+   "pred": 89.59514617919922,
+   "lat": 7.06080436706543,
+   "niche": "S3",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.085
+  },
+  {
+   "code": "(3, 0, 2, 3, 3, 4)",
+   "pred": 89.25135803222656,
+   "lat": 7.479343414306641,
+   "niche": "S4",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.26
+  },
+  {
+   "code": "(3, 4, 3, 3, 1, 2)",
+   "pred": 89.4394302368164,
+   "lat": 6.494269371032715,
+   "niche": "S4",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.22666666666667
+  },
+  {
+   "code": "(4, 3, 3, 3, 1, 0)",
+   "pred": 87.86882781982422,
+   "lat": 3.675284385681152,
+   "niche": "S4",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 91.07
+  },
+  {
+   "code": "(1, 3, 4, 3, 3, 2)",
+   "pred": 89.25463104248047,
+   "lat": 6.62254810333252,
+   "niche": "S4",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.67666666666666
+  },
+  {
+   "code": "(3, 1, 3, 2, 4, 3)",
+   "pred": 89.57791900634766,
+   "lat": 6.464657783508301,
+   "niche": "S4",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.49666666666668
+  },
+  {
+   "code": "(2, 3, 3, 2, 3, 3)",
+   "pred": 89.87373352050781,
+   "lat": 7.761259078979492,
+   "niche": "S5",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.65000000000002
+  },
+  {
+   "code": "(1, 3, 3, 3, 3, 4)",
+   "pred": 88.80838012695312,
+   "lat": 7.071104049682617,
+   "niche": "S5",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 91.9
+  },
+  {
+   "code": "(3, 3, 3, 1, 3, 4)",
+   "pred": 90.66633605957031,
+   "lat": 6.983075141906738,
+   "niche": "S5",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.765
+  },
+  {
+   "code": "(3, 4, 3, 3, 4, 3)",
+   "pred": 89.40241241455078,
+   "lat": 6.925249099731445,
+   "niche": "S5",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.65
+  },
+  {
+   "code": "(2, 3, 3, 3, 0, 3)",
+   "pred": 89.67121887207031,
+   "lat": 6.430377960205078,
+   "niche": "S5",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.44
+  },
+  {
+   "code": "(0, 0, 1, 4, 1, 1)",
+   "pred": 70.50543212890625,
+   "lat": 4.021039009094238,
+   "niche": "S0",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 75.24666666666667
+  },
+  {
+   "code": "(1, 0, 0, 1, 1, 1)",
+   "pred": 81.93465423583984,
+   "lat": 3.4857702255249023,
+   "niche": "S0",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 84.00666666666667
+  },
+  {
+   "code": "(0, 0, 1, 0, 1, 4)",
+   "pred": 10.023967742919922,
+   "lat": 0.7176017761230469,
+   "niche": "S0",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 10.0
+  },
+  {
+   "code": "(2, 0, 1, 2, 1, 0)",
+   "pred": 86.01152038574219,
+   "lat": 4.165911674499512,
+   "niche": "S1",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 88.84333333333335
+  },
+  {
+   "code": "(2, 1, 1, 2, 0, 0)",
+   "pred": 84.86246490478516,
+   "lat": 1.9792890548706052,
+   "niche": "S1",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 89.11
+  },
+  {
+   "code": "(2, 0, 1, 2, 4, 0)",
+   "pred": 86.23223114013672,
+   "lat": 4.7654008865356445,
+   "niche": "S1",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 90.04333333333334
+  },
+  {
+   "code": "(2, 1, 2, 2, 0, 0)",
+   "pred": 85.56670379638672,
+   "lat": 1.755995750427246,
+   "niche": "S1",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 88.78999999999999
+  },
+  {
+   "code": "(1, 1, 4, 0, 3, 2)",
+   "pred": 88.67095947265625,
+   "lat": 5.044431686401367,
+   "niche": "S2",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 92.19333333333331
+  },
+  {
+   "code": "(2, 1, 1, 2, 3, 2)",
+   "pred": 88.96971893310547,
+   "lat": 6.29542350769043,
+   "niche": "S2",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 92.61666666666667
+  },
+  {
+   "code": "(1, 1, 4, 2, 3, 2)",
+   "pred": 88.63030242919922,
+   "lat": 5.666947364807129,
+   "niche": "S2",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 92.11
+  },
+  {
+   "code": "(2, 4, 2, 2, 3, 2)",
+   "pred": 88.56687927246094,
+   "lat": 7.212767601013184,
+   "niche": "S2",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 92.50666666666666
+  },
+  {
+   "code": "(3, 2, 4, 0, 3, 1)",
+   "pred": 89.1194076538086,
+   "lat": 6.758909225463867,
+   "niche": "S3",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 93.185
+  },
+  {
+   "code": "(1, 3, 4, 2, 0, 3)",
+   "pred": 89.01203918457031,
+   "lat": 5.66286563873291,
+   "niche": "S3",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 93.07
+  },
+  {
+   "code": "(2, 3, 4, 2, 2, 3)",
+   "pred": 89.66473388671875,
+   "lat": 7.57178783416748,
+   "niche": "S3",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 93.24
+  },
+  {
+   "code": "(1, 3, 4, 0, 2, 3)",
+   "pred": 88.73675537109375,
+   "lat": 5.950770378112793,
+   "niche": "S3",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 93.07
+  },
+  {
+   "code": "(0, 3, 3, 3, 1, 0)",
+   "pred": 88.63655090332031,
+   "lat": 2.7848386764526367,
+   "niche": "S4",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 92.095
+  },
+  {
+   "code": "(3, 1, 3, 3, 1, 0)",
+   "pred": 88.81193542480469,
+   "lat": 4.230566024780273,
+   "niche": "S4",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 92.05666666666666
+  },
+  {
+   "code": "(2, 3, 3, 3, 1, 0)",
+   "pred": 88.50762176513672,
+   "lat": 4.220514297485352,
+   "niche": "S4",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 92.16
+  },
+  {
+   "code": "(3, 1, 3, 1, 4, 3)",
+   "pred": 90.37059783935547,
+   "lat": 5.547604560852051,
+   "niche": "S4",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 93.46333333333332
+  },
+  {
+   "code": "(3, 3, 3, 1, 3, 3)",
+   "pred": 90.93386840820312,
+   "lat": 7.049741744995117,
+   "niche": "S5",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 94.36333333333334
+  },
+  {
+   "code": "(2, 3, 3, 3, 3, 3)",
+   "pred": 89.87720489501953,
+   "lat": 7.577552795410156,
+   "niche": "S5",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 93.69
+  },
+  {
+   "code": "(3, 3, 3, 3, 3, 3)",
+   "pred": 89.30274963378906,
+   "lat": 7.699499130249023,
+   "niche": "S5",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 93.76
+  },
+  {
+   "code": "(1, 1, 0, 1, 1, 1)",
+   "pred": 68.73753356933594,
+   "lat": 3.3518075942993164,
+   "niche": "S0",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 70.92
+  },
+  {
+   "code": "(0, 0, 1, 1, 0, 4)",
+   "pred": 84.20745086669922,
+   "lat": 3.743014335632324,
+   "niche": "S0",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 86.58999999999999
+  },
+  {
+   "code": "(1, 0, 0, 1, 0, 1)",
+   "pred": 83.88619995117188,
+   "lat": 2.394237518310547,
+   "niche": "S0",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 86.45
+  },
+  {
+   "code": "(0, 1, 2, 2, 0, 0)",
+   "pred": 85.37498474121094,
+   "lat": 1.8912410736083984,
+   "niche": "S1",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 88.925
+  },
+  {
+   "code": "(2, 1, 1, 2, 4, 0)",
+   "pred": 86.23583984375,
+   "lat": 4.608068466186523,
+   "niche": "S1",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 90.02
+  },
+  {
+   "code": "(2, 1, 0, 2, 4, 0)",
+   "pred": 86.05718994140625,
+   "lat": 4.527373313903809,
+   "niche": "S1",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 89.84666666666668
+  },
+  {
+   "code": "(3, 1, 0, 4, 1, 2)",
+   "pred": 87.64872741699219,
+   "lat": 4.698271751403809,
+   "niche": "S2",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 91.31
+  },
+  {
+   "code": "(3, 1, 1, 2, 1, 2)",
+   "pred": 88.89857482910156,
+   "lat": 5.812678337097168,
+   "niche": "S2",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 92.305
+  },
+  {
+   "code": "(3, 2, 0, 2, 1, 2)",
+   "pred": 88.62140655517578,
+   "lat": 6.040463447570801,
+   "niche": "S2",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 92.675
+  },
+  {
+   "code": "(3, 3, 4, 2, 2, 1)",
+   "pred": 89.09149169921875,
+   "lat": 7.454352378845215,
+   "niche": "S3",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 92.955
+  },
+  {
+   "code": "(0, 3, 4, 2, 2, 3)",
+   "pred": 89.56375122070312,
+   "lat": 6.955776214599609,
+   "niche": "S3",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 93.165
+  },
+  {
+   "code": "(1, 3, 2, 0, 3, 1)",
+   "pred": 88.85865783691406,
+   "lat": 6.297636032104492,
+   "niche": "S3",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 92.63666666666668
+  },
+  {
+   "code": "(3, 1, 3, 1, 1, 3)",
+   "pred": 89.9566879272461,
+   "lat": 5.332555770874023,
+   "niche": "S4",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 93.615
+  },
+  {
+   "code": "(3, 2, 3, 3, 1, 0)",
+   "pred": 88.56375122070312,
+   "lat": 4.173197746276856,
+   "niche": "S4",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 92.11
+  },
+  {
+   "code": "(0, 3, 3, 3, 4, 0)",
+   "pred": 88.77314758300781,
+   "lat": 3.254356384277344,
+   "niche": "S4",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 92.03
+  },
+  {
+   "code": "(3, 3, 3, 3, 3, 4)",
+   "pred": 89.94939422607422,
+   "lat": 8.258719444274902,
+   "niche": "S5",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 93.005
+  },
+  {
+   "code": "(3, 4, 3, 1, 3, 3)",
+   "pred": 90.44284057617188,
+   "lat": 6.095700263977051,
+   "niche": "S5",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 93.805
+  },
+  {
+   "code": "(2, 3, 3, 1, 3, 3)",
+   "pred": 91.10818481445312,
+   "lat": 6.805200576782227,
+   "niche": "S5",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 94.3
+  },
+  {
+   "code": "(2, 3, 3, 3, 2, 3)",
+   "pred": 89.80150604248047,
+   "lat": 7.820544242858887,
+   "niche": "S5",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 93.28333333333336
+  },
+  {
+   "code": "(1, 0, 1, 1, 0, 1)",
+   "pred": 81.13800811767578,
+   "lat": 3.5184335708618164,
+   "niche": "S0",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 84.32
+  },
+  {
+   "code": "(0, 0, 1, 0, 0, 4)",
+   "pred": 10.006564140319824,
+   "lat": 0.7441329956054688,
+   "niche": "S0",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 10.0
+  },
+  {
+   "code": "(4, 0, 1, 0, 1, 4)",
+   "pred": 57.084449768066406,
+   "lat": 4.281344413757324,
+   "niche": "S0",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 69.82
+  },
+  {
+   "code": "(0, 0, 1, 1, 0, 1)",
+   "pred": 83.97496032714844,
+   "lat": 3.392496109008789,
+   "niche": "S0",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 86.56333333333333
+  },
+  {
+   "code": "(2, 4, 0, 2, 4, 0)",
+   "pred": 85.7235107421875,
+   "lat": 4.611306190490723,
+   "niche": "S1",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 89.80666666666666
+  },
+  {
+   "code": "(2, 0, 0, 2, 4, 0)",
+   "pred": 86.31695556640625,
+   "lat": 4.5159912109375,
+   "niche": "S1",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 89.83666666666666
+  },
+  {
+   "code": "(2, 1, 0, 2, 0, 0)",
+   "pred": 84.7782974243164,
+   "lat": 1.7804813385009766,
+   "niche": "S1",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 89.18333333333332
+  },
+  {
+   "code": "(2, 1, 2, 2, 4, 1)",
+   "pred": 87.11803436279297,
+   "lat": 6.604738235473633,
+   "niche": "S1",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 90.315
+  },
+  {
+   "code": "(2, 1, 2, 4, 3, 2)",
+   "pred": 88.84310150146484,
+   "lat": 6.177115440368652,
+   "niche": "S2",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 91.70333333333332
+  },
+  {
+   "code": "(3, 1, 4, 2, 1, 2)",
+   "pred": 88.6716079711914,
+   "lat": 5.9020185470581055,
+   "niche": "S2",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 92.41
+  },
+  {
+   "code": "(3, 2, 2, 2, 3, 1)",
+   "pred": 89.61658477783203,
+   "lat": 7.661561965942383,
+   "niche": "S3",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 93.48333333333336
+  },
+  {
+   "code": "(2, 3, 4, 2, 0, 3)",
+   "pred": 89.44488525390625,
+   "lat": 6.636686325073242,
+   "niche": "S3",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 93.0
+  },
+  {
+   "code": "(0, 3, 4, 2, 4, 3)",
+   "pred": 89.57173919677734,
+   "lat": 6.259450912475586,
+   "niche": "S3",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 93.27333333333333
+  },
+  {
+   "code": "(0, 3, 4, 1, 2, 3)",
+   "pred": 90.27452087402344,
+   "lat": 6.173954010009766,
+   "niche": "S3",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 93.72333333333331
+  },
+  {
+   "code": "(1, 3, 3, 3, 4, 0)",
+   "pred": 87.56441497802734,
+   "lat": 3.638582229614258,
+   "niche": "S4",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 90.98666666666666
+  },
+  {
+   "code": "(3, 4, 3, 1, 1, 3)",
+   "pred": 90.13326263427734,
+   "lat": 5.704135894775391,
+   "niche": "S4",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 93.325
+  },
+  {
+   "code": "(3, 1, 3, 3, 4, 0)",
+   "pred": 88.3312759399414,
+   "lat": 4.693570137023926,
+   "niche": "S4",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 91.76666666666664
+  },
+  {
+   "code": "(2, 3, 3, 4, 3, 3)",
+   "pred": 89.41644287109375,
+   "lat": 7.097415924072266,
+   "niche": "S5",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 93.12
+  },
+  {
+   "code": "(3, 1, 3, 1, 3, 3)",
+   "pred": 90.94908142089844,
+   "lat": 5.834164619445801,
+   "niche": "S5",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 93.83
+  }
+ ],
+ "knowledge_base": {
+  "S0": [
+   [
+    "Use skip_connect next to heavy convs because it is cheap.",
+    "Avoid many avg_pool_3x3 because they add latency for little accuracy."
+   ],
+   [
+    "Use skip_connect next to heavy convs because it is cheap.",
+    "Avoid many avg_pool_3x3 because they add latency for little accuracy."
+   ],
+   [
+    "Use skip_connect next to heavy convs because it is cheap.",
+    "Avoid many avg_pool_3x3 because they add latency for little accuracy."
+   ]
+  ],
+  "S1": [
+   [
+    "Use skip_connect next to heavy convs because it is cheap.",
+    "Avoid many avg_pool_3x3 because they add latency for little accuracy."
+   ],
+   [
+    "Use skip_connect next to heavy convs because it is cheap.",
+    "Avoid many avg_pool_3x3 because they add latency for little accuracy."
+   ],
+   [
+    "Use skip_connect next to heavy convs because it is cheap.",
+    "Avoid many avg_pool_3x3 because they add latency for little accuracy."
+   ]
+  ],
+  "S2": [
+   [
+    "Use skip_connect next to heavy convs because it is cheap.",
+    "Avoid many avg_pool_3x3 because they add latency for little accuracy."
+   ],
+   [
+    "Use skip_connect next to heavy convs because it is cheap.",
+    "Avoid many avg_pool_3x3 because they add latency for little accuracy."
+   ],
+   [
+    "Use skip_connect next to heavy convs because it is cheap.",
+    "Avoid many avg_pool_3x3 because they add latency for little accuracy."
+   ]
+  ],
+  "S3": [
+   [
+    "Use skip_connect next to heavy convs because it is cheap.",
+    "Avoid many avg_pool_3x3 because they add latency for little accuracy."
+   ],
+   [
+    "Use skip_connect next to heavy convs because it is cheap.",
+    "Avoid many avg_pool_3x3 because they add latency for little accuracy."
+   ],
+   [
+    "Use skip_connect next to heavy convs because it is cheap.",
+    "Avoid many avg_pool_3x3 because they add latency for little accuracy."
+   ]
+  ],
+  "S4": [
+   [
+    "Use skip_connect next to heavy convs because it is cheap.",
+    "Avoid many avg_pool_3x3 because they add latency for little accuracy."
+   ],
+   [
+    "Use skip_connect next to heavy convs because it is cheap.",
+    "Avoid many avg_pool_3x3 because they add latency for little accuracy."
+   ],
+   [
+    "Use skip_connect next to heavy convs because it is cheap.",
+    "Avoid many avg_pool_3x3 because they add latency for little accuracy."
+   ]
+  ],
+  "S5": [
+   [
+    "Use skip_connect next to heavy convs because it is cheap.",
+    "Avoid many avg_pool_3x3 because they add latency for little accuracy."
+   ],
+   [
+    "Use skip_connect next to heavy convs because it is cheap.",
+    "Avoid many avg_pool_3x3 because they add latency for little accuracy."
+   ],
+   [
+    "Use skip_connect next to heavy convs because it is cheap.",
+    "Avoid many avg_pool_3x3 because they add latency for little accuracy."
+   ]
+  ]
+ },
+ "trajectory": [
+  {
+   "gen": 0,
+   "n_evaluated": 30,
+   "hv": 0.8825147030648223,
+   "igd": 0.09108917703529971,
+   "n_front": 5
+  },
+  {
+   "gen": 1,
+   "n_evaluated": 52,
+   "hv": 0.9342792921883111,
+   "igd": 0.0636164640563756,
+   "n_front": 7
+  },
+  {
+   "gen": 2,
+   "n_evaluated": 71,
+   "hv": 0.9357010560413834,
+   "igd": 0.05939923003164909,
+   "n_front": 7
+  },
+  {
+   "gen": 3,
+   "n_evaluated": 90,
+   "hv": 0.9358341696299393,
+   "igd": 0.05939923003164909,
+   "n_front": 7
+  }
+ ],
+ "config": {
+  "data_dir": null,
+  "results_dir": "results",
+  "search": {
+   "generations": 3,
+   "crossover_prob": 0.5,
+   "partitioning": true,
+   "operator": "llm",
+   "knowledge_base": true,
+   "init_pop_per_niche": 5,
+   "n_child": 4,
+   "n_parents_shown": 6,
+   "latency_limit": null,
+   "match_budget": true
+  },
+  "predictor": {
+   "kind": "zc_ensemble",
+   "n_train": 1000,
+   "target": "val"
+  },
+  "evaluation": {
+   "acc": "test",
+   "front_source": "archive",
+   "normalization": "front",
+   "ref_point": [
+    1.1,
+    1.1
+   ]
+  },
+  "llm": {
+   "backend": "mock",
+   "model": "gpt-4.1",
+   "temperature": 0.7,
+   "base_url": null,
+   "api_key_env": "OPENAI_API_KEY",
+   "max_tokens": 4096,
+   "mode": "record"
+  },
+  "bias": {
+   "rounds": 10,
+   "per_round": 6,
+   "prompt": "normal"
+  },
+  "variant": "llmnas",
+  "type": "search",
+  "code_version": "aac523c"
+ }
+}

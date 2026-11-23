@@ -1,0 +1,6188 @@
+{
+ "kind": "slm",
+ "dataset": "slm",
+ "device": "jetson_orin_nx_16gb",
+ "seed": 1,
+ "variant": "no_partitioning",
+ "objectives": [
+  "quality",
+  "latency",
+  "memory"
+ ],
+ "n_front": 116,
+ "n_evaluated": 164,
+ "search_time_s": 7162.26,
+ "llm_usage": {
+  "api_calls": 20,
+  "input_tokens": 78578,
+  "output_tokens": 36719,
+  "llm_wall_time_s": 7162.13,
+  "replay_mismatches": 0
+ },
+ "proposal_stats": {
+  "proposed": 235,
+  "invalid": 0,
+  "repaired": 164,
+  "out_of_niche": 0,
+  "duplicate": 101,
+  "infeasible": 0,
+  "accepted": 134,
+  "parse_failures": 0
+ },
+ "final_front": [
+  "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":16,\"n_kv_head\":1}],\"n_layer\":18}",
+  "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5760,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6144,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":23}",
+  "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":16,\"n_kv_head\":2}],\"n_layer\":23}",
+  "{\"d_model\":1152,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8960,\"n_head\":18,\"n_kv_head\":2}],\"n_layer\":33}",
+  "{\"d_model\":1152,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9216,\"n_head\":18,\"n_kv_head\":\"n_head\"}],\"n_layer\":26}",
+  "{\"d_model\":1280,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4608,\"n_head\":20,\"n_kv_head\":2}],\"n_layer\":35}",
+  "{\"d_model\":1280,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6912,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":23}",
+  "{\"d_model\":1280,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6912,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1280,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6912,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":35}",
+  "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":11264,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":11264,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":33}",
+  "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":11264,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":35}",
+  "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":2816,\"n_head\":22,\"n_kv_head\":1}],\"n_layer\":14}",
+  "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3328,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":12}",
+  "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7424,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":29}",
+  "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":29}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":11520,\"n_head\":24,\"n_kv_head\":8}],\"n_layer\":18}",
+  "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3072,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":10}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":10240,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":18}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":13312,\"n_head\":26,\"n_kv_head\":1}],\"n_layer\":9}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3328,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":17}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7296,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":28}",
+  "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8960,\"n_head\":26,\"n_kv_head\":1}],\"n_layer\":33}",
+  "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":11776,\"n_head\":30,\"n_kv_head\":\"n_head\"}],\"n_layer\":37}",
+  "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":15360,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":35}",
+  "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4608,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":23}",
+  "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6528,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":21}",
+  "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6528,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":35}",
+  "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8448,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":8}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":12416,\"n_head\":32,\"n_kv_head\":4}],\"n_layer\":35}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":13952,\"n_head\":16,\"n_kv_head\":4}],\"n_layer\":18}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":13952,\"n_head\":16,\"n_kv_head\":4}],\"n_layer\":29}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":16384,\"n_head\":32,\"n_kv_head\":4}],\"n_layer\":33}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":16384,\"n_head\":32,\"n_kv_head\":4}],\"n_layer\":35}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":16,\"n_kv_head\":4}],\"n_layer\":35}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6912,\"n_head\":16,\"n_kv_head\":4}],\"n_layer\":30}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6912,\"n_head\":16,\"n_kv_head\":4}],\"n_layer\":35}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7424,\"n_head\":16,\"n_kv_head\":2}],\"n_layer\":15}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":16,\"n_kv_head\":4}],\"n_layer\":35}",
+  "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":35}",
+  "{\"d_model\":2304,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5888,\"n_head\":18,\"n_kv_head\":2}],\"n_layer\":19}",
+  "{\"d_model\":2304,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7424,\"n_head\":36,\"n_kv_head\":4}],\"n_layer\":22}",
+  "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":13568,\"n_head\":20,\"n_kv_head\":\"n_head\"}],\"n_layer\":22}",
+  "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":20,\"n_kv_head\":2}],\"n_layer\":16}",
+  "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":20,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":20,\"n_kv_head\":4}],\"n_layer\":15}",
+  "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":10240,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":8}",
+  "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":12160,\"n_head\":24,\"n_kv_head\":8}],\"n_layer\":8}",
+  "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":13056,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":35}",
+  "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":15104,\"n_head\":24,\"n_kv_head\":\"n_head\"}],\"n_layer\":19}",
+  "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":15360,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":8}",
+  "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":15360,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6912,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":14}",
+  "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6912,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":8}",
+  "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":2816,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3072,\"n_head\":4,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3072,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3200,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":14}",
+  "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3200,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":18}",
+  "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3200,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3456,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3712,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":14}",
+  "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3840,\"n_head\":4,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3968,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4096,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":29}",
+  "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4096,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3200,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3584,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3712,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3840,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":25}",
+  "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3840,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3968,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":17}",
+  "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3968,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4480,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":27}",
+  "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4992,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":23}",
+  "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":23}",
+  "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":25}",
+  "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4096,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4352,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":24}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4352,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":29}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4480,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":29}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4864,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":29}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4864,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":30}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4864,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4992,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":23}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4992,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5248,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5376,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5376,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":9}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5760,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5760,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":19}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5760,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":23}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5760,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":9}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6144,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":19}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6144,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":23}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6144,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6144,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":9}",
+  "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":24}",
+  "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":27}",
+  "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":28}",
+  "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5760,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6400,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":9}",
+  "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6528,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":27}",
+  "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6656,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":10}",
+  "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":1}],\"n_layer\":24}",
+  "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":19}",
+  "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":25}",
+  "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":33}",
+  "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":35}",
+  "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":9}"
+ ],
+ "evaluated": [
+  {
+   "key": "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":2944,\"n_head\":16,\"n_kv_head\":8}],\"n_layer\":12}",
+   "arch": {
+    "n_layer": 12,
+    "d_model": 1024,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 2944,
+      "n_head": 16,
+      "n_kv_head": 8
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 146.301952,
+    "total_params_m": 179.069952,
+    "est_loss": 2.7492970996404047,
+    "prefill_ms": 13.062693840985443,
+    "decode_ms_per_token": 9.564098214285714,
+    "latency_ms": 491.26760455527113,
+    "memory_mb": 206.56060791015625,
+    "kv_cache_mb": 48.0,
+    "feasible": true
+   },
+   "obj": [
+    2.7492970996404047,
+    491.26760455527113,
+    206.56060791015625
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":12416,\"n_head\":32,\"n_kv_head\":4}],\"n_layer\":35}",
+   "arch": {
+    "n_layer": 35,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 12416,
+      "n_head": 32,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 3000.383488,
+    "total_params_m": 3065.919488,
+    "est_loss": 2.185321048608931,
+    "prefill_ms": 176.51865666293392,
+    "decode_ms_per_token": 88.56475595238095,
+    "latency_ms": 4604.756454281981,
+    "memory_mb": 1777.1873779296875,
+    "kv_cache_mb": 70.0,
+    "feasible": true
+   },
+   "obj": [
+    2.185321048608931,
+    4604.756454281981,
+    1777.1873779296875
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":2816,\"n_head\":22,\"n_kv_head\":1}],\"n_layer\":14}",
+   "arch": {
+    "n_layer": 14,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 2816,
+      "n_head": 22,
+      "n_kv_head": 1
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 224.599936,
+    "total_params_m": 269.655936,
+    "est_loss": 2.6611757136302034,
+    "prefill_ms": 17.78122374020157,
+    "decode_ms_per_token": 12.165306175595239,
+    "latency_ms": 626.0465325199635,
+    "memory_mb": 214.15471649169922,
+    "kv_cache_mb": 7.0,
+    "feasible": true
+   },
+   "obj": [
+    2.6611757136302034,
+    626.0465325199635,
+    214.15471649169922
+   ]
+  },
+  {
+   "key": "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":12160,\"n_head\":24,\"n_kv_head\":8}],\"n_layer\":8}",
+   "arch": {
+    "n_layer": 8,
+    "d_model": 3072,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 12160,
+      "n_head": 24,
+      "n_kv_head": 8
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1097.911296,
+    "total_params_m": 1196.215296,
+    "est_loss": 2.3588350471584705,
+    "prefill_ms": 65.85208152295633,
+    "decode_ms_per_token": 35.5971755952381,
+    "latency_ms": 1845.7108612848613,
+    "memory_mb": 768.1998901367188,
+    "kv_cache_mb": 64.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3588350471584705,
+    1845.7108612848613,
+    768.1998901367188
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4096,\"n_head\":8,\"n_kv_head\":\"n_head\"}],\"n_layer\":22}",
+   "arch": {
+    "n_layer": 22,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4096,
+      "n_head": 8,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 161.503744,
+    "total_params_m": 177.887744,
+    "est_loss": 2.728718943507063,
+    "prefill_ms": 15.392644120940648,
+    "decode_ms_per_token": 11.099840773809523,
+    "latency_ms": 570.3846828114168,
+    "memory_mb": 245.92642211914062,
+    "kv_cache_mb": 88.0,
+    "feasible": true
+   },
+   "obj": [
+    2.728718943507063,
+    570.3846828114168,
+    245.92642211914062
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":11264,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 11264,
+      "n_head": 22,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1557.221248,
+    "total_params_m": 1602.277248,
+    "est_loss": 2.297005624876347,
+    "prefill_ms": 94.85914714445688,
+    "decode_ms_per_token": 49.46224665178571,
+    "latency_ms": 2567.9714797337424,
+    "memory_mb": 952.0284957885742,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.297005624876347,
+    2567.9714797337424,
+    952.0284957885742
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":13312,\"n_head\":26,\"n_kv_head\":1}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 13312,
+      "n_head": 26,
+      "n_kv_head": 1
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 649.870208,
+    "total_params_m": 703.118208,
+    "est_loss": 2.454742033991007,
+    "prefill_ms": 40.8384640537514,
+    "decode_ms_per_token": 22.749612723214288,
+    "latency_ms": 1178.3191002144656,
+    "memory_mb": 444.18199920654297,
+    "kv_cache_mb": 4.5,
+    "feasible": true
+   },
+   "obj": [
+    2.454742033991007,
+    1178.3191002144656,
+    444.18199920654297
+   ]
+  },
+  {
+   "key": "{\"d_model\":1152,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9216,\"n_head\":18,\"n_kv_head\":\"n_head\"}],\"n_layer\":26}",
+   "arch": {
+    "n_layer": 26,
+    "d_model": 1152,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 9216,
+      "n_head": 18,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 966.192768,
+    "total_params_m": 1003.056768,
+    "est_loss": 2.3818578309354104,
+    "prefill_ms": 61.123272564389694,
+    "decode_ms_per_token": 33.527882812499996,
+    "latency_ms": 1737.5174131893896,
+    "memory_mb": 834.5815811157227,
+    "kv_cache_mb": 234.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3818578309354104,
+    1737.5174131893896,
+    834.5815811157227
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":11264,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":33}",
+   "arch": {
+    "n_layer": 33,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 11264,
+      "n_head": 22,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1712.943232,
+    "total_params_m": 1757.999232,
+    "est_loss": 2.2804272256370566,
+    "prefill_ms": 104.0400085106383,
+    "decode_ms_per_token": 53.99061049107143,
+    "latency_ms": 2803.57053306421,
+    "memory_mb": 1038.5642776489258,
+    "kv_cache_mb": 33.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2804272256370566,
+    2803.57053306421,
+    1038.5642776489258
+   ]
+  },
+  {
+   "key": "{\"d_model\":1152,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8960,\"n_head\":18,\"n_kv_head\":2}],\"n_layer\":33}",
+   "arch": {
+    "n_layer": 33,
+    "d_model": 1152,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8960,
+      "n_head": 18,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1119.268224,
+    "total_params_m": 1156.132224,
+    "est_loss": 2.355383811513828,
+    "prefill_ms": 70.76670235162375,
+    "decode_ms_per_token": 38.24701897321429,
+    "latency_ms": 1983.1176510123382,
+    "memory_mb": 715.6976547241211,
+    "kv_cache_mb": 33.0,
+    "feasible": true
+   },
+   "obj": [
+    2.355383811513828,
+    1983.1176510123382,
+    715.6976547241211
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 291.99808,
+    "total_params_m": 312.47808,
+    "est_loss": 2.60862590902263,
+    "prefill_ms": 23.470586786114225,
+    "decode_ms_per_token": 15.268777901785715,
+    "latency_ms": 786.9094818754,
+    "memory_mb": 257.12630462646484,
+    "kv_cache_mb": 27.0,
+    "feasible": true
+   },
+   "obj": [
+    2.60862590902263,
+    786.9094818754,
+    257.12630462646484
+   ]
+  },
+  {
+   "key": "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":13568,\"n_head\":20,\"n_kv_head\":\"n_head\"}],\"n_layer\":22}",
+   "arch": {
+    "n_layer": 22,
+    "d_model": 2560,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 13568,
+      "n_head": 20,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 2869.28128,
+    "total_params_m": 2951.20128,
+    "est_loss": 2.192754069048502,
+    "prefill_ms": 167.2034535274356,
+    "decode_ms_per_token": 84.23063244047619,
+    "latency_ms": 4378.735075551245,
+    "memory_mb": 2085.647735595703,
+    "kv_cache_mb": 440.0,
+    "feasible": true
+   },
+   "obj": [
+    2.192754069048502,
+    4378.735075551245,
+    2085.647735595703
+   ]
+  },
+  {
+   "key": "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":11776,\"n_head\":30,\"n_kv_head\":\"n_head\"}],\"n_layer\":37}",
+   "arch": {
+    "n_layer": 37,
+    "d_model": 1920,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 11776,
+      "n_head": 30,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 3055.43232,
+    "total_params_m": 3116.87232,
+    "est_loss": 2.1823035558180477,
+    "prefill_ms": 179.8945195968645,
+    "decode_ms_per_token": 91.00590959821429,
+    "latency_ms": 4730.189999507579,
+    "memory_mb": 2289.520606994629,
+    "kv_cache_mb": 555.0,
+    "feasible": true
+   },
+   "obj": [
+    2.1823035558180477,
+    4730.189999507579,
+    2289.520606994629
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4096,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":32}",
+   "arch": {
+    "n_layer": 32,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4096,
+      "n_head": 8,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 222.331392,
+    "total_params_m": 238.715392,
+    "est_loss": 2.6632296870775316,
+    "prefill_ms": 20.312781187010078,
+    "decode_ms_per_token": 14.09763244047619,
+    "latency_ms": 725.1944032108196,
+    "memory_mb": 222.55691528320312,
+    "kv_cache_mb": 32.0,
+    "feasible": true
+   },
+   "obj": [
+    2.6632296870775316,
+    725.1944032108196,
+    222.55691528320312
+   ]
+  },
+  {
+   "key": "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8448,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":8}",
+   "arch": {
+    "n_layer": 8,
+    "d_model": 1920,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8448,
+      "n_head": 30,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 452.23104,
+    "total_params_m": 513.67104,
+    "est_loss": 2.523325607778032,
+    "prefill_ms": 29.632689809630456,
+    "decode_ms_per_token": 17.649901413690475,
+    "latency_ms": 912.1277604941542,
+    "memory_mb": 346.0546188354492,
+    "kv_cache_mb": 8.0,
+    "feasible": true
+   },
+   "obj": [
+    2.523325607778032,
+    912.1277604941542,
+    346.0546188354492
+   ]
+  },
+  {
+   "key": "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":15104,\"n_head\":24,\"n_kv_head\":\"n_head\"}],\"n_layer\":19}",
+   "arch": {
+    "n_layer": 19,
+    "d_model": 3072,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 15104,
+      "n_head": 24,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 3362.116608,
+    "total_params_m": 3460.420608,
+    "est_loss": 2.1664971018728125,
+    "prefill_ms": 194.37189742441208,
+    "decode_ms_per_token": 97.12741964285713,
+    "latency_ms": 5050.742879567269,
+    "memory_mb": 2374.8142700195312,
+    "kv_cache_mb": 456.0,
+    "feasible": true
+   },
+   "obj": [
+    2.1664971018728125,
+    5050.742879567269,
+    2374.8142700195312
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3072,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":10}",
+   "arch": {
+    "n_layer": 10,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3072,
+      "n_head": 12,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 204.504576,
+    "total_params_m": 253.656576,
+    "est_loss": 2.680200308136796,
+    "prefill_ms": 16.048466741321388,
+    "decode_ms_per_token": 11.201796130952381,
+    "latency_ms": 576.1382732889405,
+    "memory_mb": 238.57199096679688,
+    "kv_cache_mb": 40.0,
+    "feasible": true
+   },
+   "obj": [
+    2.680200308136796,
+    576.1382732889405,
+    238.57199096679688
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4096,\"n_head\":8,\"n_kv_head\":\"n_head\"}],\"n_layer\":25}",
+   "arch": {
+    "n_layer": 25,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4096,
+      "n_head": 8,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 183.526912,
+    "total_params_m": 199.910912,
+    "est_loss": 2.7023369624110707,
+    "prefill_ms": 17.080044344904813,
+    "decode_ms_per_token": 12.145921130952381,
+    "latency_ms": 624.3761008925238,
+    "memory_mb": 269.7405700683594,
+    "kv_cache_mb": 100.0,
+    "feasible": true
+   },
+   "obj": [
+    2.7023369624110707,
+    624.3761008925238,
+    269.7405700683594
+   ]
+  },
+  {
+   "key": "{\"d_model\":1152,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":2304,\"n_head\":18,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1152,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 2304,
+      "n_head": 18,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 327.422592,
+    "total_params_m": 364.286592,
+    "est_loss": 2.5860232567181116,
+    "prefill_ms": 25.970765509518476,
+    "decode_ms_per_token": 17.078981026785712,
+    "latency_ms": 879.9198168488041,
+    "memory_mb": 287.9185562133789,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5860232567181116,
+    879.9198168488041,
+    287.9185562133789
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":11520,\"n_head\":24,\"n_kv_head\":8}],\"n_layer\":18}",
+   "arch": {
+    "n_layer": 18,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 11520,
+      "n_head": 24,
+      "n_kv_head": 8
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1068.81792,
+    "total_params_m": 1117.96992,
+    "est_loss": 2.36365452548671,
+    "prefill_ms": 65.67667189249721,
+    "decode_ms_per_token": 35.06377232142857,
+    "latency_ms": 1818.8652879639258,
+    "memory_mb": 734.2257995605469,
+    "kv_cache_mb": 72.0,
+    "feasible": true
+   },
+   "obj": [
+    2.36365452548671,
+    1818.8652879639258,
+    734.2257995605469
+   ]
+  },
+  {
+   "key": "{\"d_model\":1792,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3584,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":39}",
+   "arch": {
+    "n_layer": 39,
+    "d_model": 1792,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3584,
+      "n_head": 14,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1037.838592,
+    "total_params_m": 1095.182592,
+    "est_loss": 2.36894412336758,
+    "prefill_ms": 67.21953370660694,
+    "decode_ms_per_token": 37.627703125,
+    "latency_ms": 1948.6046899566068,
+    "memory_mb": 728.0017242431641,
+    "kv_cache_mb": 78.0,
+    "feasible": true
+   },
+   "obj": [
+    2.36894412336758,
+    1948.6046899566068,
+    728.0017242431641
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":13952,\"n_head\":16,\"n_kv_head\":4}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 13952,
+      "n_head": 16,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 2790.119424,
+    "total_params_m": 2855.655424,
+    "est_loss": 2.1974214060274795,
+    "prefill_ms": 163.81135184770437,
+    "decode_ms_per_token": 82.24135119047618,
+    "latency_ms": 4275.878911371514,
+    "memory_mb": 1710.3929443359375,
+    "kv_cache_mb": 116.0,
+    "feasible": true
+   },
+   "obj": [
+    2.1974214060274795,
+    4275.878911371514,
+    1710.3929443359375
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":1}],\"n_layer\":24}",
+   "arch": {
+    "n_layer": 24,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 14,
+      "n_kv_head": 1
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 503.7536,
+    "total_params_m": 532.4256,
+    "est_loss": 2.5027190693439216,
+    "prefill_ms": 34.89799776035835,
+    "decode_ms_per_token": 20.5471484375,
+    "latency_ms": 1062.2554196353583,
+    "memory_mb": 360.11534881591797,
+    "kv_cache_mb": 12.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5027190693439216,
+    1062.2554196353583,
+    360.11534881591797
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3328,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3328,
+      "n_head": 22,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 165.472384,
+    "total_params_m": 210.528384,
+    "est_loss": 2.7236891655833495,
+    "prefill_ms": 13.700901679731244,
+    "decode_ms_per_token": 9.87198549107143,
+    "latency_ms": 507.30017623330275,
+    "memory_mb": 184.43622589111328,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.7236891655833495,
+    507.30017623330275,
+    184.43622589111328
+   ]
+  },
+  {
+   "key": "{\"d_model\":2304,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":9856,\"n_head\":18,\"n_kv_head\":\"n_head\"}],\"n_layer\":40}",
+   "arch": {
+    "n_layer": 40,
+    "d_model": 2304,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 9856,
+      "n_head": 18,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 3574.520064,
+    "total_params_m": 3648.248064,
+    "est_loss": 2.156433822624401,
+    "prefill_ms": 209.4816698768197,
+    "decode_ms_per_token": 105.63059598214285,
+    "latency_ms": 5491.011468983963,
+    "memory_mb": 2739.572769165039,
+    "kv_cache_mb": 720.0,
+    "feasible": true
+   },
+   "obj": [
+    2.156433822624401,
+    5491.011468983963,
+    2739.572769165039
+   ]
+  },
+  {
+   "key": "{\"d_model\":2304,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7424,\"n_head\":36,\"n_kv_head\":4}],\"n_layer\":22}",
+   "arch": {
+    "n_layer": 22,
+    "d_model": 2304,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7424,
+      "n_head": 36,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1388.549376,
+    "total_params_m": 1462.277376,
+    "est_loss": 2.317106642330961,
+    "prefill_ms": 84.2707914893617,
+    "decode_ms_per_token": 44.62347395833333,
+    "latency_ms": 2315.444489406028,
+    "memory_mb": 890.9267120361328,
+    "kv_cache_mb": 44.0,
+    "feasible": true
+   },
+   "obj": [
+    2.317106642330961,
+    2315.444489406028,
+    890.9267120361328
+   ]
+  },
+  {
+   "key": "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":13056,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":35}",
+   "arch": {
+    "n_layer": 35,
+    "d_model": 3072,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 13056,
+      "n_head": 24,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 4927.214592,
+    "total_params_m": 5025.518592,
+    "est_loss": 2.104471122816578,
+    "prefill_ms": 284.5409670772676,
+    "decode_ms_per_token": 139.82380059523808,
+    "latency_ms": 7275.730996839172,
+    "memory_mb": 2828.3982543945312,
+    "kv_cache_mb": 70.0,
+    "feasible": true
+   },
+   "obj": [
+    2.104471122816578,
+    7275.730996839172,
+    2828.3982543945312
+   ]
+  },
+  {
+   "key": "{\"d_model\":1280,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":2560,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":11}",
+   "arch": {
+    "n_layer": 11,
+    "d_model": 1280,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 2560,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 151.4176,
+    "total_params_m": 192.3776,
+    "est_loss": 2.7421251995297315,
+    "prefill_ms": 13.213314669652855,
+    "decode_ms_per_token": 9.718865327380952,
+    "latency_ms": 499.15658103870044,
+    "memory_mb": 187.6993865966797,
+    "kv_cache_mb": 22.0,
+    "feasible": true
+   },
+   "obj": [
+    2.7421251995297315,
+    499.15658103870044,
+    187.6993865966797
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":10240,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":18}",
+   "arch": {
+    "n_layer": 18,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 10240,
+      "n_head": 26,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 1027.534976,
+    "total_params_m": 1080.782976,
+    "est_loss": 2.3707411633094853,
+    "prefill_ms": 63.37623381858903,
+    "decode_ms_per_token": 34.0010390625,
+    "latency_ms": 1763.428186943589,
+    "memory_mb": 660.2771682739258,
+    "kv_cache_mb": 18.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3707411633094853,
+    1763.428186943589,
+    660.2771682739258
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4096,\"n_head\":8,\"n_kv_head\":\"n_head\"}],\"n_layer\":10}",
+   "arch": {
+    "n_layer": 10,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4096,
+      "n_head": 8,
+      "n_kv_head": "n_head"
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 0,
+   "origin": "init",
+   "rationale": "",
+   "costs": {
+    "decoder_params_m": 73.411072,
+    "total_params_m": 89.795072,
+    "est_loss": 2.8972288693738437,
+    "prefill_ms": 8.643043225083986,
+    "decode_ms_per_token": 6.915519345238096,
+    "latency_ms": 354.4190104869888,
+    "memory_mb": 150.66983032226562,
+    "kv_cache_mb": 40.0,
+    "feasible": true
+   },
+   "obj": [
+    2.8972288693738437,
+    354.4190104869888,
+    150.66983032226562
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3328,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":12}",
+   "arch": {
+    "n_layer": 12,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3328,
+      "n_head": 22,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "Increase d_model from 1024 to 1408 to explore better performance with a moderate increase in parameters. Increase n_head from 16 to 20 and set n_kv_head to 4 for better memory efficiency without excessive parameter growth.",
+   "costs": {
+    "decoder_params_m": 220.629376,
+    "total_params_m": 265.685376,
+    "est_loss": 2.664785579453463,
+    "prefill_ms": 17.25102441209407,
+    "decode_ms_per_token": 11.769777901785714,
+    "latency_ms": 605.7399195013797,
+    "memory_mb": 217.02474212646484,
+    "kv_cache_mb": 12.0,
+    "feasible": true
+   },
+   "obj": [
+    2.664785579453463,
+    605.7399195013797,
+    217.02474212646484
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3328,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":8}",
+   "arch": {
+    "n_layer": 8,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3328,
+      "n_head": 26,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=8 and d_model=3072 to balance between lower layer count and higher d_model. This should provide a good trade-off in terms of latency and estimation loss.",
+   "costs": {
+    "decoder_params_m": 180.645504,
+    "total_params_m": 233.893504,
+    "est_loss": 2.7055889662356862,
+    "prefill_ms": 14.411425755879058,
+    "decode_ms_per_token": 10.331501860119047,
+    "latency_ms": 530.9865187618313,
+    "memory_mb": 195.97025299072266,
+    "kv_cache_mb": 8.0,
+    "feasible": true
+   },
+   "obj": [
+    2.7055889662356862,
+    530.9865187618313,
+    195.97025299072266
+   ]
+  },
+  {
+   "key": "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":16,\"n_kv_head\":1}],\"n_layer\":18}",
+   "arch": {
+    "n_layer": 18,
+    "d_model": 1024,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 16,
+      "n_kv_head": 1
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=18 and d_model=2304 to explore a smaller model size while maintaining higher layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 323.26144,
+    "total_params_m": 356.02944,
+    "est_loss": 2.5885382478781898,
+    "prefill_ms": 23.88804031354983,
+    "decode_ms_per_token": 15.027991071428573,
+    "latency_ms": 775.2875938849785,
+    "memory_mb": 262.48907470703125,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5885382478781898,
+    775.2875938849785,
+    262.48907470703125
+   ]
+  },
+  {
+   "key": "{\"d_model\":1280,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4608,\"n_head\":20,\"n_kv_head\":2}],\"n_layer\":35}",
+   "arch": {
+    "n_layer": 35,
+    "d_model": 1280,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4608,
+      "n_head": 20,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=35 and d_model=2048 to explore a smaller model size while maintaining high layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 745.56288,
+    "total_params_m": 786.52288,
+    "est_loss": 2.429248135155783,
+    "prefill_ms": 50.16612989921613,
+    "decode_ms_per_token": 28.88213913690476,
+    "latency_ms": 1494.2730867444543,
+    "memory_mb": 519.4237518310547,
+    "kv_cache_mb": 35.0,
+    "feasible": true
+   },
+   "obj": [
+    2.429248135155783,
+    1494.2730867444543,
+    519.4237518310547
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4096,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":19}",
+   "arch": {
+    "n_layer": 19,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4096,
+      "n_head": 8,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "Increase n_layer from 12 to 19 and decrease d_model from 1024 to 512 to explore a smaller model size. This should help in reducing memory footprint while maintaining acceptable estimation loss.",
+   "costs": {
+    "decoder_params_m": 132.009472,
+    "total_params_m": 148.393472,
+    "est_loss": 2.770860718986345,
+    "prefill_ms": 13.286929003359463,
+    "decode_ms_per_token": 9.763331845238095,
+    "latency_ms": 501.45352126526427,
+    "memory_mb": 161.10446166992188,
+    "kv_cache_mb": 19.0,
+    "feasible": true
+   },
+   "obj": [
+    2.770860718986345,
+    501.45352126526427,
+    161.10446166992188
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8960,\"n_head\":26,\"n_kv_head\":1}],\"n_layer\":33}",
+   "arch": {
+    "n_layer": 33,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8960,
+      "n_head": 26,
+      "n_kv_head": 1
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=33 and d_model=1408 to explore a higher d_model size while maintaining high layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 1665.92192,
+    "total_params_m": 1719.16992,
+    "est_loss": 2.2852563808446975,
+    "prefill_ms": 101.44006047032475,
+    "decode_ms_per_token": 52.94741629464286,
+    "latency_ms": 2748.8108752024677,
+    "memory_mb": 1001.2346115112305,
+    "kv_cache_mb": 16.5,
+    "feasible": true
+   },
+   "obj": [
+    2.2852563808446975,
+    2748.8108752024677,
+    1001.2346115112305
+   ]
+  },
+  {
+   "key": "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6144,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":22}",
+   "arch": {
+    "n_layer": 22,
+    "d_model": 3072,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6144,
+      "n_head": 24,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=22 and d_model=1920 to explore a higher model size while maintaining moderate layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 1730.28864,
+    "total_params_m": 1828.59264,
+    "est_loss": 2.278681743263824,
+    "prefill_ms": 103.47995072788353,
+    "decode_ms_per_token": 54.27885416666666,
+    "latency_ms": 2817.4226590612166,
+    "memory_mb": 1131.4335327148438,
+    "kv_cache_mb": 88.0,
+    "feasible": true
+   },
+   "obj": [
+    2.278681743263824,
+    2817.4226590612166,
+    1131.4335327148438
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":11264,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":35}",
+   "arch": {
+    "n_layer": 35,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 11264,
+      "n_head": 22,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=35 and d_model=2048 to explore a smaller model size while maintaining high layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 1816.757888,
+    "total_params_m": 1861.813888,
+    "est_loss": 2.270252209087211,
+    "prefill_ms": 110.16058275475925,
+    "decode_ms_per_token": 57.0095197172619,
+    "latency_ms": 2960.636568617854,
+    "memory_mb": 1096.2547988891602,
+    "kv_cache_mb": 35.0,
+    "feasible": true
+   },
+   "obj": [
+    2.270252209087211,
+    2960.636568617854,
+    1096.2547988891602
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4096,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":16}",
+   "arch": {
+    "n_layer": 16,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4096,
+      "n_head": 8,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "Increase n_layer from 8 to 16 and decrease d_model from 1024 to 512 to explore a smaller model size. This should help in reducing memory footprint while maintaining acceptable estimation loss.",
+   "costs": {
+    "decoder_params_m": 111.165952,
+    "total_params_m": 127.549952,
+    "est_loss": 2.8072870800763985,
+    "prefill_ms": 11.66557849944009,
+    "decode_ms_per_token": 8.763108630952381,
+    "latency_ms": 449.82101004705913,
+    "memory_mb": 146.92312622070312,
+    "kv_cache_mb": 16.0,
+    "feasible": true
+   },
+   "obj": [
+    2.8072870800763985,
+    449.82101004705913,
+    146.92312622070312
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":16384,\"n_head\":32,\"n_kv_head\":4}],\"n_layer\":33}",
+   "arch": {
+    "n_layer": 33,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 16384,
+      "n_head": 32,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=35 and d_model=2048 to explore a higher model size while maintaining high layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 3633.453056,
+    "total_params_m": 3698.989056,
+    "est_loss": 2.1537554876554004,
+    "prefill_ms": 211.6534141097424,
+    "decode_ms_per_token": 104.817875,
+    "latency_ms": 5452.547164109743,
+    "memory_mb": 2112.7923583984375,
+    "kv_cache_mb": 66.0,
+    "feasible": true
+   },
+   "obj": [
+    2.1537554876554004,
+    5452.547164109743,
+    2112.7923583984375
+   ]
+  },
+  {
+   "key": "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8960,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":14}",
+   "arch": {
+    "n_layer": 14,
+    "d_model": 3072,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8960,
+      "n_head": 24,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=14 and d_model=1408 to explore a higher model size while maintaining moderate layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 1442.405376,
+    "total_params_m": 1540.709376,
+    "est_loss": 2.310415267785863,
+    "prefill_ms": 86.09226517357223,
+    "decode_ms_per_token": 45.4484255952381,
+    "latency_ms": 2358.513544935477,
+    "memory_mb": 917.0009155273438,
+    "kv_cache_mb": 28.0,
+    "feasible": true
+   },
+   "obj": [
+    2.310415267785863,
+    2358.513544935477,
+    917.0009155273438
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3072,\"n_head\":8,\"n_kv_head\":4}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3072,
+      "n_head": 8,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=27 and d_model=640 to explore a smaller model size while maintaining moderate layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 148.663808,
+    "total_params_m": 165.047808,
+    "est_loss": 2.7459529008480352,
+    "prefill_ms": 15.430889585666293,
+    "decode_ms_per_token": 11.457308035714284,
+    "latency_ms": 588.2962913713804,
+    "memory_mb": 205.03854370117188,
+    "kv_cache_mb": 54.0,
+    "feasible": true
+   },
+   "obj": [
+    2.7459529008480352,
+    588.2962913713804,
+    205.03854370117188
+   ]
+  },
+  {
+   "key": "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":15360,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":35}",
+   "arch": {
+    "n_layer": 35,
+    "d_model": 1920,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 15360,
+      "n_head": 30,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "Increase n_layer from 33 to 35 and increase d_model from 1408 to 1920 to explore a higher model size with more parameters. This should help in reducing latency while maintaining acceptable estimation loss.",
+   "costs": {
+    "decoder_params_m": 3371.96352,
+    "total_params_m": 3433.40352,
+    "est_loss": 2.1660156248968323,
+    "prefill_ms": 197.30668085106385,
+    "decode_ms_per_token": 98.11904203869048,
+    "latency_ms": 5103.258782785588,
+    "memory_mb": 1939.321174621582,
+    "kv_cache_mb": 35.0,
+    "feasible": true
+   },
+   "obj": [
+    2.1660156248968323,
+    5103.258782785588,
+    1939.321174621582
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6656,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":10}",
+   "arch": {
+    "n_layer": 10,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6656,
+      "n_head": 14,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "Decrease n_layer from 35 to 10 and decrease d_model from 1920 to 896 to explore a smaller model size. This should help in reducing memory footprint while maintaining acceptable estimation loss.",
+   "costs": {
+    "decoder_params_m": 197.282176,
+    "total_params_m": 225.954176,
+    "est_loss": 2.6875342432150386,
+    "prefill_ms": 15.603225979843225,
+    "decode_ms_per_token": 10.427158854166667,
+    "latency_ms": 536.9611686881766,
+    "memory_mb": 193.71126556396484,
+    "kv_cache_mb": 10.0,
+    "feasible": true
+   },
+   "obj": [
+    2.6875342432150386,
+    536.9611686881766,
+    193.71126556396484
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":16384,\"n_head\":32,\"n_kv_head\":4}],\"n_layer\":35}",
+   "arch": {
+    "n_layer": 35,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 16384,
+      "n_head": 32,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=35 and d_model=2048 to explore a higher model size while maintaining high layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 3853.662208,
+    "total_params_m": 3919.198208,
+    "est_loss": 2.144145664123073,
+    "prefill_ms": 224.2946208286674,
+    "decode_ms_per_token": 110.88475595238096,
+    "latency_ms": 5768.532418447716,
+    "memory_mb": 2234.9217529296875,
+    "kv_cache_mb": 70.0,
+    "feasible": true
+   },
+   "obj": [
+    2.144145664123073,
+    5768.532418447716,
+    2234.9217529296875
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7424,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7424,
+      "n_head": 22,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=29 and d_model=1664 to explore a smaller model size while maintaining moderate layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 1034.92928,
+    "total_params_m": 1079.98528,
+    "est_loss": 2.369449580871378,
+    "prefill_ms": 65.46153415453527,
+    "decode_ms_per_token": 35.648506324404764,
+    "latency_ms": 1847.8868503747733,
+    "memory_mb": 670.849250793457,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.369449580871378,
+    1847.8868503747733,
+    670.849250793457
+   ]
+  },
+  {
+   "key": "{\"d_model\":1536,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3072,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":32}",
+   "arch": {
+    "n_layer": 32,
+    "d_model": 1536,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3072,
+      "n_head": 12,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=32 and d_model=512 to explore a higher model size while maintaining moderate layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 654.411264,
+    "total_params_m": 703.563264,
+    "est_loss": 2.45344329516916,
+    "prefill_ms": 44.63381321388577,
+    "decode_ms_per_token": 26.417087797619047,
+    "latency_ms": 1365.4882030948381,
+    "memory_mb": 567.9207458496094,
+    "kv_cache_mb": 128.0,
+    "feasible": true
+   },
+   "obj": [
+    2.45344329516916,
+    1365.4882030948381,
+    567.9207458496094
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":13952,\"n_head\":16,\"n_kv_head\":4}],\"n_layer\":18}",
+   "arch": {
+    "n_layer": 18,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 13952,
+      "n_head": 16,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "Increase n_layer from 18 to 20 and increase d_model from 1664 to 2048 to explore a higher model size with more parameters. This should help in reducing latency while maintaining acceptable estimation loss.",
+   "costs": {
+    "decoder_params_m": 1731.79904,
+    "total_params_m": 1797.33504,
+    "est_loss": 2.278530642450098,
+    "prefill_ms": 102.84182306830907,
+    "decode_ms_per_token": 52.83455357142857,
+    "latency_ms": 2744.5695016397376,
+    "memory_mb": 1098.6656494140625,
+    "kv_cache_mb": 72.0,
+    "feasible": true
+   },
+   "obj": [
+    2.278530642450098,
+    2744.5695016397376,
+    1098.6656494140625
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4096,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":35}",
+   "arch": {
+    "n_layer": 35,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4096,
+      "n_head": 14,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "Decrease n_layer from 35 to 33 and decrease d_model from 1408 to 960 to explore a smaller model size. This should help in reducing memory footprint while maintaining acceptable estimation loss.",
+   "costs": {
+    "decoder_params_m": 449.640576,
+    "total_params_m": 478.312576,
+    "est_loss": 2.5244275167732404,
+    "prefill_ms": 33.54574557670773,
+    "decode_ms_per_token": 20.819997395833333,
+    "latency_ms": 1074.5456153683745,
+    "memory_mb": 354.0868606567383,
+    "kv_cache_mb": 35.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5244275167732404,
+    1074.5456153683745,
+    354.0868606567383
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4096,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4096,
+      "n_head": 8,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=27 and d_model=640 to explore a smaller model size while maintaining moderate layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 187.592192,
+    "total_params_m": 203.976192,
+    "est_loss": 2.6978410680969493,
+    "prefill_ms": 17.610530347144458,
+    "decode_ms_per_token": 12.43059375,
+    "latency_ms": 639.1402178471445,
+    "memory_mb": 198.92135620117188,
+    "kv_cache_mb": 27.0,
+    "feasible": true
+   },
+   "obj": [
+    2.6978410680969493,
+    639.1402178471445,
+    198.92135620117188
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4096,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4096,
+      "n_head": 8,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "Decrease n_layer from 10 to 9 and decrease d_model from 512 to 3072 while maintaining moderate layer count. This should help in reducing memory footprint while maintaining acceptable estimation loss.",
+   "costs": {
+    "decoder_params_m": 62.531072,
+    "total_params_m": 78.915072,
+    "est_loss": 2.9327658909333385,
+    "prefill_ms": 7.882427323628219,
+    "decode_ms_per_token": 6.429254464285714,
+    "latency_ms": 329.3451505379139,
+    "memory_mb": 113.83334350585938,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.9327658909333385,
+    329.3451505379139,
+    113.83334350585938
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4096,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":39}",
+   "arch": {
+    "n_layer": 39,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4096,
+      "n_head": 8,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "Increase n_layer from 35 to 39 and decrease d_model from 1536 to 512 to explore a smaller model size. This should help in reducing memory footprint while maintaining acceptable estimation loss.",
+   "costs": {
+    "decoder_params_m": 270.966272,
+    "total_params_m": 287.350272,
+    "est_loss": 2.62348826022504,
+    "prefill_ms": 24.095932362821948,
+    "decode_ms_per_token": 16.43148660714286,
+    "latency_ms": 845.6702627199649,
+    "memory_mb": 255.64669799804688,
+    "kv_cache_mb": 39.0,
+    "feasible": true
+   },
+   "obj": [
+    2.62348826022504,
+    845.6702627199649,
+    255.64669799804688
+   ]
+  },
+  {
+   "key": "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":15360,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":8}",
+   "arch": {
+    "n_layer": 8,
+    "d_model": 3072,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 15360,
+      "n_head": 24,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 1,
+   "origin": "mutation",
+   "rationale": "Decrease n_layer from 9 to 8 and increase d_model from 1536 to 3072 while maintaining moderate layer count. This should help in reducing memory footprint while maintaining acceptable estimation loss.",
+   "costs": {
+    "decoder_params_m": 1296.09216,
+    "total_params_m": 1394.39616,
+    "est_loss": 2.3292728036079637,
+    "prefill_ms": 76.94843449048152,
+    "decode_ms_per_token": 40.7011755952381,
+    "latency_ms": 2112.0072142523863,
+    "memory_mb": 826.5123901367188,
+    "kv_cache_mb": 16.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3292728036079637,
+    2112.0072142523863,
+    826.5123901367188
+   ]
+  },
+  {
+   "key": "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6912,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":14}",
+   "arch": {
+    "n_layer": 14,
+    "d_model": 3072,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6912,
+      "n_head": 24,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "Increase n_layer from 12 to 14 and increase d_model from 1408 to 3072 while maintaining moderate layer count. This should help in balancing estimation loss and latency better.",
+   "costs": {
+    "decoder_params_m": 1200.18432,
+    "total_params_m": 1298.48832,
+    "est_loss": 2.342922046306876,
+    "prefill_ms": 72.53005599104142,
+    "decode_ms_per_token": 39.15909226190476,
+    "latency_ms": 2030.4846690862796,
+    "memory_mb": 815.0634155273438,
+    "kv_cache_mb": 56.0,
+    "feasible": true
+   },
+   "obj": [
+    2.342922046306876,
+    2030.4846690862796,
+    815.0634155273438
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4096,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":25}",
+   "arch": {
+    "n_layer": 25,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4096,
+      "n_head": 8,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "Increase n_layer from 22 to 25 and decrease d_model from 3072 to 512 while maintaining moderate layer count. This should help in reducing memory footprint.",
+   "costs": {
+    "decoder_params_m": 173.696512,
+    "total_params_m": 190.080512,
+    "est_loss": 2.713667039404949,
+    "prefill_ms": 16.529630011198208,
+    "decode_ms_per_token": 11.763778273809525,
+    "latency_ms": 604.7185437016744,
+    "memory_mb": 189.46713256835938,
+    "kv_cache_mb": 25.0,
+    "feasible": true
+   },
+   "obj": [
+    2.713667039404949,
+    604.7185437016744,
+    189.46713256835938
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 14,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=10 and d_model=768 to explore a smaller model size while maintaining high layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 189.940352,
+    "total_params_m": 218.612352,
+    "est_loss": 2.6952916940348888,
+    "prefill_ms": 15.039641209406495,
+    "decode_ms_per_token": 10.0834453125,
+    "latency_ms": 519.2119068344065,
+    "memory_mb": 188.7728042602539,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.6952916940348888,
+    519.2119068344065,
+    188.7728042602539
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 22,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=35 and d_model=1920 to explore a smaller model size while maintaining high layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 1066.288256,
+    "total_params_m": 1111.344256,
+    "est_loss": 2.3640802319666916,
+    "prefill_ms": 67.21735587905935,
+    "decode_ms_per_token": 36.468792038690474,
+    "latency_ms": 1890.656957813583,
+    "memory_mb": 687.671516418457,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3640802319666916,
+    1890.656957813583,
+    687.671516418457
+   ]
+  },
+  {
+   "key": "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":10240,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":8}",
+   "arch": {
+    "n_layer": 8,
+    "d_model": 3072,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 10240,
+      "n_head": 24,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=9 and d_model=3072 to explore a higher model size while maintaining moderate layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 931.187712,
+    "total_params_m": 1029.491712,
+    "est_loss": 2.388547339346539,
+    "prefill_ms": 56.51705442329227,
+    "decode_ms_per_token": 31.182699404761905,
+    "latency_ms": 1615.6520246613875,
+    "memory_mb": 646.7623901367188,
+    "kv_cache_mb": 32.0,
+    "feasible": true
+   },
+   "obj": [
+    2.388547339346539,
+    1615.6520246613875,
+    646.7623901367188
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7296,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7296,
+      "n_head": 26,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=35 and d_model=1024 to explore a smaller model size while maintaining high layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 1186.886272,
+    "total_params_m": 1240.134272,
+    "est_loss": 2.3449068266150364,
+    "prefill_ms": 73.84506338185889,
+    "decode_ms_per_token": 39.68600483630953,
+    "latency_ms": 2058.1453051973353,
+    "memory_mb": 755.7598648071289,
+    "kv_cache_mb": 28.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3449068266150364,
+    2058.1453051973353,
+    755.7598648071289
+   ]
+  },
+  {
+   "key": "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":15360,\"n_head\":24,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 3072,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 15360,
+      "n_head": 24,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "Increase n_layer from 8 to 9 and increase d_model from 1664 to 3072 while maintaining moderate layer count. This should help in reducing memory footprint.",
+   "costs": {
+    "decoder_params_m": 1458.103296,
+    "total_params_m": 1556.407296,
+    "est_loss": 2.308515383314097,
+    "prefill_ms": 86.17820694288913,
+    "decode_ms_per_token": 45.09238392857143,
+    "latency_ms": 2340.7974033714604,
+    "memory_mb": 915.4219360351562,
+    "kv_cache_mb": 18.0,
+    "feasible": true
+   },
+   "obj": [
+    2.308515383314097,
+    2340.7974033714604,
+    915.4219360351562
+   ]
+  },
+  {
+   "key": "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6528,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":21}",
+   "arch": {
+    "n_layer": 21,
+    "d_model": 1920,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6528,
+      "n_head": 30,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=27 and d_model=3072 to explore a smaller model size while maintaining moderate layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 954.86016,
+    "total_params_m": 1016.30016,
+    "est_loss": 2.3839945613133864,
+    "prefill_ms": 59.79529451287794,
+    "decode_ms_per_token": 32.76930245535714,
+    "latency_ms": 1698.260417280735,
+    "memory_mb": 628.6858901977539,
+    "kv_cache_mb": 21.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3839945613133864,
+    1698.260417280735,
+    628.6858901977539
+   ]
+  },
+  {
+   "key": "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":20,\"n_kv_head\":2}],\"n_layer\":16}",
+   "arch": {
+    "n_layer": 16,
+    "d_model": 2560,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 20,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=14 and d_model=2048 to explore a higher model size while maintaining moderate layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 859.9168,
+    "total_params_m": 941.8368,
+    "est_loss": 2.403045500952952,
+    "prefill_ms": 53.75404255319149,
+    "decode_ms_per_token": 30.08982886904762,
+    "latency_ms": 1558.2454860055725,
+    "memory_mb": 599.7406311035156,
+    "kv_cache_mb": 32.0,
+    "feasible": true
+   },
+   "obj": [
+    2.403045500952952,
+    1558.2454860055725,
+    599.7406311035156
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":1536,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 1536,
+      "n_head": 12,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "Increase n_layer from 29 to 30 and decrease d_model from 1408 to 768 while maintaining moderate layer count. This should help in reducing memory footprint.",
+   "costs": {
+    "decoder_params_m": 153.401088,
+    "total_params_m": 177.977088,
+    "est_loss": 2.739414319962837,
+    "prefill_ms": 16.181109070548715,
+    "decode_ms_per_token": 12.255511160714285,
+    "latency_ms": 628.9566671062629,
+    "memory_mb": 217.97434997558594,
+    "kv_cache_mb": 60.0,
+    "feasible": true
+   },
+   "obj": [
+    2.739414319962837,
+    628.9566671062629,
+    217.97434997558594
+   ]
+  },
+  {
+   "key": "{\"d_model\":2304,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5888,\"n_head\":18,\"n_kv_head\":2}],\"n_layer\":19}",
+   "arch": {
+    "n_layer": 19,
+    "d_model": 2304,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5888,
+      "n_head": 18,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=18 and d_model=3072 to explore a smaller model size while maintaining higher layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 997.48224,
+    "total_params_m": 1071.21024,
+    "est_loss": 2.376095490160863,
+    "prefill_ms": 61.90518477043673,
+    "decode_ms_per_token": 33.933969494047616,
+    "latency_ms": 1758.6036594728175,
+    "memory_mb": 675.1419525146484,
+    "kv_cache_mb": 38.0,
+    "feasible": true
+   },
+   "obj": [
+    2.376095490160863,
+    1758.6036594728175,
+    675.1419525146484
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3072,\"n_head\":8,\"n_kv_head\":4}],\"n_layer\":26}",
+   "arch": {
+    "n_layer": 26,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3072,
+      "n_head": 8,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=29 and d_model=640 to explore a smaller model size while maintaining moderate layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 143.15776,
+    "total_params_m": 159.54176,
+    "est_loss": 2.753840299727771,
+    "prefill_ms": 14.97116685330347,
+    "decode_ms_per_token": 11.159947916666667,
+    "latency_ms": 572.9685626866368,
+    "memory_mb": 200.08486938476562,
+    "kv_cache_mb": 52.0,
+    "feasible": true
+   },
+   "obj": [
+    2.753840299727771,
+    572.9685626866368,
+    200.08486938476562
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4736,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":33}",
+   "arch": {
+    "n_layer": 33,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4736,
+      "n_head": 14,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=18 and d_model=2304 to explore a smaller model size while maintaining higher layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 480.71744,
+    "total_params_m": 509.38944,
+    "est_loss": 2.51163804171805,
+    "prefill_ms": 34.98075475923852,
+    "decode_ms_per_token": 21.3295703125,
+    "latency_ms": 1101.4592703842386,
+    "memory_mb": 368.7577896118164,
+    "kv_cache_mb": 33.0,
+    "feasible": true
+   },
+   "obj": [
+    2.51163804171805,
+    1101.4592703842386,
+    368.7577896118164
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6528,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6528,
+      "n_head": 14,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=35 and d_model=1024 to explore a smaller model size while maintaining high layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 523.370624,
+    "total_params_m": 552.042624,
+    "est_loss": 2.4954632185373726,
+    "prefill_ms": 36.453900559910416,
+    "decode_ms_per_token": 21.5352890625,
+    "latency_ms": 1113.2183536849102,
+    "memory_mb": 385.6387405395508,
+    "kv_cache_mb": 27.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4954632185373726,
+    1113.2183536849102,
+    385.6387405395508
+   ]
+  },
+  {
+   "key": "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6912,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":8}",
+   "arch": {
+    "n_layer": 8,
+    "d_model": 3072,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6912,
+      "n_head": 24,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "Increase n_layer from 8 to 9 and increase d_model from 1664 to 3072 while maintaining moderate layer count. This should help in reducing memory footprint.",
+   "costs": {
+    "decoder_params_m": 685.820928,
+    "total_params_m": 784.124928,
+    "est_loss": 2.4447174211325966,
+    "prefill_ms": 42.77871265397536,
+    "decode_ms_per_token": 24.76441369047619,
+    "latency_ms": 1280.9993971777849,
+    "memory_mb": 515.1373901367188,
+    "kv_cache_mb": 32.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4447174211325966,
+    1280.9993971777849,
+    515.1373901367188
+   ]
+  },
+  {
+   "key": "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4608,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":23}",
+   "arch": {
+    "n_layer": 23,
+    "d_model": 1920,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4608,
+      "n_head": 30,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "Increase n_layer from 21 to 23 and increase d_model from 1792 to 1920 while maintaining moderate layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 791.43744,
+    "total_params_m": 852.87744,
+    "est_loss": 2.4182490294567276,
+    "prefill_ms": 50.955836506159024,
+    "decode_ms_per_token": 28.79783668154762,
+    "latency_ms": 1490.84767058354,
+    "memory_mb": 543.0191116333008,
+    "kv_cache_mb": 23.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4182490294567276,
+    1490.84767058354,
+    543.0191116333008
+   ]
+  },
+  {
+   "key": "{\"d_model\":3072,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6144,\"n_head\":24,\"n_kv_head\":4}],\"n_layer\":18}",
+   "arch": {
+    "n_layer": 18,
+    "d_model": 3072,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6144,
+      "n_head": 24,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "Increase n_layer from 16 to 18 and increase d_model from 1360 to 3072 while maintaining moderate layer count. This should help in reducing memory footprint.",
+   "costs": {
+    "decoder_params_m": 1415.691264,
+    "total_params_m": 1513.995264,
+    "est_loss": 2.3137001413991376,
+    "prefill_ms": 85.23091511758119,
+    "decode_ms_per_token": 45.42297321428572,
+    "latency_ms": 2356.3795758318674,
+    "memory_mb": 946.6703491210938,
+    "kv_cache_mb": 72.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3137001413991376,
+    2356.3795758318674,
+    946.6703491210938
+   ]
+  },
+  {
+   "key": "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":20,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 2560,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 20,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=10 and d_model=768 to explore a smaller model size while maintaining high layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 483.70432,
+    "total_params_m": 565.62432,
+    "est_loss": 2.510455951608351,
+    "prefill_ms": 31.58934602463606,
+    "decode_ms_per_token": 19.175558035714285,
+    "latency_ms": 990.3672478103502,
+    "memory_mb": 383.9245300292969,
+    "kv_cache_mb": 18.0,
+    "feasible": true
+   },
+   "obj": [
+    2.510455951608351,
+    990.3672478103502,
+    383.9245300292969
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3072,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":24}",
+   "arch": {
+    "n_layer": 24,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3072,
+      "n_head": 12,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "Increase n_layer from 21 to 24 and decrease d_model from 1024 to 768 while maintaining moderate layer count. This should help in reducing memory footprint.",
+   "costs": {
+    "decoder_params_m": 207.65568,
+    "total_params_m": 232.23168,
+    "est_loss": 2.6770874193636773,
+    "prefill_ms": 18.30597984322508,
+    "decode_ms_per_token": 12.754698660714286,
+    "latency_ms": 656.0409128789394,
+    "memory_mb": 235.0787811279297,
+    "kv_cache_mb": 48.0,
+    "feasible": true
+   },
+   "obj": [
+    2.6770874193636773,
+    656.0409128789394,
+    235.0787811279297
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4736,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":35}",
+   "arch": {
+    "n_layer": 35,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4736,
+      "n_head": 14,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=18 and d_model=2304 to explore a smaller model size while maintaining higher layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 509.851776,
+    "total_params_m": 538.523776,
+    "est_loss": 2.500431399140936,
+    "prefill_ms": 36.91703337066069,
+    "decode_ms_per_token": 22.394997395833336,
+    "latency_ms": 1156.6669031623273,
+    "memory_mb": 386.3866653442383,
+    "kv_cache_mb": 35.0,
+    "feasible": true
+   },
+   "obj": [
+    2.500431399140936,
+    1156.6669031623273,
+    386.3866653442383
+   ]
+  },
+  {
+   "key": "{\"d_model\":2560,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":20,\"n_kv_head\":4}],\"n_layer\":15}",
+   "arch": {
+    "n_layer": 15,
+    "d_model": 2560,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 20,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=16 and d_model=3072 to explore a smaller model size while maintaining moderate layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 825.83296,
+    "total_params_m": 907.75296,
+    "est_loss": 2.4104430490103725,
+    "prefill_ms": 51.68848600223964,
+    "decode_ms_per_token": 29.094933035714284,
+    "latency_ms": 1506.4351377879539,
+    "memory_mb": 609.4566345214844,
+    "kv_cache_mb": 60.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4104430490103725,
+    1506.4351377879539,
+    609.4566345214844
+   ]
+  },
+  {
+   "key": "{\"d_model\":1280,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6400,\"n_head\":20,\"n_kv_head\":4}],\"n_layer\":35}",
+   "arch": {
+    "n_layer": 35,
+    "d_model": 1280,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6400,
+      "n_head": 20,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=35 and d_model=1408 to explore a smaller model size while maintaining high layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 997.87648,
+    "total_params_m": 1038.83648,
+    "est_loss": 2.376024132490156,
+    "prefill_ms": 64.29343113101903,
+    "decode_ms_per_token": 35.5404724702381,
+    "latency_ms": 1841.3170546429242,
+    "memory_mb": 689.7753143310547,
+    "kv_cache_mb": 70.0,
+    "feasible": true
+   },
+   "obj": [
+    2.376024132490156,
+    1841.3170546429242,
+    689.7753143310547
+   ]
+  },
+  {
+   "key": "{\"d_model\":1664,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3328,\"n_head\":26,\"n_kv_head\":2}],\"n_layer\":17}",
+   "arch": {
+    "n_layer": 17,
+    "d_model": 1664,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3328,
+      "n_head": 26,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 2,
+   "origin": "mutation",
+   "rationale": "Increase n_layer from 15 to 17 and increase d_model from 1024 to 1664 while maintaining moderate layer count. This should help in reducing memory footprint.",
+   "costs": {
+    "decoder_params_m": 383.869824,
+    "total_params_m": 437.117824,
+    "est_loss": 2.5549517391151677,
+    "prefill_ms": 27.182093169092948,
+    "decode_ms_per_token": 17.012428199404763,
+    "latency_ms": 877.803503139331,
+    "memory_mb": 313.98827362060547,
+    "kv_cache_mb": 17.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5549517391151677,
+    877.803503139331,
+    313.98827362060547
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6144,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6144,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "Increase d_model from 896 to 832 while maintaining n_layer=9 and keeping n_head=n_kv_head=14. This should help in reducing memory footprint without significantly affecting estimation loss.",
+   "costs": {
+    "decoder_params_m": 139.80288,
+    "total_params_m": 164.37888,
+    "est_loss": 2.7588078819490476,
+    "prefill_ms": 12.22458006718925,
+    "decode_ms_per_token": 8.664810267857144,
+    "latency_ms": 445.46509346004643,
+    "memory_mb": 159.67970275878906,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.7588078819490476,
+    445.46509346004643,
+    159.67970275878906
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":25}",
+   "arch": {
+    "n_layer": 25,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "Increase d_model from 640 to 704 and n_head from 8 to 16 while maintaining moderate layer count. This should help in reducing memory footprint and balancing estimation loss.",
+   "costs": {
+    "decoder_params_m": 270.36864,
+    "total_params_m": 290.84864,
+    "est_loss": 2.623928538377985,
+    "prefill_ms": 21.95594848824188,
+    "decode_ms_per_token": 14.399663318452381,
+    "latency_ms": 741.939114410861,
+    "memory_mb": 243.52336883544922,
+    "kv_cache_mb": 25.0,
+    "feasible": true
+   },
+   "obj": [
+    2.623928538377985,
+    741.939114410861,
+    243.52336883544922
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4096,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4096,
+      "n_head": 8,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=33 and d_model=1152 to explore a smaller model size while maintaining moderate layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 201.487872,
+    "total_params_m": 217.871872,
+    "est_loss": 2.6832291657472163,
+    "prefill_ms": 18.691430683090704,
+    "decode_ms_per_token": 13.097409226190475,
+    "latency_ms": 673.5618919926145,
+    "memory_mb": 208.37557983398438,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.6832291657472163,
+    673.5618919926145,
+    208.37557983398438
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5760,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5760,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "Increase d_model from 896 to 768 while maintaining n_layer=9 and keeping moderate n_head. This should help in reducing memory footprint without significantly affecting estimation loss.",
+   "costs": {
+    "decoder_params_m": 131.840256,
+    "total_params_m": 156.416256,
+    "est_loss": 2.771130843678987,
+    "prefill_ms": 11.778744456886898,
+    "decode_ms_per_token": 8.456524553571429,
+    "latency_ms": 434.60497213545835,
+    "memory_mb": 155.40821838378906,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.771130843678987,
+    434.60497213545835,
+    155.40821838378906
+   ]
+  },
+  {
+   "key": "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":8192,\"n_head\":16,\"n_kv_head\":2}],\"n_layer\":23}",
+   "arch": {
+    "n_layer": 23,
+    "d_model": 1024,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 8192,
+      "n_head": 16,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "Increase d_model from 768 to 1024 while maintaining moderate layer count. This should help in improving estimation loss and reducing memory footprint.",
+   "costs": {
+    "decoder_params_m": 633.125888,
+    "total_params_m": 665.893888,
+    "est_loss": 2.459616725615387,
+    "prefill_ms": 42.00200716685331,
+    "decode_ms_per_token": 23.906735119047617,
+    "latency_ms": 1237.338763119234,
+    "memory_mb": 442.71331787109375,
+    "kv_cache_mb": 23.0,
+    "feasible": true
+   },
+   "obj": [
+    2.459616725615387,
+    1237.338763119234,
+    442.71331787109375
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5760,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5760,
+      "n_head": 12,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=29 and d_model=1408 to explore a smaller model size while maintaining moderate layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 445.363968,
+    "total_params_m": 469.939968,
+    "est_loss": 2.5262616958201547,
+    "prefill_ms": 32.528414781634936,
+    "decode_ms_per_token": 19.892654017857144,
+    "latency_ms": 1027.161115674492,
+    "memory_mb": 374.59544372558594,
+    "kv_cache_mb": 60.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5262616958201547,
+    1027.161115674492,
+    374.59544372558594
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":35}",
+   "arch": {
+    "n_layer": 35,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 14,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=35 and d_model=1280 to explore a smaller model size while maintaining high layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 738.654336,
+    "total_params_m": 767.326336,
+    "est_loss": 2.4309674733447473,
+    "prefill_ms": 49.72792698768197,
+    "decode_ms_per_token": 28.379997395833332,
+    "latency_ms": 1468.7277967793486,
+    "memory_mb": 509.1259231567383,
+    "kv_cache_mb": 35.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4309674733447473,
+    1468.7277967793486,
+    509.1259231567383
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5760,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":19}",
+   "arch": {
+    "n_layer": 19,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5760,
+      "n_head": 12,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "Increase n_layer from 18 to 19 and decrease d_model from 2304 to 768 while maintaining moderate layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 282.064128,
+    "total_params_m": 306.640128,
+    "est_loss": 2.6154971185763354,
+    "prefill_ms": 21.711436058230685,
+    "decode_ms_per_token": 13.934402529761904,
+    "latency_ms": 718.4315625463258,
+    "memory_mb": 264.9945831298828,
+    "kv_cache_mb": 38.0,
+    "feasible": true
+   },
+   "obj": [
+    2.6154971185763354,
+    718.4315625463258,
+    264.9945831298828
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":25}",
+   "arch": {
+    "n_layer": 25,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 14,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=35 and d_model=1280 to explore a smaller model size while maintaining high layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 527.610496,
+    "total_params_m": 556.282496,
+    "est_loss": 2.493933463824335,
+    "prefill_ms": 36.38627861142217,
+    "decode_ms_per_token": 21.342861979166667,
+    "latency_ms": 1103.5293775697555,
+    "memory_mb": 385.9131851196289,
+    "kv_cache_mb": 25.0,
+    "feasible": true
+   },
+   "obj": [
+    2.493933463824335,
+    1103.5293775697555,
+    385.9131851196289
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":33}",
+   "arch": {
+    "n_layer": 33,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 14,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=35 and d_model=1280 to explore a smaller model size while maintaining high layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 696.445568,
+    "total_params_m": 725.117568,
+    "est_loss": 2.4418627928119476,
+    "prefill_ms": 47.059597312430014,
+    "decode_ms_per_token": 26.9725703125,
+    "latency_ms": 1395.68811293743,
+    "memory_mb": 484.4833755493164,
+    "kv_cache_mb": 33.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4418627928119476,
+    1395.68811293743,
+    484.4833755493164
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "Decrease d_model from 768 to 640 while maintaining n_layer=9 and keeping moderate n_head. This should help in reducing memory footprint.",
+   "costs": {
+    "decoder_params_m": 97.33312,
+    "total_params_m": 117.81312,
+    "est_loss": 2.83578221257464,
+    "prefill_ms": 9.838842105263158,
+    "decode_ms_per_token": 7.446746651785714,
+    "latency_ms": 382.1761746945489,
+    "memory_mb": 134.69988250732422,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.83578221257464,
+    382.1761746945489,
+    134.69988250732422
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6144,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":23}",
+   "arch": {
+    "n_layer": 23,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6144,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "mutation",
+   "rationale": "Increase d_model from 704 to 832 while maintaining moderate layer count. This should help in reducing memory footprint and balancing estimation loss.",
+   "costs": {
+    "decoder_params_m": 357.272832,
+    "total_params_m": 381.848832,
+    "est_loss": 2.568932444057333,
+    "prefill_ms": 26.531049944008956,
+    "decode_ms_per_token": 16.476706101190477,
+    "latency_ms": 850.3663550035328,
+    "memory_mb": 290.3396759033203,
+    "kv_cache_mb": 23.0,
+    "feasible": true
+   },
+   "obj": [
+    2.568932444057333,
+    850.3663550035328,
+    290.3396759033203
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 3,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=35 and d_model=768 to explore a smaller model size while maintaining moderate layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 313.62752,
+    "total_params_m": 334.10752,
+    "est_loss": 2.59449720173114,
+    "prefill_ms": 24.985225083986563,
+    "decode_ms_per_token": 16.137892485119046,
+    "latency_ms": 831.8798493399388,
+    "memory_mb": 270.72924041748047,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.59449720173114,
+    831.8798493399388,
+    270.72924041748047
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 14,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 4,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=35 and d_model=1280 to explore a smaller model size while maintaining high layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 633.132416,
+    "total_params_m": 661.804416,
+    "est_loss": 2.4596147982294108,
+    "prefill_ms": 43.05710279955207,
+    "decode_ms_per_token": 24.8614296875,
+    "latency_ms": 1286.128587174552,
+    "memory_mb": 447.5195541381836,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4596147982294108,
+    1286.128587174552,
+    447.5195541381836
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":2816,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 2816,
+      "n_head": 8,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 4,
+   "origin": "mutation",
+   "rationale": "Decrease d_model from 576 to 448 while maintaining n_layer=9 and keeping moderate n_head. This should help in reducing memory footprint.",
+   "costs": {
+    "decoder_params_m": 44.836352,
+    "total_params_m": 61.220352,
+    "est_loss": 3.0078542119602347,
+    "prefill_ms": 6.891681522956327,
+    "decode_ms_per_token": 5.9663973214285715,
+    "latency_ms": 305.2115475943849,
+    "memory_mb": 104.34115600585938,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    3.0078542119602347,
+    305.2115475943849,
+    104.34115600585938
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5760,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":23}",
+   "arch": {
+    "n_layer": 23,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5760,
+      "n_head": 12,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 4,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=9 and d_model=3072 to explore a smaller model size while maintaining moderate layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 341.445888,
+    "total_params_m": 366.021888,
+    "est_loss": 2.577794066327102,
+    "prefill_ms": 25.64488286674132,
+    "decode_ms_per_token": 16.10103943452381,
+    "latency_ms": 830.6968545929318,
+    "memory_mb": 304.8494415283203,
+    "kv_cache_mb": 46.0,
+    "feasible": true
+   },
+   "obj": [
+    2.577794066327102,
+    830.6968545929318,
+    304.8494415283203
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":18}",
+   "arch": {
+    "n_layer": 18,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 4,
+   "origin": "mutation",
+   "rationale": "Decrease n_layer from 19 to 18 and maintain d_model=640 while keeping moderate n_head. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 194.6656,
+    "total_params_m": 215.1456,
+    "est_loss": 2.6902627784235134,
+    "prefill_ms": 16.65471444568869,
+    "decode_ms_per_token": 11.357762276785714,
+    "latency_ms": 584.5428282849743,
+    "memory_mb": 195.91309356689453,
+    "kv_cache_mb": 18.0,
+    "feasible": true
+   },
+   "obj": [
+    2.6902627784235134,
+    584.5428282849743,
+    195.91309356689453
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5760,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":25}",
+   "arch": {
+    "n_layer": 25,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5760,
+      "n_head": 12,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 4,
+   "origin": "mutation",
+   "rationale": "Maintain moderate n_layer and d_model while changing n_kv_head to 4. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 371.136768,
+    "total_params_m": 395.712768,
+    "est_loss": 2.5615102643324077,
+    "prefill_ms": 27.61160627099664,
+    "decode_ms_per_token": 17.184357886904763,
+    "latency_ms": 886.8295006162348,
+    "memory_mb": 324.77687072753906,
+    "kv_cache_mb": 50.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5615102643324077,
+    886.8295006162348,
+    324.77687072753906
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7168,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":19}",
+   "arch": {
+    "n_layer": 19,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7168,
+      "n_head": 14,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 4,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=35 and d_model=1280 to explore a smaller model size while maintaining high layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 400.984192,
+    "total_params_m": 429.656192,
+    "est_loss": 2.5464960798618073,
+    "prefill_ms": 28.381289585666295,
+    "decode_ms_per_token": 17.12058072916667,
+    "latency_ms": 884.4103260439997,
+    "memory_mb": 311.9855422973633,
+    "kv_cache_mb": 19.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5464960798618073,
+    884.4103260439997,
+    311.9855422973633
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4992,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":23}",
+   "arch": {
+    "n_layer": 23,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4992,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 4,
+   "origin": "mutation",
+   "rationale": "Increase d_model from 640 to 672 while maintaining moderate layer count and keeping n_head=8. This should help in reducing memory footprint.",
+   "costs": {
+    "decoder_params_m": 243.08672,
+    "total_params_m": 263.56672,
+    "est_loss": 2.6452262837035554,
+    "prefill_ms": 20.12482194848824,
+    "decode_ms_per_token": 13.382691592261905,
+    "latency_ms": 689.2594015615834,
+    "memory_mb": 226.8882064819336,
+    "kv_cache_mb": 23.0,
+    "feasible": true
+   },
+   "obj": [
+    2.6452262837035554,
+    689.2594015615834,
+    226.8882064819336
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3968,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3968,
+      "n_head": 8,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 5,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=9 and d_model=512 to explore a higher model size while maintaining moderate layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 60.7616,
+    "total_params_m": 77.1456,
+    "est_loss": 2.939171066743737,
+    "prefill_ms": 7.78335274356103,
+    "decode_ms_per_token": 6.38296875,
+    "latency_ms": 326.931790243561,
+    "memory_mb": 112.88412475585938,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.939171066743737,
+    326.931790243561,
+    112.88412475585938
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4992,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":23}",
+   "arch": {
+    "n_layer": 23,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4992,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 5,
+   "origin": "mutation",
+   "rationale": "Decrease d_inner from 5760 to 4992 while maintaining moderate layer count and d_model. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 296.226048,
+    "total_params_m": 320.802048,
+    "est_loss": 2.605777420291783,
+    "prefill_ms": 23.112976931690927,
+    "decode_ms_per_token": 14.879848958333334,
+    "latency_ms": 767.1054248483576,
+    "memory_mb": 257.5916290283203,
+    "kv_cache_mb": 23.0,
+    "feasible": true
+   },
+   "obj": [
+    2.605777420291783,
+    767.1054248483576,
+    257.5916290283203
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3968,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3968,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 5,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=9 and d_model=512 to explore a higher model size while maintaining moderate layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 77.42656,
+    "total_params_m": 97.90656,
+    "est_loss": 2.8855263582929753,
+    "prefill_ms": 8.72425307950728,
+    "decode_ms_per_token": 6.9260323660714285,
+    "latency_ms": 355.0258713830787,
+    "memory_mb": 124.02117156982422,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.8855263582929753,
+    355.0258713830787,
+    124.02117156982422
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6144,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":19}",
+   "arch": {
+    "n_layer": 19,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6144,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 5,
+   "origin": "mutation",
+   "rationale": "Increase d_model from 768 to 832 while maintaining moderate layer count and n_head. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 295.13856,
+    "total_params_m": 319.71456,
+    "est_loss": 2.606505889562569,
+    "prefill_ms": 22.44348712206047,
+    "decode_ms_per_token": 14.244735863095238,
+    "latency_ms": 734.6802802768224,
+    "memory_mb": 253.0082550048828,
+    "kv_cache_mb": 19.0,
+    "feasible": true
+   },
+   "obj": [
+    2.606505889562569,
+    734.6802802768224,
+    253.0082550048828
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":23}",
+   "arch": {
+    "n_layer": 23,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 5,
+   "origin": "mutation",
+   "rationale": "Decrease d_model from 768 to 704 while maintaining moderate layer count and n_head. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 248.7392,
+    "total_params_m": 269.2192,
+    "est_loss": 2.6406091349968244,
+    "prefill_ms": 20.441310190369542,
+    "decode_ms_per_token": 13.530548735119048,
+    "latency_ms": 696.968746946322,
+    "memory_mb": 229.9204330444336,
+    "kv_cache_mb": 23.0,
+    "feasible": true
+   },
+   "obj": [
+    2.6406091349968244,
+    696.968746946322,
+    229.9204330444336
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5760,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5760,
+      "n_head": 12,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 5,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=9 and d_model=3072 to explore a smaller model size while maintaining moderate layer count. This should help in balancing estimation loss and latency.",
+   "costs": {
+    "decoder_params_m": 133.609728,
+    "total_params_m": 158.185728,
+    "est_loss": 2.7683244535694174,
+    "prefill_ms": 11.877819036954087,
+    "decode_ms_per_token": 8.517810267857143,
+    "latency_ms": 437.76833242981127,
+    "memory_mb": 165.35743713378906,
+    "kv_cache_mb": 18.0,
+    "feasible": true
+   },
+   "obj": [
+    2.7683244535694174,
+    437.76833242981127,
+    165.35743713378906
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4992,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4992,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 6,
+   "origin": "mutation",
+   "rationale": "Increase d_model from 512 to 768 while maintaining a moderate layer count. This should help in balancing estimation loss and latency by providing more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 115.915008,
+    "total_params_m": 140.491008,
+    "est_loss": 2.798376004726211,
+    "prefill_ms": 10.887073236282195,
+    "decode_ms_per_token": 8.039953125,
+    "latency_ms": 412.88472948628225,
+    "memory_mb": 146.86524963378906,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.798376004726211,
+    412.88472948628225,
+    146.86524963378906
+   ]
+  },
+  {
+   "key": "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6144,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":23}",
+   "arch": {
+    "n_layer": 23,
+    "d_model": 1024,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6144,
+      "n_head": 8,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 6,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=9 and d_model=768 to explore a larger model size while maintaining moderate layer count. This should help in balancing estimation loss and latency by providing more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 494.451712,
+    "total_params_m": 527.219712,
+    "est_loss": 2.506266607785857,
+    "prefill_ms": 34.23749563269877,
+    "decode_ms_per_token": 20.31763988095238,
+    "latency_ms": 1050.1194896803179,
+    "memory_mb": 391.32269287109375,
+    "kv_cache_mb": 46.0,
+    "feasible": true
+   },
+   "obj": [
+    2.506266607785857,
+    1050.1194896803179,
+    391.32269287109375
+   ]
+  },
+  {
+   "key": "{\"d_model\":1280,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6912,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":35}",
+   "arch": {
+    "n_layer": 35,
+    "d_model": 1280,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6912,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 6,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=35 and d_model=1920 to explore a larger model size while maintaining moderate layer count. This should help in balancing estimation loss and latency by providing more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 1066.68928,
+    "total_params_m": 1107.64928,
+    "est_loss": 2.364012672893675,
+    "prefill_ms": 68.14633146696528,
+    "decode_ms_per_token": 37.3404724702381,
+    "latency_ms": 1935.16995497887,
+    "memory_mb": 726.6893768310547,
+    "kv_cache_mb": 70.0,
+    "feasible": true
+   },
+   "obj": [
+    2.364012672893675,
+    1935.16995497887,
+    726.6893768310547
+   ]
+  },
+  {
+   "key": "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":35}",
+   "arch": {
+    "n_layer": 35,
+    "d_model": 1920,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 30,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 6,
+   "origin": "mutation",
+   "rationale": "Increase d_model from 1920 to 2048 while maintaining a moderate layer count. This should help in balancing estimation loss and latency by providing more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 1643.04192,
+    "total_params_m": 1704.48192,
+    "est_loss": 2.2876595131764614,
+    "prefill_ms": 100.50255991041433,
+    "decode_ms_per_token": 52.89404203869048,
+    "latency_ms": 2745.204661844938,
+    "memory_mb": 1011.855354309082,
+    "kv_cache_mb": 35.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2876595131764614,
+    2745.204661844938,
+    1011.855354309082
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7424,\"n_head\":16,\"n_kv_head\":2}],\"n_layer\":15}",
+   "arch": {
+    "n_layer": 15,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7424,
+      "n_head": 16,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 6,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=9 and d_model=512 to explore a larger model size while maintaining moderate layer count. This should help in balancing estimation loss and latency by providing more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 825.817088,
+    "total_params_m": 891.353088,
+    "est_loss": 2.4104465699161293,
+    "prefill_ms": 51.64774960806271,
+    "decode_ms_per_token": 28.61594642857143,
+    "latency_ms": 1482.445071036634,
+    "memory_mb": 570.6590576171875,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.4104465699161293,
+    1482.445071036634,
+    570.6590576171875
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6144,\"n_head\":16,\"n_kv_head\":4}],\"n_layer\":35}",
+   "arch": {
+    "n_layer": 35,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6144,
+      "n_head": 16,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 6,
+   "origin": "crossover",
+   "rationale": "Crossover between parent with n_layer=35 and d_model=1920 to explore a larger model size while maintaining moderate layer count. This should help in balancing estimation loss and latency by providing more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 1688.352768,
+    "total_params_m": 1753.888768,
+    "est_loss": 2.2829346527681396,
+    "prefill_ms": 103.0566902575588,
+    "decode_ms_per_token": 54.361422619047616,
+    "latency_ms": 2821.1278212099396,
+    "memory_mb": 1143.3592529296875,
+    "kv_cache_mb": 140.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2829346527681396,
+    2821.1278212099396,
+    1143.3592529296875
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":16,\"n_kv_head\":4}],\"n_layer\":35}",
+   "arch": {
+    "n_layer": 35,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 16,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 6,
+   "origin": "mutation",
+   "rationale": "Increase d_model from 1920 to 2048 while maintaining a moderate layer count. This should help in balancing estimation loss and latency by providing more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 2018.654208,
+    "total_params_m": 2084.190208,
+    "est_loss": 2.2521430709314623,
+    "prefill_ms": 121.55061187010078,
+    "decode_ms_per_token": 63.00142261904762,
+    "latency_ms": 3271.621742822482,
+    "memory_mb": 1320.5467529296875,
+    "kv_cache_mb": 140.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2521430709314623,
+    3271.621742822482,
+    1320.5467529296875
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6912,\"n_head\":16,\"n_kv_head\":4}],\"n_layer\":35}",
+   "arch": {
+    "n_layer": 35,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6912,
+      "n_head": 16,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 6,
+   "origin": "mutation",
+   "rationale": "Increase d_model from 1920 to 2048 while maintaining a moderate layer count. This should help in balancing estimation loss and latency by providing more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 1853.503488,
+    "total_params_m": 1919.039488,
+    "est_loss": 2.2667998963059257,
+    "prefill_ms": 112.30365106382979,
+    "decode_ms_per_token": 58.681422619047616,
+    "latency_ms": 3046.3747820162107,
+    "memory_mb": 1231.9530029296875,
+    "kv_cache_mb": 140.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2667998963059257,
+    3046.3747820162107,
+    1231.9530029296875
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4864,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4864,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 7,
+   "origin": "mutation",
+   "rationale": "Increase d_model from 768 to 720 and adjust d_inner accordingly. This change will provide more model capacity while balancing the number of layers and other parameters.",
+   "costs": {
+    "decoder_params_m": 113.2608,
+    "total_params_m": 137.8368,
+    "est_loss": 2.8033068070874045,
+    "prefill_ms": 10.738461366181411,
+    "decode_ms_per_token": 7.970524553571429,
+    "latency_ms": 409.26468904475286,
+    "memory_mb": 145.44142150878906,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.8033068070874045,
+    409.26468904475286,
+    145.44142150878906
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3840,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3840,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 7,
+   "origin": "mutation",
+   "rationale": "Decrease d_model from 768 to 640 and adjust d_inner accordingly. This will reduce the memory footprint while maintaining a reasonable number of layers.",
+   "costs": {
+    "decoder_params_m": 75.21472,
+    "total_params_m": 95.69472,
+    "est_loss": 2.891889317517512,
+    "prefill_ms": 8.600409854423292,
+    "decode_ms_per_token": 6.868175223214285,
+    "latency_ms": 352.00917101513755,
+    "memory_mb": 122.83464813232422,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.891889317517512,
+    352.00917101513755,
+    122.83464813232422
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3072,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3072,
+      "n_head": 8,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 7,
+   "origin": "mutation",
+   "rationale": "Decrease d_model from 640 to 512 and adjust d_inner accordingly. This change will provide a more compact model while ensuring it still meets the minimum parameter constraint.",
+   "costs": {
+    "decoder_params_m": 48.375296,
+    "total_params_m": 64.759296,
+    "est_loss": 2.990537735169693,
+    "prefill_ms": 7.089830683090705,
+    "decode_ms_per_token": 6.05896875,
+    "latency_ms": 310.03826818309074,
+    "memory_mb": 106.23959350585938,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.990537735169693,
+    310.03826818309074,
+    106.23959350585938
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5248,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5248,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 7,
+   "origin": "mutation",
+   "rationale": "Increase d_model from 640 to 768 and adjust d_inner accordingly. This will provide more model capacity while maintaining a moderate number of layers.",
+   "costs": {
+    "decoder_params_m": 121.223424,
+    "total_params_m": 145.799424,
+    "est_loss": 2.7888689400664735,
+    "prefill_ms": 11.184296976483763,
+    "decode_ms_per_token": 8.178810267857143,
+    "latency_ms": 420.12481036934093,
+    "memory_mb": 149.71290588378906,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.7888689400664735,
+    420.12481036934093,
+    149.71290588378906
+   ]
+  },
+  {
+   "key": "{\"d_model\":1280,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6912,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":23}",
+   "arch": {
+    "n_layer": 23,
+    "d_model": 1280,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6912,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 7,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 2 (n_layer=23, d_model=1024) and ID 3 (n_layer=8, d_model=3072). This will result in a model with higher d_model while maintaining the layer count.",
+   "costs": {
+    "decoder_params_m": 700.96768,
+    "total_params_m": 741.92768,
+    "est_loss": 2.440661978064273,
+    "prefill_ms": 45.82619708846585,
+    "decode_ms_per_token": 25.93395461309524,
+    "latency_ms": 1342.523927743228,
+    "memory_mb": 506.5010223388672,
+    "kv_cache_mb": 46.0,
+    "feasible": true
+   },
+   "obj": [
+    2.440661978064273,
+    1342.523927743228,
+    506.5010223388672
+   ]
+  },
+  {
+   "key": "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5760,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 1024,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5760,
+      "n_head": 8,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 7,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 0 (n_layer=9, d_model=640) and ID 1 (n_layer=9, d_model=768). This will result in a model with higher d_model while maintaining the layer count.",
+   "costs": {
+    "decoder_params_m": 182.864896,
+    "total_params_m": 215.632896,
+    "est_loss": 2.7030792392885568,
+    "prefill_ms": 14.651290929451287,
+    "decode_ms_per_token": 10.020508928571429,
+    "latency_ms": 515.6767373580227,
+    "memory_mb": 196.17449951171875,
+    "kv_cache_mb": 18.0,
+    "feasible": true
+   },
+   "obj": [
+    2.7030792392885568,
+    515.6767373580227,
+    196.17449951171875
+   ]
+  },
+  {
+   "key": "{\"d_model\":1024,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6144,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":35}",
+   "arch": {
+    "n_layer": 35,
+    "d_model": 1024,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6144,
+      "n_head": 8,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 7,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 2 (n_layer=23, d_model=1024) and ID 5 (n_layer=30, d_model=1408). This will result in a model with higher d_model while maintaining the layer count.",
+   "costs": {
+    "decoder_params_m": 752.425984,
+    "total_params_m": 785.193984,
+    "est_loss": 2.427556996224893,
+    "prefill_ms": 50.51614468085106,
+    "decode_ms_per_token": 28.90571130952381,
+    "latency_ms": 1495.8017101570415,
+    "memory_mb": 553.7108764648438,
+    "kv_cache_mb": 70.0,
+    "feasible": true
+   },
+   "obj": [
+    2.427556996224893,
+    1495.8017101570415,
+    553.7108764648438
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3072,\"n_head\":4,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3072,
+      "n_head": 4,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 7,
+   "origin": "mutation",
+   "rationale": "Decrease d_model from 768 to 512 and reduce n_head from 12 to 6. This change will provide a more compact model while maintaining the number of layers.",
+   "costs": {
+    "decoder_params_m": 49.554944,
+    "total_params_m": 65.938944,
+    "est_loss": 2.9850669211434333,
+    "prefill_ms": 7.155880403135498,
+    "decode_ms_per_token": 6.104825892857143,
+    "latency_ms": 312.39717504599264,
+    "memory_mb": 115.87240600585938,
+    "kv_cache_mb": 18.0,
+    "feasible": true
+   },
+   "obj": [
+    2.9850669211434333,
+    312.39717504599264,
+    115.87240600585938
+   ]
+  },
+  {
+   "key": "{\"d_model\":1408,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":22,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1408,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 22,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 7,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (n_layer=30, d_model=1408) and ID 1 (n_layer=9, d_model=768). This will result in a model with higher d_model while maintaining the layer count.",
+   "costs": {
+    "decoder_params_m": 989.515648,
+    "total_params_m": 1034.571648,
+    "est_loss": 2.377543986217884,
+    "prefill_ms": 63.07271937290034,
+    "decode_ms_per_token": 34.61224665178571,
+    "latency_ms": 1793.6850519621858,
+    "memory_mb": 647.4874801635742,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.377543986217884,
+    1793.6850519621858,
+    647.4874801635742
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3840,\"n_head\":4,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3840,
+      "n_head": 4,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 7,
+   "origin": "mutation",
+   "rationale": "Decrease d_model from 768 to 512 and adjust d_inner accordingly. This change will provide a more compact model while maintaining the number of layers.",
+   "costs": {
+    "decoder_params_m": 60.171776,
+    "total_params_m": 76.555776,
+    "est_loss": 2.941350829112097,
+    "prefill_ms": 7.750327883538634,
+    "decode_ms_per_token": 6.382540178571428,
+    "latency_ms": 326.87733681211006,
+    "memory_mb": 121.56771850585938,
+    "kv_cache_mb": 18.0,
+    "feasible": true
+   },
+   "obj": [
+    2.941350829112097,
+    326.87733681211006,
+    121.56771850585938
+   ]
+  },
+  {
+   "key": "{\"d_model\":1280,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6912,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1280,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6912,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 7,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 2 (n_layer=23, d_model=1024) and ID 4 (n_layer=35, d_model=1280). This will result in a model with higher d_model while maintaining the layer count.",
+   "costs": {
+    "decoder_params_m": 914.30528,
+    "total_params_m": 955.26528,
+    "est_loss": 2.3918709806559053,
+    "prefill_ms": 58.84627547592385,
+    "decode_ms_per_token": 32.58775669642857,
+    "latency_ms": 1688.2341102973523,
+    "memory_mb": 634.9442291259766,
+    "kv_cache_mb": 60.0,
+    "feasible": true
+   },
+   "obj": [
+    2.3918709806559053,
+    1688.2341102973523,
+    634.9442291259766
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3456,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3456,
+      "n_head": 8,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 7,
+   "origin": "mutation",
+   "rationale": "Decrease d_model from 640 to 576 and adjust d_inner accordingly. This change will provide a more compact model while maintaining the number of layers.",
+   "costs": {
+    "decoder_params_m": 53.683712,
+    "total_params_m": 70.067712,
+    "est_loss": 2.966966551110502,
+    "prefill_ms": 7.387054423292273,
+    "decode_ms_per_token": 6.197825892857143,
+    "latency_ms": 317.2783490661494,
+    "memory_mb": 109.08724975585938,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.966966551110502,
+    317.2783490661494,
+    109.08724975585938
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6912,\"n_head\":16,\"n_kv_head\":4}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6912,
+      "n_head": 16,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 7,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (n_layer=30, d_model=1408) and ID 7 (n_layer=35, d_model=2048). This will result in a model with higher d_model while maintaining the layer count.",
+   "costs": {
+    "decoder_params_m": 1588.717568,
+    "total_params_m": 1654.253568,
+    "est_loss": 2.293512619295045,
+    "prefill_ms": 96.69934423292274,
+    "decode_ms_per_token": 50.97183928571429,
+    "latency_ms": 2645.291308518637,
+    "memory_mb": 1069.9107666015625,
+    "kv_cache_mb": 120.0,
+    "feasible": true
+   },
+   "obj": [
+    2.293512619295045,
+    2645.291308518637,
+    1069.9107666015625
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":7680,\"n_head\":32,\"n_kv_head\":2}],\"n_layer\":35}",
+   "arch": {
+    "n_layer": 35,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 7680,
+      "n_head": 32,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 7,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 1 (n_layer=9, d_model=768) and ID 4 (n_layer=35, d_model=1280). This will result in a model with higher d_model while maintaining the layer count.",
+   "costs": {
+    "decoder_params_m": 1963.603968,
+    "total_params_m": 2029.139968,
+    "est_loss": 2.2568806167168125,
+    "prefill_ms": 118.4682916013438,
+    "decode_ms_per_token": 61.38642261904762,
+    "latency_ms": 3187.789422553725,
+    "memory_mb": 1186.0155029296875,
+    "kv_cache_mb": 35.0,
+    "feasible": true
+   },
+   "obj": [
+    2.2568806167168125,
+    3187.789422553725,
+    1186.0155029296875
+   ]
+  },
+  {
+   "key": "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6528,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1920,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6528,
+      "n_head": 30,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 7,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (n_layer=30, d_model=1408) and ID 7 (n_layer=35, d_model=2048). This will result in a model with higher d_model while maintaining the layer count.",
+   "costs": {
+    "decoder_params_m": 1364.08512,
+    "total_params_m": 1425.52512,
+    "est_loss": 2.320239047250888,
+    "prefill_ms": 84.10660246360581,
+    "decode_ms_per_token": 44.83877790178571,
+    "latency_ms": 2326.0454975528914,
+    "memory_mb": 857.2112655639648,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.320239047250888,
+    2326.0454975528914,
+    857.2112655639648
+   ]
+  },
+  {
+   "key": "{\"d_model\":2048,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":16,\"n_kv_head\":4}],\"n_layer\":35}",
+   "arch": {
+    "n_layer": 35,
+    "d_model": 2048,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 16,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 7,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (n_layer=30, d_model=1408) and ID 2 (n_layer=23, d_model=1024). This will result in a model with higher d_model while maintaining the layer count.",
+   "costs": {
+    "decoder_params_m": 1825.978368,
+    "total_params_m": 1891.514368,
+    "est_loss": 2.269378914273201,
+    "prefill_ms": 110.76249092945129,
+    "decode_ms_per_token": 57.96142261904762,
+    "latency_ms": 3008.833621881832,
+    "memory_mb": 1217.1873779296875,
+    "kv_cache_mb": 140.0,
+    "feasible": true
+   },
+   "obj": [
+    2.269378914273201,
+    3008.833621881832,
+    1217.1873779296875
+   ]
+  },
+  {
+   "key": "{\"d_model\":1920,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6784,\"n_head\":30,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 1920,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6784,
+      "n_head": 30,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 7,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (n_layer=30, d_model=1408) and ID 4 (n_layer=35, d_model=1280). This will result in a model with higher d_model while maintaining the layer count.",
+   "costs": {
+    "decoder_params_m": 1408.32192,
+    "total_params_m": 1469.76192,
+    "est_loss": 2.314618050954638,
+    "prefill_ms": 86.58346696528555,
+    "decode_ms_per_token": 45.99592075892857,
+    "latency_ms": 2386.379504911714,
+    "memory_mb": 880.9417343139648,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.314618050954638,
+    2386.379504911714,
+    880.9417343139648
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3712,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":14}",
+   "arch": {
+    "n_layer": 14,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3712,
+      "n_head": 8,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 0 (n_layer=9, d_model=512) and ID 4 (n_layer=29, d_model=512). This will result in a model with an intermediate number of layers while increasing the d_model to provide more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 89.012736,
+    "total_params_m": 105.396736,
+    "est_loss": 2.8551065454224953,
+    "prefill_ms": 10.12233012318029,
+    "decode_ms_per_token": 7.880293154761905,
+    "latency_ms": 404.13698786127554,
+    "memory_mb": 133.03921508789062,
+    "kv_cache_mb": 14.0,
+    "feasible": true
+   },
+   "obj": [
+    2.8551065454224953,
+    404.13698786127554,
+    133.03921508789062
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3968,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":18}",
+   "arch": {
+    "n_layer": 18,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3968,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 1 (n_layer=9, d_model=640) and ID 5 (n_layer=23, d_model=1024). This will result in a model with an intermediate number of layers while increasing the d_model to provide more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 154.85248,
+    "total_params_m": 175.33248,
+    "est_loss": 2.737454456884212,
+    "prefill_ms": 14.42553639417693,
+    "decode_ms_per_token": 10.316333705357142,
+    "latency_ms": 530.242221662034,
+    "memory_mb": 174.55567169189453,
+    "kv_cache_mb": 18.0,
+    "feasible": true
+   },
+   "obj": [
+    2.737454456884212,
+    530.242221662034,
+    174.55567169189453
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4480,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":23}",
+   "arch": {
+    "n_layer": 23,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4480,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 2 (n_layer=9, d_model=768) and ID 3 (n_layer=14, d_model=1408). This will result in a model with an intermediate number of layers while increasing the d_model to provide more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 220.4768,
+    "total_params_m": 240.9568,
+    "est_loss": 2.6649256866290125,
+    "prefill_ms": 18.858868980963045,
+    "decode_ms_per_token": 12.791263020833334,
+    "latency_ms": 658.4220200226298,
+    "memory_mb": 214.7593002319336,
+    "kv_cache_mb": 23.0,
+    "feasible": true
+   },
+   "obj": [
+    2.6649256866290125,
+    658.4220200226298,
+    214.7593002319336
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3712,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3712,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 4 (n_layer=29, d_model=512) and ID 0 (n_layer=9, d_model=768). This will result in a model with an intermediate number of layers while increasing the d_model to provide more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 235.23008,
+    "total_params_m": 255.71008,
+    "est_loss": 2.651839443386314,
+    "prefill_ms": 20.59567077267637,
+    "decode_ms_per_token": 14.087178199404761,
+    "latency_ms": 724.9545807429145,
+    "memory_mb": 228.67357635498047,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.651839443386314,
+    724.9545807429145,
+    228.67357635498047
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3200,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3200,
+      "n_head": 8,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "mutation",
+   "rationale": "Mutate ID 1 (n_layer=9, d_model=640) by decreasing the d_model to 576 and adjusting d_inner accordingly. This change will provide a more compact model while maintaining the number of layers.",
+   "costs": {
+    "decoder_params_m": 50.144768,
+    "total_params_m": 66.528768,
+    "est_loss": 2.9823838263948734,
+    "prefill_ms": 7.188905263157896,
+    "decode_ms_per_token": 6.105254464285714,
+    "latency_ms": 312.4516284774436,
+    "memory_mb": 107.18881225585938,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.9823838263948734,
+    312.4516284774436,
+    107.18881225585938
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4224,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":17}",
+   "arch": {
+    "n_layer": 17,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4224,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 6 (n_layer=23, d_model=1024) and ID 8 (n_layer=9, d_model=768). This will result in a model with an intermediate number of layers while increasing the d_model to provide more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 154.60544,
+    "total_params_m": 175.08544,
+    "est_loss": 2.7377866438658445,
+    "prefill_ms": 14.259912653975363,
+    "decode_ms_per_token": 10.158204985119047,
+    "latency_ms": 522.1701619099277,
+    "memory_mb": 173.42314910888672,
+    "kv_cache_mb": 17.0,
+    "feasible": true
+   },
+   "obj": [
+    2.7377866438658445,
+    522.1701619099277,
+    173.42314910888672
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 14,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 3 (n_layer=14, d_model=1408) and ID 7 (n_layer=35, d_model=2048). This will result in a model with an intermediate number of layers while increasing the d_model to provide more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 421.183616,
+    "total_params_m": 449.855616,
+    "est_loss": 2.5370022445446114,
+    "prefill_ms": 30.732343561030234,
+    "decode_ms_per_token": 18.8622890625,
+    "latency_ms": 973.8467966860303,
+    "memory_mb": 330.8213577270508,
+    "kv_cache_mb": 27.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5370022445446114,
+    973.8467966860303,
+    330.8213577270508
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3200,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":14}",
+   "arch": {
+    "n_layer": 14,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3200,
+      "n_head": 8,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "mutation",
+   "rationale": "Mutate ID 0 (n_layer=9, d_model=512) by increasing the n_layer to 14 and adjusting the d_model and d_inner accordingly. This change will provide more capacity for the model while maintaining a moderate number of layers.",
+   "costs": {
+    "decoder_params_m": 78.002688,
+    "total_params_m": 94.386688,
+    "est_loss": 2.883901054606896,
+    "prefill_ms": 9.50586606942889,
+    "decode_ms_per_token": 7.592293154761904,
+    "latency_ms": 389.12052380752414,
+    "memory_mb": 127.13296508789062,
+    "kv_cache_mb": 14.0,
+    "feasible": true
+   },
+   "obj": [
+    2.883901054606896,
+    389.12052380752414,
+    127.13296508789062
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4864,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4864,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 4 (n_layer=29, d_model=512) and ID 2 (n_layer=9, d_model=768). This will result in a model with an intermediate number of layers while increasing the d_model to provide more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 364.94976,
+    "total_params_m": 389.52576,
+    "est_loss": 2.564785022154758,
+    "prefill_ms": 27.873789473684212,
+    "decode_ms_per_token": 17.587518601190474,
+    "latency_ms": 907.249719533208,
+    "memory_mb": 300.45790100097656,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.564785022154758,
+    907.249719533208,
+    300.45790100097656
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3200,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3200,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "mutation",
+   "rationale": "Mutate ID 7 (n_layer=23, d_model=1024) by decreasing the d_model to 584 and adjusting d_inner accordingly. This change will provide a more compact model while maintaining the number of layers.",
+   "costs": {
+    "decoder_params_m": 64.15552,
+    "total_params_m": 84.63552,
+    "est_loss": 2.9270550933434656,
+    "prefill_ms": 7.98119372900336,
+    "decode_ms_per_token": 6.5788895089285715,
+    "latency_ms": 336.9256691754319,
+    "memory_mb": 116.90203094482422,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.9270550933434656,
+    336.9256691754319,
+    116.90203094482422
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4352,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":32}",
+   "arch": {
+    "n_layer": 32,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4352,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 1 (n_layer=9, d_model=768) and ID 5 (n_layer=23, d_model=1024). This will result in a model with an intermediate number of layers while increasing the d_model to provide more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 298.88576,
+    "total_params_m": 319.36576,
+    "est_loss": 2.604007831599712,
+    "prefill_ms": 24.615193729003362,
+    "decode_ms_per_token": 16.207278645833334,
+    "latency_ms": 834.9791260206702,
+    "memory_mb": 265.8211441040039,
+    "kv_cache_mb": 32.0,
+    "feasible": true
+   },
+   "obj": [
+    2.604007831599712,
+    834.9791260206702,
+    265.8211441040039
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3712,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3712,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "mutation",
+   "rationale": "Mutate ID 5 (n_layer=23, d_model=1024) by decreasing the n_layer to 9 and adjusting the d_model and d_inner accordingly. This change will provide more capacity for the model while maintaining a moderate number of layers.",
+   "costs": {
+    "decoder_params_m": 73.00288,
+    "total_params_m": 93.48288,
+    "est_loss": 2.898456878419414,
+    "prefill_ms": 8.476566629339306,
+    "decode_ms_per_token": 6.810318080357143,
+    "latency_ms": 348.99247064719646,
+    "memory_mb": 121.64812469482422,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.898456878419414,
+    348.99247064719646,
+    121.64812469482422
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 14,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 4 (n_layer=29, d_model=512) and ID 7 (n_layer=35, d_model=2048). This will result in a model with an intermediate number of layers while increasing the d_model to provide more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 436.782976,
+    "total_params_m": 465.454976,
+    "est_loss": 2.5299998163687416,
+    "prefill_ms": 31.758276371780514,
+    "decode_ms_per_token": 19.422002604166668,
+    "latency_ms": 1002.858406580114,
+    "memory_mb": 340.1895065307617,
+    "kv_cache_mb": 28.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5299998163687416,
+    1002.858406580114,
+    340.1895065307617
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4608,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":31}",
+   "arch": {
+    "n_layer": 31,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4608,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (n_layer=23, d_model=1024) and ID 9 (n_layer=29, d_model=768). This will result in a model with an intermediate number of layers while increasing the d_model to provide more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 371.834112,
+    "total_params_m": 396.410112,
+    "est_loss": 2.561144851232045,
+    "prefill_ms": 28.563551623740203,
+    "decode_ms_per_token": 18.070932291666665,
+    "latency_ms": 932.1101662070735,
+    "memory_mb": 306.1509552001953,
+    "kv_cache_mb": 31.0,
+    "feasible": true
+   },
+   "obj": [
+    2.561144851232045,
+    932.1101662070735,
+    306.1509552001953
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4352,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":25}",
+   "arch": {
+    "n_layer": 25,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4352,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 6 (n_layer=23, d_model=1024) and ID 8 (n_layer=9, d_model=768). This will result in a model with an intermediate number of layers while increasing the d_model to provide more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 285.120768,
+    "total_params_m": 309.696768,
+    "est_loss": 2.613355491704015,
+    "prefill_ms": 22.795480851063832,
+    "decode_ms_per_token": 14.892691220238095,
+    "latency_ms": 767.4300418629687,
+    "memory_mb": 253.63429260253906,
+    "kv_cache_mb": 25.0,
+    "feasible": true
+   },
+   "obj": [
+    2.613355491704015,
+    767.4300418629687,
+    253.63429260253906
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4608,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":33}",
+   "arch": {
+    "n_layer": 33,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4608,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 5 (n_layer=23, d_model=1024) and ID 9 (n_layer=29, d_model=768). This will result in a model with an intermediate number of layers while increasing the d_model to provide more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 395.82336,
+    "total_params_m": 420.39936,
+    "est_loss": 2.5490043410156495,
+    "prefill_ms": 30.211034714445688,
+    "decode_ms_per_token": 19.00177455357143,
+    "latency_ms": 980.2997623930171,
+    "memory_mb": 321.01979064941406,
+    "kv_cache_mb": 33.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5490043410156495,
+    980.2997623930171,
+    321.01979064941406
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":24}",
+   "arch": {
+    "n_layer": 24,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 14,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "crossover",
+   "rationale": "Crossover between ID 3 (n_layer=14, d_model=1408) and ID 7 (n_layer=35, d_model=2048). This will result in a model with an intermediate number of layers while increasing the d_model to provide more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 374.385536,
+    "total_params_m": 403.057536,
+    "est_loss": 2.559814143961334,
+    "prefill_ms": 27.654545128779397,
+    "decode_ms_per_token": 17.1831484375,
+    "latency_ms": 886.8119670037795,
+    "memory_mb": 302.71691131591797,
+    "kv_cache_mb": 24.0,
+    "feasible": true
+   },
+   "obj": [
+    2.559814143961334,
+    886.8119670037795,
+    302.71691131591797
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3584,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3584,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 8,
+   "origin": "mutation",
+   "rationale": "Mutate ID 1 (n_layer=9, d_model=640) by decreasing the d_model to 608 and adjusting d_inner accordingly. This change will provide a more compact model while maintaining the number of layers.",
+   "costs": {
+    "decoder_params_m": 70.79104,
+    "total_params_m": 91.27104,
+    "est_loss": 2.9052421262583543,
+    "prefill_ms": 8.352723404255318,
+    "decode_ms_per_token": 6.7524609375,
+    "latency_ms": 345.9757702792553,
+    "memory_mb": 120.46160125732422,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.9052421262583543,
+    345.9757702792553,
+    120.46160125732422
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3968,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":17}",
+   "arch": {
+    "n_layer": 17,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3968,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 9,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L5 (n_layer=17, d_model=640) and ID 3 (n_layer=14, d_model=1408). This will maintain an intermediate number of layers while slightly increasing the d_model to provide more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 146.2496,
+    "total_params_m": 166.7296,
+    "est_loss": 2.7493718824959137,
+    "prefill_ms": 13.79206047032475,
+    "decode_ms_per_token": 9.93963355654762,
+    "latency_ms": 510.77373829770573,
+    "memory_mb": 168.94072723388672,
+    "kv_cache_mb": 17.0,
+    "feasible": true
+   },
+   "obj": [
+    2.7493718824959137,
+    510.77373829770573,
+    168.94072723388672
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4480,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":27}",
+   "arch": {
+    "n_layer": 27,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4480,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 9,
+   "origin": "mutation",
+   "rationale": "Mutate ID L6 (n_layer=27, d_model=896) by decreasing the n_layer to 27 and reducing the d_model to 640 while increasing the n_kv_head to 3. This change will provide a more compact model with grouped-query attention.",
+   "costs": {
+    "decoder_params_m": 258.82048,
+    "total_params_m": 279.30048,
+    "est_loss": 2.63264794680971,
+    "prefill_ms": 21.612938409854422,
+    "decode_ms_per_token": 14.40092075892857,
+    "latency_ms": 741.658976356283,
+    "memory_mb": 239.32845306396484,
+    "kv_cache_mb": 27.0,
+    "feasible": true
+   },
+   "obj": [
+    2.63264794680971,
+    741.658976356283,
+    239.32845306396484
+   ]
+  },
+  {
+   "key": "{\"d_model\":512,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3200,\"n_head\":8,\"n_kv_head\":2}],\"n_layer\":18}",
+   "arch": {
+    "n_layer": 18,
+    "d_model": 512,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3200,
+      "n_head": 8,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 9,
+   "origin": "mutation",
+   "rationale": "Mutate ID L1 (n_layer=18, d_model=640) by decreasing the d_model to 576 while increasing the n_head to 9 and adjusting d_inner accordingly. This change will provide more capacity for the model while maintaining a moderate number of layers.",
+   "costs": {
+    "decoder_params_m": 100.289024,
+    "total_params_m": 116.673024,
+    "est_loss": 2.829341855607025,
+    "prefill_ms": 11.359434714445689,
+    "decode_ms_per_token": 8.781924107142856,
+    "latency_ms": 450.4556400715885,
+    "memory_mb": 143.08828735351562,
+    "kv_cache_mb": 18.0,
+    "feasible": true
+   },
+   "obj": [
+    2.829341855607025,
+    450.4556400715885,
+    143.08828735351562
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4480,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4480,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 9,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L8 (n_layer=29, d_model=768) and ID 3 (n_layer=14, d_model=1408). This will result in a model with an intermediate number of layers while increasing the d_model to provide more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 339.292416,
+    "total_params_m": 363.868416,
+    "est_loss": 2.579033880839105,
+    "prefill_ms": 26.437208062709963,
+    "decode_ms_per_token": 16.91637574404762,
+    "latency_ms": 872.255995265091,
+    "memory_mb": 286.69422912597656,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.579033880839105,
+    872.255995265091,
+    286.69422912597656
+   ]
+  },
+  {
+   "key": "{\"d_model\":640,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":3840,\"n_head\":10,\"n_kv_head\":2}],\"n_layer\":25}",
+   "arch": {
+    "n_layer": 25,
+    "d_model": 640,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 3840,
+      "n_head": 10,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 9,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L10 (n_layer=29, d_model=640) and ID 5 (n_layer=23, d_model=1024). This will result in a model with an intermediate number of layers while increasing the d_model to provide more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 208.92864,
+    "total_params_m": 229.40864,
+    "est_loss": 2.6758442838417973,
+    "prefill_ms": 18.515858902575587,
+    "decode_ms_per_token": 12.792520461309524,
+    "latency_ms": 658.1418819680517,
+    "memory_mb": 210.56438446044922,
+    "kv_cache_mb": 25.0,
+    "feasible": true
+   },
+   "obj": [
+    2.6758442838417973,
+    658.1418819680517,
+    210.56438446044922
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4864,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":28}",
+   "arch": {
+    "n_layer": 28,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4864,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 9,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L12 (n_layer=28, d_model=896) and ID 5 (n_layer=23, d_model=1024). This will result in a model with an intermediate number of layers while increasing the d_model to provide more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 352.365312,
+    "total_params_m": 376.941312,
+    "est_loss": 2.571634265237821,
+    "prefill_ms": 27.01702306830907,
+    "decode_ms_per_token": 17.106668898809524,
+    "latency_ms": 882.3504680087852,
+    "memory_mb": 292.7070770263672,
+    "kv_cache_mb": 28.0,
+    "feasible": true
+   },
+   "obj": [
+    2.571634265237821,
+    882.3504680087852,
+    292.7070770263672
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4608,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4608,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 9,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L13 (n_layer=31, d_model=768) and ID 3 (n_layer=14, d_model=1408). This will result in a model with an intermediate number of layers while increasing the d_model to provide more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 347.844864,
+    "total_params_m": 372.420864,
+    "est_loss": 2.5741590536577017,
+    "prefill_ms": 26.916068533034718,
+    "decode_ms_per_token": 17.140090029761904,
+    "latency_ms": 883.92057002113,
+    "memory_mb": 291.28211975097656,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5741590536577017,
+    883.92057002113,
+    291.28211975097656
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4736,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4736,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 9,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L15 (n_layer=33, d_model=768) and ID 9 (n_layer=29, d_model=768). This will result in a model with an intermediate number of layers while increasing the n_layer to provide more capacity for the model.",
+   "costs": {
+    "decoder_params_m": 368.686848,
+    "total_params_m": 393.262848,
+    "est_loss": 2.56279992155293,
+    "prefill_ms": 28.235182978723405,
+    "decode_ms_per_token": 17.83693973214286,
+    "latency_ms": 920.0821695858664,
+    "memory_mb": 303.46263122558594,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.56279992155293,
+    920.0821695858664,
+    303.46263122558594
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4352,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":24}",
+   "arch": {
+    "n_layer": 24,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4352,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 9,
+   "origin": "mutation",
+   "rationale": "Mutate ID L16 (n_layer=24, d_model=896) by decreasing the n_layer to 24 and reducing the d_model to 768 while maintaining the same d_inner. This change will provide a more compact model with consistent layer count.",
+   "costs": {
+    "decoder_params_m": 273.715968,
+    "total_params_m": 298.291968,
+    "est_loss": 2.6214759207155747,
+    "prefill_ms": 22.004764165733484,
+    "decode_ms_per_token": 14.442698660714285,
+    "latency_ms": 744.1396972014478,
+    "memory_mb": 246.5162811279297,
+    "kv_cache_mb": 24.0,
+    "feasible": true
+   },
+   "obj": [
+    2.6214759207155747,
+    744.1396972014478,
+    246.5162811279297
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5120,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5120,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "mutation",
+   "rationale": "Increase d_inner from 6144 to 5120 while increasing n_head to 14 and setting n_kv_head to 3. This change will provide more capacity for the model in terms of internal computations while maintaining a moderate number of layers.",
+   "costs": {
+    "decoder_params_m": 118.569216,
+    "total_params_m": 143.145216,
+    "est_loss": 2.7935652196231353,
+    "prefill_ms": 11.03568510638298,
+    "decode_ms_per_token": 8.10938169642857,
+    "latency_ms": 416.5047699278115,
+    "memory_mb": 148.28907775878906,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.7935652196231353,
+    416.5047699278115,
+    148.28907775878906
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4096,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4096,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "mutation",
+   "rationale": "Increase d_inner from 6144 to 4096 while reducing n_head to 10 and setting n_kv_head to 3. This change will reduce the memory footprint slightly while maintaining a moderate number of layers.",
+   "costs": {
+    "decoder_params_m": 97.335552,
+    "total_params_m": 121.911552,
+    "est_loss": 2.8357768276013426,
+    "prefill_ms": 9.846790145576708,
+    "decode_ms_per_token": 7.553953125,
+    "latency_ms": 387.5444463955767,
+    "memory_mb": 136.89845275878906,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.8357768276013426,
+    387.5444463955767,
+    136.89845275878906
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5376,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5376,
+      "n_head": 12,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "mutation",
+   "rationale": "Increase d_inner from 6144 to 5376 while keeping n_head at 12 and setting n_kv_head to 4. This change will provide more computational capacity without significantly increasing the memory footprint.",
+   "costs": {
+    "decoder_params_m": 125.647104,
+    "total_params_m": 150.223104,
+    "est_loss": 2.781282443441449,
+    "prefill_ms": 11.431983426651735,
+    "decode_ms_per_token": 8.309524553571428,
+    "latency_ms": 426.9082111052232,
+    "memory_mb": 161.08595275878906,
+    "kv_cache_mb": 18.0,
+    "feasible": true
+   },
+   "obj": [
+    2.781282443441449,
+    426.9082111052232,
+    161.08595275878906
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6144,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6144,
+      "n_head": 12,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "mutation",
+   "rationale": "Increase d_model from 768 to 832 while increasing n_head to 13 and setting n_kv_head to 4. This change will provide more capacity for the model in terms of both parameters and internal computations.",
+   "costs": {
+    "decoder_params_m": 141.572352,
+    "total_params_m": 166.148352,
+    "est_loss": 2.7561720297886585,
+    "prefill_ms": 12.32365464725644,
+    "decode_ms_per_token": 8.726095982142857,
+    "latency_ms": 448.6284537543993,
+    "memory_mb": 169.62892150878906,
+    "kv_cache_mb": 18.0,
+    "feasible": true
+   },
+   "obj": [
+    2.7561720297886585,
+    448.6284537543993,
+    169.62892150878906
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4352,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":29}",
+   "arch": {
+    "n_layer": 29,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4352,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L7 (n_layer=29, d_model=768) and ID 9 (n_layer=29, d_model=768). This will maintain an intermediate number of layers while slightly decreasing the n_layer to 29.",
+   "costs": {
+    "decoder_params_m": 330.739968,
+    "total_params_m": 355.315968,
+    "est_loss": 2.5840427566482536,
+    "prefill_ms": 25.958347592385216,
+    "decode_ms_per_token": 16.692661458333333,
+    "latency_ms": 860.5914205090518,
+    "memory_mb": 282.10633850097656,
+    "kv_cache_mb": 29.0,
+    "feasible": true
+   },
+   "obj": [
+    2.5840427566482536,
+    860.5914205090518,
+    282.10633850097656
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5376,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5376,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "mutation",
+   "rationale": "Increase d_inner from 6144 to 5376 while keeping n_head at 12 and setting n_kv_head to 3. This change will provide more computational capacity without significantly increasing the memory footprint.",
+   "costs": {
+    "decoder_params_m": 123.877632,
+    "total_params_m": 148.453632,
+    "est_loss": 2.7842820212898682,
+    "prefill_ms": 11.332908846584546,
+    "decode_ms_per_token": 8.248238839285715,
+    "latency_ms": 423.7448508108703,
+    "memory_mb": 151.13673400878906,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.7842820212898682,
+    423.7448508108703,
+    151.13673400878906
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":6400,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 6400,
+      "n_head": 14,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "mutation",
+   "rationale": "Increase d_model from 768 to 896 while increasing n_head to 14 and setting n_kv_head to 2. This change will provide more capacity for the model in terms of both parameters and internal computations.",
+   "costs": {
+    "decoder_params_m": 171.360896,
+    "total_params_m": 200.032896,
+    "est_loss": 2.7164604855417447,
+    "prefill_ms": 13.999358118701007,
+    "decode_ms_per_token": 9.5974453125,
+    "latency_ms": 493.871623743701,
+    "memory_mb": 178.8060073852539,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.7164604855417447,
+    493.871623743701,
+    178.8060073852539
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4864,\"n_head\":12,\"n_kv_head\":2}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4864,
+      "n_head": 12,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L15 (n_layer=30, d_model=768) and ID 9 (n_layer=29, d_model=768). This will maintain an intermediate number of layers while slightly increasing the n_layer to 30.",
+   "costs": {
+    "decoder_params_m": 377.534208,
+    "total_params_m": 402.110208,
+    "est_loss": 2.558185326988438,
+    "prefill_ms": 28.730555879059352,
+    "decode_ms_per_token": 18.06836830357143,
+    "latency_ms": 932.1489710576308,
+    "memory_mb": 308.20872497558594,
+    "kv_cache_mb": 30.0,
+    "feasible": true
+   },
+   "obj": [
+    2.558185326988438,
+    932.1489710576308,
+    308.20872497558594
+   ]
+  },
+  {
+   "key": "{\"d_model\":896,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":5760,\"n_head\":14,\"n_kv_head\":2}],\"n_layer\":9}",
+   "arch": {
+    "n_layer": 9,
+    "d_model": 896,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 5760,
+      "n_head": 14,
+      "n_kv_head": 2
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "mutation",
+   "rationale": "Increase d_model from 768 to 896 while increasing n_head to 13 and setting n_kv_head to 2. This change will provide more capacity for the model in terms of both parameters and internal computations.",
+   "costs": {
+    "decoder_params_m": 155.878016,
+    "total_params_m": 184.550016,
+    "est_loss": 2.736081521275402,
+    "prefill_ms": 13.132455543113101,
+    "decode_ms_per_token": 9.1924453125,
+    "latency_ms": 472.7547211681131,
+    "memory_mb": 170.5003433227539,
+    "kv_cache_mb": 9.0,
+    "feasible": true
+   },
+   "obj": [
+    2.736081521275402,
+    472.7547211681131,
+    170.5003433227539
+   ]
+  },
+  {
+   "key": "{\"d_model\":768,\"ffn\":\"gated\",\"layers\":[{\"d_inner\":4864,\"n_head\":12,\"n_kv_head\":4}],\"n_layer\":30}",
+   "arch": {
+    "n_layer": 30,
+    "d_model": 768,
+    "ffn": "gated",
+    "layers": [
+     {
+      "d_inner": 4864,
+      "n_head": 12,
+      "n_kv_head": 4
+     }
+    ]
+   },
+   "niche": "FULL",
+   "gen": 10,
+   "origin": "crossover",
+   "rationale": "Crossover between ID L15 (n_layer=30, d_model=768) and ID 9 (n_layer=29, d_model=768). This will maintain an intermediate number of layers while slightly increasing the n_inner to 4928.",
+   "costs": {
+    "decoder_params_m": 383.432448,
+    "total_params_m": 408.008448,
+    "est_loss": 2.555173116684515,
+    "prefill_ms": 29.060804479283313,
+    "decode_ms_per_token": 18.272654017857143,
+    "latency_ms": 942.6935053721404,
+    "memory_mb": 341.37278747558594,
+    "kv_cache_mb": 60.0,
+    "feasible": true
+   },
+   "obj": [
+    2.555173116684515,
+    942.6935053721404,
+    341.37278747558594
+   ]
+  }
+ ],
+ "knowledge_base": {
+  "FULL": [
+   [
+    "Use a higher number of layers because it generally provides better performance in terms of estimation loss but be cautious with very high layer counts as they increase latency significantly.",
+    "Increase d_model size up to 1024, then consider larger sizes only if latency and memory are not critical constraints, due to the significant increase in parameters without substantial gain in performance.",
+    "Use a gated ffn (SwiGLU) because it provides a good balance between estimation loss and other metrics, but avoid using standard FFN for higher d_model values as they do not offer clear benefits.",
+    "Keep n_head between 16 and 32 to maintain a balance between performance and memory usage; larger head counts can reduce latency significantly at the cost of increased parameters and memory.",
+    "Choose n_kv_head = 4 or n_head when using grouped-query attention (n_head > n_kv_head) for better performance in terms of both estimation loss and latency without excessive increase in memory footprint.",
+    "Avoid very low d_model values (e.g., <512) as they can lead to high latency and poor performance, unless constrained by strict parameter limits.",
+    "Use a moderate number of layers (8-30) with higher d_model (768-2048) for better trade-offs between estimation loss, latency, and memory."
+   ],
+   [
+    "Use 8-30 layers because it generally provides better performance in terms of estimation loss while keeping latency and memory manageable.",
+    "Increase d_model size up to 768 for best trade-off between parameters and performance, then consider larger sizes only if latency and memory are not critical constraints.",
+    "Use a gated ffn (SwiGLU) because it provides a good balance between estimation loss and other metrics, but avoid using standard FFN for higher d_model values as they do not offer clear benefits.",
+    "Keep n_head between 16 and 32 to maintain a balance between performance and memory usage; larger head counts can reduce latency significantly at the cost of increased parameters and memory.",
+    "Choose n_kv_head = 4 or n_head when using grouped-query attention (n_head > n_kv_head) for better performance in terms of both estimation loss and latency without excessive increase in memory footprint.",
+    "Avoid very low d_model values (<512) as they can lead to high latency and poor performance, unless constrained by strict parameter limits.",
+    "Use a moderate number of layers (8-30) with higher d_model (768-2048) for better trade-offs between estimation loss, latency, and memory."
+   ],
+   [
+    "Use 8-30 layers because it generally provides better performance in terms of estimation loss while keeping latency and memory manageable.",
+    "Increase d_model size up to 768 for best trade-off between parameters and performance, then consider larger sizes only if latency and memory are not critical constraints.",
+    "Use a gated ffn (SwiGLU) because it provides a good balance between estimation loss and other metrics, but avoid using standard FFN for higher d_model values as they do not offer clear benefits.",
+    "Keep n_head between 16 and 32 to maintain a balance between performance and memory usage; larger head counts can reduce latency significantly at the cost of increased parameters and memory.",
+    "Choose n_kv_head = 4 or n_head when using grouped-query attention (n_head > n_kv_head) for better performance in terms of both estimation loss and latency without excessive increase in memory footprint.",
+    "Avoid very low d_model values (<512) as they can lead to high latency and poor performance, unless constrained by strict parameter limits.",
+    "Use a moderate number of layers (8-30) with higher d_model (768-2048) for better trade-offs between estimation loss, latency, and memory."
+   ],
+   [
+    "Use 8-30 layers because it generally provides better performance in terms of estimation loss while keeping latency and memory manageable.",
+    "Increase d_model size up to 768 for best trade-off between parameters and performance, then consider larger sizes only if latency and memory are not critical constraints.",
+    "Use a gated ffn (SwiGLU) because it provides a good balance between estimation loss and other metrics, but avoid using standard FFN for higher d_model values as they do not offer clear benefits.",
+    "Keep n_head between 16 and 32 to maintain a balance between performance and memory usage; larger head counts can reduce latency significantly at the cost of increased parameters and memory.",
+    "Choose n_kv_head = 4 or n_head when using grouped-query attention (n_head > n_kv_head) for better performance in terms of both estimation loss and latency without excessive increase in memory footprint.",
+    "Avoid very low d_model values (<512) as they can lead to high latency and poor performance, unless constrained by strict parameter limits.",
+    "Use a moderate number of layers (8-30) with higher d_model (768-2048) for better trade-offs between estimation loss, latency, and memory."
+   ],
+   [
+    "Use 9-30 layers and moderate d_model (512-768) for best trade-off between estimation loss, latency, and memory.",
+    "Avoid very low d_model values (<512) as they can lead to high latency and poor performance unless constrained by strict parameter limits.",
+    "Use a gated ffn (SwiGLU) because it provides a good balance between estimation loss and other metrics, especially for moderate to large d_model sizes.",
+    "Keep n_head between 8-16 for better performance in terms of both estimation loss and latency without excessive increase in memory footprint.",
+    "Choose n_kv_head = 4 or use multi-head attention (n_head) when using grouped-query attention to balance performance and memory usage effectively.",
+    "Avoid very high d_model values (>768) unless necessary, as they can significantly increase memory footprint with little benefit in terms of estimation loss."
+   ],
+   [
+    "Use 9-30 layers and moderate d_model (512-768) for best trade-off between estimation loss, latency, and memory.",
+    "Avoid very low d_model values (<512) as they can lead to high latency and poor performance unless constrained by strict parameter limits.",
+    "Use a gated ffn (SwiGLU) because it provides a good balance between estimation loss and other metrics, especially for moderate to large d_model sizes.",
+    "Keep n_head between 8-16 for better performance in terms of both estimation loss and latency without excessive increase in memory footprint.",
+    "Choose n_kv_head = 4 or use multi-head attention (n_head) when using grouped-query attention to balance performance and memory usage effectively.",
+    "Avoid very high d_model values (>768) unless necessary, as they can significantly increase memory footprint with little benefit in terms of estimation loss."
+   ],
+   [
+    "Use 9-30 layers and moderate d_model (512-768) for best trade-off between estimation loss, latency, and memory.",
+    "Avoid very low d_model values (<512) as they can lead to high latency and poor performance unless constrained by strict parameter limits.",
+    "Use a gated ffn (SwiGLU) because it provides a good balance between estimation loss and other metrics, especially for moderate to large d_model sizes.",
+    "Keep n_head between 8-16 for better performance in terms of both estimation loss and latency without excessive increase in memory footprint.",
+    "Choose n_kv_head = 4 or use multi-head attention (n_head) when using grouped-query attention to balance performance and memory usage effectively.",
+    "Avoid very high d_model values (>768) unless necessary, as they can significantly increase memory footprint with little benefit in terms of estimation loss.",
+    "Use a single entry for 'layers' list to ensure consistent architecture across all layers.",
+    "For best latency and memory efficiency, use n_layer between 9-23 and d_model around 1024 or less."
+   ],
+   [
+    "Use 9-30 layers and moderate d_model (512-768) for best trade-off between estimation loss, latency, and memory.",
+    "Avoid very low d_model values (<512) as they can lead to high latency and poor performance unless constrained by strict parameter limits.",
+    "Use a gated ffn (SwiGLU) because it provides a good balance between estimation loss and other metrics, especially for moderate to large d_model sizes.",
+    "Keep n_head between 8-16 for better performance in terms of both estimation loss and latency without excessive increase in memory footprint.",
+    "Choose n_kv_head = 4 or use multi-head attention (n_head) when using grouped-query attention to balance performance and memory usage effectively.",
+    "Avoid very high d_model values (>768) unless necessary, as they can significantly increase memory footprint with little benefit in terms of estimation loss.",
+    "Use a single entry for 'layers' list to ensure consistent architecture across all layers.",
+    "For best latency and memory efficiency, use n_layer between 9-23 and d_model around 1024 or less."
+   ],
+   [
+    "Use 9-18 layers and moderate d_model (512-768) for best trade-off between estimation loss, latency, and memory.",
+    "Avoid very low d_model values (<512) as they can lead to high latency and poor performance unless constrained by strict parameter limits.",
+    "Use a gated ffn (SwiGLU) because it provides a good balance between estimation loss and other metrics, especially for moderate to large d_model sizes.",
+    "Keep n_head between 8-16 for better performance in terms of both estimation loss and latency without excessive increase in memory footprint.",
+    "Choose n_kv_head = 4 or use multi-head attention (n_head) when using grouped-query attention to balance performance and memory usage effectively.",
+    "Avoid very high d_model values (>768) unless necessary, as they can significantly increase memory footprint with little benefit in terms of estimation loss.",
+    "Use a single entry for 'layers' list to ensure consistent architecture across all layers.",
+    "For best latency and memory efficiency, use n_layer between 9-18 and d_model around 512-768."
+   ],
+   [
+    "Use 9-18 layers and moderate d_model (512-768) for best trade-off between estimation loss, latency, and memory.",
+    "Avoid very low d_model values (<512) as they can lead to high latency and poor performance unless constrained by strict parameter limits.",
+    "Use a gated ffn (SwiGLU) because it provides a good balance between estimation loss and other metrics, especially for moderate to large d_model sizes.",
+    "Keep n_head between 8-16 for better performance in terms of both estimation loss and latency without excessive increase in memory footprint.",
+    "Choose n_kv_head = 4 or use multi-head attention (n_head) when using grouped-query attention to balance performance and memory usage effectively.",
+    "Avoid very high d_model values (>768) unless necessary, as they can significantly increase memory footprint with little benefit in terms of estimation loss.",
+    "Use a single entry for 'layers' list to ensure consistent architecture across all layers.",
+    "For best latency and memory efficiency, use n_layer between 9-18 and d_model around 512-768."
+   ]
+  ]
+ },
+ "hv": NaN,
+ "igd": NaN,
+ "config": {
+  "type": "slm",
+  "data_dir": null,
+  "results_dir": "results",
+  "spaces": {
+   "slm": {
+    "spec": {
+     "heterogeneous": false,
+     "n_layer": [
+      8,
+      40,
+      1
+     ],
+     "d_model": [
+      512,
+      3072,
+      128
+     ],
+     "d_inner": [
+      1024,
+      16384,
+      128
+     ],
+     "ffn_ratio": [
+      2,
+      8
+     ],
+     "n_head": [
+      4,
+      6,
+      8,
+      10,
+      12,
+      14,
+      16,
+      18,
+      20,
+      22,
+      24,
+      26,
+      28,
+      30,
+      32,
+      36,
+      40,
+      44,
+      48
+     ],
+     "head_dims": [
+      64,
+      128
+     ],
+     "n_kv_head": [
+      1,
+      2,
+      4,
+      8,
+      "n_head"
+     ],
+     "ffn": [
+      "gated"
+     ],
+     "vocab_size": 32000,
+     "tie_embeddings": true
+    },
+    "niches": [
+     0,
+     250,
+     500,
+     1000,
+     2000,
+     3000
+    ],
+    "niche_labels": [
+     "<250M",
+     "250-500M",
+     "0.5-1B",
+     "1-2B",
+     "2-3B",
+     ">=3B"
+    ]
+   },
+   "lts_gpt2": {
+    "spec": {
+     "heterogeneous": true,
+     "n_layer": [
+      2,
+      16,
+      1
+     ],
+     "d_model": [
+      128,
+      1024,
+      64
+     ],
+     "d_inner": [
+      256,
+      4096,
+      64
+     ],
+     "ffn_ratio": [
+      2,
+      32
+     ],
+     "n_head": [
+      2,
+      4,
+      8
+     ],
+     "head_dims": [],
+     "n_kv_head": [
+      "n_head"
+     ],
+     "ffn": [
+      "standard"
+     ],
+     "vocab_size": 50257,
+     "tie_embeddings": true
+    },
+    "niches": [
+     0,
+     10,
+     25,
+     50,
+     75,
+     100
+    ],
+    "niche_labels": [
+     "<10M",
+     "10-25M",
+     "25-50M",
+     "50-75M",
+     "75-100M",
+     ">=100M"
+    ]
+   }
+  },
+  "devices": {
+   "jetson_orin_nx_16gb": {
+    "profile": "jetson_orin_nx_16gb"
+   },
+   "snapdragon_8gen1_cpu": {
+    "profile": "snapdragon_8gen1_cpu"
+   },
+   "rtx3050ti_laptop": {
+    "profile": "rtx3050ti_laptop",
+    "calibration": "configs/slm/devices/rtx3050ti_laptop.json"
+   },
+   "local_cpu": {
+    "profile": "generic_cpu",
+    "calibration": "configs/slm/devices/local_cpu.json"
+   }
+  },
+  "workload": {
+   "prompt_tokens": 50,
+   "gen_tokens": 50,
+   "context": 2048,
+   "weight_dtype": "q4_k_m",
+   "kv_dtype": "f16",
+   "compute_buffer_tokens": 512
+  },
+  "objectives": [
+   "quality",
+   "latency",
+   "memory"
+  ],
+  "hardware": {
+   "source": "analytical",
+   "measure_device": "cpu",
+   "cache_dir": null,
+   "latency_limit_ms": null
+  },
+  "search": {
+   "generations": 10,
+   "crossover_prob": 0.5,
+   "partitioning": false,
+   "operator": "llm",
+   "knowledge_base": true,
+   "kb_seed": "none",
+   "init_pop_per_niche": 5,
+   "n_child": 4,
+   "n_parents_shown": 6,
+   "mutation_prob": 0.3,
+   "match_budget": true
+  },
+  "llm": {
+   "backend": "openai",
+   "model": "qwen2.5-7b-16k",
+   "temperature": 0.7,
+   "base_url": "http://localhost:11434/v1",
+   "api_key_env": "OPENAI_API_KEY",
+   "max_tokens": 8192,
+   "mode": "record",
+   "timeout": 3600
+  },
+  "variant": "no_partitioning",
+  "code_version": "8774b01"
+ }
+}

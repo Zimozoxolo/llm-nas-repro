@@ -1,8 +1,10 @@
 # raw + processed benchmark data (re-created by `python -m llmnas prepare-data`)
 data/*
 !data/README.md
-# experiment outputs: keep reports, ignore bulky per-run files unless you choose to commit them
-results/runs/
+# experiment outputs: reports and per-run files (config.yaml, run.json, llm_calls.jsonl) are committed so that
+# every number can be checked and LLM runs replayed; console logs stay local (they contain machine paths)
+results/logs/*.log
+results/logs/*.err
 results/**/*.png
 !results/reports/**/*.png
 __pycache__/
@@ -15,3 +17,5 @@ report/*.aux
 report/*.out
 report/*.toc
 report/*.log
+report/*.fls
+report/*.fdb_latexmk

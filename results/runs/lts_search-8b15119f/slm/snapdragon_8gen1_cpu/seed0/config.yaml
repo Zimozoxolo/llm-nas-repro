@@ -1,0 +1,161 @@
+type: slm
+data_dir: null
+results_dir: results
+spaces:
+  slm:
+    spec:
+      heterogeneous: false
+      n_layer:
+      - 8
+      - 40
+      - 1
+      d_model:
+      - 512
+      - 3072
+      - 128
+      d_inner:
+      - 1024
+      - 16384
+      - 128
+      ffn_ratio:
+      - 2
+      - 8
+      n_head:
+      - 4
+      - 6
+      - 8
+      - 10
+      - 12
+      - 14
+      - 16
+      - 18
+      - 20
+      - 22
+      - 24
+      - 26
+      - 28
+      - 30
+      - 32
+      - 36
+      - 40
+      - 44
+      - 48
+      head_dims:
+      - 64
+      - 128
+      n_kv_head:
+      - 1
+      - 2
+      - 4
+      - 8
+      - n_head
+      ffn:
+      - gated
+      vocab_size: 32000
+      tie_embeddings: true
+    niches:
+    - 0
+    - 250
+    - 500
+    - 1000
+    - 2000
+    - 3000
+    niche_labels:
+    - <250M
+    - 250-500M
+    - 0.5-1B
+    - 1-2B
+    - 2-3B
+    - '>=3B'
+  lts_gpt2:
+    spec:
+      heterogeneous: true
+      n_layer:
+      - 2
+      - 16
+      - 1
+      d_model:
+      - 128
+      - 1024
+      - 64
+      d_inner:
+      - 256
+      - 4096
+      - 64
+      ffn_ratio:
+      - 2
+      - 32
+      n_head:
+      - 2
+      - 4
+      - 8
+      head_dims: []
+      n_kv_head:
+      - n_head
+      ffn:
+      - standard
+      vocab_size: 50257
+      tie_embeddings: true
+    niches:
+    - 0
+    - 10
+    - 25
+    - 50
+    - 75
+    - 100
+    niche_labels:
+    - <10M
+    - 10-25M
+    - 25-50M
+    - 50-75M
+    - 75-100M
+    - '>=100M'
+devices:
+  jetson_orin_nx_16gb:
+    profile: jetson_orin_nx_16gb
+  snapdragon_8gen1_cpu:
+    profile: snapdragon_8gen1_cpu
+  rtx3050ti_laptop:
+    profile: rtx3050ti_laptop
+    calibration: configs/slm/devices/rtx3050ti_laptop.json
+  local_cpu:
+    profile: generic_cpu
+    calibration: configs/slm/devices/local_cpu.json
+workload:
+  prompt_tokens: 50
+  gen_tokens: 50
+  context: 2048
+  weight_dtype: q4_k_m
+  kv_dtype: f16
+  compute_buffer_tokens: 512
+objectives:
+- quality
+- latency
+- memory
+hardware:
+  source: analytical
+  measure_device: cpu
+  cache_dir: null
+  latency_limit_ms: null
+search:
+  generations: 10
+  crossover_prob: 0.5
+  partitioning: false
+  operator: random
+  knowledge_base: true
+  kb_seed: none
+  init_pop_per_niche: 5
+  n_child: 4
+  n_parents_shown: 6
+  mutation_prob: 0.3
+  match_budget: true
+llm:
+  backend: openai
+  model: qwen2.5-7b-16k
+  temperature: 0.7
+  base_url: http://localhost:11434/v1
+  api_key_env: OPENAI_API_KEY
+  max_tokens: 8192
+  mode: record
+variant: lts_search
+code_version: 569f7f8

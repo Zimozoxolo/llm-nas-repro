@@ -1,0 +1,2261 @@
+{
+ "dataset": "cifar10",
+ "device": "raspi4",
+ "seed": 0,
+ "variant": "arm_b",
+ "hv": 0.9884069214452808,
+ "igd": 0.040208447559339375,
+ "n_front": 10,
+ "n_evaluated": 165,
+ "search_time_s": 445.54,
+ "llm_usage": {
+  "api_calls": 120,
+  "input_tokens": 195499,
+  "output_tokens": 70762,
+  "llm_wall_time_s": 445.0,
+  "replay_mismatches": 0
+ },
+ "proposal_stats": {
+  "proposed": 240,
+  "invalid": 0,
+  "out_of_niche": 13,
+  "duplicate": 92,
+  "no_latency": 0,
+  "accepted": 135,
+  "parse_failures": 0
+ },
+ "predictor": {
+  "kind": "zc_ensemble",
+  "n_train": 1000,
+  "spearman_val": 0.960995758720007,
+  "spearman_test": 0.9594134649615795,
+  "kendall_test": 0.829736024250167
+ },
+ "final_front": [
+  {
+   "code": "(0, 1, 1, 0, 1, 0)",
+   "pred_acc": 10.068,
+   "true_acc": 10.0,
+   "lat": 0.0117827399662928,
+   "niche": "S0"
+  },
+  {
+   "code": "(0, 1, 1, 0, 1, 1)",
+   "pred_acc": 83.665,
+   "true_acc": 86.39,
+   "lat": 2.784726559984847,
+   "niche": "S0"
+  },
+  {
+   "code": "(0, 1, 1, 0, 4, 1)",
+   "pred_acc": 84.157,
+   "true_acc": 86.37333333333333,
+   "lat": 5.302851399974315,
+   "niche": "S0"
+  },
+  {
+   "code": "(0, 0, 1, 1, 4, 1)",
+   "pred_acc": 84.222,
+   "true_acc": 86.38,
+   "lat": 5.484075199929066,
+   "niche": "S0"
+  },
+  {
+   "code": "(2, 4, 2, 2, 1, 0)",
+   "pred_acc": 86.117,
+   "true_acc": 88.94333333333333,
+   "lat": 7.43793554000149,
+   "niche": "S1"
+  },
+  {
+   "code": "(2, 1, 2, 2, 1, 2)",
+   "pred_acc": 86.723,
+   "true_acc": 89.33500000000001,
+   "lat": 12.15430540003581,
+   "niche": "S1"
+  },
+  {
+   "code": "(2, 1, 2, 2, 2, 1)",
+   "pred_acc": 87.291,
+   "true_acc": 90.77666666666666,
+   "lat": 12.40932722001162,
+   "niche": "S1"
+  },
+  {
+   "code": "(2, 4, 2, 1, 1, 2)",
+   "pred_acc": 87.305,
+   "true_acc": 90.475,
+   "lat": 18.103071939985966,
+   "niche": "S1"
+  },
+  {
+   "code": "(1, 3, 2, 0, 3, 0)",
+   "pred_acc": 88.517,
+   "true_acc": 92.03666666666668,
+   "lat": 18.96814829997311,
+   "niche": "S3"
+  },
+  {
+   "code": "(1, 3, 2, 3, 2, 0)",
+   "pred_acc": 88.617,
+   "true_acc": 92.04666666666668,
+   "lat": 19.630183819972444,
+   "niche": "S3"
+  },
+  {
+   "code": "(3, 1, 2, 1, 2, 2)",
+   "pred_acc": 90.044,
+   "true_acc": 93.33,
+   "lat": 24.98709048006276,
+   "niche": "S2"
+  },
+  {
+   "code": "(1, 3, 2, 2, 1, 3)",
+   "pred_acc": 90.063,
+   "true_acc": 93.77,
+   "lat": 41.77590354003769,
+   "niche": "S3"
+  },
+  {
+   "code": "(3, 1, 3, 3, 0, 1)",
+   "pred_acc": 90.202,
+   "true_acc": 93.94,
+   "lat": 51.77006999991136,
+   "niche": "S4"
+  },
+  {
+   "code": "(3, 1, 3, 3, 4, 1)",
+   "pred_acc": 90.299,
+   "true_acc": 93.55,
+   "lat": 54.83913031988777,
+   "niche": "S4"
+  },
+  {
+   "code": "(3, 1, 3, 3, 2, 1)",
+   "pred_acc": 90.671,
+   "true_acc": 93.91666666666669,
+   "lat": 55.32411300002423,
+   "niche": "S4"
+  }
+ ],
+ "evaluated": [
+  {
+   "code": "(1, 1, 4, 1, 4, 1)",
+   "pred": 60.58589172363281,
+   "lat": 8.495354759943439,
+   "niche": "S0",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 56.03333333333334
+  },
+  {
+   "code": "(1, 4, 0, 4, 4, 1)",
+   "pred": 58.09479904174805,
+   "lat": 11.045174920000136,
+   "niche": "S0",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 58.78
+  },
+  {
+   "code": "(0, 0, 1, 1, 1, 4)",
+   "pred": 83.92103576660156,
+   "lat": 5.579985260119429,
+   "niche": "S0",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 86.22000000000001
+  },
+  {
+   "code": "(1, 0, 0, 4, 1, 1)",
+   "pred": 72.92942810058594,
+   "lat": 5.607476160002989,
+   "niche": "S0",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 80.02666666666667
+  },
+  {
+   "code": "(4, 0, 1, 1, 0, 1)",
+   "pred": 71.98011016845703,
+   "lat": 5.6188119600119535,
+   "niche": "S0",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 79.955
+  },
+  {
+   "code": "(2, 1, 2, 2, 4, 0)",
+   "pred": 86.38812255859375,
+   "lat": 13.585915919975378,
+   "niche": "S1",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 89.79666666666667
+  },
+  {
+   "code": "(2, 0, 1, 2, 0, 0)",
+   "pred": 85.32672119140625,
+   "lat": 9.612048819981284,
+   "niche": "S1",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 88.98
+  },
+  {
+   "code": "(4, 4, 0, 2, 1, 0)",
+   "pred": 85.1562271118164,
+   "lat": 7.688667840047856,
+   "niche": "S1",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 89.05333333333333
+  },
+  {
+   "code": "(1, 2, 1, 2, 4, 4)",
+   "pred": 81.05992889404297,
+   "lat": 13.122351880010685,
+   "niche": "S1",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 86.20333333333333
+  },
+  {
+   "code": "(2, 1, 2, 0, 1, 2)",
+   "pred": 85.73881530761719,
+   "lat": 11.215766419991269,
+   "niche": "S1",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 89.21333333333332
+  },
+  {
+   "code": "(2, 1, 2, 2, 3, 2)",
+   "pred": 89.14151000976562,
+   "lat": 35.65149408001162,
+   "niche": "S2",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.10333333333334
+  },
+  {
+   "code": "(3, 4, 2, 2, 2, 4)",
+   "pred": 88.4762191772461,
+   "lat": 33.031067039992195,
+   "niche": "S2",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 91.665
+  },
+  {
+   "code": "(1, 1, 4, 4, 3, 2)",
+   "pred": 86.84504699707031,
+   "lat": 25.844798920006724,
+   "niche": "S2",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 91.24333333333334
+  },
+  {
+   "code": "(3, 1, 0, 2, 1, 2)",
+   "pred": 88.91046905517578,
+   "lat": 25.50171395996585,
+   "niche": "S2",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.21
+  },
+  {
+   "code": "(0, 4, 2, 2, 3, 1)",
+   "pred": 84.47331237792969,
+   "lat": 26.590714899939485,
+   "niche": "S2",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 88.85000000000001
+  },
+  {
+   "code": "(1, 3, 4, 2, 2, 3)",
+   "pred": 89.52821350097656,
+   "lat": 40.43135601998074,
+   "niche": "S3",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.78
+  },
+  {
+   "code": "(0, 4, 2, 3, 1, 3)",
+   "pred": 87.72594451904297,
+   "lat": 41.02513962003286,
+   "niche": "S3",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.36
+  },
+  {
+   "code": "(3, 4, 3, 0, 1, 4)",
+   "pred": 86.29337310791016,
+   "lat": 41.41976671999146,
+   "niche": "S3",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 90.795
+  },
+  {
+   "code": "(0, 3, 2, 0, 3, 1)",
+   "pred": 89.0113754272461,
+   "lat": 38.24747709993972,
+   "niche": "S3",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.165
+  },
+  {
+   "code": "(3, 2, 2, 0, 3, 1)",
+   "pred": 89.59514617919922,
+   "lat": 42.25279629994475,
+   "niche": "S3",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.085
+  },
+  {
+   "code": "(3, 0, 2, 3, 3, 4)",
+   "pred": 89.25135803222656,
+   "lat": 57.52443631994538,
+   "niche": "S4",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.26
+  },
+  {
+   "code": "(3, 4, 3, 3, 1, 2)",
+   "pred": 89.4394302368164,
+   "lat": 58.13589582001441,
+   "niche": "S4",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.22666666666667
+  },
+  {
+   "code": "(4, 3, 3, 3, 1, 0)",
+   "pred": 87.86882781982422,
+   "lat": 20.77513309995993,
+   "niche": "S4",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 91.07
+  },
+  {
+   "code": "(1, 3, 4, 3, 3, 2)",
+   "pred": 89.25463104248047,
+   "lat": 58.435867200023495,
+   "niche": "S4",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.67666666666666
+  },
+  {
+   "code": "(3, 1, 3, 2, 4, 3)",
+   "pred": 89.57791900634766,
+   "lat": 52.819744699954754,
+   "niche": "S4",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.49666666666668
+  },
+  {
+   "code": "(2, 3, 3, 2, 3, 3)",
+   "pred": 89.87373352050781,
+   "lat": 65.01038587994117,
+   "niche": "S5",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.65000000000002
+  },
+  {
+   "code": "(1, 3, 3, 3, 3, 4)",
+   "pred": 88.80838012695312,
+   "lat": 61.97733685999992,
+   "niche": "S5",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 91.9
+  },
+  {
+   "code": "(3, 3, 3, 1, 3, 4)",
+   "pred": 90.66633605957031,
+   "lat": 70.5191566600115,
+   "niche": "S5",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.765
+  },
+  {
+   "code": "(3, 4, 3, 3, 4, 3)",
+   "pred": 89.40241241455078,
+   "lat": 72.28599670008407,
+   "niche": "S5",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.65
+  },
+  {
+   "code": "(2, 3, 3, 3, 0, 3)",
+   "pred": 89.67121887207031,
+   "lat": 69.51747957995394,
+   "niche": "S5",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.44
+  },
+  {
+   "code": "(0, 1, 1, 1, 1, 4)",
+   "pred": 76.21436309814453,
+   "lat": 9.286970920074964,
+   "niche": "S0",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 80.05333333333334
+  },
+  {
+   "code": "(0, 0, 1, 1, 4, 1)",
+   "pred": 84.2223892211914,
+   "lat": 5.484075199929066,
+   "niche": "S0",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 86.38
+  },
+  {
+   "code": "(0, 1, 1, 1, 4, 1)",
+   "pred": 80.61077117919922,
+   "lat": 5.708985119999852,
+   "niche": "S0",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 84.17
+  },
+  {
+   "code": "(1, 0, 1, 1, 1, 4)",
+   "pred": 65.0910873413086,
+   "lat": 5.616784599988023,
+   "niche": "S0",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 67.92333333333333
+  },
+  {
+   "code": "(2, 4, 2, 2, 1, 0)",
+   "pred": 86.11724090576172,
+   "lat": 7.43793554000149,
+   "niche": "S1",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 88.94333333333333
+  },
+  {
+   "code": "(2, 1, 2, 4, 1, 0)",
+   "pred": 85.46490478515625,
+   "lat": 13.58385499996075,
+   "niche": "S1",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 88.65000000000002
+  },
+  {
+   "code": "(2, 1, 2, 0, 2, 2)",
+   "pred": 86.00138092041016,
+   "lat": 16.191974120010855,
+   "niche": "S1",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 88.845
+  },
+  {
+   "code": "(2, 4, 2, 2, 0, 0)",
+   "pred": 85.48880004882812,
+   "lat": 8.006646260037087,
+   "niche": "S1",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 88.695
+  },
+  {
+   "code": "(3, 1, 2, 1, 2, 2)",
+   "pred": 90.04393768310547,
+   "lat": 24.98709048006276,
+   "niche": "S2",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 93.33
+  },
+  {
+   "code": "(3, 1, 2, 2, 2, 1)",
+   "pred": 89.72012329101562,
+   "lat": 27.99712729996827,
+   "niche": "S2",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 93.21
+  },
+  {
+   "code": "(3, 1, 4, 2, 1, 2)",
+   "pred": 88.6716079711914,
+   "lat": 26.5093765599886,
+   "niche": "S2",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 92.41
+  },
+  {
+   "code": "(3, 1, 2, 2, 1, 4)",
+   "pred": 87.58932495117188,
+   "lat": 28.49042499998177,
+   "niche": "S2",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 91.88333333333333
+  },
+  {
+   "code": "(1, 3, 2, 0, 4, 3)",
+   "pred": 88.72110748291016,
+   "lat": 41.1864498599607,
+   "niche": "S3",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 92.22333333333334
+  },
+  {
+   "code": "(1, 3, 2, 0, 2, 3)",
+   "pred": 89.64789581298828,
+   "lat": 41.23842106004304,
+   "niche": "S3",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 93.24333333333333
+  },
+  {
+   "code": "(3, 1, 2, 0, 2, 3)",
+   "pred": 89.3505630493164,
+   "lat": 40.05026096005167,
+   "niche": "S3",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 93.115
+  },
+  {
+   "code": "(1, 3, 2, 0, 3, 2)",
+   "pred": 89.38905334472656,
+   "lat": 42.98561623996648,
+   "niche": "S3",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 93.14333333333332
+  },
+  {
+   "code": "(3, 1, 3, 3, 2, 0)",
+   "pred": 89.37252807617188,
+   "lat": 36.78885752000497,
+   "niche": "S4",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 92.985
+  },
+  {
+   "code": "(3, 2, 3, 3, 1, 0)",
+   "pred": 88.56375122070312,
+   "lat": 35.34753991996695,
+   "niche": "S4",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 92.11
+  },
+  {
+   "code": "(3, 2, 3, 3, 1, 4)",
+   "pred": 89.04486083984375,
+   "lat": 53.88817891995132,
+   "niche": "S4",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 92.74
+  },
+  {
+   "code": "(3, 1, 3, 3, 2, 4)",
+   "pred": 88.56350708007812,
+   "lat": 57.40389006001351,
+   "niche": "S4",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 92.53666666666668
+  },
+  {
+   "code": "(3, 3, 3, 2, 3, 4)",
+   "pred": 89.28871154785156,
+   "lat": 65.81174509999983,
+   "niche": "S5",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 93.17
+  },
+  {
+   "code": "(3, 3, 3, 2, 3, 3)",
+   "pred": 89.4409408569336,
+   "lat": 86.99161995995382,
+   "niche": "S5",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 93.98333333333332
+  },
+  {
+   "code": "(1, 3, 3, 3, 3, 3)",
+   "pred": 89.65980529785156,
+   "lat": 81.60300210001878,
+   "niche": "S5",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 93.3
+  },
+  {
+   "code": "(2, 4, 3, 3, 3, 3)",
+   "pred": 89.53665924072266,
+   "lat": 73.43959829995583,
+   "niche": "S5",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 92.9
+  },
+  {
+   "code": "(0, 1, 1, 1, 4, 0)",
+   "pred": 84.07002258300781,
+   "lat": 8.69641977995343,
+   "niche": "S0",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 86.53000000000002
+  },
+  {
+   "code": "(0, 1, 1, 1, 0, 4)",
+   "pred": 79.00432586669922,
+   "lat": 9.064047439969729,
+   "niche": "S0",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 79.98666666666666
+  },
+  {
+   "code": "(0, 1, 1, 0, 4, 1)",
+   "pred": 84.15650177001953,
+   "lat": 5.302851399974315,
+   "niche": "S0",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 86.37333333333333
+  },
+  {
+   "code": "(2, 4, 2, 2, 1, 2)",
+   "pred": 87.189453125,
+   "lat": 19.247751040020376,
+   "niche": "S1",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 90.175
+  },
+  {
+   "code": "(2, 4, 2, 2, 2, 0)",
+   "pred": 86.06382751464844,
+   "lat": 16.02723515999969,
+   "niche": "S1",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 89.515
+  },
+  {
+   "code": "(2, 1, 2, 2, 1, 2)",
+   "pred": 86.72317504882812,
+   "lat": 12.15430540003581,
+   "niche": "S1",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 89.33500000000001
+  },
+  {
+   "code": "(3, 1, 2, 2, 4, 1)",
+   "pred": 89.47633361816406,
+   "lat": 28.393762680061627,
+   "niche": "S2",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 93.02
+  },
+  {
+   "code": "(3, 4, 2, 1, 2, 2)",
+   "pred": 89.66404724121094,
+   "lat": 29.4301620600163,
+   "niche": "S2",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 93.57
+  },
+  {
+   "code": "(3, 1, 4, 2, 2, 1)",
+   "pred": 89.5548095703125,
+   "lat": 27.860496139983297,
+   "niche": "S2",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 93.09666666666668
+  },
+  {
+   "code": "(3, 2, 1, 2, 2, 1)",
+   "pred": 88.88151550292969,
+   "lat": 25.69516528004897,
+   "niche": "S2",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 92.54333333333334
+  },
+  {
+   "code": "(3, 1, 2, 0, 4, 3)",
+   "pred": 88.99349212646484,
+   "lat": 41.60474406002322,
+   "niche": "S3",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 92.77333333333333
+  },
+  {
+   "code": "(3, 1, 2, 0, 3, 2)",
+   "pred": 89.59390258789062,
+   "lat": 41.33413784002187,
+   "niche": "S3",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 93.295
+  },
+  {
+   "code": "(3, 1, 3, 3, 4, 0)",
+   "pred": 88.3312759399414,
+   "lat": 38.77758700000413,
+   "niche": "S4",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 91.76666666666664
+  },
+  {
+   "code": "(3, 2, 3, 3, 0, 1)",
+   "pred": 89.4687728881836,
+   "lat": 47.85837123999954,
+   "niche": "S4",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 93.415
+  },
+  {
+   "code": "(3, 1, 3, 3, 0, 4)",
+   "pred": 87.95899200439453,
+   "lat": 53.49580610003613,
+   "niche": "S4",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 92.59
+  },
+  {
+   "code": "(3, 1, 3, 3, 4, 2)",
+   "pred": 89.53372955322266,
+   "lat": 58.21860082003696,
+   "niche": "S4",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 93.045
+  },
+  {
+   "code": "(3, 3, 4, 2, 3, 3)",
+   "pred": 89.63860321044922,
+   "lat": 74.99767138004245,
+   "niche": "S5",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 93.55
+  },
+  {
+   "code": "(1, 3, 3, 3, 4, 3)",
+   "pred": 89.3475570678711,
+   "lat": 66.58644014001766,
+   "niche": "S5",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 92.83666666666666
+  },
+  {
+   "code": "(2, 3, 4, 3, 3, 3)",
+   "pred": 89.88362884521484,
+   "lat": 75.63412253999559,
+   "niche": "S5",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 93.43
+  },
+  {
+   "code": "(0, 1, 1, 1, 0, 1)",
+   "pred": 82.15252685546875,
+   "lat": 2.875578519960982,
+   "niche": "S0",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 84.52333333333333
+  },
+  {
+   "code": "(0, 1, 1, 0, 1, 4)",
+   "pred": 70.77645874023438,
+   "lat": 9.09383660000458,
+   "niche": "S0",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 75.56333333333333
+  },
+  {
+   "code": "(0, 1, 0, 1, 4, 1)",
+   "pred": 82.10193634033203,
+   "lat": 5.553060380043462,
+   "niche": "S0",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 84.055
+  },
+  {
+   "code": "(2, 4, 2, 2, 2, 2)",
+   "pred": 87.44364166259766,
+   "lat": 20.28398868002114,
+   "niche": "S1",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 90.60333333333334
+  },
+  {
+   "code": "(2, 4, 2, 2, 1, 1)",
+   "pred": 86.42144775390625,
+   "lat": 17.035735700046644,
+   "niche": "S1",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 89.76
+  },
+  {
+   "code": "(2, 1, 2, 2, 2, 0)",
+   "pred": 85.92196655273438,
+   "lat": 9.656605219934136,
+   "niche": "S1",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 89.285
+  },
+  {
+   "code": "(3, 1, 2, 4, 2, 1)",
+   "pred": 85.18101501464844,
+   "lat": 23.97153805999551,
+   "niche": "S2",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 90.295
+  },
+  {
+   "code": "(3, 4, 2, 2, 1, 2)",
+   "pred": 88.7501449584961,
+   "lat": 32.160666139971,
+   "niche": "S2",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 92.565
+  },
+  {
+   "code": "(3, 1, 2, 2, 4, 2)",
+   "pred": 88.86576843261719,
+   "lat": 27.25070728003629,
+   "niche": "S2",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 92.54
+  },
+  {
+   "code": "(0, 3, 2, 0, 3, 2)",
+   "pred": 86.89462280273438,
+   "lat": 41.18805998004973,
+   "niche": "S3",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 91.19
+  },
+  {
+   "code": "(1, 3, 2, 0, 3, 4)",
+   "pred": 88.85770416259766,
+   "lat": 39.17013268001028,
+   "niche": "S3",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 91.92666666666666
+  },
+  {
+   "code": "(3, 1, 3, 3, 0, 2)",
+   "pred": 89.62786865234375,
+   "lat": 54.25506965999375,
+   "niche": "S4",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 93.23666666666666
+  },
+  {
+   "code": "(3, 2, 3, 3, 0, 4)",
+   "pred": 89.05309295654297,
+   "lat": 56.76492498001608,
+   "niche": "S4",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 92.81
+  },
+  {
+   "code": "(3, 1, 3, 3, 1, 2)",
+   "pred": 89.48309326171875,
+   "lat": 55.688753459980944,
+   "niche": "S4",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 93.28333333333336
+  },
+  {
+   "code": "(3, 2, 3, 3, 4, 1)",
+   "pred": 89.46630096435547,
+   "lat": 58.32409755996196,
+   "niche": "S4",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 93.43
+  },
+  {
+   "code": "(3, 3, 4, 3, 3, 2)",
+   "pred": 89.78978729248047,
+   "lat": 73.9564645000064,
+   "niche": "S5",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 93.64
+  },
+  {
+   "code": "(3, 2, 3, 3, 3, 4)",
+   "pred": 89.27069091796875,
+   "lat": 75.12330482000834,
+   "niche": "S5",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 93.135
+  },
+  {
+   "code": "(3, 3, 3, 2, 3, 2)",
+   "pred": 89.41986083984375,
+   "lat": 72.78537995996885,
+   "niche": "S5",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 93.565
+  },
+  {
+   "code": "(0, 1, 0, 1, 1, 4)",
+   "pred": 68.62422943115234,
+   "lat": 5.632774440018693,
+   "niche": "S0",
+   "gen": 4,
+   "origin": "mutation",
+   "true_acc": 80.235
+  },
+  {
+   "code": "(2, 4, 2, 1, 2, 2)",
+   "pred": 88.01049041748047,
+   "lat": 25.425505960010923,
+   "niche": "S1",
+   "gen": 4,
+   "origin": "mutation",
+   "true_acc": 90.94
+  },
+  {
+   "code": "(2, 4, 2, 2, 2, 1)",
+   "pred": 87.08332824707031,
+   "lat": 20.84792148001725,
+   "niche": "S1",
+   "gen": 4,
+   "origin": "crossover",
+   "true_acc": 90.125
+  },
+  {
+   "code": "(2, 1, 2, 2, 2, 1)",
+   "pred": 87.29124450683594,
+   "lat": 12.40932722001162,
+   "niche": "S1",
+   "gen": 4,
+   "origin": "crossover",
+   "true_acc": 90.77666666666666
+  },
+  {
+   "code": "(2, 4, 2, 1, 1, 2)",
+   "pred": 87.30492401123047,
+   "lat": 18.103071939985966,
+   "niche": "S1",
+   "gen": 4,
+   "origin": "mutation",
+   "true_acc": 90.475
+  },
+  {
+   "code": "(3, 1, 2, 2, 2, 4)",
+   "pred": 88.24797821044922,
+   "lat": 27.517842660017777,
+   "niche": "S2",
+   "gen": 4,
+   "origin": "mutation",
+   "true_acc": 92.415
+  },
+  {
+   "code": "(1, 3, 0, 2, 3, 2)",
+   "pred": 89.32122039794922,
+   "lat": 38.51672438002424,
+   "niche": "S3",
+   "gen": 4,
+   "origin": "mutation",
+   "true_acc": 93.19
+  },
+  {
+   "code": "(1, 3, 2, 0, 3, 0)",
+   "pred": 88.5167236328125,
+   "lat": 18.96814829997311,
+   "niche": "S3",
+   "gen": 4,
+   "origin": "mutation",
+   "true_acc": 92.03666666666668
+  },
+  {
+   "code": "(3, 1, 3, 3, 2, 1)",
+   "pred": 90.67096710205078,
+   "lat": 55.32411300002423,
+   "niche": "S4",
+   "gen": 4,
+   "origin": "crossover",
+   "true_acc": 93.91666666666669
+  },
+  {
+   "code": "(3, 1, 3, 3, 1, 4)",
+   "pred": 87.01487731933594,
+   "lat": 53.229780640031095,
+   "niche": "S4",
+   "gen": 4,
+   "origin": "mutation",
+   "true_acc": 92.375
+  },
+  {
+   "code": "(3, 1, 3, 3, 4, 1)",
+   "pred": 90.29881286621094,
+   "lat": 54.83913031988777,
+   "niche": "S4",
+   "gen": 4,
+   "origin": "crossover",
+   "true_acc": 93.55
+  },
+  {
+   "code": "(3, 3, 2, 3, 3, 4)",
+   "pred": 89.51265716552734,
+   "lat": 71.89419693997479,
+   "niche": "S5",
+   "gen": 4,
+   "origin": "crossover",
+   "true_acc": 93.22
+  },
+  {
+   "code": "(3, 2, 3, 3, 3, 2)",
+   "pred": 89.73841094970703,
+   "lat": 74.07927551998,
+   "niche": "S5",
+   "gen": 4,
+   "origin": "crossover",
+   "true_acc": 93.565
+  },
+  {
+   "code": "(3, 3, 2, 3, 3, 3)",
+   "pred": 89.79914093017578,
+   "lat": 87.02360483999655,
+   "niche": "S5",
+   "gen": 4,
+   "origin": "mutation",
+   "true_acc": 93.38333333333333
+  },
+  {
+   "code": "(2, 1, 2, 1, 2, 2)",
+   "pred": 87.65044403076172,
+   "lat": 20.765004940039944,
+   "niche": "S1",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 90.415
+  },
+  {
+   "code": "(2, 4, 2, 1, 2, 1)",
+   "pred": 85.32424926757812,
+   "lat": 17.41872289996536,
+   "niche": "S1",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 87.98
+  },
+  {
+   "code": "(3, 1, 1, 2, 2, 4)",
+   "pred": 88.3236312866211,
+   "lat": 31.34332049994555,
+   "niche": "S2",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 91.94666666666669
+  },
+  {
+   "code": "(3, 1, 2, 2, 1, 2)",
+   "pred": 88.98548126220703,
+   "lat": 30.257482240049285,
+   "niche": "S2",
+   "gen": 5,
+   "origin": "crossover",
+   "true_acc": 92.705
+  },
+  {
+   "code": "(1, 3, 2, 4, 3, 0)",
+   "pred": 87.26536560058594,
+   "lat": 22.79029104000074,
+   "niche": "S3",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 91.06333333333332
+  },
+  {
+   "code": "(3, 1, 2, 0, 3, 0)",
+   "pred": 87.85951232910156,
+   "lat": 32.726462520004134,
+   "niche": "S3",
+   "gen": 5,
+   "origin": "crossover",
+   "true_acc": 91.255
+  },
+  {
+   "code": "(3, 1, 3, 3, 1, 0)",
+   "pred": 88.81193542480469,
+   "lat": 31.07516903997748,
+   "niche": "S4",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 92.05666666666666
+  },
+  {
+   "code": "(3, 2, 2, 3, 3, 3)",
+   "pred": 89.19405364990234,
+   "lat": 74.17485938000027,
+   "niche": "S5",
+   "gen": 5,
+   "origin": "crossover",
+   "true_acc": 93.17
+  },
+  {
+   "code": "(3, 3, 1, 3, 3, 3)",
+   "pred": 89.50457763671875,
+   "lat": 71.56369276002806,
+   "niche": "S5",
+   "gen": 5,
+   "origin": "crossover",
+   "true_acc": 93.65666666666668
+  },
+  {
+   "code": "(3, 1, 3, 3, 3, 3)",
+   "pred": 89.3073501586914,
+   "lat": 83.22243624003022,
+   "niche": "S5",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 93.46
+  },
+  {
+   "code": "(0, 1, 1, 0, 4, 4)",
+   "pred": 71.25360107421875,
+   "lat": 12.640801460001969,
+   "niche": "S0",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 75.5
+  },
+  {
+   "code": "(0, 0, 1, 1, 4, 4)",
+   "pred": 83.78385162353516,
+   "lat": 8.604230780038051,
+   "niche": "S0",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 86.50999999999999
+  },
+  {
+   "code": "(0, 1, 0, 1, 4, 4)",
+   "pred": 77.32756042480469,
+   "lat": 8.197082619954017,
+   "niche": "S0",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 80.10000000000001
+  },
+  {
+   "code": "(0, 0, 1, 0, 4, 1)",
+   "pred": 10.01501750946045,
+   "lat": 0.0628765399596886,
+   "niche": "S0",
+   "gen": 6,
+   "origin": "crossover",
+   "true_acc": 10.0
+  },
+  {
+   "code": "(2, 1, 2, 2, 2, 2)",
+   "pred": 86.52362823486328,
+   "lat": 15.15314752003178,
+   "niche": "S1",
+   "gen": 6,
+   "origin": "crossover",
+   "true_acc": 89.43
+  },
+  {
+   "code": "(2, 1, 2, 2, 4, 2)",
+   "pred": 87.17945861816406,
+   "lat": 21.488336920010624,
+   "niche": "S1",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 90.47
+  },
+  {
+   "code": "(2, 4, 2, 2, 2, 4)",
+   "pred": 86.84741973876953,
+   "lat": 17.66886543999135,
+   "niche": "S1",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 89.66
+  },
+  {
+   "code": "(3, 1, 1, 2, 2, 2)",
+   "pred": 88.63130950927734,
+   "lat": 25.318511399964336,
+   "niche": "S2",
+   "gen": 6,
+   "origin": "crossover",
+   "true_acc": 92.96333333333332
+  },
+  {
+   "code": "(1, 3, 2, 4, 2, 3)",
+   "pred": 89.18310546875,
+   "lat": 42.24884544004453,
+   "niche": "S3",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 92.46333333333332
+  },
+  {
+   "code": "(3, 1, 2, 4, 2, 3)",
+   "pred": 88.6811752319336,
+   "lat": 45.41301908000605,
+   "niche": "S3",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 92.965
+  },
+  {
+   "code": "(1, 3, 2, 2, 3, 0)",
+   "pred": 88.38929748535156,
+   "lat": 21.981101100100204,
+   "niche": "S3",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 92.14333333333332
+  },
+  {
+   "code": "(1, 3, 2, 2, 3, 1)",
+   "pred": 89.35135650634766,
+   "lat": 37.62130952003645,
+   "niche": "S3",
+   "gen": 6,
+   "origin": "crossover",
+   "true_acc": 92.42333333333332
+  },
+  {
+   "code": "(3, 2, 1, 3, 3, 3)",
+   "pred": 89.36790466308594,
+   "lat": 71.60738181992201,
+   "niche": "S5",
+   "gen": 6,
+   "origin": "crossover",
+   "true_acc": 93.41
+  },
+  {
+   "code": "(3, 2, 3, 3, 3, 3)",
+   "pred": 89.33300018310547,
+   "lat": 87.479334439995,
+   "niche": "S5",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 93.40333333333332
+  },
+  {
+   "code": "(0, 1, 1, 0, 1, 1)",
+   "pred": 83.6651611328125,
+   "lat": 2.784726559984847,
+   "niche": "S0",
+   "gen": 7,
+   "origin": "crossover",
+   "true_acc": 86.39
+  },
+  {
+   "code": "(0, 1, 0, 1, 4, 0)",
+   "pred": 83.61078643798828,
+   "lat": 5.471412280021468,
+   "niche": "S0",
+   "gen": 7,
+   "origin": "mutation",
+   "true_acc": 86.775
+  },
+  {
+   "code": "(1, 3, 2, 2, 4, 3)",
+   "pred": 88.94976043701172,
+   "lat": 44.84354177999194,
+   "niche": "S3",
+   "gen": 7,
+   "origin": "mutation",
+   "true_acc": 92.81333333333332
+  },
+  {
+   "code": "(1, 3, 2, 3, 2, 1)",
+   "pred": 88.55176544189453,
+   "lat": 42.82964343998174,
+   "niche": "S3",
+   "gen": 7,
+   "origin": "mutation",
+   "true_acc": 92.29
+  },
+  {
+   "code": "(1, 3, 2, 2, 1, 3)",
+   "pred": 90.06300354003906,
+   "lat": 41.77590354003769,
+   "niche": "S3",
+   "gen": 7,
+   "origin": "mutation",
+   "true_acc": 93.77
+  },
+  {
+   "code": "(1, 3, 1, 2, 2, 3)",
+   "pred": 89.17996978759766,
+   "lat": 39.816069260050426,
+   "niche": "S3",
+   "gen": 7,
+   "origin": "mutation",
+   "true_acc": 92.88
+  },
+  {
+   "code": "(3, 2, 3, 3, 4, 0)",
+   "pred": 88.67098999023438,
+   "lat": 38.3187188199372,
+   "niche": "S4",
+   "gen": 7,
+   "origin": "crossover",
+   "true_acc": 92.125
+  },
+  {
+   "code": "(3, 1, 3, 3, 0, 1)",
+   "pred": 90.20183563232422,
+   "lat": 51.77006999991136,
+   "niche": "S4",
+   "gen": 7,
+   "origin": "crossover",
+   "true_acc": 93.94
+  },
+  {
+   "code": "(3, 1, 2, 3, 3, 3)",
+   "pred": 89.64405059814453,
+   "lat": 64.26926076004747,
+   "niche": "S5",
+   "gen": 7,
+   "origin": "mutation",
+   "true_acc": 93.05
+  },
+  {
+   "code": "(0, 1, 0, 1, 1, 1)",
+   "pred": 78.31340026855469,
+   "lat": 2.9003626399935456,
+   "niche": "S0",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 84.23
+  },
+  {
+   "code": "(2, 1, 2, 2, 4, 1)",
+   "pred": 87.11803436279297,
+   "lat": 12.717733219978982,
+   "niche": "S1",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 90.315
+  },
+  {
+   "code": "(3, 1, 2, 1, 2, 4)",
+   "pred": 86.2972183227539,
+   "lat": 27.214949039989733,
+   "niche": "S2",
+   "gen": 8,
+   "origin": "crossover",
+   "true_acc": 90.05333333333334
+  },
+  {
+   "code": "(3, 1, 2, 1, 4, 2)",
+   "pred": 88.94882202148438,
+   "lat": 28.292511099934927,
+   "niche": "S2",
+   "gen": 8,
+   "origin": "crossover",
+   "true_acc": 92.59
+  },
+  {
+   "code": "(3, 1, 2, 1, 4, 1)",
+   "pred": 85.65943908691406,
+   "lat": 24.636609560038774,
+   "niche": "S2",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 89.82
+  },
+  {
+   "code": "(1, 3, 2, 2, 3, 4)",
+   "pred": 88.6522445678711,
+   "lat": 46.03115318001073,
+   "niche": "S3",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 91.77666666666666
+  },
+  {
+   "code": "(1, 3, 2, 3, 1, 2)",
+   "pred": 89.49200439453125,
+   "lat": 38.32933442005015,
+   "niche": "S3",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 93.15666666666668
+  },
+  {
+   "code": "(1, 3, 2, 2, 2, 3)",
+   "pred": 89.3860092163086,
+   "lat": 43.70645795999735,
+   "niche": "S3",
+   "gen": 8,
+   "origin": "crossover",
+   "true_acc": 93.29333333333334
+  },
+  {
+   "code": "(3, 1, 4, 3, 3, 3)",
+   "pred": 89.64588165283203,
+   "lat": 69.34258846013108,
+   "niche": "S5",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 93.42
+  },
+  {
+   "code": "(3, 2, 4, 3, 3, 3)",
+   "pred": 89.422607421875,
+   "lat": 73.1383488800202,
+   "niche": "S5",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 93.315
+  },
+  {
+   "code": "(1, 2, 3, 3, 3, 3)",
+   "pred": 89.65966033935547,
+   "lat": 67.80804740003077,
+   "niche": "S5",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 93.10333333333334
+  },
+  {
+   "code": "(3, 4, 2, 3, 3, 3)",
+   "pred": 89.88044738769531,
+   "lat": 72.31267007999122,
+   "niche": "S5",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 93.405
+  },
+  {
+   "code": "(0, 1, 1, 0, 1, 0)",
+   "pred": 10.068161964416504,
+   "lat": 0.0117827399662928,
+   "niche": "S0",
+   "gen": 9,
+   "origin": "mutation",
+   "true_acc": 10.0
+  },
+  {
+   "code": "(0, 1, 1, 0, 4, 0)",
+   "pred": 9.996745109558105,
+   "lat": 0.0628673799656098,
+   "niche": "S0",
+   "gen": 9,
+   "origin": "crossover",
+   "true_acc": 10.0
+  },
+  {
+   "code": "(2, 1, 2, 2, 2, 4)",
+   "pred": 87.03291320800781,
+   "lat": 21.162871979977357,
+   "niche": "S1",
+   "gen": 9,
+   "origin": "mutation",
+   "true_acc": 90.225
+  },
+  {
+   "code": "(2, 4, 2, 2, 1, 4)",
+   "pred": 85.01477813720703,
+   "lat": 19.77598505996866,
+   "niche": "S1",
+   "gen": 9,
+   "origin": "crossover",
+   "true_acc": 89.435
+  },
+  {
+   "code": "(1, 3, 2, 3, 2, 0)",
+   "pred": 88.61677551269531,
+   "lat": 19.630183819972444,
+   "niche": "S3",
+   "gen": 9,
+   "origin": "mutation",
+   "true_acc": 92.04666666666668
+  },
+  {
+   "code": "(2, 1, 3, 3, 3, 3)",
+   "pred": 89.60930633544922,
+   "lat": 70.02112296002451,
+   "niche": "S5",
+   "gen": 9,
+   "origin": "mutation",
+   "true_acc": 93.11333333333334
+  },
+  {
+   "code": "(3, 4, 3, 3, 3, 3)",
+   "pred": 89.66922760009766,
+   "lat": 85.54937041997619,
+   "niche": "S5",
+   "gen": 9,
+   "origin": "mutation",
+   "true_acc": 93.36
+  },
+  {
+   "code": "(3, 1, 4, 1, 2, 2)",
+   "pred": 89.46141052246094,
+   "lat": 31.572702060002484,
+   "niche": "S2",
+   "gen": 10,
+   "origin": "mutation",
+   "true_acc": 93.21
+  },
+  {
+   "code": "(3, 1, 2, 4, 2, 4)",
+   "pred": 85.10602569580078,
+   "lat": 27.59392348001711,
+   "niche": "S2",
+   "gen": 10,
+   "origin": "crossover",
+   "true_acc": 89.375
+  },
+  {
+   "code": "(3, 1, 2, 1, 2, 1)",
+   "pred": 87.60633850097656,
+   "lat": 21.527912960009417,
+   "niche": "S2",
+   "gen": 10,
+   "origin": "mutation",
+   "true_acc": 90.18
+  },
+  {
+   "code": "(1, 3, 2, 3, 0, 2)",
+   "pred": 89.35802459716797,
+   "lat": 40.90226109998184,
+   "niche": "S3",
+   "gen": 10,
+   "origin": "crossover",
+   "true_acc": 93.05666666666669
+  },
+  {
+   "code": "(1, 3, 2, 1, 3, 2)",
+   "pred": 89.75146484375,
+   "lat": 43.16866473993287,
+   "niche": "S3",
+   "gen": 10,
+   "origin": "mutation",
+   "true_acc": 93.24
+  },
+  {
+   "code": "(1, 3, 2, 2, 0, 3)",
+   "pred": 89.52825927734375,
+   "lat": 39.93512077999185,
+   "niche": "S3",
+   "gen": 10,
+   "origin": "mutation",
+   "true_acc": 93.3
+  },
+  {
+   "code": "(1, 3, 4, 3, 3, 3)",
+   "pred": 89.34461212158203,
+   "lat": 67.57309653999982,
+   "niche": "S5",
+   "gen": 10,
+   "origin": "crossover",
+   "true_acc": 93.0
+  },
+  {
+   "code": "(3, 1, 3, 3, 3, 2)",
+   "pred": 89.6258544921875,
+   "lat": 70.6964973200229,
+   "niche": "S5",
+   "gen": 10,
+   "origin": "mutation",
+   "true_acc": 93.69333333333334
+  }
+ ],
+ "knowledge_base": {
+  "S0": [
+   [
+    "Use 'skip_connect' (operator 1) on multiple edges because it consistently achieves high accuracy (e.g., (0, 0, 1, 1, 1, 4): 83.92%) while maintaining low latency (~5.6 ms).",
+    "Avoid excessive use of 'avg_pool_3x3' (operator 4) on multiple edges because this increases latency significantly (e.g., (1, 4, 0, 4, 4, 1): 11.045 ms) and is associated with lower accuracy (58.09%).",
+    "Avoid architectures with 'none' (operator 0) on many early edges unless compensated by 'skip_connect' elsewhere, as too many 'none' connections reduce information flow and can lower accuracy (e.g., (1, 0, 0, 4, 1, 1): 72.93%).",
+    "Ensure at least one 'avg_pool_3x3' (operator 4) is present in later edges to support accuracy, but balance with 'skip_connect' to avoid high latency (e.g., (0, 0, 1, 1, 1, 4): high accuracy, low latency).",
+    "Avoid architectures without any 'skip_connect' (operator 1); absence of 'skip_connect' correlates with lower accuracy regardless of pooling or none usage."
+   ],
+   [
+    "Use 'skip_connect' (operator 1) on multiple edges to maximize information flow; this consistently improves accuracy (e.g., \u226580%) while maintaining low latency (~5.5\u20135.7 ms).",
+    "Ensure a single 'avg_pool_3x3' (operator 4) is present on a late edge (preferably edge e or f) to support accuracy without significantly increasing latency.",
+    "Avoid placing 'avg_pool_3x3' on multiple edges, as this increases latency substantially (e.g., >9 ms) and reduces accuracy.",
+    "Avoid excessive use of 'none' (operator 0), especially on early edges, unless offset by several 'skip_connect' connections; too many 'none' operators reduce information flow and lower accuracy.",
+    "Avoid architectures without any 'skip_connect' (operator 1), as the absence of skip connections consistently correlates with lower accuracy."
+   ],
+   [
+    "Use 'skip_connect' (operator 1) on as many edges as possible to maximize information flow, as this consistently yields higher accuracy (\u226584%) with low latency (~5.3\u20135.5 ms) in this constrained search space.",
+    "Use exactly one 'avg_pool_3x3' (operator 4), positioned on a late edge\u2014preferably edge e (node3<-node1) or edge f (node3<-node2)\u2014to boost accuracy while keeping latency acceptable. Placing 'avg_pool_3x3' on an early edge or on multiple edges increases latency and reduces accuracy.",
+    "Avoid placing 'avg_pool_3x3' (operator 4) on more than one edge; this reliably increases latency beyond 9 ms and decreases accuracy.",
+    "Avoid using 'none' (operator 0) on multiple edges or on critical early edges, as excessive 'none' operators diminish information flow and result in lower accuracy (<80%), unless the majority of other edges are 'skip_connect'.",
+    "Avoid architectures with no 'skip_connect' (operator 1), as the lack of skip connections leads to significantly worse accuracy."
+   ],
+   [
+    "Use 'skip_connect' (operator 1) on as many edges as possible to maximize information flow; this consistently achieves high accuracy (\u226584%) with low latency (~5.3\u20135.5 ms) in this constrained search space.",
+    "Use exactly one 'avg_pool_3x3' (operator 4), and place it on a late edge\u2014preferably edge e (node3<-node1) or edge f (node3<-node2)\u2014to balance accuracy and latency. Early placement or multiple uses of 'avg_pool_3x3' increases latency and reduces accuracy.",
+    "Avoid using 'avg_pool_3x3' (operator 4) on more than one edge, as this reliably increases latency (>9 ms) and decreases accuracy.",
+    "Avoid placing 'none' (operator 0) on more than one edge, or on critical early edges, because excessive 'none' operators reduce information flow and accuracy (<80%).",
+    "Avoid architectures lacking 'skip_connect' (operator 1) altogether, since the absence of skip connections leads to poor accuracy."
+   ],
+   [
+    "Use 'skip_connect' (operator 1) on as many edges as possible, especially on early and intermediate edges, because this maximizes information flow and consistently yields high accuracy (\u226584%) with low-to-moderate latency (~5.3\u20135.5 ms) in this constrained search space.",
+    "Use exactly one 'avg_pool_3x3' (operator 4), and place it on a late edge\u2014preferably edge e (node3<-node1) or edge f (node3<-node2)\u2014because this balances accuracy and latency; early placement or multiple instances of 'avg_pool_3x3' increase latency and reduce accuracy.",
+    "Avoid using 'avg_pool_3x3' (operator 4) on more than one edge, because multiple pools reliably increase latency (>9 ms) and decrease accuracy.",
+    "Avoid placing 'none' (operator 0) on more than one edge, or on critical early edges, because excessive or poorly positioned 'none' operators reduce information flow and significantly lower accuracy (<80%).",
+    "Avoid architectures without any 'skip_connect' (operator 1), because the absence of skip connections leads to poor accuracy."
+   ],
+   [
+    "Use 'skip_connect' (operator 1) on as many edges as possible\u2014especially on early and intermediate edges (b, c, d)\u2014because this maximizes information flow and reliably achieves high accuracy (\u226584%) with moderate latency (~5.3\u20135.5 ms) in this search space.",
+    "Use exactly one 'avg_pool_3x3' (operator 4) and place it on a late edge, preferably edge e (node3<-node1) or edge f (node3<-node2), because this placement helps maintain strong accuracy and moderate latency; multiple or early pools increase latency and reduce accuracy.",
+    "Avoid using 'avg_pool_3x3' (operator 4) on more than one edge, because multiple pools consistently increase latency (>9 ms) and decrease accuracy.",
+    "Avoid placing 'none' (operator 0) on more than one edge, and do not place 'none' on early edges (a, b), because excessive or poorly positioned 'none' operators reduce information flow and significantly lower accuracy (<80%).",
+    "Avoid architectures that do not include any 'skip_connect' (operator 1), because the absence of skip connections leads to poor accuracy."
+   ],
+   [
+    "Use 'skip_connect' (operator 1) on as many edges as possible, especially on intermediate edges (b, c, d), because this maximizes information flow and reliably achieves high accuracy (\u226584%) with moderate latency (~5.3\u20135.5 ms) in this search space.",
+    "Use exactly one 'avg_pool_3x3' (operator 4), and place it on a late edge (preferably e or f), because this maintains strong accuracy and moderate latency. Multiple or early pools increase latency and reduce accuracy.",
+    "Avoid using 'avg_pool_3x3' (operator 4) on more than one edge, because double pooling consistently increases latency (>8 ms) and decreases accuracy.",
+    "Avoid placing 'none' (operator 0) on more than one edge, and do not place 'none' on early edges (a, b), because excessive or poorly positioned 'none' operators reduce information flow and significantly lower accuracy (<80%).",
+    "Avoid architectures that lack 'skip_connect' (operator 1) on all edges, because the absence of skip connections leads to poor accuracy."
+   ],
+   [
+    "Use 'skip_connect' (operator 1) on as many edges as possible, especially on intermediate edges (b, c, d), because this maximizes information flow, consistently yields high accuracy (\u226584%), and offers moderate-to-low latency (~2.8\u20135.5 ms) in this search space.",
+    "Use exactly one 'avg_pool_3x3' (operator 4), placed on a late edge (preferably e or f), because this sustains high accuracy while keeping latency moderate. Placing the pool late helps preserve feature information through the cell.",
+    "Avoid using 'avg_pool_3x3' (operator 4) on more than one edge, because double pooling increases latency (>8 ms) and reduces accuracy.",
+    "Avoid using 'none' (operator 0) on more than one edge, and avoid placing 'none' on early edges (a, b), because this significantly reduces information flow and leads to poor accuracy (<80%). Using 'none' on a single early edge (a) can be acceptable if skip_connect dominates the remaining edges.",
+    "Avoid architectures that lack 'skip_connect' (operator 1) on all edges, because the absence of skip connections leads to poor accuracy and diminished information flow."
+   ],
+   [
+    "Use 'skip_connect' (operator 1) on as many edges as possible\u2014especially on intermediate and late edges (b, c, d, f)\u2014because this maximizes information flow, consistently yields high accuracy (\u226583%), and delivers low-to-moderate latency (2.8\u20135.5 ms) in this search space.",
+    "Use exactly one 'avg_pool_3x3' (operator 4), placed on a late edge (preferably e or f), because this supports high accuracy while keeping latency moderate. Placing pooling late preserves feature information through the cell.",
+    "Avoid using 'avg_pool_3x3' on more than one edge, because multiple poolings increase latency (>8 ms) and reduce accuracy.",
+    "Avoid assigning 'none' (operator 0) to more than one edge, and avoid placing 'none' on both early edges (a, b); excessive removal of connections impairs information flow and leads to poor accuracy (<80%).",
+    "Avoid architectures that lack 'skip_connect' on all edges, as absence of skip connections consistently results in poor accuracy and diminished information flow."
+   ],
+   [
+    "Use 'skip_connect' (operator 1) on as many edges as possible, especially on intermediate and late edges (b, c, d, f), because this maximizes information flow, consistently yields high accuracy (\u226583%), and delivers low-to-moderate latency (2.8\u20135.5 ms) in this search space.",
+    "Use exactly one 'avg_pool_3x3' (operator 4), placed on a late edge (preferably e or f), because this supports high accuracy while keeping latency moderate. Late pooling preserves feature information through the cell.",
+    "Avoid using 'avg_pool_3x3' on more than one edge, because multiple poolings increase latency (>8 ms) and reduce accuracy.",
+    "Avoid assigning 'none' (operator 0) to more than one edge, and avoid placing 'none' on both early edges (a, b), because excessive removal of connections impairs information flow and leads to poor accuracy (<80%).",
+    "Avoid architectures with no 'skip_connect' on any edge, as the absence of skip connections consistently results in poor accuracy and diminished information flow.",
+    "Avoid assigning 'none' (operator 0) to the output edge (f) unless targeting the lowest possible latency, because pruning the cell output drastically reduces accuracy (to \u223c10%), even though latency is minimized (<0.1 ms)."
+   ]
+  ],
+  "S1": [
+   [
+    "Use nor_conv_1x1 (operator 2) on multiple edges because architectures with at least 3 nor_conv_1x1s (e.g., (2,1,2,2,4,0) and (2,1,2,0,1,2)) achieve highest accuracy (\u226585.74%) at moderate latency (11.2\u201313.6 ms).",
+    "Use skip_connect (operator 1) selectively\u2014preferably in combination with nor_conv_1x1\u2014because skip_connect on a few edges (e.g., (2,1,2,2,4,0)) contributes to top accuracy, but excessive use (e.g., (1,2,1,2,4,4)) does not improve accuracy and can increase latency.",
+    "Use avg_pool_3x3 (operator 4) sparingly, ideally on early edges (first or second), because (4,4,0,2,1,0) achieves lowest latency (7.7 ms) with reasonable accuracy (85.16%), but excessive use (as in (1,2,1,2,4,4)) lowers accuracy (81.06%).",
+    "Avoid excessive use of 'none' (operator 0) because patterns with many zeros (e.g., (2,0,1,2,0,0)) do not achieve top accuracy or latency, and zeros on later edges tend to hurt both metrics.",
+    "Avoid using skip_connect and avg_pool_3x3 together on multiple edges, as in (1,2,1,2,4,4), because this results in the lowest accuracy (81.06%) at high latency (13.1 ms)."
+   ],
+   [
+    "Use nor_conv_1x1 (operator 2) on at least three edges because architectures with \u22653 nor_conv_1x1s consistently achieve the highest accuracy (\u226585.7%) at moderate latency (7.4\u201316.2 ms) within the hardware and constraint limits.",
+    "Use avg_pool_3x3 (operator 4) on early edges (first or second) because this significantly lowers latency (as low as 7.4 ms) while maintaining high accuracy (\u226585.5%), but avoid placing avg_pool_3x3 on multiple edges or late edges, as this reduces accuracy.",
+    "Use skip_connect (operator 1) selectively and only in combination with nor_conv_1x1, typically on one or two edges, because this mix contributes to high accuracy without significantly increasing latency. Excessive skip_connect does not improve accuracy and raises latency.",
+    "Avoid excessive use of 'none' (operator 0), especially on later edges, because architectures with multiple 'none' operators (particularly on node3<-node1, node3<-node2) suffer reduced accuracy and do not achieve top latency.",
+    "Avoid combining skip_connect and avg_pool_3x3 together on multiple edges within a cell, since this pattern leads to the lowest accuracy (\u224881%) and high latency."
+   ],
+   [
+    "Use nor_conv_1x1 (operator 2) on at least three cell edges because architectures with \u22653 nor_conv_1x1s consistently achieve the highest accuracy (\u226586%) at moderate latency (7.4\u201319.2 ms) on Raspi 4, CIFAR-10, and satisfy the hardware constraints.",
+    "Use avg_pool_3x3 (operator 4) only on early edges (preferably node2<-node0) and limit to one occurrence per cell, because early pooling significantly lowers latency (as low as 7.4 ms) without hurting accuracy, while multiple or late avg_pool_3x3 reduces accuracy.",
+    "Use skip_connect (operator 1) only on one or two edges and always in combination with \u22653 nor_conv_1x1s, because this mix maintains high accuracy without significantly increasing latency; excessive skip_connect neither improves accuracy nor reduces latency.",
+    "Avoid 'none' (operator 0) except possibly on a single, late edge (e.g., node3<-node2) to minimize latency; multiple or mid-cell uses of 'none' consistently reduce accuracy.",
+    "Avoid using both skip_connect and avg_pool_3x3 on multiple edges within one cell, because this pattern consistently produces the lowest accuracy (\u224881%) and high latency.",
+    "Never use nor_conv_3x3 (operator 3), as it is disallowed by the current constraints."
+   ],
+   [
+    "Use nor_conv_1x1 (operator 2) on at least three cell edges because architectures with \u22653 nor_conv_1x1s consistently achieve the highest accuracy (\u226586%) at moderate latency (7.4\u201320.3 ms) on Raspi 4, CIFAR-10, and this satisfies the hardware constraints.",
+    "Use avg_pool_3x3 (operator 4) only on an early edge (preferably node2<-node0) and at most once per cell, because early pooling significantly lowers latency (to as low as 7.4 ms) without hurting accuracy, while multiple or late uses of avg_pool_3x3 reduce accuracy.",
+    "Use skip_connect (operator 1) only on one or two edges and always in combination with \u22653 nor_conv_1x1s, because this maintains high accuracy without significantly increasing latency; using more skip_connect edges does not further improve either metric.",
+    "Avoid 'none' (operator 0) except possibly on a single late edge (such as node3<-node2), because multiple or mid-cell uses of 'none' consistently reduce accuracy.",
+    "Avoid using both skip_connect and avg_pool_3x3 on multiple edges within one cell, because this pattern consistently produces low accuracy (\u224881%) and increased latency.",
+    "Never use nor_conv_3x3 (operator 3), as it is disallowed by the current constraints."
+   ],
+   [
+    "Use nor_conv_1x1 (operator 2) on at least three cell edges, ideally four or more, because architectures with \u22653 nor_conv_1x1 consistently achieve the highest accuracy (\u226586%) at moderate latency (7.4\u201325.4 ms) on Raspi 4, CIFAR-10; maximizing nor_conv_1x1 count further improves accuracy up to ~88%.",
+    "Use avg_pool_3x3 (operator 4) only on a single early edge, preferably node2<-node0, because early pooling significantly reduces latency (to as low as 7.4 ms) without materially reducing accuracy; late or multiple uses of avg_pool_3x3 reduce accuracy and may increase latency.",
+    "Use skip_connect (operator 1) on one or two edges at most, always in combination with at least three nor_conv_1x1s, because this maintains high accuracy (\u226586%) and can modestly reduce latency; more than two skip_connect edges or use without sufficient nor_conv_1x1s consistently reduces accuracy.",
+    "Avoid using 'none' (operator 0) except on a single late edge, such as node3<-node2, because multiple or mid-cell uses of 'none' consistently reduce accuracy; best results are obtained when 'none' is not used or only on node3<-node2.",
+    "Avoid using both skip_connect and avg_pool_3x3 on more than one edge each within a cell, because this pattern consistently produces low accuracy (~81%) and increased latency.",
+    "Never use nor_conv_3x3 (operator 3), as it is disallowed by the current constraints."
+   ],
+   [
+    "Use nor_conv_1x1 (operator 2) on at least three cell edges, and ideally four or five, because architectures with \u22653 nor_conv_1x1 consistently achieve the highest accuracy (\u226586%), and maximizing nor_conv_1x1 count further improves accuracy up to ~88% while maintaining acceptable latency (7.4\u201321 ms) o",
+    "Use avg_pool_3x3 (operator 4) on only one early edge\u2014preferably node2<-node0\u2014because early pooling significantly reduces latency (down to 7\u20138 ms) with minimal accuracy loss; multiple or late avg_pool_3x3 edges consistently reduce accuracy and may increase latency.",
+    "Use skip_connect (operator 1) on one or two edges at most, always combined with at least three nor_conv_1x1, because this maintains high accuracy (\u226586%) and can modestly reduce latency; using skip_connect on more than two edges or without sufficient nor_conv_1x1s reduces accuracy.",
+    "Avoid using 'none' (operator 0) except, if used, only on the late edge node3<-node2; using 'none' on multiple or mid-cell edges consistently reduces accuracy.",
+    "Avoid using both skip_connect and avg_pool_3x3 on more than one edge each in a cell, because this pattern consistently produces low accuracy (~81%) and increased latency.",
+    "Never use nor_conv_3x3 (operator 3), as it is disallowed by the current constraints."
+   ],
+   [
+    "Use nor_conv_1x1 (operator 2) on at least three cell edges\u2014ideally four or five\u2014because architectures with \u22653 nor_conv_1x1 consistently achieve the highest accuracy (\u226586%), and increasing nor_conv_1x1 count further improves accuracy up to ~88% while keeping latency within 7\u201321 ms on Raspi 4.",
+    "Use avg_pool_3x3 (operator 4) on only one early edge, preferably node2<-node0, because early pooling reduces latency significantly (to 7\u20138 ms) with minimal accuracy loss; using avg_pool_3x3 on multiple or late edges consistently reduces accuracy and may not further reduce latency.",
+    "Use skip_connect (operator 1) on one or two edges at most, always combined with at least three nor_conv_1x1, because this combination maintains high accuracy (\u226586%) and can modestly reduce latency (typically <21 ms); using skip_connect on more than two edges or without enough nor_conv_1x1s reduces a",
+    "Avoid using 'none' (operator 0) except, if at all, on the late edge node3<-node2; using 'none' elsewhere or on multiple edges consistently reduces accuracy.",
+    "Avoid using both skip_connect and avg_pool_3x3 on more than one edge each within a cell, because this combination consistently results in lower accuracy (~81%) and may increase latency.",
+    "Never use nor_conv_3x3 (operator 3), as it is disallowed by the current search space constraints."
+   ],
+   [
+    "Use nor_conv_1x1 (operator 2) on at least three cell edges\u2014ideally four or five\u2014because this consistently achieves the highest accuracy (\u226586%), and increasing the count further can push accuracy up to ~88% with latency remaining within 7\u201325 ms on Raspi 4.",
+    "Use avg_pool_3x3 (operator 4) on only one early edge, preferably node2<-node0, because this reduces latency significantly (to 7\u20138 ms) with minimal accuracy loss; using avg_pool_3x3 on multiple or late edges reduces accuracy and does not yield further latency benefits.",
+    "Use skip_connect (operator 1) on one or two edges at most, and only in combination with at least three nor_conv_1x1, because this maintains high accuracy (\u226586%) and can modestly reduce latency (<21 ms); using skip_connect on more than two edges or with fewer nor_conv_1x1s reduces accuracy.",
+    "Avoid using 'none' (operator 0) except, if at all, on the late edge node3<-node2; using 'none' elsewhere or on multiple edges consistently reduces accuracy.",
+    "Avoid using both skip_connect and avg_pool_3x3 on more than one edge each within a cell, because this combination lowers accuracy (\u224881%) and may increase latency.",
+    "Never use nor_conv_3x3 (operator 3), as it is disallowed by the current search space constraints."
+   ],
+   [
+    "Use nor_conv_1x1 (operator 2) on at least three cell edges\u2014preferably four or five\u2014because this yields the highest accuracy (\u226586%) and can push accuracy to ~88% while keeping latency within the 7\u201325 ms range on Raspi 4.",
+    "Use avg_pool_3x3 (operator 4) on only one early edge, ideally node2<-node0, because this reliably reduces latency (as low as 7\u20138 ms) with minimal accuracy loss; avoid avg_pool_3x3 on multiple or late edges as this reduces accuracy and does not further improve latency.",
+    "Use skip_connect (operator 1) on one or two edges at most, and only in combination with at least three nor_conv_1x1, because this maintains high accuracy (\u226586%) and can modestly reduce latency; using skip_connect on more than two edges or with fewer nor_conv_1x1s reduces accuracy.",
+    "Avoid using 'none' (operator 0) except, if at all, on the late edge node3<-node2; using 'none' elsewhere or on multiple edges consistently reduces accuracy.",
+    "Avoid using both skip_connect and avg_pool_3x3 on more than one edge each within a cell, because combining them on multiple edges consistently lowers accuracy (~81%) and may increase latency.",
+    "Never use nor_conv_3x3 (operator 3), as it is disallowed by the current search space constraints."
+   ],
+   [
+    "Use nor_conv_1x1 (operator 2) on at least three cell edges, and preferably four or five, because this consistently yields the highest accuracy (\u226586%) and can achieve up to ~88% accuracy with latency remaining within the 7\u201325 ms range on Raspi 4.",
+    "Use avg_pool_3x3 (operator 4) on only one early edge, ideally node2<-node0, because this reliably reduces latency (as low as 7\u20138 ms) with minimal accuracy loss; avoid placing avg_pool_3x3 on late edges or using it on multiple edges, as this reduces accuracy and does not further improve latency.",
+    "Use skip_connect (operator 1) on at most two edges, and only when combined with at least three nor_conv_1x1s, because this maintains high accuracy (\u226586%) and modestly reduces latency; using skip_connect on more than two edges or with fewer nor_conv_1x1s leads to significant accuracy degradation.",
+    "Avoid using 'none' (operator 0) on any edge except potentially on the late edge node3<-node2; using 'none' on any other edge or on multiple edges consistently reduces accuracy.",
+    "Avoid using both skip_connect and avg_pool_3x3 on more than one edge each within the cell, because combining them on multiple edges consistently lowers accuracy (to ~81%) and may increase latency.",
+    "Never use nor_conv_3x3 (operator 3), as it is disallowed by current search space constraints."
+   ]
+  ],
+  "S2": [
+   [
+    "Use nor_conv_3x3 on at least one edge, preferably on node1<-node0 or node3<-node1, because such placements are present in top-performing, low-latency architectures (e.g., IDs 0 and 3).",
+    "Use nor_conv_1x1 up to 3 times to balance accuracy and latency; architectures with 2-3 nor_conv_1x1 (e.g., IDs 0, 1, L0, L1, L3) achieve high accuracy with moderate latency.",
+    "Prioritize skip_connect on edges where accuracy is not bottlenecked, as it appears in high-accuracy, low-latency cells (e.g., IDs 0 and 3); overuse may reduce representation power, but judicious use reduces latency.",
+    "Limit avg_pool_3x3 usage to at most 2 edges; excessive use (e.g., L1, L2, L4) correlates with lower accuracy or unremarkable latency.",
+    "Avoid using operator 'none' (zeroize) on early edges (node1<-node0, node2<-node0), as this severely limits information flow and is present in the lowest-accuracy architectures (e.g., L4, ID 4).",
+    "Avoid using nor_conv_3x3 on highly parallel edges (e.g., node3<-node1 and node3<-node0 simultaneously), as this leads to unnecessary latency without proportional accuracy gains."
+   ],
+   [
+    "Use nor_conv_3x3 exactly once, preferably on the node1<-node0 edge, because this placement consistently appears in top-performing, low-latency architectures and maximizes early feature extraction with minimal latency impact.",
+    "Use nor_conv_1x1 on 2-3 edges to boost representation power and feature mixing; this provides a strong accuracy/latency tradeoff as seen in Pareto-optimal cells.",
+    "Prioritize skip_connect for edges where additional computation is unnecessary (e.g., node2<-node0 or node3<-node2), as this reduces latency without significantly hurting accuracy.",
+    "Limit avg_pool_3x3 to no more than one edge per cell; using it on one non-critical edge can provide regularization and low latency, but multiple uses tend to lower accuracy without clear latency benefits.",
+    "Avoid operator 'none' (zeroize) on early edges (node1<-node0, node2<-node0), as this severely restricts information flow and consistently results in low accuracy.",
+    "Avoid placing nor_conv_3x3 on more than one edge or on parallel edges (e.g., node3<-node0 and node3<-node1), as this leads to high latency with diminishing accuracy returns."
+   ],
+   [
+    "Use nor_conv_3x3 exactly once, and place it on the node1<-node0 edge, because this consistently yields high accuracy and low latency by maximizing early feature extraction with minimal hardware cost.",
+    "Use nor_conv_1x1 on 2 or 3 edges to enhance feature mixing and representation capacity; this pattern achieves a strong accuracy-latency tradeoff, as seen in top Pareto architectures.",
+    "Use skip_connect on edges where extra computation is unnecessary\u2014such as node2<-node0, node3<-node2, or node3<-node0\u2014to minimize latency without significantly reducing accuracy.",
+    "Use avg_pool_3x3 on at most one edge per cell, preferably on a non-critical or late edge (e.g., node3<-node1 or node2<-node0), to provide regularization and reduce latency; multiple usages tend to lower accuracy without substantive latency gains.",
+    "Avoid using 'none' (zeroize) on early edges (node1<-node0, node2<-node0), because this severely limits information flow and consistently results in poor accuracy.",
+    "Avoid placing nor_conv_3x3 on multiple edges or on parallel input edges to the same node (e.g., node3<-node0 and node3<-node1); this increases latency significantly without proportionate accuracy improvements."
+   ],
+   [
+    "Use nor_conv_3x3 exactly once and place it on the node1<-node0 edge, because this yields the best tradeoff of early feature extraction, high accuracy, and low hardware cost.",
+    "Use nor_conv_1x1 on 2 or 3 edges (preferably on node2<-node1, node3<-node0, and node3<-node2) to enhance feature mixing and representation capacity, which consistently improves accuracy with only a modest latency increase.",
+    "Use skip_connect on edges where computation can be minimized (such as node2<-node0, node3<-node2, or node3<-node0) to reduce latency without significantly impacting accuracy.",
+    "Use avg_pool_3x3 on at most one edge per cell, preferably on a late or non-critical edge (like node3<-node1 or node2<-node0), to provide regularization and reduce latency; using it on early or multiple edges consistently reduces accuracy.",
+    "Avoid using 'none' (zeroize) on early edges (node1<-node0, node2<-node0), because this blocks information flow and consistently results in poor accuracy.",
+    "Avoid placing nor_conv_3x3 on multiple edges or on parallel input edges to the same node (e.g., node3<-node0 and node3<-node1), as this greatly increases latency with little or no accuracy benefit."
+   ],
+   [
+    "Use nor_conv_3x3 exactly once on the node1<-node0 edge, because this provides strong early feature extraction for high accuracy with minimal hardware cost and latency.",
+    "Use nor_conv_1x1 on 2 or 3 edges, preferably on node2<-node1, node3<-node0, and/or node3<-node2, because this enhances feature mixing and representation capacity, boosting accuracy while only modestly increasing latency.",
+    "Use skip_connect on edges where computation can be minimized, such as node2<-node0, node3<-node0, or node3<-node2, because this reduces latency without significantly impacting accuracy.",
+    "Use avg_pool_3x3 on at most one edge per cell, and place it on a late or non-critical edge (like node3<-node1 or node3<-node2), because this provides regularization and can slightly reduce latency; using it early or on multiple edges consistently reduces accuracy.",
+    "Avoid using 'none' (zeroize) on early edges (node1<-node0, node2<-node0), because this blocks information flow and consistently results in poor accuracy.",
+    "Avoid placing nor_conv_3x3 on more than one edge or on parallel input edges to the same node (e.g., node3<-node0 and node3<-node1), because this greatly increases latency without providing significant accuracy benefit."
+   ],
+   [
+    "Use nor_conv_3x3 exactly once on the node1<-node0 edge because this location provides strong early feature extraction, maximizing accuracy while incurring minimal hardware cost and latency.",
+    "Use nor_conv_1x1 on 2 or 3 edges, preferably on node2<-node1, node3<-node0, and/or node3<-node2, because this enhances feature mixing and representation capacity, significantly boosting accuracy with only a modest latency increase.",
+    "Use skip_connect on edges where computation can be minimized, especially on node2<-node0, node3<-node0, or node3<-node2, because this reduces latency without causing a significant accuracy drop.",
+    "Use avg_pool_3x3 on at most one edge per cell, and place it on a late edge (preferably node3<-node1 or node3<-node2) because this provides regularization and can slightly reduce latency; using it early or on multiple edges consistently reduces accuracy.",
+    "Avoid using 'none' (zeroize) on early edges (node1<-node0, node2<-node0), because this blocks information flow and leads to poor accuracy.",
+    "Avoid placing nor_conv_3x3 on more than one edge or on parallel input edges to the same node, because this greatly increases latency without significant accuracy benefit.",
+    "Avoid using avg_pool_3x3 on early or mid cell edges or on more than one edge, because this consistently reduces accuracy and does not provide sufficient latency improvement.",
+    "Avoid using 'none' (zeroize) on any edge unless absolutely necessary for latency, as it consistently leads to severe accuracy degradation."
+   ],
+   [
+    "Use nor_conv_3x3 exactly once, and always place it on the node1<-node0 edge because this provides strong early feature extraction that maximizes accuracy while incurring minimal hardware cost and latency.",
+    "Use nor_conv_1x1 on 2 or 3 edges, prioritizing node2<-node1, node3<-node0, and/or node3<-node2, because this enhances feature mixing and representation capacity, significantly increasing accuracy with only a modest latency cost.",
+    "Use skip_connect on edges where computation can be reduced (such as node2<-node0, node3<-node0, or node3<-node2) because this reduces latency without causing significant accuracy loss.",
+    "Use avg_pool_3x3 on at most one edge per cell, and place it on a late edge (preferably node3<-node1 or node3<-node2) because this provides regularization and can slightly reduce latency, while using it early or on multiple edges consistently reduces accuracy.",
+    "Avoid using 'none' (zeroize) on early edges (node1<-node0, node2<-node0) or any edge unless absolutely necessary for latency, as this blocks information flow and leads to severe accuracy degradation.",
+    "Avoid placing nor_conv_3x3 on more than one edge or on parallel input edges to the same node, as this greatly increases latency without meaningful accuracy improvement.",
+    "Avoid using avg_pool_3x3 on early or mid cell edges or on more than one edge, since this consistently reduces accuracy and does not provide sufficient latency benefit."
+   ],
+   [
+    "Use nor_conv_3x3 exactly once per cell, always placing it on the node1<-node0 edge, because this provides strong early feature extraction for maximal accuracy at minimal hardware cost and latency.",
+    "Use nor_conv_1x1 on 2\u20133 edges per cell, prioritizing node2<-node1, node3<-node0, and/or node3<-node2, because this enhances feature mixing and representation capacity, significantly boosting accuracy with only a modest latency increase.",
+    "Use skip_connect on edges where computation is less critical (such as node2<-node0, node3<-node0, or node3<-node2) to reduce latency with minimal accuracy loss.",
+    "Use avg_pool_3x3 on at most one edge per cell, placing it on a late edge (preferably node3<-node1 or node3<-node2), because this provides regularization and slight latency reduction; using it on early or multiple edges consistently reduces accuracy.",
+    "Avoid using 'none' (zeroize) on early edges (node1<-node0, node2<-node0) or more than one edge per cell, as this blocks information flow and severely degrades accuracy.",
+    "Avoid using nor_conv_3x3 on more than one edge or on parallel input edges to the same node, because this greatly increases latency without meaningful accuracy gain.",
+    "Avoid placing avg_pool_3x3 on early or mid cell edges, or using it more than once per cell, as this consistently reduces accuracy and offers insufficient latency benefit."
+   ],
+   [
+    "Use nor_conv_3x3 exactly once per cell, always on the node1<-node0 edge, because this consistently provides strong early feature extraction for maximal accuracy at minimal hardware cost and latency.",
+    "Use nor_conv_1x1 on 2\u20133 edges per cell, prioritizing node2<-node1, node3<-node0, and/or node3<-node2, because this enhances feature mixing and representation capacity, significantly boosting accuracy with only a modest latency increase.",
+    "Use skip_connect on edges where computation is less critical\u2014such as node2<-node0, node3<-node0, or node3<-node2\u2014to reduce latency with minimal accuracy loss.",
+    "Use avg_pool_3x3 on at most one edge per cell, and only on a late edge (preferably node3<-node1 or node3<-node2), because this provides regularization and can slightly reduce latency; placing avg_pool_3x3 earlier or using it more than once consistently reduces accuracy.",
+    "Avoid using 'none' (zeroize) on early edges (node1<-node0, node2<-node0) or more than one edge per cell, as this blocks information flow and severely degrades accuracy.",
+    "Avoid using nor_conv_3x3 on more than one edge or on parallel input edges to the same node, as this greatly increases latency with no meaningful accuracy gain.",
+    "Avoid placing avg_pool_3x3 on early or mid cell edges, or using it more than once per cell, as this consistently reduces accuracy and provides insufficient latency benefit."
+   ],
+   [
+    "Use nor_conv_3x3 exactly once per cell, always on the node1<-node0 edge, because this consistently provides strong early feature extraction for maximal accuracy at minimal hardware cost and latency.",
+    "Use nor_conv_1x1 on 2\u20133 edges per cell, prioritizing node2<-node1, node3<-node0, and/or node3<-node2, because this enhances feature mixing and representation capacity, significantly boosting accuracy with only a modest latency increase.",
+    "Use skip_connect on edges where computation is less critical\u2014such as node2<-node0, node3<-node0, or node3<-node2\u2014to reduce latency with minimal accuracy loss.",
+    "Use avg_pool_3x3 on at most one edge per cell, and only on a late edge (preferably node3<-node1 or node3<-node2), because this provides regularization and can slightly reduce latency; placing avg_pool_3x3 earlier or using it more than once consistently reduces accuracy.",
+    "Avoid using 'none' (zeroize) on early edges (node1<-node0, node2<-node0) or on more than one edge per cell, as this blocks information flow and severely degrades accuracy.",
+    "Avoid using nor_conv_3x3 on more than one edge or on parallel input edges to the same node, as this greatly increases latency with no meaningful accuracy gain.",
+    "Avoid placing avg_pool_3x3 on early or mid cell edges, or using it more than once per cell, as this consistently reduces accuracy and provides insufficient latency benefit.",
+    "Avoid excessive use of skip_connect or 'none' on late edges (especially node3<-node2) if nor_conv_1x1 is available, as this can undercut feature mixing and reduce accuracy."
+   ]
+  ],
+  "S3": [
+   [
+    "Use nor_conv_3x3 on early cell edges (positions 1 or 2) because architectures with nor_conv_3x3 early (e.g., (0, 3, 2, 0, 3, 1), (1, 3, 4, 2, 2, 3)) consistently achieve high accuracy (>89%) with moderate latency (<41 ms).",
+    "Distribute nor_conv_3x3 and nor_conv_1x1 across different edges rather than stacking them together, as this balances accuracy and latency. Evidence: (3, 2, 2, 0, 3, 1) and (1, 3, 4, 2, 2, 3) both use nor_conv_3x3 and nor_conv_1x1 on separate edges and achieve high accuracy.",
+    "Avoid using avg_pool_3x3 on multiple edges, especially in early positions, because architectures with multiple avg_pool_3x3 (e.g., (3, 4, 3, 0, 1, 4)) show reduced accuracy (86.29%).",
+    "Avoid overusing 'none' (zeroize) operator, particularly on early or multiple edges, as this can reduce both accuracy and effective model capacity. Evidence: High-performing models have at most two 'none' operators, usually not on critical early edges.",
+    "Use skip_connect selectively, preferably in combination with conv operators, to preserve information flow and reduce latency. Skip_connect is present in high-accuracy, low-latency models (e.g., (0, 3, 2, 0, 3, 1), (3, 2, 2, 0, 3, 1)).",
+    "Never violate the constraint of exactly two nor_conv_3x3 per cell, and select their positions to maximize feature extraction early in the cell."
+   ],
+   [
+    "Use nor_conv_3x3 on early cell edges (positions a or b) and/or late cell edges (position f) because placing nor_conv_3x3 on early or late edges consistently improves accuracy (>89%) while maintaining moderate latency (<41.5 ms).",
+    "Distribute nor_conv_3x3 and nor_conv_1x1 across different edges rather than stacking them together, because this balances feature extraction and efficient information flow, leading to higher accuracy and lower latency.",
+    "Avoid using avg_pool_3x3 on multiple edges or in early positions, because this consistently reduces accuracy (e.g., models with multiple avg_pool_3x3 drop below 87%). Use at most one avg_pool_3x3, and position it away from early edges if used.",
+    "Avoid overusing the 'none' (zeroize) operator, especially on early or multiple edges, because this reduces accuracy and effective model capacity. Limit 'none' to at most one edge, preferably on a non-critical (late) edge.",
+    "Use skip_connect in combination with conv operators to preserve information flow and reduce latency, especially on edges where direct feature reuse is beneficial. High-performing models frequently use skip_connect on a or b.",
+    "Always use exactly two nor_conv_3x3 per cell, per the hardware constraint, and prioritize their placement on edges that maximize early feature extraction and/or late aggregation (edges a, b, or f)."
+   ],
+   [
+    "Use exactly two nor_conv_3x3 operators per cell, as mandated, prioritizing their placement on early (a or b) and/or late (f) edges because this maximizes feature extraction early and aggregation late, consistently improving accuracy (>89%) at moderate latency (<41.5 ms).",
+    "Distribute nor_conv_3x3 and nor_conv_1x1 across different edges rather than stacking them together, because spreading convolutional capacity leads to balanced feature extraction and efficient information flow, yielding higher accuracy and lower latency.",
+    "Use skip_connect on early or intermediate edges (especially b) in combination with conv operators to preserve information flow and reduce latency, as this pattern is present in all high-performing, low-latency models.",
+    "Avoid using avg_pool_3x3 on more than one edge and never on early edges (a, b), because multiple or early poolings consistently reduce accuracy (often below 87%) without significant latency benefit.",
+    "Limit the use of 'none' (zeroize) to at most one edge, and only on non-critical (usually later) edges, because excessive or early use of 'none' reduces effective model capacity and accuracy.",
+    "Favor architectures with at least one skip_connect and with conv operators (nor_conv_3x3 or nor_conv_1x1) distributed across the cell, as this combination supports both efficient computation and high accuracy."
+   ],
+   [
+    "Use exactly two nor_conv_3x3 operators per cell, placing them on early (a or b) and/or late (f) edges, because this maximizes feature extraction and aggregation, consistently yielding high accuracy (>89%) with moderate latency (<41.5 ms).",
+    "Distribute nor_conv_3x3 and nor_conv_1x1 operators across different edges rather than concentrating them on adjacent edges, because spreading convolutional capacity leads to balanced feature extraction and efficient information flow, improving both accuracy and latency.",
+    "Use skip_connect on at least one early or intermediate edge (preferably b), especially in combination with conv operators, because this preserves information flow and reduces overall latency without harming accuracy.",
+    "Avoid using avg_pool_3x3 on more than one edge and never place it on early edges (a, b), because multiple or early poolings consistently reduce accuracy (often below 87%) with minimal latency benefit.",
+    "Limit use of 'none' (zeroize) to at most one edge, and only on non-critical or early edges (preferably a or d), because excessive or late use of 'none' reduces effective model capacity and hurts accuracy.",
+    "Favor architectures that combine at least one skip_connect with distributed conv operators (nor_conv_3x3 and nor_conv_1x1), as this supports both efficient computation and high accuracy."
+   ],
+   [
+    "Use exactly two nor_conv_3x3 operators per cell, placing them on early (a or b) and/or late (f) edges, because this maximizes feature extraction and aggregation, yielding high accuracy (>89%) with moderate latency (<41.5 ms).",
+    "Distribute nor_conv_3x3 and nor_conv_1x1 operators across different edges rather than clustering them, because spreading convolutional capacity leads to balanced feature extraction and efficient information flow, improving both accuracy and latency.",
+    "Include at least one skip_connect on an early or intermediate edge (preferably b), especially in combination with conv operators, because this preserves information flow and reduces latency without harming accuracy.",
+    "Avoid using avg_pool_3x3 on early edges (a, b) and limit its use to at most one occurrence per cell, because early or multiple poolings reduce accuracy (often below 87%) with little latency benefit.",
+    "Limit the use of 'none' (zeroize) to at most one edge, and only on non-critical or early edges (preferably a, c, or d), because excessive or late use of 'none' reduces model capacity and significantly lowers accuracy.",
+    "Favor architectures that combine skip_connect with distributed conv operators (nor_conv_3x3 and nor_conv_1x1), as this supports efficient computation and consistently high accuracy."
+   ],
+   [
+    "Use exactly two nor_conv_3x3 operators per cell, placing them on early (a, b) and/or late (f) edges, because this maximizes feature extraction and aggregation, yielding high accuracy (>89%) with moderate latency (<41.5 ms).",
+    "Distribute nor_conv_3x3 and nor_conv_1x1 operators across different edges rather than clustering them, because spreading convolutional capacity leads to balanced feature extraction and efficient information flow, improving both accuracy and latency.",
+    "Include at least one skip_connect on an early or intermediate edge (preferably b), especially in combination with convolutional operators, because this preserves information flow and reduces latency without harming accuracy.",
+    "Limit the use of avg_pool_3x3 to at most one occurrence per cell and avoid placing it on early edges (a, b), because early or multiple poolings reduce accuracy (often below 88%) with little latency benefit.",
+    "Limit the use of 'none' (zeroize) to at most one edge per cell, and only on non-critical or early/intermediate edges (a, c, or d). Avoid placing 'none' on late edges (f), unless required for latency, because excessive or late use reduces model capacity and significantly lowers accuracy.",
+    "Favor architectures that combine skip_connect with distributed conv operators (nor_conv_3x3 and nor_conv_1x1), as this supports efficient computation and consistently high accuracy.",
+    "Avoid clustering all convolutional operators (nor_conv_3x3 and nor_conv_1x1) on either only early or only late edges, because such clustering reduces balanced feature extraction and typically leads to lower accuracy or higher latency.",
+    "Avoid multiple uses of 'none' or avg_pool_3x3 in a single cell, as this causes substantial drops in accuracy with minimal or negative impact on latency."
+   ],
+   [
+    "Use exactly two nor_conv_3x3 operators per cell, placing them on well-separated edges (preferably one early, one late or intermediate), because this maximizes feature extraction and aggregation, yielding high accuracy (>89%) with moderate latency (<42 ms).",
+    "Distribute nor_conv_1x1 and nor_conv_3x3 operators across different edges (avoid clustering), because spreading convolutional capacity improves both accuracy and latency by enabling balanced feature extraction and efficient data flow.",
+    "Include at least one skip_connect on an early or late edge (such as a or f), especially in combination with convolutional operators, because this maintains high information flow and reduces latency with minimal accuracy loss.",
+    "Avoid placing 'none' (zeroize) on late edges (f, e), and limit to at most one occurrence per cell on a non-critical early/intermediate edge, because late or multiple use of 'none' significantly reduces model capacity and accuracy.",
+    "Limit avg_pool_3x3 to at most one per cell and avoid placing it on early edges (a, b); prefer mid or late edges (d or e) if used, because early pooling degrades accuracy and multiple poolings offer little latency benefit.",
+    "Favor architectures that combine skip_connect with distributed convolutional operators (nor_conv_3x3 and nor_conv_1x1), as this consistently supports efficient computation and high accuracy.",
+    "Avoid architectures with multiple 'none' or multiple avg_pool_3x3 operators in a single cell, as this substantially reduces accuracy with negligible improvement or even worsening of latency.",
+    "Avoid clustering all convolutional operators (nor_conv_3x3 and nor_conv_1x1) on only early or only late edges, since this weakens balanced feature extraction and usually results in lower accuracy or higher latency."
+   ],
+   [
+    "Use exactly two nor_conv_3x3 operators per cell, placing them on well-separated edges (preferably one early, one late or intermediate), because this maximizes feature extraction and aggregation, resulting in high accuracy (>89%) with moderate latency (<42 ms).",
+    "Distribute nor_conv_1x1 and nor_conv_3x3 operators across different edges (avoid clustering), because spreading convolutional capacity enhances both accuracy and latency by enabling balanced feature extraction and efficient data flow.",
+    "Include at least one skip_connect on an early or late edge (such as a or f), especially in combination with convolutional operators, because this maintains strong information flow and reduces latency with minimal accuracy loss.",
+    "Avoid placing 'none' (zeroize) on late edges (e, f); if used, restrict to at most one 'none' per cell on a non-critical early or intermediate edge, because late or multiple use of 'none' significantly reduces model capacity and accuracy.",
+    "Limit avg_pool_3x3 to at most one per cell and avoid placing it on early edges (a, b); if used, prefer mid or late edges (d or e), because early pooling degrades accuracy and multiple poolings provide little or no latency benefit.",
+    "Favor architectures that combine skip_connect with distributed convolutional operators (nor_conv_3x3 and nor_conv_1x1), as this consistently supports efficient computation and high accuracy.",
+    "Avoid architectures with multiple 'none' or multiple avg_pool_3x3 operators in a single cell, as this substantially reduces accuracy with negligible or negative impact on latency.",
+    "Avoid clustering all convolutional operators (nor_conv_3x3 and nor_conv_1x1) on only early or only late edges, since this weakens balanced feature extraction and typically results in lower accuracy or higher latency."
+   ],
+   [
+    "Use exactly two nor_conv_3x3 operators per cell, placing them on well-separated edges (preferably one early, one mid or late), because this maximizes feature extraction and aggregation, resulting in high accuracy (>89%) with moderate latency (<42 ms).",
+    "Distribute nor_conv_1x1 and nor_conv_3x3 operators across different edges (avoid clustering them), because spreading convolutional capacity enhances both accuracy and latency by enabling balanced feature extraction and efficient data flow.",
+    "Include at least one skip_connect on an early (a) or late (f) edge, preferably in combination with convolutional operators, because this maintains strong information flow and reduces latency with minimal accuracy loss.",
+    "Avoid placing 'none' (zeroize) on late edges (e, f); if used, restrict to at most one 'none' per cell on a non-critical early or intermediate edge, because late or multiple use of 'none' significantly reduces model capacity and accuracy.",
+    "Limit avg_pool_3x3 to at most one per cell and avoid placing it on early edges (a, b); if used, prefer mid or late edges (d, e, or f), because early pooling degrades accuracy and multiple poolings provide negligible or negative latency benefit.",
+    "Favor architectures that combine skip_connect with distributed convolutional operators (nor_conv_3x3 and nor_conv_1x1), as this consistently supports efficient computation and high accuracy.",
+    "Avoid architectures with multiple 'none' or multiple avg_pool_3x3 operators in a single cell, as this substantially reduces accuracy with negligible or negative impact on latency.",
+    "Avoid clustering all convolutional operators (nor_conv_3x3 and nor_conv_1x1) on only early or only late edges, since this weakens balanced feature extraction and typically results in lower accuracy or higher latency."
+   ],
+   [
+    "Use exactly two nor_conv_3x3 operators per cell, and place them on well-separated edges (ideally one early, one mid or late), because this maximizes feature extraction and aggregation, resulting in high accuracy (>89%) with moderate latency (<42 ms).",
+    "Distribute nor_conv_1x1 and nor_conv_3x3 operators across different edges (avoid clustering them), because spreading convolutional capacity enhances both accuracy and latency by enabling balanced feature extraction and efficient data flow.",
+    "Use skip_connect on early (a) or late (f) edges, in combination with convolutional operators, because this maintains strong information flow and reduces latency with minimal accuracy loss.",
+    "Avoid more than one 'none' (zeroize) operator per cell and, if used, restrict it to a late edge (preferably f), because using a single 'none' late reduces computational cost with only minor accuracy loss, but multiple or early 'none' significantly reduces model capacity and accuracy.",
+    "Avoid clustering all convolutional operators (nor_conv_3x3 and nor_conv_1x1) on only early or only late edges, because this weakens balanced feature extraction and typically results in lower accuracy or higher latency.",
+    "Avoid multiple avg_pool_3x3 or multiple 'none' operators per cell, as this substantially reduces accuracy with negligible or negative impact on latency.",
+    "Favor architectures that combine skip_connect with distributed convolutional operators (nor_conv_3x3 and nor_conv_1x1), as this consistently supports efficient computation and high accuracy on the target hardware."
+   ]
+  ],
+  "S4": [
+   [
+    "Use nor_conv_3x3 on early edges (especially (a), (b), (d)) because architectures with nor_conv_3x3 on these edges consistently achieve high accuracy (>89%) with moderate latency.",
+    "Avoid using none (operator 0) on multiple edges because it significantly reduces connectivity, which correlates with lower accuracy (see ID 0 and L2).",
+    "Use skip_connect (operator 1) sparingly; it can reduce latency, but overuse may lower accuracy. Best results occur when skip_connect is mixed with convolutions, not used as the primary operation.",
+    "Include nor_conv_1x1 (operator 2) on at least one edge if latency budget allows, as it can improve accuracy slightly when combined with nor_conv_3x3 (see IDs L0, L1, L3, L4).",
+    "Avoid excessive use of avg_pool_3x3 (operator 4) because it tends to increase latency without providing accuracy gains (see IDs with high avg_pool_3x3 usage).",
+    "Distribute nor_conv_3x3 across edges rather than clustering them, as spread-out placement is observed in high-accuracy, moderate-latency candidates."
+   ],
+   [
+    "Use nor_conv_3x3 (operator 3) on early edges\u2014particularly (a), (c), and (d)\u2014because this placement consistently yields high accuracy (>89%) while keeping latency moderate.",
+    "Distribute nor_conv_3x3 (operator 3) across the cell rather than clustering them together to ensure both accuracy and efficiency.",
+    "Include nor_conv_1x1 (operator 2) on one edge\u2014preferably (b) or (e)\u2014if the latency budget allows, as it can enhance accuracy when combined with nor_conv_3x3 and skip_connect.",
+    "Use skip_connect (operator 1) on a single edge (ideally (b) or (e)) to reduce latency, but avoid using it on multiple edges as overuse can degrade accuracy.",
+    "Avoid using none (operator 0) on more than one edge because reduced connectivity lowers accuracy significantly.",
+    "Avoid placing avg_pool_3x3 (operator 4) on early edges or using it on more than one edge, as excessive pooling operations increase latency without accuracy benefit."
+   ],
+   [
+    "Use nor_conv_3x3 (operator 3) on early edges\u2014especially (a), (c), and (d)\u2014because this placement consistently yields high accuracy (>89%) while maintaining moderate latency.",
+    "Distribute the three required nor_conv_3x3 operators across different edges, avoiding their clustering, to balance accuracy and latency efficiently.",
+    "Include nor_conv_1x1 (operator 2) on at most one edge\u2014preferably (b), (e), or (f)\u2014to slightly boost accuracy if the latency budget allows, but avoid using nor_conv_1x1 on multiple edges as it increases latency without significant accuracy gain.",
+    "Use skip_connect (operator 1) on a single edge (ideally (b), (e), or (f)) to reduce latency and maintain connectivity, but avoid placing skip_connect on multiple edges to prevent accuracy degradation.",
+    "Avoid using none (operator 0) on more than one edge, as multiple zeroized edges significantly reduce accuracy by disrupting information flow.",
+    "Avoid placing avg_pool_3x3 (operator 4) on early edges or using it on more than one edge; a single pooling operation on a later edge (e or f) can help regularize, but excessive pooling increases latency and rarely improves accuracy.",
+    "Do not combine none (operator 0) and multiple skip_connect or avg_pool_3x3 operators within a cell, as this combination consistently leads to low accuracy."
+   ],
+   [
+    "Use nor_conv_3x3 (operator 3) on early edges (especially (a), (c), and (d)), distributing them across the cell to achieve high accuracy (>89%) with moderate latency.",
+    "Use nor_conv_1x1 (operator 2) on at most one edge (preferably (b), (e), or (f)) to boost accuracy when latency budget allows; avoid using it on multiple edges due to diminishing returns and increased latency.",
+    "Use skip_connect (operator 1) on a single edge (ideally (b), (e), or (f)) to maintain cell connectivity and reduce latency, but avoid multiple skip_connect placements as this can degrade accuracy.",
+    "Use none (operator 0) on at most one edge (preferably a later edge such as (e) or (f)) if needed for latency reduction, but avoid zeroizing multiple edges, as this consistently lowers accuracy by disrupting information flow.",
+    "Use avg_pool_3x3 (operator 4) on at most one late edge ((e) or (f)) to provide regularization; avoid early placement or multiple pooling operations, as this increases latency and rarely improves accuracy.",
+    "Avoid combining none (operator 0) with multiple skip_connect or avg_pool_3x3 operators in a single cell, as these combinations consistently yield poor accuracy."
+   ],
+   [
+    "Use nor_conv_3x3 (operator 3) on early and critical edges (specifically (a), (c), and (d)) to maximize accuracy, as these placements consistently yield >89% accuracy with moderate latency.",
+    "Use nor_conv_1x1 (operator 2) on at most one edge, preferably (e) or (f), to improve accuracy when latency budget allows; placing it on multiple edges increases latency with little or no accuracy gain.",
+    "Use skip_connect (operator 1) on at most one edge (preferably (b) or (f)) to maintain connectivity and reduce latency; multiple skip_connect placements degrade accuracy by reducing representational capacity.",
+    "Use avg_pool_3x3 (operator 4) on at most one late edge (preferably (e) or (f)) for regularization; avoid early placement or multiple poolings, which increase latency and rarely improve accuracy.",
+    "Use none (operator 0) on at most one late edge ((e) or (f)) only if strict latency reduction is necessary; avoid zeroizing early or multiple edges, as this disrupts information flow and sharply lowers accuracy.",
+    "Avoid combining none (operator 0) with multiple skip_connect or avg_pool_3x3 operators, as such combinations consistently yield poor accuracy and information flow.",
+    "Distribute exactly three nor_conv_3x3 operators across the cell, ensuring they are not clustered together, to optimize the accuracy-latency trade-off."
+   ],
+   [
+    "Use nor_conv_3x3 (operator 3) on edges (a), (c), and (d) to maximize accuracy; these placements consistently yield >89% accuracy with moderate latency.",
+    "Use nor_conv_1x1 (operator 2) on at most one late edge ((e) or (f)) to marginally boost accuracy if the latency budget allows; avoid using it on multiple edges as this increases latency with negligible accuracy gain.",
+    "Use skip_connect (operator 1) on a single edge ((b) or (f)) to maintain output connectivity and reduce latency; more than one skip_connect operator lowers accuracy due to excessive shortcutting.",
+    "Use avg_pool_3x3 (operator 4) on a single late edge ((e) or (f)) for regularization; avoid early or multiple avg_pool_3x3 placements as they increase latency and do not consistently improve accuracy.",
+    "Use none (operator 0) on at most one late edge ((e) or (f)) only to aggressively reduce latency; avoid using none on early edges or more than one edge, as this disrupts information flow and sharply reduces accuracy.",
+    "Avoid combinations of none (operator 0), multiple skip_connect (operator 1), and multiple avg_pool_3x3 (operator 4) in the same cell, as this consistently results in poor accuracy due to excessive loss of representational capacity.",
+    "Distribute exactly three nor_conv_3x3 (operator 3) operators across the cell, preferably not on adjacent edges, to maintain a balance between accuracy and latency."
+   ],
+   [
+    "Use nor_conv_3x3 (operator 3) on edges (a), (c), and (d) because this placement consistently yields high accuracy (>89%) with moderate latency, and satisfies the constraint of exactly three nor_conv_3x3 in the cell.",
+    "Use nor_conv_1x1 (operator 2) on at most one late edge ((e) or (f)), preferably (e) or (f), because this operator can marginally boost accuracy if the latency budget allows; using it on multiple edges increases latency with negligible accuracy gain.",
+    "Use skip_connect (operator 1) on a single edge, preferably (b) or (f), to maintain output connectivity and reduce latency; avoid using skip_connect on multiple edges as this consistently lowers accuracy due to excessive shortcutting.",
+    "Use avg_pool_3x3 (operator 4) on a single late edge ((e) or (f)), not early edges, for regularization; avoid using it on multiple edges, as this increases latency without providing consistent accuracy improvements.",
+    "Use none (operator 0) on at most one late edge ((e) or (f)), only if aggressive latency reduction is required; avoid using none on early edges or more than one edge, as this disrupts information flow and sharply reduces accuracy.",
+    "Avoid any combination of none (operator 0), multiple skip_connect (operator 1), and multiple avg_pool_3x3 (operator 4) in the same cell, because such patterns consistently result in poor accuracy due to excessive loss of representational capacity.",
+    "Distribute the three nor_conv_3x3 (operator 3) operators across non-adjacent edges (not all placed sequentially) to balance accuracy and latency."
+   ],
+   [
+    "Use nor_conv_3x3 (operator 3) on edges (a), (c), and (d) because this placement consistently yields the highest accuracy (>89%) while satisfying the constraint of exactly three nor_conv_3x3 per cell and maintaining moderate latency.",
+    "Use nor_conv_1x1 (operator 2) on at most one late edge ((e) or (f)), preferably (e), to marginally boost accuracy if the latency budget allows; using nor_conv_1x1 on multiple edges or on early edges increases latency with little or no accuracy gain.",
+    "Use skip_connect (operator 1) on a single edge, preferably (b) or (f), to maintain output connectivity and reduce latency; avoid placing skip_connect on multiple edges, as this consistently lowers accuracy due to excessive shortcutting and diminished feature diversity.",
+    "Use avg_pool_3x3 (operator 4) on a single late edge ((e) or (f)), not on early edges, to provide regularization and sometimes a small accuracy boost; avoid using avg_pool_3x3 on multiple edges or early edges, as this increases latency and can reduce accuracy.",
+    "Use none (operator 0) only on a single late edge ((e) or (f)) and only if aggressive latency reduction is required; avoid using none on early edges or more than one edge, as this sharply reduces accuracy by disrupting information flow.",
+    "Avoid any combination of multiple skip_connect (operator 1), multiple avg_pool_3x3 (operator 4), and/or multiple none (operator 0) within a cell; such patterns consistently result in poor accuracy due to excessive loss of representational capacity and information pathways.",
+    "Distribute the three nor_conv_3x3 (operator 3) operators across the cell and avoid clustering them on adjacent edges (e.g., all early or all late); this balances accuracy and latency by maintaining strong feature extraction at multiple points in the cell."
+   ],
+   [
+    "Use nor_conv_3x3 (operator 3) on edges (a), (c), and (d) because this placement consistently yields the highest accuracy (>89%) while satisfying the constraint of exactly three nor_conv_3x3 per cell and maintaining moderate latency.",
+    "Use skip_connect (operator 1) on a single edge, preferably (b) or (f), to maintain output connectivity and reduce latency; placing skip_connect on more than one edge lowers accuracy due to excessive shortcutting and reduced feature diversity.",
+    "Use nor_conv_1x1 (operator 2) on at most one late edge, preferably (e), if the latency budget allows, as this can marginally boost accuracy; avoid nor_conv_1x1 on multiple edges or on early edges, as this increases latency with minimal accuracy gain.",
+    "Use avg_pool_3x3 (operator 4) on at most one late edge ((e) or (f)) for regularization and occasional small accuracy boosts; avoid using avg_pool_3x3 on early edges or on multiple edges, as this increases latency and can reduce accuracy.",
+    "Use none (operator 0) only on a single late edge ((e) or (f)) and only if aggressive latency reduction is required; using none on early edges or more than one edge sharply reduces accuracy by disrupting information flow.",
+    "Avoid any combination with multiple skip_connect (operator 1), multiple avg_pool_3x3 (operator 4), and/or multiple none (operator 0) within a cell, as such patterns consistently result in poor accuracy due to excessive loss of representational capacity and disrupted information pathways.",
+    "Distribute the three nor_conv_3x3 (operator 3) operators across the cell (edges (a), (c), and (d)), avoiding clustering them on adjacent or early/late edges; this maintains strong feature extraction at multiple points and balances accuracy and latency."
+   ],
+   [
+    "Use nor_conv_3x3 (operator 3) on edges (a), (c), and (d) because this specific placement consistently yields the highest accuracy (>89%) while satisfying the constraint of exactly three nor_conv_3x3 per cell and keeps latency moderate.",
+    "Use skip_connect (operator 1) on a single edge, preferably (b) or (f), to maintain output connectivity and reduce latency; using skip_connect on more than one edge lowers accuracy due to excessive shortcutting and diminished feature diversity.",
+    "Use nor_conv_1x1 (operator 2) on at most one late edge (preferably (e)) if the latency budget allows, as it can marginally increase accuracy; avoid nor_conv_1x1 on multiple edges or on early edges since this increases latency without significant accuracy gains.",
+    "Use avg_pool_3x3 (operator 4) on at most one late edge ((e) or (f)) for regularization and potential small accuracy improvements; avoid avg_pool_3x3 on multiple edges or on early edges, as this increases latency and may reduce accuracy.",
+    "Use none (operator 0) on a single late edge ((e) or (f)) only if aggressive latency reduction is necessary; avoid using none on early edges or on multiple edges, as this sharply reduces accuracy by disrupting information flow.",
+    "Avoid any combination with multiple skip_connect (operator 1), multiple avg_pool_3x3 (operator 4), or multiple none (operator 0) within a cell, since these patterns consistently result in poor accuracy due to loss of representational capacity and disrupted pathways.",
+    "Distribute the three nor_conv_3x3 (operator 3) operators across edges (a), (c), and (d) instead of clustering them, to maintain strong feature extraction at different stages and balance accuracy and latency."
+   ]
+  ],
+  "S5": [
+   [
+    "Use at least 4 nor_conv_3x3 operators in each cell because this is required by the niche and is consistently present in top-performing architectures.",
+    "Favor placing nor_conv_3x3 on edges d, e, and f (node3 inputs), as these edges are commonly occupied by nor_conv_3x3 in the highest-accuracy, Pareto-optimal architectures.",
+    "Limit nor_conv_1x1 usage to at most 2 per cell, as allowed by the niche constraints, and use them on early edges (a, b) to balance accuracy and latency.",
+    "Avoid using the 'none' (zeroize) operator except where necessary for niche or search constraints, as its presence generally reduces both accuracy and model connectivity.",
+    "Use skip_connect sparingly, typically on early edges (a, d), to improve information flow and reduce latency, but do not overuse as excessive skip_connect can lower accuracy.",
+    "Use avg_pool_3x3 mainly as a substitute for nor_conv_3x3 on less critical edges (such as f), to reduce latency with minimal impact on accuracy."
+   ],
+   [
+    "Use at least 4 nor_conv_3x3 operators per cell, with strong preference for placing them on node3 input edges (d, e, f), because this configuration yields consistently high accuracy and fits the required niche constraint.",
+    "Favor nor_conv_3x3 on edge f and, when possible, on edges d and e, as these placements are present in nearly all high-accuracy, Pareto-optimal architectures.",
+    "Use nor_conv_1x1 on early edges (a, b) only when needed to balance additional representational power and moderate latency, but never exceed two per cell, as allowed by the constraints.",
+    "Use skip_connect sparingly, preferably on edge a or d, to reduce latency while retaining connectivity, but avoid using skip_connect on multiple edges, as this can lower accuracy.",
+    "Avoid the 'none' (zeroize) operator on any edge unless absolutely necessary, as it hurts both accuracy and connectivity.",
+    "Use avg_pool_3x3 only as a substitute for nor_conv_3x3 on early or less-critical edges (such as b or f) to lower latency, but avoid replacing nor_conv_3x3 on node3 input edges unless strictly needed for latency reduction."
+   ],
+   [
+    "Use nor_conv_3x3 on node3 input edges (d, e, f) whenever possible because this pattern consistently yields the highest accuracy and meets the niche requirement for at least 4 nor_conv_3x3 per cell.",
+    "Favor nor_conv_3x3 on edge f, and if possible also on edges d and e, as these placements are present in all top-performing, Pareto-optimal architectures.",
+    "Use nor_conv_1x1 on early edges (a, b) only when needed to balance latency and representation power, and never use more than two nor_conv_1x1 per cell as per constraints.",
+    "Use avg_pool_3x3 as a substitute for nor_conv_3x3 only on early or less-critical edges (e.g., c or b) to reduce latency, but avoid replacing nor_conv_3x3 on node3 input edges (d, e, f) unless strictly required for latency reduction.",
+    "Use skip_connect sparingly, preferably on edge a or d, to minimize latency while maintaining connectivity, but avoid using skip_connect on multiple edges as it reduces accuracy.",
+    "Avoid the none (zeroize) operator on any edge, as it harms both accuracy and overall cell connectivity."
+   ],
+   [
+    "Use nor_conv_3x3 on node3 input edges (d, e, f) whenever possible because this placement consistently yields the highest accuracy and satisfies the requirement for at least 4 nor_conv_3x3 operators per cell.",
+    "Favor nor_conv_3x3 on edge f, and if possible also on edges d and e, as these placements are present in all top-performing, Pareto-optimal architectures.",
+    "Use nor_conv_1x1 on early edges (a, b) only to reduce latency, and ensure the total count does not exceed two per cell to comply with constraints and avoid accuracy loss.",
+    "Use avg_pool_3x3 only on early or less-critical edges (such as b or c) to reduce latency, but avoid using it on node3 input edges (d, e, f) as this substitution consistently reduces accuracy.",
+    "Use skip_connect sparingly, preferably on edge a or d, to minimally reduce latency while preserving connectivity, but avoid using skip_connect on multiple edges, as this leads to significant accuracy degradation.",
+    "Avoid the none (zeroize) operator on any edge, as it always reduces both accuracy and overall cell connectivity."
+   ],
+   [
+    "Use nor_conv_3x3 on all node3 input edges (d, e, f) whenever possible, because this consistently yields the highest accuracy and ensures the minimum requirement of 4 nor_conv_3x3 per cell.",
+    "Favor nor_conv_3x3 on early edges (a, b) for maximum accuracy, but replacing a single early edge (b or c) with nor_conv_1x1 is effective for reducing latency with minimal accuracy loss; do not use more than two nor_conv_1x1 per cell.",
+    "Use nor_conv_1x1 only on early or less-critical edges (typically b or c) to reduce latency, but never on node3 input edges (d, e, f), as this placement degrades accuracy.",
+    "Use avg_pool_3x3 only on early or less-critical edges (b or c) to reduce latency modestly; avoid using avg_pool_3x3 on node3 input edges (d, e, f), as it consistently reduces accuracy.",
+    "Avoid skip_connect except on a single early edge (a or d) if minimal latency reduction is needed; using skip_connect on multiple edges or on node3 inputs leads to significant accuracy degradation.",
+    "Avoid the none (zeroize) operator on any edge, as it always reduces both accuracy and overall cell connectivity."
+   ],
+   [
+    "Use nor_conv_3x3 on all node3 input edges (d, e, f) because this consistently yields the highest accuracy and satisfies the minimum requirement of 4 nor_conv_3x3 per cell.",
+    "Favor nor_conv_3x3 on early edges (a, b) for maximum accuracy, but replacing a single early edge (b or c) with nor_conv_1x1 or skip_connect is effective for reducing latency with minimal accuracy loss.",
+    "Use up to two nor_conv_1x1 on early or less-critical edges (b or c) to reduce latency, but never place nor_conv_1x1 on node3 input edges (d, e, f), as this degrades accuracy.",
+    "Avoid avg_pool_3x3 on node3 input edges (d, e, f) because it consistently reduces accuracy; if used, restrict it to early or less-critical edges (b or c) for modest latency reduction.",
+    "Use skip_connect on at most one early edge (b or c) to gain moderate latency reduction without significant accuracy loss; avoid skip_connect on multiple edges or on node3 inputs, as this leads to substantial accuracy degradation.",
+    "Avoid the none (zeroize) operator on any edge, as it always reduces both accuracy and overall cell connectivity."
+   ],
+   [
+    "Use nor_conv_3x3 on all node3 input edges (d, e, f) because this consistently yields the highest accuracy and satisfies the minimum requirement of 4 nor_conv_3x3 per cell.",
+    "Favor nor_conv_3x3 on early edges (a, b) for maximum accuracy, but replacing one early edge (b or c) with nor_conv_1x1 or skip_connect can significantly reduce latency with minimal accuracy loss.",
+    "Use up to two nor_conv_1x1 on early or less-critical edges (b or c) to reduce latency, but avoid nor_conv_1x1 on node3 input edges (d, e, f) as this consistently degrades accuracy.",
+    "Use skip_connect on at most one early edge (b or c) to achieve moderate latency reduction without significant loss in accuracy; avoid using skip_connect on node3 input edges (d, e, f) or on multiple edges.",
+    "Avoid avg_pool_3x3 on node3 input edges (d, e, f) because it reduces accuracy; if latency reduction is needed, restrict avg_pool_3x3 to early or less-critical edges (b or c).",
+    "Avoid the none (zeroize) operator on any edge, as it always reduces both accuracy and cell connectivity."
+   ],
+   [
+    "Use nor_conv_3x3 on all node3 input edges (d, e, f), as this consistently yields the highest accuracy and is required to meet the minimum of 4 nor_conv_3x3 per cell.",
+    "Favor nor_conv_3x3 on early edges (a, b) for maximum accuracy, but replacing one early edge (b or c) with nor_conv_1x1 or skip_connect can significantly reduce latency with minimal accuracy loss.",
+    "Use up to one nor_conv_1x1 on an early or less-critical edge (b or c) to reduce latency, but avoid placing nor_conv_1x1 on node3 input edges (d, e, f), as this consistently degrades accuracy.",
+    "Use skip_connect on at most one early edge (b or c) to achieve moderate latency reduction without significant loss in accuracy; avoid using skip_connect on node3 input edges (d, e, f) or on multiple edges.",
+    "Avoid avg_pool_3x3 on node3 input edges (d, e, f) because it reduces accuracy; if latency reduction is needed, restrict avg_pool_3x3 to early or less-critical edges (b or c), and use at most one per cell.",
+    "Avoid the none (zeroize) operator on any edge, as it always reduces both accuracy and cell connectivity."
+   ],
+   [
+    "Use nor_conv_3x3 on all node3 input edges (d, e, f) because this consistently yields the highest accuracy and is necessary to meet the minimum of 4 nor_conv_3x3 per cell.",
+    "Favor nor_conv_3x3 on early edges (a, b), but replacing one early edge (a, b, or c) with nor_conv_1x1 or skip_connect can reduce latency with minimal accuracy loss.",
+    "Use at most one nor_conv_1x1 on an early or less-critical edge (a, b, or c) to reduce latency; avoid placing nor_conv_1x1 on node3 input edges (d, e, f) because this consistently degrades accuracy.",
+    "Use at most one skip_connect on an early edge (a or b) for additional latency reduction, but avoid skip_connect on node3 input edges (d, e, f) or on multiple edges, as this reduces accuracy.",
+    "Use at most one avg_pool_3x3 and only on an early edge (a, b, or c) if further latency reduction is required; avoid avg_pool_3x3 on node3 input edges (d, e, f), as it leads to accuracy loss.",
+    "Avoid the none (zeroize) operator on any edge because it always reduces both accuracy and cell connectivity."
+   ],
+   [
+    "Use nor_conv_3x3 on all node3 input edges (d, e, f) because this consistently yields the highest accuracy and is necessary to meet the minimum of 4 nor_conv_3x3 per cell.",
+    "Favor nor_conv_3x3 on early edges (a, b, c), but replacing a single early edge (a, b, or c) with nor_conv_1x1 or skip_connect can reduce latency with only minor accuracy loss.",
+    "Use at most one nor_conv_1x1 and only on an early edge (a, b, or c) to reduce latency; avoid nor_conv_1x1 on node3 input edges (d, e, f) because this consistently degrades accuracy.",
+    "Use at most one skip_connect and only on an early edge (a or b) for additional latency reduction; avoid skip_connect on node3 input edges (d, e, f) or multiple skip_connects, as this reduces accuracy.",
+    "Use at most one avg_pool_3x3 and only on an early edge (a, b, or c) if further latency reduction is required; avoid avg_pool_3x3 on node3 input edges (d, e, f), as it leads to accuracy loss.",
+    "Avoid the none (zeroize) operator on any edge because it always reduces both accuracy and cell connectivity."
+   ]
+  ]
+ },
+ "trajectory": [
+  {
+   "gen": 0,
+   "n_evaluated": 30,
+   "hv": 0.9412439362668786,
+   "igd": 0.061118033719511335,
+   "n_front": 10
+  },
+  {
+   "gen": 1,
+   "n_evaluated": 54,
+   "hv": 0.9458453401877449,
+   "igd": 0.07907277819933932,
+   "n_front": 6
+  },
+  {
+   "gen": 2,
+   "n_evaluated": 73,
+   "hv": 0.9479220654400821,
+   "igd": 0.07797932667688177,
+   "n_front": 8
+  },
+  {
+   "gen": 3,
+   "n_evaluated": 91,
+   "hv": 0.9780509757870082,
+   "igd": 0.07623257477704605,
+   "n_front": 10
+  },
+  {
+   "gen": 4,
+   "n_evaluated": 105,
+   "hv": 0.9820347105053623,
+   "igd": 0.07346105213203587,
+   "n_front": 10
+  },
+  {
+   "gen": 5,
+   "n_evaluated": 115,
+   "hv": 0.9820347105053623,
+   "igd": 0.07346105213203587,
+   "n_front": 10
+  },
+  {
+   "gen": 6,
+   "n_evaluated": 129,
+   "hv": 0.9855817664197118,
+   "igd": 0.052914658787809876,
+   "n_front": 11
+  },
+  {
+   "gen": 7,
+   "n_evaluated": 138,
+   "hv": 0.9883344811338898,
+   "igd": 0.040649896598004526,
+   "n_front": 9
+  },
+  {
+   "gen": 8,
+   "n_evaluated": 150,
+   "hv": 0.9883344811338898,
+   "igd": 0.040649896598004526,
+   "n_front": 9
+  },
+  {
+   "gen": 9,
+   "n_evaluated": 157,
+   "hv": 0.9884069214452808,
+   "igd": 0.040208447559339375,
+   "n_front": 10
+  },
+  {
+   "gen": 10,
+   "n_evaluated": 165,
+   "hv": 0.9884069214452808,
+   "igd": 0.040208447559339375,
+   "n_front": 10
+  }
+ ],
+ "config": {
+  "data_dir": null,
+  "results_dir": "results",
+  "search": {
+   "generations": 10,
+   "crossover_prob": 0.5,
+   "partitioning": true,
+   "operator": "llm",
+   "knowledge_base": true,
+   "init_pop_per_niche": 5,
+   "n_child": 4,
+   "n_parents_shown": 6,
+   "latency_limit": null,
+   "match_budget": true,
+   "show_history": true
+  },
+  "predictor": {
+   "kind": "zc_ensemble",
+   "n_train": 1000,
+   "target": "val"
+  },
+  "evaluation": {
+   "acc": "test",
+   "front_source": "archive",
+   "normalization": "front",
+   "ref_point": [
+    1.1,
+    1.1
+   ]
+  },
+  "llm": {
+   "backend": "openai",
+   "model": "gpt-4.1",
+   "temperature": 0.7,
+   "base_url": null,
+   "api_key_env": "OPENAI_API_KEY",
+   "max_tokens": 4096,
+   "mode": "record"
+  },
+  "bias": {
+   "rounds": 10,
+   "per_round": 6,
+   "prompt": "normal"
+  },
+  "variant": "arm_b",
+  "type": "search",
+  "code_version": "3e2dd02"
+ }
+}

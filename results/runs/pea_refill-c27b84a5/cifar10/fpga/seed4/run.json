@@ -1,0 +1,2707 @@
+{
+ "dataset": "cifar10",
+ "device": "fpga",
+ "seed": 4,
+ "variant": "pea_refill",
+ "hv": 0.9245569127480139,
+ "igd": 0.07079980661680893,
+ "n_front": 12,
+ "n_evaluated": 270,
+ "search_time_s": 1.89,
+ "llm_usage": null,
+ "proposal_stats": {
+  "proposed": 2549,
+  "invalid": 0,
+  "out_of_niche": 0,
+  "duplicate": 2309,
+  "no_latency": 0,
+  "accepted": 240,
+  "parse_failures": 0,
+  "refill_extra_draws": 2270,
+  "refill_fallbacks": 39,
+  "slots_unfilled": 0
+ },
+ "predictor": {
+  "kind": "zc_ensemble",
+  "n_train": 1000,
+  "spearman_val": 0.9597511796973126,
+  "spearman_test": 0.9578236970118744,
+  "kendall_test": 0.8273963680872456
+ },
+ "final_front": [
+  {
+   "code": "(1, 0, 0, 0, 1, 1)",
+   "pred_acc": 83.841,
+   "true_acc": 86.43666666666667,
+   "lat": 1.13296,
+   "niche": "S0"
+  },
+  {
+   "code": "(4, 0, 0, 1, 0, 0)",
+   "pred_acc": 84.3,
+   "true_acc": 86.63,
+   "lat": 1.54256,
+   "niche": "S0"
+  },
+  {
+   "code": "(2, 0, 1, 1, 0, 1)",
+   "pred_acc": 86.357,
+   "true_acc": 89.48666666666666,
+   "lat": 1.64816,
+   "niche": "S1"
+  },
+  {
+   "code": "(0, 2, 1, 1, 0, 2)",
+   "pred_acc": 87.392,
+   "true_acc": 90.8,
+   "lat": 2.16336,
+   "niche": "S1"
+  },
+  {
+   "code": "(3, 0, 0, 1, 1, 0)",
+   "pred_acc": 88.766,
+   "true_acc": 91.715,
+   "lat": 2.39056,
+   "niche": "S2"
+  },
+  {
+   "code": "(3, 0, 4, 1, 1, 0)",
+   "pred_acc": 88.917,
+   "true_acc": 91.96,
+   "lat": 2.80016,
+   "niche": "S2"
+  },
+  {
+   "code": "(3, 0, 2, 1, 1, 1)",
+   "pred_acc": 90.006,
+   "true_acc": 92.94333333333331,
+   "lat": 2.90576,
+   "niche": "S2"
+  },
+  {
+   "code": "(3, 0, 2, 1, 1, 2)",
+   "pred_acc": 90.164,
+   "true_acc": 92.935,
+   "lat": 3.42096,
+   "niche": "S2"
+  },
+  {
+   "code": "(3, 4, 2, 1, 1, 2)",
+   "pred_acc": 90.203,
+   "true_acc": 92.58333333333331,
+   "lat": 3.83056,
+   "niche": "S2"
+  },
+  {
+   "code": "(3, 2, 2, 1, 1, 2)",
+   "pred_acc": 90.538,
+   "true_acc": 93.22,
+   "lat": 3.93616,
+   "niche": "S2"
+  },
+  {
+   "code": "(1, 3, 1, 3, 1, 3)",
+   "pred_acc": 90.703,
+   "true_acc": 93.28666666666668,
+   "lat": 4.90576,
+   "niche": "S4"
+  },
+  {
+   "code": "(1, 3, 3, 1, 2, 3)",
+   "pred_acc": 90.872,
+   "true_acc": 93.72333333333334,
+   "lat": 5.42096,
+   "niche": "S4"
+  },
+  {
+   "code": "(2, 3, 3, 1, 2, 3)",
+   "pred_acc": 90.943,
+   "true_acc": 94.125,
+   "lat": 5.93616,
+   "niche": "S4"
+  },
+  {
+   "code": "(3, 1, 3, 1, 3, 3)",
+   "pred_acc": 91.248,
+   "true_acc": 93.83,
+   "lat": 6.16336,
+   "niche": "S5"
+  },
+  {
+   "code": "(3, 2, 3, 1, 3, 3)",
+   "pred_acc": 91.339,
+   "true_acc": 94.21999999999998,
+   "lat": 6.67856,
+   "niche": "S5"
+  }
+ ],
+ "evaluated": [
+  {
+   "code": "(0, 4, 4, 4, 4, 1)",
+   "pred": 64.96200561523438,
+   "lat": 2.77136,
+   "niche": "S0",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 72.89
+  },
+  {
+   "code": "(1, 0, 4, 1, 1, 1)",
+   "pred": 70.97929382324219,
+   "lat": 1.54256,
+   "niche": "S0",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 68.58666666666666
+  },
+  {
+   "code": "(0, 1, 0, 4, 4, 0)",
+   "pred": 71.37645721435547,
+   "lat": 1.95216,
+   "niche": "S0",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 75.46666666666667
+  },
+  {
+   "code": "(1, 4, 0, 0, 0, 0)",
+   "pred": 10.008302688598633,
+   "lat": 1.54256,
+   "niche": "S0",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 10.0
+  },
+  {
+   "code": "(4, 0, 0, 0, 1, 1)",
+   "pred": 71.41133117675781,
+   "lat": 1.54256,
+   "niche": "S0",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 75.96000000000001
+  },
+  {
+   "code": "(0, 4, 0, 2, 4, 2)",
+   "pred": 84.06414794921875,
+   "lat": 2.98256,
+   "niche": "S1",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 89.955
+  },
+  {
+   "code": "(0, 2, 0, 1, 0, 4)",
+   "pred": 85.9629898071289,
+   "lat": 2.05776,
+   "niche": "S1",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 89.77666666666669
+  },
+  {
+   "code": "(0, 1, 2, 1, 1, 4)",
+   "pred": 76.72782135009766,
+   "lat": 2.05776,
+   "niche": "S1",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 79.91333333333333
+  },
+  {
+   "code": "(0, 0, 2, 0, 1, 4)",
+   "pred": 9.97276782989502,
+   "lat": 2.05776,
+   "niche": "S1",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 10.0
+  },
+  {
+   "code": "(2, 0, 1, 1, 0, 2)",
+   "pred": 87.39006805419922,
+   "lat": 2.16336,
+   "niche": "S1",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 90.23
+  },
+  {
+   "code": "(3, 2, 2, 1, 1, 0)",
+   "pred": 88.86001586914062,
+   "lat": 3.42096,
+   "niche": "S2",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 91.89
+  },
+  {
+   "code": "(1, 4, 1, 2, 2, 3)",
+   "pred": 88.65339660644531,
+   "lat": 3.83056,
+   "niche": "S2",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.02
+  },
+  {
+   "code": "(0, 1, 4, 2, 2, 3)",
+   "pred": 88.61550903320312,
+   "lat": 3.83056,
+   "niche": "S2",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.48
+  },
+  {
+   "code": "(1, 2, 0, 3, 0, 2)",
+   "pred": 88.4881820678711,
+   "lat": 3.42096,
+   "niche": "S2",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.3
+  },
+  {
+   "code": "(3, 1, 2, 2, 1, 2)",
+   "pred": 89.07866668701172,
+   "lat": 3.93616,
+   "niche": "S2",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.705
+  },
+  {
+   "code": "(3, 1, 0, 2, 3, 4)",
+   "pred": 88.71056365966797,
+   "lat": 4.57296,
+   "niche": "S3",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.65
+  },
+  {
+   "code": "(2, 2, 0, 3, 0, 3)",
+   "pred": 88.90060424804688,
+   "lat": 4.67856,
+   "niche": "S3",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.495
+  },
+  {
+   "code": "(1, 3, 3, 4, 4, 1)",
+   "pred": 83.13121795654297,
+   "lat": 4.46736,
+   "niche": "S3",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 87.49333333333333
+  },
+  {
+   "code": "(3, 4, 4, 4, 1, 3)",
+   "pred": 84.3428955078125,
+   "lat": 4.87696,
+   "niche": "S3",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 91.57
+  },
+  {
+   "code": "(1, 0, 3, 3, 1, 4)",
+   "pred": 89.06250762939453,
+   "lat": 4.05776,
+   "niche": "S3",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.02333333333333
+  },
+  {
+   "code": "(1, 3, 0, 3, 3, 4)",
+   "pred": 88.77671813964844,
+   "lat": 5.31536,
+   "niche": "S4",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.28666666666668
+  },
+  {
+   "code": "(3, 0, 3, 2, 3, 1)",
+   "pred": 89.21707916259766,
+   "lat": 5.42096,
+   "niche": "S4",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.305
+  },
+  {
+   "code": "(2, 3, 3, 3, 2, 4)",
+   "pred": 89.26033020019531,
+   "lat": 6.34576,
+   "niche": "S4",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.535
+  },
+  {
+   "code": "(0, 3, 0, 3, 1, 3)",
+   "pred": 88.53587341308594,
+   "lat": 4.90576,
+   "niche": "S4",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.235
+  },
+  {
+   "code": "(3, 0, 3, 2, 1, 3)",
+   "pred": 89.13653564453125,
+   "lat": 5.42096,
+   "niche": "S4",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.25
+  },
+  {
+   "code": "(3, 3, 1, 4, 3, 3)",
+   "pred": 89.26429748535156,
+   "lat": 6.57296,
+   "niche": "S5",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.265
+  },
+  {
+   "code": "(3, 2, 2, 3, 3, 3)",
+   "pred": 89.65941619873047,
+   "lat": 7.19376,
+   "niche": "S5",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.17
+  },
+  {
+   "code": "(3, 1, 3, 1, 3, 3)",
+   "pred": 91.2481689453125,
+   "lat": 6.16336,
+   "niche": "S5",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.83
+  },
+  {
+   "code": "(3, 3, 3, 0, 3, 2)",
+   "pred": 88.38378143310547,
+   "lat": 6.67856,
+   "niche": "S5",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.44
+  },
+  {
+   "code": "(3, 3, 2, 3, 3, 2)",
+   "pred": 89.40027618408203,
+   "lat": 7.19376,
+   "niche": "S5",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.42
+  },
+  {
+   "code": "(4, 0, 0, 0, 1, 4)",
+   "pred": 71.08757019042969,
+   "lat": 1.95216,
+   "niche": "S0",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 75.9
+  },
+  {
+   "code": "(4, 0, 0, 4, 1, 1)",
+   "pred": 73.11152648925781,
+   "lat": 1.95216,
+   "niche": "S0",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 73.61500000000001
+  },
+  {
+   "code": "(4, 0, 1, 0, 1, 1)",
+   "pred": 71.00010681152344,
+   "lat": 1.54256,
+   "niche": "S0",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 73.58
+  },
+  {
+   "code": "(4, 0, 0, 0, 4, 1)",
+   "pred": 64.79611206054688,
+   "lat": 1.95216,
+   "niche": "S0",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 67.6
+  },
+  {
+   "code": "(0, 2, 2, 1, 0, 4)",
+   "pred": 85.95208740234375,
+   "lat": 2.57296,
+   "niche": "S1",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 90.15
+  },
+  {
+   "code": "(0, 0, 0, 1, 0, 2)",
+   "pred": 83.80620574951172,
+   "lat": 1.64816,
+   "niche": "S1",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 86.695
+  },
+  {
+   "code": "(2, 0, 1, 0, 0, 2)",
+   "pred": 82.7602310180664,
+   "lat": 2.16336,
+   "niche": "S1",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 87.00333333333333
+  },
+  {
+   "code": "(2, 0, 1, 1, 0, 4)",
+   "pred": 86.0035400390625,
+   "lat": 2.05776,
+   "niche": "S1",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 89.805
+  },
+  {
+   "code": "(3, 1, 2, 1, 1, 0)",
+   "pred": 88.79226684570312,
+   "lat": 2.90576,
+   "niche": "S2",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 91.885
+  },
+  {
+   "code": "(3, 2, 0, 1, 1, 0)",
+   "pred": 88.60169219970703,
+   "lat": 2.90576,
+   "niche": "S2",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 91.89333333333332
+  },
+  {
+   "code": "(3, 1, 2, 2, 0, 2)",
+   "pred": 89.16610717773438,
+   "lat": 3.93616,
+   "niche": "S2",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 92.37
+  },
+  {
+   "code": "(3, 1, 2, 2, 1, 0)",
+   "pred": 88.82185363769531,
+   "lat": 3.42096,
+   "niche": "S2",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 92.56
+  },
+  {
+   "code": "(1, 0, 3, 3, 0, 4)",
+   "pred": 88.05766296386719,
+   "lat": 4.05776,
+   "niche": "S3",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 91.95333333333332
+  },
+  {
+   "code": "(1, 0, 3, 3, 2, 4)",
+   "pred": 88.50482177734375,
+   "lat": 4.57296,
+   "niche": "S3",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 92.52333333333335
+  },
+  {
+   "code": "(0, 0, 3, 3, 1, 4)",
+   "pred": 88.65998840332031,
+   "lat": 4.05776,
+   "niche": "S3",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 91.96666666666668
+  },
+  {
+   "code": "(1, 4, 3, 3, 1, 4)",
+   "pred": 83.9235610961914,
+   "lat": 4.46736,
+   "niche": "S3",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 87.39666666666666
+  },
+  {
+   "code": "(0, 3, 0, 3, 2, 3)",
+   "pred": 89.29302978515625,
+   "lat": 5.42096,
+   "niche": "S4",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 93.34
+  },
+  {
+   "code": "(1, 3, 0, 3, 1, 3)",
+   "pred": 90.6983642578125,
+   "lat": 4.90576,
+   "niche": "S4",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 93.83666666666666
+  },
+  {
+   "code": "(3, 3, 3, 2, 2, 4)",
+   "pred": 89.45243835449219,
+   "lat": 6.34576,
+   "niche": "S4",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 93.16
+  },
+  {
+   "code": "(0, 3, 3, 3, 2, 4)",
+   "pred": 88.46543884277344,
+   "lat": 5.83056,
+   "niche": "S4",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 92.07
+  },
+  {
+   "code": "(3, 1, 3, 3, 3, 3)",
+   "pred": 89.45693969726562,
+   "lat": 7.42096,
+   "niche": "S5",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 93.46
+  },
+  {
+   "code": "(3, 1, 3, 2, 3, 3)",
+   "pred": 89.3905258178711,
+   "lat": 6.67856,
+   "niche": "S5",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 93.745
+  },
+  {
+   "code": "(3, 1, 3, 0, 3, 3)",
+   "pred": 88.87047576904297,
+   "lat": 6.16336,
+   "niche": "S5",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 93.39
+  },
+  {
+   "code": "(3, 1, 3, 4, 3, 3)",
+   "pred": 88.9736328125,
+   "lat": 6.57296,
+   "niche": "S5",
+   "gen": 1,
+   "origin": "mutation",
+   "true_acc": 92.945
+  },
+  {
+   "code": "(4, 0, 0, 1, 1, 1)",
+   "pred": 68.6805191040039,
+   "lat": 1.54256,
+   "niche": "S0",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 80.21000000000001
+  },
+  {
+   "code": "(4, 4, 0, 4, 1, 1)",
+   "pred": 51.113773345947266,
+   "lat": 2.36176,
+   "niche": "S0",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 57.835
+  },
+  {
+   "code": "(4, 0, 0, 0, 1, 0)",
+   "pred": 70.12037658691406,
+   "lat": 1.54256,
+   "niche": "S0",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 75.67
+  },
+  {
+   "code": "(4, 0, 0, 4, 4, 1)",
+   "pred": 72.5337142944336,
+   "lat": 2.36176,
+   "niche": "S0",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 70.19
+  },
+  {
+   "code": "(0, 0, 1, 1, 0, 2)",
+   "pred": 84.02578735351562,
+   "lat": 1.64816,
+   "niche": "S1",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 86.61500000000001
+  },
+  {
+   "code": "(4, 0, 0, 1, 0, 2)",
+   "pred": 84.03028106689453,
+   "lat": 2.05776,
+   "niche": "S1",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 86.58500000000001
+  },
+  {
+   "code": "(0, 2, 0, 1, 0, 2)",
+   "pred": 87.22150421142578,
+   "lat": 2.16336,
+   "niche": "S1",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 90.83
+  },
+  {
+   "code": "(2, 0, 0, 1, 0, 4)",
+   "pred": 84.02838134765625,
+   "lat": 2.05776,
+   "niche": "S1",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 86.62333333333333
+  },
+  {
+   "code": "(3, 1, 2, 1, 0, 2)",
+   "pred": 89.86439514160156,
+   "lat": 3.42096,
+   "niche": "S2",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 92.99
+  },
+  {
+   "code": "(3, 1, 2, 1, 0, 0)",
+   "pred": 83.93547821044922,
+   "lat": 2.90576,
+   "niche": "S2",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 86.78333333333335
+  },
+  {
+   "code": "(3, 2, 2, 1, 0, 0)",
+   "pred": 84.87982940673828,
+   "lat": 3.42096,
+   "niche": "S2",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 86.74000000000001
+  },
+  {
+   "code": "(3, 0, 2, 1, 1, 0)",
+   "pred": 89.1031723022461,
+   "lat": 2.90576,
+   "niche": "S2",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 91.97
+  },
+  {
+   "code": "(1, 2, 3, 3, 1, 4)",
+   "pred": 88.47415924072266,
+   "lat": 4.57296,
+   "niche": "S3",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 92.08333333333331
+  },
+  {
+   "code": "(1, 0, 3, 3, 4, 4)",
+   "pred": 85.5040054321289,
+   "lat": 4.46736,
+   "niche": "S3",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 91.06666666666666
+  },
+  {
+   "code": "(1, 0, 3, 3, 1, 1)",
+   "pred": 89.24443054199219,
+   "lat": 3.64816,
+   "niche": "S3",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 92.17
+  },
+  {
+   "code": "(2, 0, 3, 3, 1, 4)",
+   "pred": 88.90031433105469,
+   "lat": 4.57296,
+   "niche": "S3",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 92.79666666666668
+  },
+  {
+   "code": "(2, 3, 0, 3, 1, 3)",
+   "pred": 89.24568176269531,
+   "lat": 5.42096,
+   "niche": "S4",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 93.52
+  },
+  {
+   "code": "(1, 3, 0, 3, 4, 3)",
+   "pred": 88.74779510498047,
+   "lat": 5.31536,
+   "niche": "S4",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 92.54333333333334
+  },
+  {
+   "code": "(1, 3, 2, 3, 1, 3)",
+   "pred": 90.78231811523438,
+   "lat": 5.42096,
+   "niche": "S4",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 93.83333333333331
+  },
+  {
+   "code": "(4, 3, 0, 3, 1, 3)",
+   "pred": 88.846435546875,
+   "lat": 5.31536,
+   "niche": "S4",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 92.745
+  },
+  {
+   "code": "(3, 2, 3, 1, 3, 3)",
+   "pred": 91.33938598632812,
+   "lat": 6.67856,
+   "niche": "S5",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 94.21999999999998
+  },
+  {
+   "code": "(3, 4, 3, 1, 3, 3)",
+   "pred": 90.44410705566406,
+   "lat": 6.57296,
+   "niche": "S5",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 93.805
+  },
+  {
+   "code": "(3, 3, 3, 1, 3, 3)",
+   "pred": 90.68724060058594,
+   "lat": 7.42096,
+   "niche": "S5",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 94.36333333333334
+  },
+  {
+   "code": "(3, 0, 3, 1, 3, 3)",
+   "pred": 89.77237701416016,
+   "lat": 6.16336,
+   "niche": "S5",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 94.105
+  },
+  {
+   "code": "(1, 0, 0, 0, 1, 1)",
+   "pred": 83.84063720703125,
+   "lat": 1.13296,
+   "niche": "S0",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 86.43666666666667
+  },
+  {
+   "code": "(4, 0, 1, 4, 1, 1)",
+   "pred": 53.26999282836914,
+   "lat": 1.95216,
+   "niche": "S0",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 58.69
+  },
+  {
+   "code": "(4, 4, 0, 0, 1, 1)",
+   "pred": 72.05313873291016,
+   "lat": 1.95216,
+   "niche": "S0",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 72.98666666666666
+  },
+  {
+   "code": "(4, 1, 0, 0, 1, 1)",
+   "pred": 73.18327331542969,
+   "lat": 1.54256,
+   "niche": "S0",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 79.79333333333334
+  },
+  {
+   "code": "(2, 0, 1, 0, 0, 4)",
+   "pred": 82.47713470458984,
+   "lat": 2.05776,
+   "niche": "S1",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 86.21
+  },
+  {
+   "code": "(2, 2, 1, 1, 0, 4)",
+   "pred": 85.35862731933594,
+   "lat": 2.57296,
+   "niche": "S1",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 90.21
+  },
+  {
+   "code": "(2, 0, 1, 1, 2, 2)",
+   "pred": 87.21851348876953,
+   "lat": 2.67856,
+   "niche": "S1",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 90.47333333333334
+  },
+  {
+   "code": "(0, 4, 1, 1, 0, 2)",
+   "pred": 85.50829315185547,
+   "lat": 2.05776,
+   "niche": "S1",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 88.78999999999999
+  },
+  {
+   "code": "(3, 0, 2, 1, 1, 2)",
+   "pred": 90.1636962890625,
+   "lat": 3.42096,
+   "niche": "S2",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 92.935
+  },
+  {
+   "code": "(3, 1, 2, 0, 0, 2)",
+   "pred": 88.32984924316406,
+   "lat": 3.42096,
+   "niche": "S2",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 91.72666666666667
+  },
+  {
+   "code": "(3, 0, 2, 1, 0, 0)",
+   "pred": 84.27717590332031,
+   "lat": 2.90576,
+   "niche": "S2",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 86.455
+  },
+  {
+   "code": "(3, 0, 2, 1, 0, 2)",
+   "pred": 89.45570373535156,
+   "lat": 3.42096,
+   "niche": "S2",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 93.23666666666668
+  },
+  {
+   "code": "(1, 0, 3, 3, 1, 2)",
+   "pred": 90.03889465332031,
+   "lat": 4.16336,
+   "niche": "S3",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 93.48666666666666
+  },
+  {
+   "code": "(1, 0, 3, 3, 0, 1)",
+   "pred": 88.54987335205078,
+   "lat": 3.64816,
+   "niche": "S3",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 92.06333333333332
+  },
+  {
+   "code": "(0, 0, 3, 3, 1, 1)",
+   "pred": 88.45303344726562,
+   "lat": 3.64816,
+   "niche": "S3",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 91.81666666666666
+  },
+  {
+   "code": "(1, 2, 3, 3, 1, 1)",
+   "pred": 88.78759765625,
+   "lat": 4.16336,
+   "niche": "S3",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 91.95666666666666
+  },
+  {
+   "code": "(1, 3, 0, 3, 0, 3)",
+   "pred": 89.44629669189453,
+   "lat": 4.90576,
+   "niche": "S4",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 92.99666666666668
+  },
+  {
+   "code": "(1, 3, 4, 3, 1, 3)",
+   "pred": 90.57342529296875,
+   "lat": 5.31536,
+   "niche": "S4",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 93.26333333333334
+  },
+  {
+   "code": "(1, 3, 1, 3, 1, 3)",
+   "pred": 90.70274353027344,
+   "lat": 4.90576,
+   "niche": "S4",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 93.28666666666668
+  },
+  {
+   "code": "(1, 3, 2, 3, 2, 3)",
+   "pred": 89.57302856445312,
+   "lat": 5.93616,
+   "niche": "S4",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 93.63
+  },
+  {
+   "code": "(3, 2, 3, 0, 3, 3)",
+   "pred": 89.31302642822266,
+   "lat": 6.67856,
+   "niche": "S5",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 92.315
+  },
+  {
+   "code": "(3, 2, 3, 2, 3, 3)",
+   "pred": 89.87950134277344,
+   "lat": 7.19376,
+   "niche": "S5",
+   "gen": 3,
+   "origin": "crossover",
+   "true_acc": 93.46
+  },
+  {
+   "code": "(3, 2, 3, 4, 3, 3)",
+   "pred": 89.9635009765625,
+   "lat": 7.08816,
+   "niche": "S5",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 93.22
+  },
+  {
+   "code": "(3, 2, 3, 3, 3, 3)",
+   "pred": 89.5796127319336,
+   "lat": 7.93616,
+   "niche": "S5",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 93.40333333333332
+  },
+  {
+   "code": "(1, 0, 0, 0, 1, 0)",
+   "pred": 83.60311889648438,
+   "lat": 1.13296,
+   "niche": "S0",
+   "gen": 4,
+   "origin": "mutation",
+   "true_acc": 86.37333333333333
+  },
+  {
+   "code": "(1, 0, 1, 0, 1, 1)",
+   "pred": 82.88987731933594,
+   "lat": 1.13296,
+   "niche": "S0",
+   "gen": 4,
+   "origin": "mutation",
+   "true_acc": 84.07000000000001
+  },
+  {
+   "code": "(0, 0, 0, 0, 1, 1)",
+   "pred": 10.011634826660156,
+   "lat": 1.13296,
+   "niche": "S0",
+   "gen": 4,
+   "origin": "mutation",
+   "true_acc": 10.0
+  },
+  {
+   "code": "(1, 0, 0, 0, 1, 4)",
+   "pred": 83.75347137451172,
+   "lat": 1.54256,
+   "niche": "S0",
+   "gen": 4,
+   "origin": "mutation",
+   "true_acc": 86.28333333333335
+  },
+  {
+   "code": "(0, 0, 1, 1, 4, 2)",
+   "pred": 83.91118621826172,
+   "lat": 2.05776,
+   "niche": "S1",
+   "gen": 4,
+   "origin": "crossover",
+   "true_acc": 86.68
+  },
+  {
+   "code": "(2, 0, 1, 2, 0, 4)",
+   "pred": 85.2051773071289,
+   "lat": 2.57296,
+   "niche": "S1",
+   "gen": 4,
+   "origin": "mutation",
+   "true_acc": 89.80999999999999
+  },
+  {
+   "code": "(2, 0, 0, 1, 0, 2)",
+   "pred": 84.10543823242188,
+   "lat": 2.16336,
+   "niche": "S1",
+   "gen": 4,
+   "origin": "crossover",
+   "true_acc": 86.54
+  },
+  {
+   "code": "(0, 2, 1, 1, 0, 2)",
+   "pred": 87.39237213134766,
+   "lat": 2.16336,
+   "niche": "S1",
+   "gen": 4,
+   "origin": "mutation",
+   "true_acc": 90.8
+  },
+  {
+   "code": "(3, 0, 2, 1, 2, 2)",
+   "pred": 90.03546905517578,
+   "lat": 3.93616,
+   "niche": "S2",
+   "gen": 4,
+   "origin": "crossover",
+   "true_acc": 93.49666666666668
+  },
+  {
+   "code": "(3, 4, 2, 1, 1, 0)",
+   "pred": 88.99479675292969,
+   "lat": 3.31536,
+   "niche": "S2",
+   "gen": 4,
+   "origin": "crossover",
+   "true_acc": 92.045
+  },
+  {
+   "code": "(3, 0, 2, 4, 1, 2)",
+   "pred": 88.26226043701172,
+   "lat": 3.83056,
+   "niche": "S2",
+   "gen": 4,
+   "origin": "mutation",
+   "true_acc": 92.055
+  },
+  {
+   "code": "(3, 4, 2, 1, 1, 2)",
+   "pred": 90.20250701904297,
+   "lat": 3.83056,
+   "niche": "S2",
+   "gen": 4,
+   "origin": "crossover",
+   "true_acc": 92.58333333333331
+  },
+  {
+   "code": "(4, 0, 3, 3, 1, 1)",
+   "pred": 86.41712188720703,
+   "lat": 4.05776,
+   "niche": "S3",
+   "gen": 4,
+   "origin": "crossover",
+   "true_acc": 91.165
+  },
+  {
+   "code": "(1, 1, 3, 3, 1, 2)",
+   "pred": 89.56858825683594,
+   "lat": 4.16336,
+   "niche": "S3",
+   "gen": 4,
+   "origin": "mutation",
+   "true_acc": 93.08
+  },
+  {
+   "code": "(1, 2, 3, 3, 1, 2)",
+   "pred": 90.3031997680664,
+   "lat": 4.67856,
+   "niche": "S3",
+   "gen": 4,
+   "origin": "crossover",
+   "true_acc": 93.31333333333332
+  },
+  {
+   "code": "(2, 0, 3, 3, 1, 1)",
+   "pred": 88.85912322998047,
+   "lat": 4.16336,
+   "niche": "S3",
+   "gen": 4,
+   "origin": "crossover",
+   "true_acc": 92.53
+  },
+  {
+   "code": "(4, 3, 1, 3, 1, 3)",
+   "pred": 87.59817504882812,
+   "lat": 5.31536,
+   "niche": "S4",
+   "gen": 4,
+   "origin": "mutation",
+   "true_acc": 91.99666666666668
+  },
+  {
+   "code": "(1, 3, 1, 3, 4, 3)",
+   "pred": 88.94995880126953,
+   "lat": 5.31536,
+   "niche": "S4",
+   "gen": 4,
+   "origin": "crossover",
+   "true_acc": 92.44333333333331
+  },
+  {
+   "code": "(4, 3, 2, 3, 1, 3)",
+   "pred": 89.17032623291016,
+   "lat": 5.83056,
+   "niche": "S4",
+   "gen": 4,
+   "origin": "mutation",
+   "true_acc": 92.67333333333332
+  },
+  {
+   "code": "(2, 3, 2, 3, 1, 3)",
+   "pred": 89.58846282958984,
+   "lat": 5.93616,
+   "niche": "S4",
+   "gen": 4,
+   "origin": "crossover",
+   "true_acc": 93.6
+  },
+  {
+   "code": "(3, 1, 3, 3, 3, 1)",
+   "pred": 90.8241195678711,
+   "lat": 6.16336,
+   "niche": "S5",
+   "gen": 4,
+   "origin": "random_fill",
+   "true_acc": 93.79
+  },
+  {
+   "code": "(4, 3, 3, 0, 3, 3)",
+   "pred": 87.45515441894531,
+   "lat": 6.57296,
+   "niche": "S5",
+   "gen": 4,
+   "origin": "random_fill",
+   "true_acc": 91.75333333333332
+  },
+  {
+   "code": "(3, 1, 2, 3, 3, 3)",
+   "pred": 89.68476867675781,
+   "lat": 6.67856,
+   "niche": "S5",
+   "gen": 4,
+   "origin": "random_fill",
+   "true_acc": 93.05
+  },
+  {
+   "code": "(3, 3, 3, 4, 3, 4)",
+   "pred": 89.26478576660156,
+   "lat": 6.98256,
+   "niche": "S5",
+   "gen": 4,
+   "origin": "random_fill",
+   "true_acc": 92.38
+  },
+  {
+   "code": "(1, 0, 0, 1, 1, 1)",
+   "pred": 82.85130310058594,
+   "lat": 1.13296,
+   "niche": "S0",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 84.00666666666667
+  },
+  {
+   "code": "(1, 4, 0, 0, 1, 1)",
+   "pred": 70.45694732666016,
+   "lat": 1.54256,
+   "niche": "S0",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 79.82
+  },
+  {
+   "code": "(1, 1, 0, 0, 1, 1)",
+   "pred": 83.01398468017578,
+   "lat": 1.13296,
+   "niche": "S0",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 84.11666666666667
+  },
+  {
+   "code": "(1, 0, 4, 0, 1, 1)",
+   "pred": 74.58161163330078,
+   "lat": 1.54256,
+   "niche": "S0",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 80.40666666666668
+  },
+  {
+   "code": "(0, 0, 1, 0, 0, 2)",
+   "pred": 10.009593963623047,
+   "lat": 1.64816,
+   "niche": "S1",
+   "gen": 5,
+   "origin": "crossover",
+   "true_acc": 10.0
+  },
+  {
+   "code": "(0, 2, 2, 1, 0, 2)",
+   "pred": 87.47221374511719,
+   "lat": 2.67856,
+   "niche": "S1",
+   "gen": 5,
+   "origin": "crossover",
+   "true_acc": 90.675
+  },
+  {
+   "code": "(0, 0, 4, 1, 0, 2)",
+   "pred": 84.18907165527344,
+   "lat": 2.05776,
+   "niche": "S1",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 86.41666666666667
+  },
+  {
+   "code": "(2, 0, 1, 1, 2, 4)",
+   "pred": 87.36054992675781,
+   "lat": 2.57296,
+   "niche": "S1",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 90.36
+  },
+  {
+   "code": "(3, 4, 2, 1, 1, 4)",
+   "pred": 85.97328186035156,
+   "lat": 3.72496,
+   "niche": "S2",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 89.595
+  },
+  {
+   "code": "(3, 4, 2, 2, 1, 2)",
+   "pred": 88.83196258544922,
+   "lat": 4.34576,
+   "niche": "S2",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 92.565
+  },
+  {
+   "code": "(3, 0, 2, 2, 1, 0)",
+   "pred": 88.72665405273438,
+   "lat": 3.42096,
+   "niche": "S2",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 92.13
+  },
+  {
+   "code": "(3, 4, 1, 1, 1, 2)",
+   "pred": 89.63268280029297,
+   "lat": 3.31536,
+   "niche": "S2",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 92.325
+  },
+  {
+   "code": "(1, 2, 3, 3, 0, 2)",
+   "pred": 88.95160675048828,
+   "lat": 4.67856,
+   "niche": "S3",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 92.8
+  },
+  {
+   "code": "(1, 0, 3, 3, 4, 2)",
+   "pred": 88.68749237060547,
+   "lat": 4.57296,
+   "niche": "S3",
+   "gen": 5,
+   "origin": "crossover",
+   "true_acc": 92.01
+  },
+  {
+   "code": "(1, 2, 3, 3, 1, 0)",
+   "pred": 88.87358856201172,
+   "lat": 4.16336,
+   "niche": "S3",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 92.11
+  },
+  {
+   "code": "(1, 2, 3, 3, 2, 2)",
+   "pred": 89.16236877441406,
+   "lat": 5.19376,
+   "niche": "S3",
+   "gen": 5,
+   "origin": "crossover",
+   "true_acc": 93.22333333333334
+  },
+  {
+   "code": "(0, 3, 1, 3, 1, 3)",
+   "pred": 89.46501922607422,
+   "lat": 4.90576,
+   "niche": "S4",
+   "gen": 5,
+   "origin": "crossover",
+   "true_acc": 93.04
+  },
+  {
+   "code": "(1, 3, 2, 3, 0, 3)",
+   "pred": 89.00642395019531,
+   "lat": 5.42096,
+   "niche": "S4",
+   "gen": 5,
+   "origin": "crossover",
+   "true_acc": 93.45
+  },
+  {
+   "code": "(0, 3, 2, 3, 1, 3)",
+   "pred": 88.84497833251953,
+   "lat": 5.42096,
+   "niche": "S4",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 93.315
+  },
+  {
+   "code": "(1, 3, 2, 3, 4, 3)",
+   "pred": 89.19386291503906,
+   "lat": 5.83056,
+   "niche": "S4",
+   "gen": 5,
+   "origin": "crossover",
+   "true_acc": 92.72
+  },
+  {
+   "code": "(3, 3, 3, 0, 0, 3)",
+   "pred": 88.80878448486328,
+   "lat": 6.16336,
+   "niche": "S5",
+   "gen": 5,
+   "origin": "random_fill",
+   "true_acc": 91.63
+  },
+  {
+   "code": "(3, 4, 3, 3, 4, 3)",
+   "pred": 88.95806121826172,
+   "lat": 6.98256,
+   "niche": "S5",
+   "gen": 5,
+   "origin": "random_fill",
+   "true_acc": 92.65
+  },
+  {
+   "code": "(3, 3, 0, 3, 3, 4)",
+   "pred": 89.4419174194336,
+   "lat": 6.57296,
+   "niche": "S5",
+   "gen": 5,
+   "origin": "random_fill",
+   "true_acc": 93.26
+  },
+  {
+   "code": "(1, 3, 3, 3, 3, 2)",
+   "pred": 89.10562896728516,
+   "lat": 6.67856,
+   "niche": "S5",
+   "gen": 5,
+   "origin": "random_fill",
+   "true_acc": 93.19
+  },
+  {
+   "code": "(1, 0, 0, 0, 4, 1)",
+   "pred": 71.12647247314453,
+   "lat": 1.54256,
+   "niche": "S0",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 75.19666666666666
+  },
+  {
+   "code": "(1, 0, 0, 4, 1, 1)",
+   "pred": 71.87608337402344,
+   "lat": 1.54256,
+   "niche": "S0",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 80.02666666666667
+  },
+  {
+   "code": "(1, 0, 0, 0, 0, 1)",
+   "pred": 9.970988273620605,
+   "lat": 1.13296,
+   "niche": "S0",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 10.0
+  },
+  {
+   "code": "(4, 0, 0, 1, 0, 0)",
+   "pred": 84.30013275146484,
+   "lat": 1.54256,
+   "niche": "S0",
+   "gen": 6,
+   "origin": "random_fill",
+   "true_acc": 86.63
+  },
+  {
+   "code": "(2, 0, 1, 1, 0, 1)",
+   "pred": 86.35746002197266,
+   "lat": 1.64816,
+   "niche": "S1",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 89.48666666666666
+  },
+  {
+   "code": "(0, 0, 2, 1, 0, 2)",
+   "pred": 84.23800659179688,
+   "lat": 2.16336,
+   "niche": "S1",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 86.56
+  },
+  {
+   "code": "(0, 0, 1, 4, 0, 2)",
+   "pred": 71.67704010009766,
+   "lat": 2.05776,
+   "niche": "S1",
+   "gen": 6,
+   "origin": "crossover",
+   "true_acc": 75.685
+  },
+  {
+   "code": "(2, 2, 1, 1, 0, 2)",
+   "pred": 87.27928161621094,
+   "lat": 2.67856,
+   "niche": "S1",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 90.54
+  },
+  {
+   "code": "(3, 4, 1, 1, 1, 4)",
+   "pred": 82.84815216064453,
+   "lat": 3.20976,
+   "niche": "S2",
+   "gen": 6,
+   "origin": "crossover",
+   "true_acc": 87.33999999999999
+  },
+  {
+   "code": "(3, 0, 4, 1, 1, 0)",
+   "pred": 88.91742706298828,
+   "lat": 2.80016,
+   "niche": "S2",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 91.96
+  },
+  {
+   "code": "(3, 0, 0, 1, 1, 0)",
+   "pred": 88.76627349853516,
+   "lat": 2.39056,
+   "niche": "S2",
+   "gen": 6,
+   "origin": "crossover",
+   "true_acc": 91.715
+  },
+  {
+   "code": "(3, 4, 0, 1, 1, 2)",
+   "pred": 88.76112365722656,
+   "lat": 3.31536,
+   "niche": "S2",
+   "gen": 6,
+   "origin": "crossover",
+   "true_acc": 92.27
+  },
+  {
+   "code": "(4, 0, 3, 3, 1, 2)",
+   "pred": 87.8564682006836,
+   "lat": 4.57296,
+   "niche": "S3",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 91.59333333333332
+  },
+  {
+   "code": "(0, 2, 3, 3, 1, 2)",
+   "pred": 88.41960906982422,
+   "lat": 4.67856,
+   "niche": "S3",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 92.295
+  },
+  {
+   "code": "(1, 2, 3, 3, 4, 2)",
+   "pred": 88.29862976074219,
+   "lat": 5.08816,
+   "niche": "S3",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 92.64333333333332
+  },
+  {
+   "code": "(1, 0, 3, 3, 4, 1)",
+   "pred": 87.62195587158203,
+   "lat": 4.05776,
+   "niche": "S3",
+   "gen": 6,
+   "origin": "crossover",
+   "true_acc": 91.38666666666668
+  },
+  {
+   "code": "(2, 3, 1, 3, 1, 3)",
+   "pred": 89.52301025390625,
+   "lat": 5.42096,
+   "niche": "S4",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 93.01
+  },
+  {
+   "code": "(1, 3, 1, 3, 0, 3)",
+   "pred": 89.4744873046875,
+   "lat": 4.90576,
+   "niche": "S4",
+   "gen": 6,
+   "origin": "crossover",
+   "true_acc": 92.68666666666664
+  },
+  {
+   "code": "(1, 3, 1, 3, 2, 3)",
+   "pred": 89.36199951171875,
+   "lat": 5.42096,
+   "niche": "S4",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 93.14
+  },
+  {
+   "code": "(3, 1, 3, 3, 0, 2)",
+   "pred": 89.53141021728516,
+   "lat": 5.42096,
+   "niche": "S4",
+   "gen": 6,
+   "origin": "random_fill",
+   "true_acc": 93.23666666666666
+  },
+  {
+   "code": "(3, 3, 3, 3, 0, 2)",
+   "pred": 89.44307708740234,
+   "lat": 6.67856,
+   "niche": "S5",
+   "gen": 6,
+   "origin": "random_fill",
+   "true_acc": 93.54
+  },
+  {
+   "code": "(3, 3, 0, 3, 3, 2)",
+   "pred": 89.38536834716797,
+   "lat": 6.67856,
+   "niche": "S5",
+   "gen": 6,
+   "origin": "random_fill",
+   "true_acc": 93.365
+  },
+  {
+   "code": "(3, 3, 3, 0, 3, 3)",
+   "pred": 88.42476654052734,
+   "lat": 7.42096,
+   "niche": "S5",
+   "gen": 6,
+   "origin": "random_fill",
+   "true_acc": 92.08666666666666
+  },
+  {
+   "code": "(4, 3, 3, 3, 3, 2)",
+   "pred": 89.18714904785156,
+   "lat": 7.08816,
+   "niche": "S5",
+   "gen": 6,
+   "origin": "random_fill",
+   "true_acc": 92.82333333333334
+  },
+  {
+   "code": "(4, 0, 1, 1, 0, 0)",
+   "pred": 83.61483001708984,
+   "lat": 1.54256,
+   "niche": "S0",
+   "gen": 7,
+   "origin": "mutation",
+   "true_acc": 86.45500000000001
+  },
+  {
+   "code": "(4, 0, 4, 1, 0, 0)",
+   "pred": 84.11009979248047,
+   "lat": 1.95216,
+   "niche": "S0",
+   "gen": 7,
+   "origin": "mutation",
+   "true_acc": 86.7
+  },
+  {
+   "code": "(4, 0, 0, 1, 0, 1)",
+   "pred": 84.16739654541016,
+   "lat": 1.54256,
+   "niche": "S0",
+   "gen": 7,
+   "origin": "crossover",
+   "true_acc": 86.53
+  },
+  {
+   "code": "(4, 0, 0, 1, 1, 0)",
+   "pred": 78.7757797241211,
+   "lat": 1.54256,
+   "niche": "S0",
+   "gen": 7,
+   "origin": "mutation",
+   "true_acc": 80.125
+  },
+  {
+   "code": "(2, 0, 1, 4, 0, 1)",
+   "pred": 84.85680389404297,
+   "lat": 2.05776,
+   "niche": "S1",
+   "gen": 7,
+   "origin": "mutation",
+   "true_acc": 88.98
+  },
+  {
+   "code": "(0, 2, 1, 2, 0, 2)",
+   "pred": 85.83258056640625,
+   "lat": 2.67856,
+   "niche": "S1",
+   "gen": 7,
+   "origin": "mutation",
+   "true_acc": 89.46333333333332
+  },
+  {
+   "code": "(0, 2, 2, 1, 2, 2)",
+   "pred": 87.5698471069336,
+   "lat": 3.19376,
+   "niche": "S1",
+   "gen": 7,
+   "origin": "mutation",
+   "true_acc": 90.82333333333332
+  },
+  {
+   "code": "(0, 2, 1, 1, 0, 1)",
+   "pred": 86.35567474365234,
+   "lat": 1.64816,
+   "niche": "S1",
+   "gen": 7,
+   "origin": "crossover",
+   "true_acc": 89.57
+  },
+  {
+   "code": "(3, 4, 1, 1, 1, 0)",
+   "pred": 88.7703628540039,
+   "lat": 2.80016,
+   "niche": "S2",
+   "gen": 7,
+   "origin": "mutation",
+   "true_acc": 92.08666666666666
+  },
+  {
+   "code": "(3, 1, 2, 1, 1, 2)",
+   "pred": 89.99824523925781,
+   "lat": 3.42096,
+   "niche": "S2",
+   "gen": 7,
+   "origin": "crossover",
+   "true_acc": 92.535
+  },
+  {
+   "code": "(3, 0, 4, 1, 1, 2)",
+   "pred": 88.07929229736328,
+   "lat": 3.31536,
+   "niche": "S2",
+   "gen": 7,
+   "origin": "crossover",
+   "true_acc": 92.375
+  },
+  {
+   "code": "(3, 0, 1, 1, 1, 0)",
+   "pred": 88.74273681640625,
+   "lat": 2.39056,
+   "niche": "S2",
+   "gen": 7,
+   "origin": "mutation",
+   "true_acc": 91.88333333333333
+  },
+  {
+   "code": "(1, 0, 3, 3, 0, 2)",
+   "pred": 88.99119567871094,
+   "lat": 4.16336,
+   "niche": "S3",
+   "gen": 7,
+   "origin": "crossover",
+   "true_acc": 93.01333333333332
+  },
+  {
+   "code": "(4, 2, 3, 3, 1, 2)",
+   "pred": 87.87362670898438,
+   "lat": 5.08816,
+   "niche": "S3",
+   "gen": 7,
+   "origin": "mutation",
+   "true_acc": 92.385
+  },
+  {
+   "code": "(1, 0, 3, 3, 2, 2)",
+   "pred": 89.39049530029297,
+   "lat": 4.67856,
+   "niche": "S3",
+   "gen": 7,
+   "origin": "mutation",
+   "true_acc": 93.26
+  },
+  {
+   "code": "(1, 0, 3, 3, 1, 0)",
+   "pred": 89.13935852050781,
+   "lat": 3.64816,
+   "niche": "S3",
+   "gen": 7,
+   "origin": "crossover",
+   "true_acc": 91.86333333333334
+  },
+  {
+   "code": "(1, 4, 3, 3, 4, 3)",
+   "pred": 88.66294860839844,
+   "lat": 5.72496,
+   "niche": "S4",
+   "gen": 7,
+   "origin": "random_fill",
+   "true_acc": 91.98666666666668
+  },
+  {
+   "code": "(2, 3, 3, 1, 2, 3)",
+   "pred": 90.94283294677734,
+   "lat": 5.93616,
+   "niche": "S4",
+   "gen": 7,
+   "origin": "random_fill",
+   "true_acc": 94.125
+  },
+  {
+   "code": "(3, 4, 3, 1, 3, 4)",
+   "pred": 87.38328552246094,
+   "lat": 5.72496,
+   "niche": "S4",
+   "gen": 7,
+   "origin": "random_fill",
+   "true_acc": 89.67666666666666
+  },
+  {
+   "code": "(3, 0, 3, 3, 2, 0)",
+   "pred": 89.64117431640625,
+   "lat": 5.42096,
+   "niche": "S4",
+   "gen": 7,
+   "origin": "random_fill",
+   "true_acc": 92.86666666666667
+  },
+  {
+   "code": "(3, 4, 3, 3, 1, 3)",
+   "pred": 89.26458740234375,
+   "lat": 6.57296,
+   "niche": "S5",
+   "gen": 7,
+   "origin": "random_fill",
+   "true_acc": 93.415
+  },
+  {
+   "code": "(2, 0, 3, 3, 3, 3)",
+   "pred": 89.47798156738281,
+   "lat": 6.67856,
+   "niche": "S5",
+   "gen": 7,
+   "origin": "random_fill",
+   "true_acc": 93.04666666666668
+  },
+  {
+   "code": "(3, 3, 3, 4, 3, 2)",
+   "pred": 89.59300231933594,
+   "lat": 7.08816,
+   "niche": "S5",
+   "gen": 7,
+   "origin": "random_fill",
+   "true_acc": 93.79
+  },
+  {
+   "code": "(3, 3, 1, 2, 3, 3)",
+   "pred": 89.30714416503906,
+   "lat": 6.67856,
+   "niche": "S5",
+   "gen": 7,
+   "origin": "random_fill",
+   "true_acc": 93.48333333333332
+  },
+  {
+   "code": "(4, 0, 0, 4, 0, 0)",
+   "pred": 71.2032699584961,
+   "lat": 1.95216,
+   "niche": "S0",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 75.745
+  },
+  {
+   "code": "(4, 0, 0, 0, 0, 0)",
+   "pred": 10.008302688598633,
+   "lat": 1.54256,
+   "niche": "S0",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 10.0
+  },
+  {
+   "code": "(4, 4, 0, 1, 0, 0)",
+   "pred": 84.412353515625,
+   "lat": 1.95216,
+   "niche": "S0",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 86.275
+  },
+  {
+   "code": "(1, 0, 0, 1, 1, 0)",
+   "pred": 80.68634033203125,
+   "lat": 1.13296,
+   "niche": "S0",
+   "gen": 8,
+   "origin": "crossover",
+   "true_acc": 84.37666666666667
+  },
+  {
+   "code": "(0, 2, 1, 1, 0, 0)",
+   "pred": 84.1449203491211,
+   "lat": 1.64816,
+   "niche": "S1",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 86.72999999999999
+  },
+  {
+   "code": "(2, 2, 1, 1, 0, 1)",
+   "pred": 86.35550689697266,
+   "lat": 2.16336,
+   "niche": "S1",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 89.88
+  },
+  {
+   "code": "(4, 2, 1, 1, 0, 2)",
+   "pred": 87.20114135742188,
+   "lat": 2.57296,
+   "niche": "S1",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 90.52666666666669
+  },
+  {
+   "code": "(0, 2, 1, 1, 2, 2)",
+   "pred": 86.9639663696289,
+   "lat": 2.67856,
+   "niche": "S1",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 90.835
+  },
+  {
+   "code": "(3, 0, 2, 0, 1, 0)",
+   "pred": 88.66828918457031,
+   "lat": 2.90576,
+   "niche": "S2",
+   "gen": 8,
+   "origin": "crossover",
+   "true_acc": 92.165
+  },
+  {
+   "code": "(3, 4, 1, 1, 1, 1)",
+   "pred": 82.7342300415039,
+   "lat": 2.80016,
+   "niche": "S2",
+   "gen": 8,
+   "origin": "crossover",
+   "true_acc": 87.63499999999999
+  },
+  {
+   "code": "(3, 0, 2, 2, 1, 2)",
+   "pred": 88.60169219970703,
+   "lat": 3.93616,
+   "niche": "S2",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 92.75
+  },
+  {
+   "code": "(3, 0, 0, 1, 1, 4)",
+   "pred": 88.6656265258789,
+   "lat": 2.80016,
+   "niche": "S2",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 91.99
+  },
+  {
+   "code": "(1, 4, 3, 3, 1, 2)",
+   "pred": 89.3177490234375,
+   "lat": 4.57296,
+   "niche": "S3",
+   "gen": 8,
+   "origin": "crossover",
+   "true_acc": 93.21666666666664
+  },
+  {
+   "code": "(1, 0, 3, 3, 2, 1)",
+   "pred": 88.81204986572266,
+   "lat": 4.16336,
+   "niche": "S3",
+   "gen": 8,
+   "origin": "crossover",
+   "true_acc": 92.58333333333331
+  },
+  {
+   "code": "(1, 4, 3, 3, 1, 1)",
+   "pred": 83.46422576904297,
+   "lat": 4.05776,
+   "niche": "S3",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 88.07000000000001
+  },
+  {
+   "code": "(2, 2, 3, 3, 1, 2)",
+   "pred": 89.53594970703125,
+   "lat": 5.19376,
+   "niche": "S3",
+   "gen": 8,
+   "origin": "crossover",
+   "true_acc": 93.185
+  },
+  {
+   "code": "(2, 3, 3, 2, 2, 3)",
+   "pred": 89.0482406616211,
+   "lat": 6.45136,
+   "niche": "S4",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 93.325
+  },
+  {
+   "code": "(1, 3, 3, 1, 2, 3)",
+   "pred": 90.87162780761719,
+   "lat": 5.42096,
+   "niche": "S4",
+   "gen": 8,
+   "origin": "crossover",
+   "true_acc": 93.72333333333334
+  },
+  {
+   "code": "(2, 3, 3, 1, 1, 3)",
+   "pred": 90.56678771972656,
+   "lat": 5.42096,
+   "niche": "S4",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 93.775
+  },
+  {
+   "code": "(2, 3, 3, 1, 4, 3)",
+   "pred": 90.7732162475586,
+   "lat": 5.83056,
+   "niche": "S4",
+   "gen": 8,
+   "origin": "crossover",
+   "true_acc": 93.88
+  },
+  {
+   "code": "(3, 4, 3, 3, 3, 4)",
+   "pred": 88.98575592041016,
+   "lat": 6.98256,
+   "niche": "S5",
+   "gen": 8,
+   "origin": "random_fill",
+   "true_acc": 91.7
+  },
+  {
+   "code": "(4, 0, 3, 3, 3, 3)",
+   "pred": 87.99211883544922,
+   "lat": 6.57296,
+   "niche": "S5",
+   "gen": 8,
+   "origin": "random_fill",
+   "true_acc": 92.58
+  },
+  {
+   "code": "(1, 3, 3, 3, 3, 1)",
+   "pred": 88.85327911376953,
+   "lat": 6.16336,
+   "niche": "S5",
+   "gen": 8,
+   "origin": "random_fill",
+   "true_acc": 92.05
+  },
+  {
+   "code": "(3, 4, 0, 3, 3, 3)",
+   "pred": 89.40512084960938,
+   "lat": 6.57296,
+   "niche": "S5",
+   "gen": 8,
+   "origin": "random_fill",
+   "true_acc": 93.20333333333332
+  },
+  {
+   "code": "(1, 0, 0, 1, 0, 0)",
+   "pred": 83.7857666015625,
+   "lat": 1.13296,
+   "niche": "S0",
+   "gen": 9,
+   "origin": "mutation",
+   "true_acc": 86.41000000000001
+  },
+  {
+   "code": "(4, 4, 4, 1, 0, 0)",
+   "pred": 83.79717254638672,
+   "lat": 2.36176,
+   "niche": "S0",
+   "gen": 9,
+   "origin": "crossover",
+   "true_acc": 86.58999999999999
+  },
+  {
+   "code": "(4, 4, 0, 1, 0, 1)",
+   "pred": 66.52340698242188,
+   "lat": 1.95216,
+   "niche": "S0",
+   "gen": 9,
+   "origin": "mutation",
+   "true_acc": 80.71000000000001
+  },
+  {
+   "code": "(4, 4, 0, 1, 0, 4)",
+   "pred": 69.38093566894531,
+   "lat": 2.36176,
+   "niche": "S0",
+   "gen": 9,
+   "origin": "mutation",
+   "true_acc": 79.61
+  },
+  {
+   "code": "(0, 2, 1, 4, 0, 2)",
+   "pred": 84.62962341308594,
+   "lat": 2.57296,
+   "niche": "S1",
+   "gen": 9,
+   "origin": "mutation",
+   "true_acc": 89.38999999999999
+  },
+  {
+   "code": "(0, 1, 2, 1, 2, 2)",
+   "pred": 86.09778594970703,
+   "lat": 2.67856,
+   "niche": "S1",
+   "gen": 9,
+   "origin": "mutation",
+   "true_acc": 89.92666666666666
+  },
+  {
+   "code": "(4, 2, 2, 1, 0, 2)",
+   "pred": 87.47703552246094,
+   "lat": 3.08816,
+   "niche": "S1",
+   "gen": 9,
+   "origin": "crossover",
+   "true_acc": 91.315
+  },
+  {
+   "code": "(2, 4, 1, 1, 0, 1)",
+   "pred": 79.6595687866211,
+   "lat": 2.05776,
+   "niche": "S1",
+   "gen": 9,
+   "origin": "mutation",
+   "true_acc": 87.195
+  },
+  {
+   "code": "(3, 0, 4, 1, 1, 4)",
+   "pred": 88.25627899169922,
+   "lat": 3.20976,
+   "niche": "S2",
+   "gen": 9,
+   "origin": "mutation",
+   "true_acc": 91.82
+  },
+  {
+   "code": "(3, 4, 1, 1, 0, 2)",
+   "pred": 89.2042007446289,
+   "lat": 3.31536,
+   "niche": "S2",
+   "gen": 9,
+   "origin": "mutation",
+   "true_acc": 92.67333333333332
+  },
+  {
+   "code": "(3, 4, 1, 2, 1, 2)",
+   "pred": 88.27300262451172,
+   "lat": 3.83056,
+   "niche": "S2",
+   "gen": 9,
+   "origin": "mutation",
+   "true_acc": 92.435
+  },
+  {
+   "code": "(3, 0, 0, 1, 0, 0)",
+   "pred": 83.73818969726562,
+   "lat": 2.39056,
+   "niche": "S2",
+   "gen": 9,
+   "origin": "mutation",
+   "true_acc": 86.45
+  },
+  {
+   "code": "(0, 0, 3, 3, 1, 2)",
+   "pred": 88.48519134521484,
+   "lat": 4.16336,
+   "niche": "S3",
+   "gen": 9,
+   "origin": "mutation",
+   "true_acc": 91.95
+  },
+  {
+   "code": "(3, 4, 3, 1, 2, 0)",
+   "pred": 89.33545684814453,
+   "lat": 4.57296,
+   "niche": "S3",
+   "gen": 9,
+   "origin": "random_fill",
+   "true_acc": 93.17
+  },
+  {
+   "code": "(2, 0, 3, 3, 1, 2)",
+   "pred": 89.2334213256836,
+   "lat": 4.67856,
+   "niche": "S3",
+   "gen": 9,
+   "origin": "crossover",
+   "true_acc": 93.04333333333334
+  },
+  {
+   "code": "(1, 1, 3, 3, 1, 1)",
+   "pred": 84.76130676269531,
+   "lat": 3.64816,
+   "niche": "S3",
+   "gen": 9,
+   "origin": "crossover",
+   "true_acc": 88.17999999999999
+  },
+  {
+   "code": "(1, 3, 3, 1, 1, 3)",
+   "pred": 88.08096313476562,
+   "lat": 4.90576,
+   "niche": "S4",
+   "gen": 9,
+   "origin": "crossover",
+   "true_acc": 90.645
+  },
+  {
+   "code": "(2, 3, 3, 0, 2, 3)",
+   "pred": 89.0060806274414,
+   "lat": 5.93616,
+   "niche": "S4",
+   "gen": 9,
+   "origin": "crossover",
+   "true_acc": 92.23666666666666
+  },
+  {
+   "code": "(1, 3, 3, 4, 2, 3)",
+   "pred": 88.8954086303711,
+   "lat": 5.83056,
+   "niche": "S4",
+   "gen": 9,
+   "origin": "mutation",
+   "true_acc": 93.13333333333333
+  },
+  {
+   "code": "(4, 3, 3, 1, 2, 3)",
+   "pred": 90.54370880126953,
+   "lat": 5.83056,
+   "niche": "S4",
+   "gen": 9,
+   "origin": "mutation",
+   "true_acc": 93.76333333333334
+  },
+  {
+   "code": "(1, 1, 3, 3, 3, 3)",
+   "pred": 89.22745513916016,
+   "lat": 6.16336,
+   "niche": "S5",
+   "gen": 9,
+   "origin": "random_fill",
+   "true_acc": 93.17
+  },
+  {
+   "code": "(0, 3, 3, 3, 2, 3)",
+   "pred": 89.62788391113281,
+   "lat": 6.67856,
+   "niche": "S5",
+   "gen": 9,
+   "origin": "random_fill",
+   "true_acc": 93.185
+  },
+  {
+   "code": "(3, 0, 0, 3, 3, 3)",
+   "pred": 89.59188079833984,
+   "lat": 6.16336,
+   "niche": "S5",
+   "gen": 9,
+   "origin": "random_fill",
+   "true_acc": 93.175
+  },
+  {
+   "code": "(4, 3, 4, 3, 3, 3)",
+   "pred": 88.73683166503906,
+   "lat": 6.98256,
+   "niche": "S5",
+   "gen": 9,
+   "origin": "random_fill",
+   "true_acc": 92.42
+  },
+  {
+   "code": "(4, 0, 0, 1, 4, 0)",
+   "pred": 69.03150939941406,
+   "lat": 1.95216,
+   "niche": "S0",
+   "gen": 10,
+   "origin": "mutation",
+   "true_acc": 77.88666666666667
+  },
+  {
+   "code": "(4, 4, 0, 1, 1, 0)",
+   "pred": 75.67237091064453,
+   "lat": 1.95216,
+   "niche": "S0",
+   "gen": 10,
+   "origin": "mutation",
+   "true_acc": 79.69333333333334
+  },
+  {
+   "code": "(0, 0, 0, 1, 0, 0)",
+   "pred": 83.70915222167969,
+   "lat": 1.13296,
+   "niche": "S0",
+   "gen": 10,
+   "origin": "mutation",
+   "true_acc": 86.45333333333333
+  },
+  {
+   "code": "(4, 4, 1, 1, 0, 0)",
+   "pred": 83.70527648925781,
+   "lat": 1.95216,
+   "niche": "S0",
+   "gen": 10,
+   "origin": "mutation",
+   "true_acc": 86.52
+  },
+  {
+   "code": "(2, 0, 1, 2, 0, 1)",
+   "pred": 86.10637664794922,
+   "lat": 2.16336,
+   "niche": "S1",
+   "gen": 10,
+   "origin": "crossover",
+   "true_acc": 89.05
+  },
+  {
+   "code": "(0, 0, 2, 1, 2, 2)",
+   "pred": 84.06910705566406,
+   "lat": 2.67856,
+   "niche": "S1",
+   "gen": 10,
+   "origin": "mutation",
+   "true_acc": 86.42500000000001
+  },
+  {
+   "code": "(0, 2, 1, 1, 4, 2)",
+   "pred": 87.33551788330078,
+   "lat": 2.57296,
+   "niche": "S1",
+   "gen": 10,
+   "origin": "crossover",
+   "true_acc": 90.37
+  },
+  {
+   "code": "(2, 0, 0, 1, 0, 1)",
+   "pred": 84.08988952636719,
+   "lat": 1.64816,
+   "niche": "S1",
+   "gen": 10,
+   "origin": "mutation",
+   "true_acc": 86.58666666666666
+  },
+  {
+   "code": "(3, 0, 4, 1, 4, 0)",
+   "pred": 86.91800689697266,
+   "lat": 3.20976,
+   "niche": "S2",
+   "gen": 10,
+   "origin": "mutation",
+   "true_acc": 90.98
+  },
+  {
+   "code": "(3, 0, 2, 1, 1, 1)",
+   "pred": 90.00596618652344,
+   "lat": 2.90576,
+   "niche": "S2",
+   "gen": 10,
+   "origin": "crossover",
+   "true_acc": 92.94333333333331
+  },
+  {
+   "code": "(3, 0, 0, 1, 1, 2)",
+   "pred": 88.92388916015625,
+   "lat": 2.90576,
+   "niche": "S2",
+   "gen": 10,
+   "origin": "crossover",
+   "true_acc": 91.89
+  },
+  {
+   "code": "(3, 2, 2, 1, 1, 2)",
+   "pred": 90.53819274902344,
+   "lat": 3.93616,
+   "niche": "S2",
+   "gen": 10,
+   "origin": "crossover",
+   "true_acc": 93.22
+  },
+  {
+   "code": "(2, 3, 0, 4, 3, 1)",
+   "pred": 88.3635025024414,
+   "lat": 4.57296,
+   "niche": "S3",
+   "gen": 10,
+   "origin": "random_fill",
+   "true_acc": 91.96333333333332
+  },
+  {
+   "code": "(1, 1, 1, 3, 3, 1)",
+   "pred": 85.32130432128906,
+   "lat": 3.64816,
+   "niche": "S3",
+   "gen": 10,
+   "origin": "random_fill",
+   "true_acc": 88.33
+  },
+  {
+   "code": "(1, 3, 1, 3, 4, 2)",
+   "pred": 88.38215637207031,
+   "lat": 4.57296,
+   "niche": "S3",
+   "gen": 10,
+   "origin": "random_fill",
+   "true_acc": 92.38666666666666
+  },
+  {
+   "code": "(3, 2, 2, 2, 3, 1)",
+   "pred": 89.6636962890625,
+   "lat": 5.19376,
+   "niche": "S3",
+   "gen": 10,
+   "origin": "random_fill",
+   "true_acc": 93.48333333333336
+  },
+  {
+   "code": "(0, 3, 3, 1, 2, 3)",
+   "pred": 90.84530639648438,
+   "lat": 5.42096,
+   "niche": "S4",
+   "gen": 10,
+   "origin": "mutation",
+   "true_acc": 93.62
+  },
+  {
+   "code": "(2, 3, 1, 3, 2, 3)",
+   "pred": 89.81664276123047,
+   "lat": 5.93616,
+   "niche": "S4",
+   "gen": 10,
+   "origin": "crossover",
+   "true_acc": 93.445
+  },
+  {
+   "code": "(2, 3, 3, 4, 2, 3)",
+   "pred": 89.34092712402344,
+   "lat": 6.34576,
+   "niche": "S4",
+   "gen": 10,
+   "origin": "mutation",
+   "true_acc": 92.965
+  },
+  {
+   "code": "(1, 3, 3, 1, 0, 3)",
+   "pred": 90.35581970214844,
+   "lat": 4.90576,
+   "niche": "S4",
+   "gen": 10,
+   "origin": "crossover",
+   "true_acc": 93.755
+  },
+  {
+   "code": "(3, 3, 2, 3, 3, 3)",
+   "pred": 89.91184997558594,
+   "lat": 7.93616,
+   "niche": "S5",
+   "gen": 10,
+   "origin": "random_fill",
+   "true_acc": 93.38333333333333
+  },
+  {
+   "code": "(4, 4, 3, 3, 3, 3)",
+   "pred": 86.02392578125,
+   "lat": 6.98256,
+   "niche": "S5",
+   "gen": 10,
+   "origin": "random_fill",
+   "true_acc": 92.13666666666668
+  },
+  {
+   "code": "(3, 1, 4, 3, 3, 3)",
+   "pred": 89.31072235107422,
+   "lat": 6.57296,
+   "niche": "S5",
+   "gen": 10,
+   "origin": "random_fill",
+   "true_acc": 93.42
+  },
+  {
+   "code": "(1, 3, 3, 3, 3, 3)",
+   "pred": 89.58939361572266,
+   "lat": 7.42096,
+   "niche": "S5",
+   "gen": 10,
+   "origin": "random_fill",
+   "true_acc": 93.3
+  }
+ ],
+ "knowledge_base": {
+  "S0": [],
+  "S1": [],
+  "S2": [],
+  "S3": [],
+  "S4": [],
+  "S5": []
+ },
+ "trajectory": [
+  {
+   "gen": 0,
+   "n_evaluated": 30,
+   "hv": 0.77898911011546,
+   "igd": 0.15472646408361243,
+   "n_front": 7
+  },
+  {
+   "gen": 1,
+   "n_evaluated": 54,
+   "hv": 0.8220159211700917,
+   "igd": 0.1365088970256842,
+   "n_front": 8
+  },
+  {
+   "gen": 2,
+   "n_evaluated": 78,
+   "hv": 0.8555681815168457,
+   "igd": 0.08619282638082426,
+   "n_front": 8
+  },
+  {
+   "gen": 3,
+   "n_evaluated": 102,
+   "hv": 0.8516055471983328,
+   "igd": 0.08872191067746985,
+   "n_front": 9
+  },
+  {
+   "gen": 4,
+   "n_evaluated": 126,
+   "hv": 0.8642132042788252,
+   "igd": 0.0794892760347447,
+   "n_front": 9
+  },
+  {
+   "gen": 5,
+   "n_evaluated": 150,
+   "hv": 0.8651171407683015,
+   "igd": 0.0794892760347447,
+   "n_front": 10
+  },
+  {
+   "gen": 6,
+   "n_evaluated": 174,
+   "hv": 0.9051517921557486,
+   "igd": 0.08189380653580383,
+   "n_front": 12
+  },
+  {
+   "gen": 7,
+   "n_evaluated": 198,
+   "hv": 0.910372993105064,
+   "igd": 0.07528548362271349,
+   "n_front": 13
+  },
+  {
+   "gen": 8,
+   "n_evaluated": 222,
+   "hv": 0.9090064787876401,
+   "igd": 0.07624737931990877,
+   "n_front": 13
+  },
+  {
+   "gen": 9,
+   "n_evaluated": 246,
+   "hv": 0.9090064787876401,
+   "igd": 0.07624737931990877,
+   "n_front": 13
+  },
+  {
+   "gen": 10,
+   "n_evaluated": 270,
+   "hv": 0.9245569127480139,
+   "igd": 0.07079980661680893,
+   "n_front": 12
+  }
+ ],
+ "config": {
+  "data_dir": null,
+  "results_dir": "results",
+  "search": {
+   "generations": 10,
+   "crossover_prob": 0.5,
+   "partitioning": true,
+   "operator": "random",
+   "knowledge_base": true,
+   "init_pop_per_niche": 5,
+   "n_child": 4,
+   "n_parents_shown": 6,
+   "latency_limit": null,
+   "match_budget": true,
+   "refill_attempts": 50,
+   "refill_fallback": "random",
+   "budget_evaluations": 270
+  },
+  "predictor": {
+   "kind": "zc_ensemble",
+   "n_train": 1000,
+   "target": "val"
+  },
+  "evaluation": {
+   "acc": "test",
+   "front_source": "archive",
+   "normalization": "front",
+   "ref_point": [
+    1.1,
+    1.1
+   ]
+  },
+  "llm": {
+   "backend": "openai",
+   "model": "gpt-4.1",
+   "temperature": 0.7,
+   "base_url": null,
+   "api_key_env": "OPENAI_API_KEY",
+   "max_tokens": 4096,
+   "mode": "record"
+  },
+  "bias": {
+   "rounds": 10,
+   "per_round": 6,
+   "prompt": "normal"
+  },
+  "variant": "pea_refill",
+  "type": "search",
+  "code_version": "d7d93c2"
+ }
+}

@@ -1,0 +1,1128 @@
+{
+ "dataset": "cifar10",
+ "device": "edgegpu",
+ "seed": 2,
+ "variant": "llmnas",
+ "hv": 0.9734836581666498,
+ "igd": 0.057033094796878056,
+ "n_front": 7,
+ "n_evaluated": 64,
+ "search_time_s": 9243.1,
+ "llm_usage": {
+  "api_calls": 120,
+  "input_tokens": 98336,
+  "output_tokens": 42819,
+  "llm_wall_time_s": 9242.26,
+  "replay_mismatches": 0
+ },
+ "proposal_stats": {
+  "proposed": 240,
+  "invalid": 0,
+  "out_of_niche": 3,
+  "duplicate": 203,
+  "no_latency": 0,
+  "accepted": 34,
+  "parse_failures": 0
+ },
+ "predictor": {
+  "kind": "zc_ensemble",
+  "n_train": 1000,
+  "spearman_val": 0.9593342727101976,
+  "spearman_test": 0.959741560761854,
+  "kendall_test": 0.8316859757169096
+ },
+ "final_front": [
+  {
+   "code": "(1, 1, 2, 0, 0, 0)",
+   "pred_acc": 9.968,
+   "true_acc": 10.0,
+   "lat": 0.5443477630615234,
+   "niche": "S1"
+  },
+  {
+   "code": "(0, 1, 4, 0, 0, 0)",
+   "pred_acc": 11.436,
+   "true_acc": 10.0,
+   "lat": 0.5472326278686523,
+   "niche": "S0"
+  },
+  {
+   "code": "(0, 1, 1, 0, 0, 0)",
+   "pred_acc": 11.437,
+   "true_acc": 10.0,
+   "lat": 0.5687904357910156,
+   "niche": "S0"
+  },
+  {
+   "code": "(0, 1, 1, 0, 1, 0)",
+   "pred_acc": 19.915,
+   "true_acc": 10.0,
+   "lat": 0.6274986267089844,
+   "niche": "S0"
+  },
+  {
+   "code": "(0, 0, 4, 0, 1, 0)",
+   "pred_acc": 19.928,
+   "true_acc": 10.0,
+   "lat": 0.685124397277832,
+   "niche": "S0"
+  },
+  {
+   "code": "(1, 1, 2, 1, 0, 0)",
+   "pred_acc": 84.041,
+   "true_acc": 86.65000000000002,
+   "lat": 1.4563751220703125,
+   "niche": "S1"
+  },
+  {
+   "code": "(0, 1, 1, 1, 0, 0)",
+   "pred_acc": 84.374,
+   "true_acc": 86.41333333333334,
+   "lat": 1.4789342880249023,
+   "niche": "S0"
+  },
+  {
+   "code": "(0, 1, 0, 3, 4, 0)",
+   "pred_acc": 88.504,
+   "true_acc": 92.135,
+   "lat": 3.162827491760254,
+   "niche": "S2"
+  },
+  {
+   "code": "(3, 4, 1, 3, 3, 0)",
+   "pred_acc": 88.652,
+   "true_acc": 93.25,
+   "lat": 4.194445610046387,
+   "niche": "S4"
+  },
+  {
+   "code": "(3, 4, 4, 3, 3, 0)",
+   "pred_acc": 88.954,
+   "true_acc": 93.545,
+   "lat": 4.790830612182617,
+   "niche": "S4"
+  },
+  {
+   "code": "(3, 4, 1, 3, 3, 2)",
+   "pred_acc": 89.453,
+   "true_acc": 93.125,
+   "lat": 6.441998481750488,
+   "niche": "S4"
+  },
+  {
+   "code": "(3, 3, 3, 3, 1, 3)",
+   "pred_acc": 89.568,
+   "true_acc": 93.34,
+   "lat": 7.048606872558594,
+   "niche": "S5"
+  },
+  {
+   "code": "(3, 3, 3, 3, 4, 3)",
+   "pred_acc": 89.569,
+   "true_acc": 93.455,
+   "lat": 7.508306503295898,
+   "niche": "S5"
+  },
+  {
+   "code": "(3, 2, 4, 3, 2, 3)",
+   "pred_acc": 89.904,
+   "true_acc": 93.665,
+   "lat": 7.513465881347656,
+   "niche": "S4"
+  },
+  {
+   "code": "(3, 3, 3, 3, 3, 3)",
+   "pred_acc": 90.287,
+   "true_acc": 93.76,
+   "lat": 7.699499130249023,
+   "niche": "S5"
+  }
+ ],
+ "evaluated": [
+  {
+   "code": "(0, 0, 4, 0, 1, 0)",
+   "pred": 19.927778244018555,
+   "lat": 0.685124397277832,
+   "niche": "S0",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 10.0
+  },
+  {
+   "code": "(0, 1, 0, 1, 1, 0)",
+   "pred": 84.19892883300781,
+   "lat": 2.4300050735473637,
+   "niche": "S0",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 86.71000000000001
+  },
+  {
+   "code": "(0, 1, 0, 0, 1, 4)",
+   "pred": 70.71923828125,
+   "lat": 3.690524101257324,
+   "niche": "S0",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 75.81333333333333
+  },
+  {
+   "code": "(1, 1, 1, 4, 0, 0)",
+   "pred": 71.59042358398438,
+   "lat": 1.7488622665405271,
+   "niche": "S0",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 75.91000000000001
+  },
+  {
+   "code": "(0, 4, 0, 1, 0, 4)",
+   "pred": 72.7219009399414,
+   "lat": 3.1888961791992188,
+   "niche": "S0",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 79.15
+  },
+  {
+   "code": "(4, 2, 1, 0, 4, 2)",
+   "pred": 83.95516967773438,
+   "lat": 5.363850593566895,
+   "niche": "S1",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 87.79333333333334
+  },
+  {
+   "code": "(4, 4, 2, 2, 4, 4)",
+   "pred": 79.90865325927734,
+   "lat": 6.525368690490723,
+   "niche": "S1",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 85.22
+  },
+  {
+   "code": "(4, 0, 4, 2, 1, 1)",
+   "pred": 78.58478546142578,
+   "lat": 5.362005233764648,
+   "niche": "S1",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 85.935
+  },
+  {
+   "code": "(1, 2, 2, 0, 0, 4)",
+   "pred": 83.28001403808594,
+   "lat": 4.858078956604004,
+   "niche": "S1",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 86.83999999999999
+  },
+  {
+   "code": "(1, 1, 2, 0, 0, 0)",
+   "pred": 9.968194007873535,
+   "lat": 0.5443477630615234,
+   "niche": "S1",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 10.0
+  },
+  {
+   "code": "(4, 0, 2, 0, 3, 0)",
+   "pred": 79.78124237060547,
+   "lat": 3.1200027465820312,
+   "niche": "S2",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 84.38
+  },
+  {
+   "code": "(1, 1, 3, 4, 2, 2)",
+   "pred": 87.95703887939453,
+   "lat": 5.314474105834961,
+   "niche": "S2",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 91.77
+  },
+  {
+   "code": "(4, 0, 2, 1, 2, 3)",
+   "pred": 87.42724609375,
+   "lat": 5.769319534301758,
+   "niche": "S2",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 90.71666666666664
+  },
+  {
+   "code": "(0, 1, 0, 3, 4, 0)",
+   "pred": 88.50360870361328,
+   "lat": 3.162827491760254,
+   "niche": "S2",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.135
+  },
+  {
+   "code": "(3, 4, 2, 1, 2, 1)",
+   "pred": 86.21621704101562,
+   "lat": 6.259427070617676,
+   "niche": "S2",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 90.45666666666666
+  },
+  {
+   "code": "(3, 3, 1, 2, 1, 2)",
+   "pred": 88.9803237915039,
+   "lat": 6.607394218444824,
+   "niche": "S3",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.675
+  },
+  {
+   "code": "(1, 0, 0, 3, 3, 2)",
+   "pred": 88.36439514160156,
+   "lat": 4.785771369934082,
+   "niche": "S3",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.11
+  },
+  {
+   "code": "(2, 3, 3, 4, 1, 0)",
+   "pred": 85.2085189819336,
+   "lat": 3.5795974731445312,
+   "niche": "S3",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 88.6
+  },
+  {
+   "code": "(3, 2, 3, 2, 1, 4)",
+   "pred": 88.94337463378906,
+   "lat": 7.511281967163086,
+   "niche": "S3",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.64
+  },
+  {
+   "code": "(2, 3, 0, 4, 3, 0)",
+   "pred": 88.48579406738281,
+   "lat": 3.728561401367188,
+   "niche": "S3",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 91.01
+  },
+  {
+   "code": "(3, 4, 1, 3, 3, 0)",
+   "pred": 88.65234375,
+   "lat": 4.194445610046387,
+   "niche": "S4",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.25
+  },
+  {
+   "code": "(3, 2, 4, 3, 2, 3)",
+   "pred": 89.90412902832031,
+   "lat": 7.513465881347656,
+   "niche": "S4",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.665
+  },
+  {
+   "code": "(3, 4, 4, 3, 3, 0)",
+   "pred": 88.95362854003906,
+   "lat": 4.790830612182617,
+   "niche": "S4",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.545
+  },
+  {
+   "code": "(3, 3, 2, 4, 4, 3)",
+   "pred": 89.12103271484375,
+   "lat": 7.115426063537598,
+   "niche": "S4",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.59666666666664
+  },
+  {
+   "code": "(3, 4, 0, 3, 1, 3)",
+   "pred": 88.2034683227539,
+   "lat": 5.975804328918457,
+   "niche": "S4",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.19
+  },
+  {
+   "code": "(3, 3, 1, 3, 3, 4)",
+   "pred": 89.54147338867188,
+   "lat": 7.483773231506348,
+   "niche": "S5",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.74666666666668
+  },
+  {
+   "code": "(0, 3, 3, 4, 3, 3)",
+   "pred": 88.1808090209961,
+   "lat": 6.8396711349487305,
+   "niche": "S5",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 92.54
+  },
+  {
+   "code": "(0, 3, 3, 3, 3, 2)",
+   "pred": 89.35897064208984,
+   "lat": 8.69016170501709,
+   "niche": "S5",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.04
+  },
+  {
+   "code": "(3, 3, 3, 3, 1, 1)",
+   "pred": 89.49929809570312,
+   "lat": 7.157812118530273,
+   "niche": "S5",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.08333333333331
+  },
+  {
+   "code": "(3, 4, 3, 3, 3, 2)",
+   "pred": 89.93993377685547,
+   "lat": 8.496017456054688,
+   "niche": "S5",
+   "gen": 0,
+   "origin": "init",
+   "true_acc": 93.35333333333334
+  },
+  {
+   "code": "(4, 2, 1, 0, 0, 4)",
+   "pred": 79.0135726928711,
+   "lat": 4.881911277770996,
+   "niche": "S1",
+   "gen": 1,
+   "origin": "crossover",
+   "true_acc": 85.10666666666667
+  },
+  {
+   "code": "(1, 0, 0, 4, 1, 0)",
+   "pred": 72.80247497558594,
+   "lat": 3.0030059814453125,
+   "niche": "S0",
+   "gen": 2,
+   "origin": "crossover",
+   "true_acc": 79.95666666666666
+  },
+  {
+   "code": "(3, 4, 1, 3, 3, 2)",
+   "pred": 89.4525146484375,
+   "lat": 6.441998481750488,
+   "niche": "S4",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 93.125
+  },
+  {
+   "code": "(3, 4, 4, 3, 3, 1)",
+   "pred": 88.55083465576172,
+   "lat": 6.714873313903809,
+   "niche": "S4",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 92.745
+  },
+  {
+   "code": "(3, 3, 3, 4, 3, 3)",
+   "pred": 89.30105590820312,
+   "lat": 8.597288131713867,
+   "niche": "S5",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 93.335
+  },
+  {
+   "code": "(3, 3, 3, 3, 3, 4)",
+   "pred": 89.10111236572266,
+   "lat": 8.258719444274902,
+   "niche": "S5",
+   "gen": 2,
+   "origin": "mutation",
+   "true_acc": 93.005
+  },
+  {
+   "code": "(0, 1, 0, 4, 0, 0)",
+   "pred": 72.7398681640625,
+   "lat": 1.8822622299194336,
+   "niche": "S0",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 75.67
+  },
+  {
+   "code": "(0, 1, 1, 1, 0, 0)",
+   "pred": 84.37368774414062,
+   "lat": 1.4789342880249023,
+   "niche": "S0",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 86.41333333333334
+  },
+  {
+   "code": "(1, 1, 2, 0, 0, 1)",
+   "pred": 86.02503967285156,
+   "lat": 3.423690795898437,
+   "niche": "S1",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 89.52666666666666
+  },
+  {
+   "code": "(1, 1, 2, 0, 0, 2)",
+   "pred": 85.4919204711914,
+   "lat": 3.782062530517578,
+   "niche": "S1",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 88.48666666666668
+  },
+  {
+   "code": "(0, 1, 2, 0, 3, 0)",
+   "pred": 9.99668025970459,
+   "lat": 0.6203746795654297,
+   "niche": "S2",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 10.0
+  },
+  {
+   "code": "(0, 1, 0, 3, 0, 4)",
+   "pred": 86.7021713256836,
+   "lat": 3.683786392211914,
+   "niche": "S2",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 91.25333333333332
+  },
+  {
+   "code": "(3, 3, 1, 4, 1, 0)",
+   "pred": 86.79430389404297,
+   "lat": 3.7099218368530273,
+   "niche": "S3",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 90.93333333333334
+  },
+  {
+   "code": "(3, 3, 3, 3, 3, 3)",
+   "pred": 90.28723907470703,
+   "lat": 7.699499130249023,
+   "niche": "S5",
+   "gen": 3,
+   "origin": "mutation",
+   "true_acc": 93.76
+  },
+  {
+   "code": "(0, 1, 1, 0, 0, 0)",
+   "pred": 11.437382698059082,
+   "lat": 0.5687904357910156,
+   "niche": "S0",
+   "gen": 4,
+   "origin": "mutation",
+   "true_acc": 10.0
+  },
+  {
+   "code": "(0, 1, 1, 0, 1, 0)",
+   "pred": 19.91526985168457,
+   "lat": 0.6274986267089844,
+   "niche": "S0",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 10.0
+  },
+  {
+   "code": "(0, 1, 4, 0, 0, 0)",
+   "pred": 11.435559272766113,
+   "lat": 0.5472326278686523,
+   "niche": "S0",
+   "gen": 5,
+   "origin": "mutation",
+   "true_acc": 10.0
+  },
+  {
+   "code": "(1, 1, 2, 0, 1, 0)",
+   "pred": 84.03369140625,
+   "lat": 2.523226737976074,
+   "niche": "S1",
+   "gen": 5,
+   "origin": "crossover",
+   "true_acc": 86.64666666666666
+  },
+  {
+   "code": "(1, 1, 2, 0, 1, 1)",
+   "pred": 82.31462097167969,
+   "lat": 4.356489181518555,
+   "niche": "S1",
+   "gen": 5,
+   "origin": "crossover",
+   "true_acc": 87.71
+  },
+  {
+   "code": "(3, 3, 3, 3, 1, 3)",
+   "pred": 89.5682601928711,
+   "lat": 7.048606872558594,
+   "niche": "S5",
+   "gen": 6,
+   "origin": "crossover",
+   "true_acc": 93.34
+  },
+  {
+   "code": "(3, 3, 3, 3, 4, 3)",
+   "pred": 89.56892395019531,
+   "lat": 7.508306503295898,
+   "niche": "S5",
+   "gen": 6,
+   "origin": "mutation",
+   "true_acc": 93.455
+  },
+  {
+   "code": "(4, 1, 2, 0, 3, 0)",
+   "pred": 79.70854187011719,
+   "lat": 3.1585073471069336,
+   "niche": "S2",
+   "gen": 7,
+   "origin": "crossover",
+   "true_acc": 85.055
+  },
+  {
+   "code": "(0, 1, 2, 0, 3, 4)",
+   "pred": 71.51991271972656,
+   "lat": 5.611071586608887,
+   "niche": "S2",
+   "gen": 7,
+   "origin": "mutation",
+   "true_acc": 76.17
+  },
+  {
+   "code": "(0, 1, 4, 0, 1, 0)",
+   "pred": 18.35262680053711,
+   "lat": 0.6415176391601562,
+   "niche": "S0",
+   "gen": 8,
+   "origin": "mutation",
+   "true_acc": 10.0
+  },
+  {
+   "code": "(4, 1, 0, 0, 3, 0)",
+   "pred": 80.59744262695312,
+   "lat": 3.144125938415528,
+   "niche": "S2",
+   "gen": 8,
+   "origin": "crossover",
+   "true_acc": 85.06333333333333
+  },
+  {
+   "code": "(3, 3, 3, 0, 3, 3)",
+   "pred": 89.19632720947266,
+   "lat": 8.751740455627441,
+   "niche": "S5",
+   "gen": 8,
+   "origin": "crossover",
+   "true_acc": 92.08666666666666
+  },
+  {
+   "code": "(0, 1, 1, 0, 1, 1)",
+   "pred": 83.80679321289062,
+   "lat": 3.687801361083984,
+   "niche": "S0",
+   "gen": 9,
+   "origin": "mutation",
+   "true_acc": 86.39
+  },
+  {
+   "code": "(1, 1, 2, 1, 0, 0)",
+   "pred": 84.04069519042969,
+   "lat": 1.4563751220703125,
+   "niche": "S1",
+   "gen": 9,
+   "origin": "crossover",
+   "true_acc": 86.65000000000002
+  },
+  {
+   "code": "(4, 1, 0, 3, 4, 0)",
+   "pred": 87.34024047851562,
+   "lat": 4.175243377685547,
+   "niche": "S2",
+   "gen": 9,
+   "origin": "mutation",
+   "true_acc": 90.19666666666669
+  },
+  {
+   "code": "(0, 1, 0, 0, 3, 2)",
+   "pred": 85.76448059082031,
+   "lat": 3.772921562194824,
+   "niche": "S2",
+   "gen": 9,
+   "origin": "crossover",
+   "true_acc": 88.645
+  },
+  {
+   "code": "(3, 3, 3, 3, 3, 1)",
+   "pred": 89.89493560791016,
+   "lat": 7.733802795410156,
+   "niche": "S5",
+   "gen": 9,
+   "origin": "crossover",
+   "true_acc": 93.275
+  },
+  {
+   "code": "(0, 1, 1, 0, 1, 4)",
+   "pred": 69.68183135986328,
+   "lat": 4.073686599731445,
+   "niche": "S0",
+   "gen": 10,
+   "origin": "mutation",
+   "true_acc": 75.56333333333333
+  },
+  {
+   "code": "(1, 1, 2, 1, 0, 1)",
+   "pred": 82.7143325805664,
+   "lat": 3.385767936706543,
+   "niche": "S1",
+   "gen": 10,
+   "origin": "crossover",
+   "true_acc": 87.71333333333332
+  },
+  {
+   "code": "(1, 1, 2, 1, 1, 0)",
+   "pred": 78.36961364746094,
+   "lat": 2.5928211212158203,
+   "niche": "S1",
+   "gen": 10,
+   "origin": "mutation",
+   "true_acc": 84.36500000000001
+  }
+ ],
+ "knowledge_base": {
+  "S0": [
+   [
+    "{'Use': 'skip_connect and avg_pool_3x3 because they tend to balance accuracy and latency, as demonstrated by the top Pareto parents and the crossover results.'}",
+    "{'Avoid': 'nor_conv_3x3 and nor_conv_1x1 because they are not allowed and consistently hurt latency without providing significant accuracy gains, as seen in the constraints and some crossover results.'}"
+   ],
+   [
+    "skip_connect and avg_pool_3x3 because they tend to balance accuracy and latency, as demonstrated by the top Pareto parents and the crossover results.",
+    "nor_conv_3x3 and nor_conv_1x1 because they are not allowed and consistently hurt latency without providing significant accuracy gains, as seen in the constraints and some crossover results."
+   ],
+   [
+    "Use skip_connect and avg_pool_3x3 because they tend to balance accuracy and latency, as demonstrated by the top Pareto parents and the crossover results.",
+    "Avoid nor_conv_3x3 and nor_conv_1x1 because they are not allowed and consistently hurt latency without providing significant accuracy gains, as seen in the constraints and some crossover results."
+   ],
+   [
+    "Use skip_connect and avg_pool_3x3 because they tend to balance accuracy and latency, as demonstrated by the top Pareto parents and the crossover results.",
+    "Avoid nor_conv_3x3 and nor_conv_1x1 because they are not allowed and consistently hurt latency without providing significant accuracy gains, as seen in the constraints and some crossover results."
+   ],
+   [
+    "Use skip_connect and avg_pool_3x3 because they tend to balance accuracy and latency, as demonstrated by the top Pareto parents and the crossover results.",
+    "Avoid nor_conv_3x3 and nor_conv_1x1 because they are not allowed and consistently hurt latency without providing significant accuracy gains, as seen in the constraints and some crossover results."
+   ],
+   [
+    "Use skip_connect and avg_pool_3x3 because they tend to balance accuracy and latency, as demonstrated by the top Pareto parents and the crossover results.",
+    "Avoid nor_conv_3x3 and nor_conv_1x1 because they are not allowed and consistently hurt latency without providing significant accuracy gains, as seen in the constraints and some crossover results."
+   ],
+   [
+    "Use skip_connect and avg_pool_3x3 because they tend to balance accuracy and latency, as demonstrated by the top Pareto parents and the crossover results.",
+    "Avoid nor_conv_3x3 and nor_conv_1x1 because they are not allowed and consistently hurt latency without providing significant accuracy gains, as seen in the constraints and some crossover results."
+   ],
+   [
+    "Use skip_connect and avg_pool_3x3 because they tend to balance accuracy and latency, as demonstrated by the top Pareto parents and the crossover results.",
+    "Avoid nor_conv_3x3 and nor_conv_1x1 because they are not allowed and consistently hurt latency without providing significant accuracy gains, as seen in the constraints and some crossover results."
+   ],
+   [
+    "Use skip_connect and avg_pool_3x3 because they tend to balance accuracy and latency, as demonstrated by the top Pareto parents and the crossover results.",
+    "Avoid nor_conv_3x3 and nor_conv_1x1 because they are not allowed and consistently hurt latency without providing significant accuracy gains, as seen in the constraints and some crossover results."
+   ],
+   [
+    "Use skip_connect and avg_pool_3x3 because they tend to balance accuracy and latency, as demonstrated by the top Pareto parents and the crossover results.",
+    "Avoid nor_conv_3x3 and nor_conv_1x1 because they are not allowed and consistently hurt latency without providing significant accuracy gains, as seen in the constraints and some crossover results."
+   ]
+  ],
+  "S1": [
+   [
+    "{'Use': 'nor_conv_1x1 because it consistently improves accuracy at acceptable latency across the given architectures. It meets the MUST criteria and is used in top performing architectures.'}",
+    "{'Avoid': \"none because it does not contribute to the network's performance and only serves to zeroize the input, which consistently hurts the accuracy and latency metrics.\"}"
+   ],
+   [
+    "nor_conv_1x1 because it consistently improves accuracy at acceptable latency across the given architectures. It meets the MUST criteria and is used in top performing architectures.",
+    "none because it does not contribute to the network's performance and only serves to zeroize the input, which consistently hurts the accuracy and latency metrics."
+   ],
+   [
+    "Use nor_conv_1x1 because it consistently improves accuracy at acceptable latency across the given architectures. It meets the MUST criteria and is used in top performing architectures.",
+    "Avoid none because it does not contribute to the network's performance and only serves to zeroize the input, which consistently hurts the accuracy and latency metrics."
+   ],
+   [
+    "{\"rule_1\": \"Use nor_conv_1x1 because it consistently improves accuracy at acceptable latency across the given architectures. It meets the MUST criteria and is used in top performing architectures.\", \"rule_2\": \"Avoid none because it does not contribute to the network's performance and only serves to "
+   ],
+   [
+    "Use nor_conv_1x1 because it consistently improves accuracy at acceptable latency across the given architectures. It meets the MUST criteria and is used in top performing architectures.",
+    "Avoid none because it does not contribute to the network's performance and only serves to increase latency without improving accuracy. This is evident from the top performing architectures that do not use none.",
+    "Use skip_connect for edge e (node3<-node1) because it has shown to improve accuracy by potentially reducing latency without violating the constraint of using at least one nor_conv_1x1. Skip_connect is expected to have less latency than nor_conv_3x3, which may lead to a better balance between accurac",
+    "Avoid nor_conv_3x3 for edge e (node3<-node1) because it increases latency without consistently improving accuracy. This is supported by the rationale of the top Pareto parent ID 1, which shows a mutation that improves accuracy by switching from nor_conv_3x3 to skip_connect."
+   ],
+   [
+    "Use nor_conv_1x1 because it consistently improves accuracy at acceptable latency across the given architectures. It meets the MUST criteria and is used in top performing architectures.",
+    "Avoid none because it does not contribute to the network's performance and only serves to increase latency without improving accuracy. This is evident from the top performing architectures that do not use none.",
+    "Use skip_connect for edge e (node3<-node1) because it has shown to improve accuracy by potentially reducing latency without violating the constraint of using at least one nor_conv_1x1. Skip_connect is expected to have less latency than nor_conv_3x3, which may lead to a better balance between accurac",
+    "Avoid nor_conv_3x3 for edge e (node3<-node1) because it increases latency without consistently improving accuracy. This is supported by the rationale of the top Pareto parent ID 1, which shows a mutation that improves accuracy by switching from nor_conv_3x3 to skip_connect."
+   ],
+   [
+    "Use nor_conv_1x1 because it consistently improves accuracy at acceptable latency across the given architectures. It meets the MUST criteria and is used in top performing architectures.",
+    "Avoid none because it does not contribute to the network's performance and only serves to increase latency without improving accuracy. This is evident from the top performing architectures that do not use none.",
+    "Use skip_connect for edge e (node3<-node1) because it has shown to improve accuracy by potentially reducing latency without violating the constraint of using at least one nor_conv_1x1. Skip_connect is expected to have less latency than nor_conv_3x3, which may lead to a better balance between accurac",
+    "Avoid nor_conv_3x3 for edge e (node3<-node1) because it increases latency without consistently improving accuracy. This is supported by the rationale of the top Pareto parent ID 1, which shows a mutation that improves accuracy by switching from nor_conv_3x3 to skip_connect."
+   ],
+   [
+    "Use nor_conv_1x1 because it consistently improves accuracy at acceptable latency across the given architectures. It meets the MUST criteria and is used in top performing architectures.",
+    "Avoid none because it does not contribute to the network's performance and only serves to increase latency without improving accuracy. This is evident from the top performing architectures that do not use none.",
+    "Use skip_connect for edge e (node3<-node1) because it has shown to improve accuracy by potentially reducing latency without violating the constraint of using at least one nor_conv_1x1. Skip_connect is expected to have less latency than nor_conv_3x3, which may lead to a better balance between accurac",
+    "Avoid nor_conv_3x3 for edge e (node3<-node1) because it increases latency without consistently improving accuracy. This is supported by the rationale of the top Pareto parent ID 1, which shows a mutation that improves accuracy by switching from nor_conv_3x3 to skip_connect."
+   ],
+   [
+    "Use nor_conv_1x1 because it consistently improves accuracy at acceptable latency across the given architectures. It meets the MUST criteria and is used in top performing architectures.",
+    "Avoid none because it does not contribute to the network's performance and only serves to increase latency without improving accuracy. This is evident from the top performing architectures that do not use none.",
+    "Use skip_connect for edge e (node3<-node1) because it has shown to improve accuracy by potentially reducing latency without violating the constraint of using at least one nor_conv_1x1. Skip_connect is expected to have less latency than nor_conv_3x3, which may lead to a better balance between accurac",
+    "Avoid nor_conv_3x3 for edge e (node3<-node1) because it increases latency without consistently improving accuracy. This is supported by the rationale of the top Pareto parent ID 1, which shows a mutation that improves accuracy by switching from nor_conv_3x3 to skip_connect."
+   ],
+   [
+    "{\"rule_1\": \"Use nor_conv_1x1 because it consistently improves accuracy at acceptable latency across the given architectures. It meets the MUST criteria and is used in top performing architectures.\", \"rule_2\": \"Avoid none because it does not contribute to the network's performance and only serves to "
+   ]
+  ],
+  "S2": [
+   [
+    "{'Use': 'nor_conv_3x3 because it consistently improves accuracy and has an acceptable latency, as seen in the top Pareto parents and the crossover results.'}",
+    "{'Avoid': 'Using more than 1 x nor_conv_1x1 because it tends to hurt latency without significantly improving accuracy, as indicated by the crossover results.'}"
+   ],
+   [
+    "nor_conv_3x3 because it consistently improves accuracy and has an acceptable latency, as seen in the top Pareto parents and the crossover results.",
+    "Using more than 1 x nor_conv_1x1 because it tends to hurt latency without significantly improving accuracy, as indicated by the crossover results."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy and has an acceptable latency, as seen in the top Pareto parents and the crossover results.",
+    "Avoid using more than 1 x nor_conv_1x1 because it tends to hurt latency without significantly improving accuracy, as indicated by the crossover results."
+   ],
+   [
+    "{\"rule_1\": \"Use nor_conv_3x3 because it consistently improves accuracy and has an acceptable latency, as seen in the top Pareto parents and the crossover results.\", \"rule_2\": \"Avoid using more than 1 x nor_conv_1x1 because it tends to hurt latency without significantly improving accuracy, as indicat"
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy and has an acceptable latency, as seen in the top Pareto parents and the crossover results.",
+    "Avoid using more than 1 x nor_conv_1x1 because it tends to hurt latency without significantly improving accuracy, as indicated by the negative impact on latency in the top Pareto parents.",
+    "Use nor_conv_1x1 when combined with nor_conv_3x3, as demonstrated by the positive outcomes in the top Pareto parents (ID 0 and ID 2), where nor_conv_1x1 improves accuracy while having a minimal impact on latency.",
+    "Avoid avg_pool_3x3 unless absolutely necessary, as it does not consistently improve accuracy and can increase latency, as seen in the results where it does not appear in the top Pareto parents."
+   ],
+   [
+    "{\"rule_1\": \"Use nor_conv_3x3 because it consistently improves accuracy and has an acceptable latency, as seen in the top Pareto parents and the crossover results.\", \"rule_2\": \"Avoid using more than 1 x nor_conv_1x1 because it tends to hurt latency without significantly improving accuracy, as indicat"
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy and has an acceptable latency, as seen in the top Pareto parents and the crossover results.",
+    "Avoid using more than 1 x nor_conv_1x1 because it tends to hurt latency without significantly improving accuracy, as indicated by the trends in the NAS-Bench-201 cell and HW-NAS-Bench."
+   ],
+   [
+    "{\"rule_1\": \"Use nor_conv_3x3 because it consistently improves accuracy and has an acceptable latency, as seen in the top Pareto parents and the crossover results.\", \"rule_2\": \"Avoid using more than 1 x nor_conv_1x1 because it tends to hurt latency without significantly improving accuracy, as indicat"
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy and has an acceptable latency, as seen in the top Pareto parents and the crossover results.",
+    "Avoid using more than 1 x nor_conv_1x1 because it tends to hurt latency without significantly improving accuracy, as indicated by the generation 9 results."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy and has an acceptable latency, as seen in the top Pareto parents and the crossover results.",
+    "Avoid using more than 1 x nor_conv_1x1 because it tends to hurt latency without significantly improving accuracy, as indicated by the generation 9 results."
+   ]
+  ],
+  "S3": [
+   [
+    "{'Use': \"nor_conv_3x3 because it consistently improves accuracy across the given NAS-Bench-201 cell, particularly when combined with other operators and considering the target device's edge GPU architecture. It helps in maintaining or increasing accuracy while optimizing latency.\"}",
+    "{'Avoid': 'nor_conv_1x1 when used excessively, especially when more than two instances are used, as it can lead to increased latency without significant accuracy gains. This is especially important given the constraint that only 0-4 x nor_conv_1x1 can be used.'}"
+   ],
+   [
+    "nor_conv_3x3 because it consistently improves accuracy across the given NAS-Bench-201 cell, particularly when combined with other operators and considering the target device's edge GPU architecture. It helps in maintaining or increasing accuracy while optimizing latency.",
+    "nor_conv_1x1 when used excessively, especially when more than two instances are used, as it can lead to increased latency without significant accuracy gains. This is especially important given the constraint that only 0-4 x nor_conv_1x1 can be used."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy across the given NAS-Bench-201 cell, particularly when combined with other operators and considering the target device's edge GPU architecture. It helps in maintaining or increasing accuracy while optimizing latency.",
+    "Avoid excessive use of nor_conv_1x1 because it can lead to increased latency without significant accuracy gains, especially when more than two instances are used. This is especially important given the constraint that only 0-4 x nor_conv_1x1 can be used."
+   ],
+   [
+    "{\"rule_1\": \"Use nor_conv_3x3 because it consistently improves accuracy across the given NAS-Bench-201 cell, particularly when combined with other operators and considering the target device's edge GPU architecture. It helps in maintaining or increasing accuracy while optimizing latency.\", \"rule_2\": "
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy across the given NAS-Bench-201 cell, particularly when combined with other operators and considering the target device's edge GPU architecture. It helps in maintaining or increasing accuracy while optimizing latency.",
+    "Avoid using avg_pool_3x3 when it is directly connected to the output node (node3<-node0, node3<-node1, node3<-node2) as it can significantly increase latency without a clear benefit to accuracy."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy across the given NAS-Bench-201 cell, particularly when combined with other operators and considering the target device's edge GPU architecture. It helps in maintaining or increasing accuracy while optimizing latency.",
+    "Avoid using avg_pool_3x3 when it is directly connected to the output node (node3<-node0, node3<-node1, node3<-node2) as it can significantly increase latency without a clear benefit to accuracy."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy across the given NAS-Bench-201 cell, particularly when combined with other operators and considering the target device's edge GPU architecture. It helps in maintaining or increasing accuracy while optimizing latency.",
+    "Avoid using avg_pool_3x3 when it is directly connected to the output node (node3<-node0, node3<-node1, node3<-node2) as it can significantly increase latency without a clear benefit to accuracy."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy across the given NAS-Bench-201 cell, particularly when combined with other operators and considering the target device's edge GPU architecture. It helps in maintaining or increasing accuracy while optimizing latency.",
+    "Avoid using avg_pool_3x3 when it is directly connected to the output node (node3<-node0, node3<-node1, node3<-node2) as it can significantly increase latency without a clear benefit to accuracy."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy across the given NAS-Bench-201 cell, particularly when combined with other operators and considering the target device's edge GPU architecture. It helps in maintaining or increasing accuracy while optimizing latency.",
+    "Avoid using avg_pool_3x3 when it is directly connected to the output node (node3<-node0, node3<-node1, node3<-node2) as it can significantly increase latency without a clear benefit to accuracy."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy across the given NAS-Bench-201 cell, particularly when combined with other operators and considering the target device's edge GPU architecture. It helps in maintaining or increasing accuracy while optimizing latency.",
+    "Avoid using avg_pool_3x3 when it is directly connected to the output node (node3<-node0, node3<-node1, node3<-node2) as it can significantly increase latency without a clear benefit to accuracy."
+   ]
+  ],
+  "S4": [
+   [
+    "{'Use/avoid': 'nor_conv_3x3 because it consistently improves accuracy at acceptable latency. It is used in the top Pareto parents and maintains a balance between accuracy and latency.'}",
+    "{'Avoid': 'nor_conv_1x1 when it is not directly used by the top Pareto parents. It tends to increase latency without a significant impact on accuracy, which is less preferred.'}",
+    "{'Use': 'avg_pool_3x3 when it is used by the top Pareto parents. It can help in reducing latency while maintaining or even improving accuracy, which is a favorable choice.'}"
+   ],
+   [
+    "nor_conv_3x3 because it consistently improves accuracy at acceptable latency. It is used in the top Pareto parents and maintains a balance between accuracy and latency.",
+    "nor_conv_1x1 when it is not directly used by the top Pareto parents. It tends to increase latency without a significant impact on accuracy, which is less preferred.",
+    "avg_pool_3x3 when it is used by the top Pareto parents. It can help in reducing latency while maintaining or even improving accuracy, which is a favorable choice."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy at acceptable latency. It is used in the top Pareto parents and maintains a balance between accuracy and latency.",
+    "Avoid nor_conv_1x1 when it is directly used by the top Pareto parents. It tends to increase latency without a significant impact on accuracy, which is less preferred.",
+    "Use avg_pool_3x3 when it is used by the top Pareto parents. It can help in reducing latency while maintaining or even improving accuracy, which is a favorable choice."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy at acceptable latency. It is used in the top Pareto parents and maintains a balance between accuracy and latency.",
+    "Avoid nor_conv_1x1 when it is directly used by the top Pareto parents. It tends to increase latency without a significant impact on accuracy, which is less preferred.",
+    "Use avg_pool_3x3 when it is used by the top Pareto parents. It can help in reducing latency while maintaining or even improving accuracy, which is a favorable choice."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy at acceptable latency. It is used in the top Pareto parents and maintains a balance between accuracy and latency.",
+    "Avoid nor_conv_1x1 when it is directly used by the top Pareto parents. It tends to increase latency without a significant impact on accuracy, which is less preferred.",
+    "Use avg_pool_3x3 when it is used by the top Pareto parents. It can help in reducing latency while maintaining or even improving accuracy, which is a favorable choice."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy at acceptable latency. It is used in the top Pareto parents and maintains a balance between accuracy and latency.",
+    "Avoid nor_conv_1x1 when it is directly used by the top Pareto parents. It tends to increase latency without a significant impact on accuracy, which is less preferred.",
+    "Use avg_pool_3x3 when it is used by the top Pareto parents. It can help in reducing latency while maintaining or even improving accuracy, which is a favorable choice."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy at acceptable latency. It is used in the top Pareto parents and maintains a balance between accuracy and latency.",
+    "Avoid nor_conv_1x1 when it is directly used by the top Pareto parents. It tends to increase latency without a significant impact on accuracy, which is less preferred.",
+    "Use avg_pool_3x3 when it is used by the top Pareto parents. It can help in reducing latency while maintaining or even improving accuracy, which is a favorable choice."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy at acceptable latency. It is used in the top Pareto parents and maintains a balance between accuracy and latency.",
+    "Avoid nor_conv_1x1 when it is directly used by the top Pareto parents. It tends to increase latency without a significant impact on accuracy, which is less preferred.",
+    "Use avg_pool_3x3 when it is used by the top Pareto parents. It can help in reducing latency while maintaining or even improving accuracy, which is a favorable choice."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy at acceptable latency. It is used in the top Pareto parents and maintains a balance between accuracy and latency.",
+    "Avoid nor_conv_1x1 when it is directly used by the top Pareto parents. It tends to increase latency without a significant impact on accuracy, which is less preferred.",
+    "Use avg_pool_3x3 when it is used by the top Pareto parents. It can help in reducing latency while maintaining or even improving accuracy, which is a favorable choice."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy at acceptable latency. It is used in the top Pareto parents and maintains a balance between accuracy and latency.",
+    "Avoid nor_conv_1x1 when it is directly used by the top Pareto parents. It tends to increase latency without a significant impact on accuracy, which is less preferred.",
+    "Use avg_pool_3x3 when it is used by the top Pareto parents. It can help in reducing latency while maintaining or even improving accuracy, which is a favorable choice."
+   ]
+  ],
+  "S5": [
+   [
+    "{'Use': 'nor_conv_3x3 because it consistently improves accuracy at acceptable latency as seen in the top Pareto parents and the crossover results. It also meets the requirement of using at least 4 x nor_conv_3x3.'}",
+    "{'Avoid': 'nor_conv_1x1 unless necessary because it does not consistently improve accuracy or reduce latency. Its absence does not seem to negatively impact performance, and the requirement to use at least 4 x nor_conv_3x3 should be prioritized.'}"
+   ],
+   [
+    "nor_conv_3x3 because it consistently improves accuracy at acceptable latency as seen in the top Pareto parents and the crossover results. It also meets the requirement of using at least 4 x nor_conv_3x3.",
+    "nor_conv_1x1 unless necessary because it does not consistently improve accuracy or reduce latency. Its absence does not seem to negatively impact performance, and the requirement to use at least 4 x nor_conv_3x3 should be prioritized."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy at acceptable latency as seen in the top Pareto parents and the crossover results. It also meets the requirement of using at least 4 x nor_conv_3x3.",
+    "Avoid nor_conv_1x1 unless necessary because it does not consistently improve accuracy or reduce latency. Its absence does not seem to negatively impact performance, and the requirement to use at least 4 x nor_conv_3x3 should be prioritized."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy at acceptable latency as seen in the top Pareto parents and the crossover results. It also meets the requirement of using at least 4 x nor_conv_3x3.",
+    "Avoid nor_conv_1x1 unless necessary because it does not consistently improve accuracy or reduce latency. Its absence does not seem to negatively impact performance, and the requirement to use at least 4 x nor_conv_3x3 should be prioritized."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy at acceptable latency as seen in the top Pareto parents and the crossover results. It also meets the requirement of using at least 4 x nor_conv_3x3.",
+    "Avoid nor_conv_1x1 unless necessary because it does not consistently improve accuracy or reduce latency. Its absence does not seem to negatively impact performance, and the requirement to use at least 4 x nor_conv_3x3 should be prioritized.",
+    "Use skip_connect and avg_pool_3x3 when available, as they have shown to provide a balance between latency and accuracy, especially when combined with nor_conv_3x3, which has been proven to be effective.",
+    "When considering mutations, prioritize changes that maintain or improve the balance between accuracy and latency, and ensure the constraint of using at least 4 x nor_conv_3x3 is not compromised."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy at acceptable latency as seen in the top Pareto parents and the crossover results. It also meets the requirement of using at least 4 x nor_conv_3x3.",
+    "Avoid nor_conv_1x1 unless necessary because it does not consistently improve accuracy or reduce latency. Its absence does not seem to negatively impact performance, and the requirement to use at least 4 x nor_conv_3x3 should be prioritized.",
+    "Use skip_connect and avg_pool_3x3 when available, as they have shown to provide a balance between latency and accuracy, especially when combined with nor_conv_3x3, which has been proven to be effective.",
+    "When considering mutations, prioritize changes that maintain or improve the balance between accuracy and latency, and ensure the constraint of using at least 4 x nor_conv_3x3 is not compromised."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy at acceptable latency as seen in the top Pareto parents and the crossover results. It also meets the requirement of using at least 4 x nor_conv_3x3.",
+    "Avoid nor_conv_1x1 unless necessary because it does not consistently improve accuracy or reduce latency. Its absence does not seem to negatively impact performance, and the requirement to use at least 4 x nor_conv_3x3 should be prioritized.",
+    "Use skip_connect and avg_pool_3x3 when available, as they have shown to provide a balance between latency and accuracy, especially when combined with nor_conv_3x3, which has been proven to be effective.",
+    "When considering mutations, prioritize changes that maintain or improve the balance between accuracy and latency, and ensure the constraint of using at least 4 x nor_conv_3x3 is not compromised."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy at acceptable latency as seen in the top Pareto parents and the crossover results. It also meets the requirement of using at least 4 x nor_conv_3x3.",
+    "Avoid nor_conv_1x1 unless necessary because it does not consistently improve accuracy or reduce latency. Its absence does not seem to negatively impact performance, and the requirement to use at least 4 x nor_conv_3x3 should be prioritized.",
+    "Use skip_connect and avg_pool_3x3 when available, as they have shown to provide a balance between latency and accuracy, especially when combined with nor_conv_3x3, which has been proven to be effective.",
+    "When considering mutations, prioritize changes that maintain or improve the balance between accuracy and latency, and ensure the constraint of using at least 4 x nor_conv_3x3 is not compromised."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy at acceptable latency as seen in the top Pareto parents and the crossover results. It also meets the requirement of using at least 4 x nor_conv_3x3.",
+    "Avoid nor_conv_1x1 unless necessary because it does not consistently improve accuracy or reduce latency. Its absence does not seem to negatively impact performance, and the requirement to use at least 4 x nor_conv_3x3 should be prioritized.",
+    "Use skip_connect and avg_pool_3x3 when available, as they have shown to provide a balance between latency and accuracy, especially when combined with nor_conv_3x3, which has been proven to be effective.",
+    "When considering mutations, prioritize changes that maintain or improve the balance between accuracy and latency, and ensure the constraint of using at least 4 x nor_conv_3x3 is not compromised."
+   ],
+   [
+    "Use nor_conv_3x3 because it consistently improves accuracy at acceptable latency as seen in the top Pareto parents and the crossover results. It also meets the requirement of using at least 4 x nor_conv_3x3.",
+    "Avoid nor_conv_1x1 unless necessary because it does not consistently improve accuracy or reduce latency. Its absence does not seem to negatively impact performance, and the requirement to use at least 4 x nor_conv_3x3 should be prioritized.",
+    "Use skip_connect and avg_pool_3x3 when available, as they have shown to provide a balance between latency and accuracy, especially when combined with nor_conv_3x3, which has been proven to be effective.",
+    "When considering mutations, prioritize changes that maintain or improve the balance between accuracy and latency, and ensure the constraint of using at least 4 x nor_conv_3x3 is not compromised."
+   ]
+  ]
+ },
+ "trajectory": [
+  {
+   "gen": 0,
+   "n_evaluated": 30,
+   "hv": 0.9200518264176609,
+   "igd": 0.08674535402575322,
+   "n_front": 7
+  },
+  {
+   "gen": 1,
+   "n_evaluated": 31,
+   "hv": 0.9200518264176609,
+   "igd": 0.08674535402575322,
+   "n_front": 7
+  },
+  {
+   "gen": 2,
+   "n_evaluated": 36,
+   "hv": 0.9200518264176609,
+   "igd": 0.08674535402575322,
+   "n_front": 7
+  },
+  {
+   "gen": 3,
+   "n_evaluated": 44,
+   "hv": 0.9696546432826133,
+   "igd": 0.05756134949941515,
+   "n_front": 7
+  },
+  {
+   "gen": 4,
+   "n_evaluated": 45,
+   "hv": 0.9696546432826133,
+   "igd": 0.05756134949941515,
+   "n_front": 7
+  },
+  {
+   "gen": 5,
+   "n_evaluated": 49,
+   "hv": 0.9696546432826133,
+   "igd": 0.05756134949941515,
+   "n_front": 7
+  },
+  {
+   "gen": 6,
+   "n_evaluated": 51,
+   "hv": 0.9696546432826133,
+   "igd": 0.05756134949941515,
+   "n_front": 7
+  },
+  {
+   "gen": 7,
+   "n_evaluated": 53,
+   "hv": 0.9696546432826133,
+   "igd": 0.05756134949941515,
+   "n_front": 7
+  },
+  {
+   "gen": 8,
+   "n_evaluated": 56,
+   "hv": 0.9696546432826133,
+   "igd": 0.05756134949941515,
+   "n_front": 7
+  },
+  {
+   "gen": 9,
+   "n_evaluated": 61,
+   "hv": 0.9734836581666498,
+   "igd": 0.057033094796878056,
+   "n_front": 7
+  },
+  {
+   "gen": 10,
+   "n_evaluated": 64,
+   "hv": 0.9734836581666498,
+   "igd": 0.057033094796878056,
+   "n_front": 7
+  }
+ ],
+ "config": {
+  "data_dir": null,
+  "results_dir": "results",
+  "search": {
+   "generations": 10,
+   "crossover_prob": 0.5,
+   "partitioning": true,
+   "operator": "llm",
+   "knowledge_base": true,
+   "init_pop_per_niche": 5,
+   "n_child": 4,
+   "n_parents_shown": 6,
+   "latency_limit": null,
+   "match_budget": true
+  },
+  "predictor": {
+   "kind": "zc_ensemble",
+   "n_train": 1000,
+   "target": "val"
+  },
+  "evaluation": {
+   "acc": "test",
+   "front_source": "archive",
+   "normalization": "front",
+   "ref_point": [
+    1.1,
+    1.1
+   ]
+  },
+  "llm": {
+   "backend": "openai",
+   "model": "deepseek-coder-v2-16b-8k",
+   "temperature": 0.7,
+   "base_url": "http://localhost:11434/v1",
+   "api_key_env": "OPENAI_API_KEY",
+   "max_tokens": 4096,
+   "mode": "record",
+   "timeout": 3600
+  },
+  "bias": {
+   "rounds": 10,
+   "per_round": 6,
+   "prompt": "normal"
+  },
+  "variant": "llmnas",
+  "type": "search",
+  "code_version": "d474426"
+ }
+}

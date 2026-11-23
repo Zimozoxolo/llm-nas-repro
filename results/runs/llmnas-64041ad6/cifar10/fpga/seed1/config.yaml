@@ -1,0 +1,40 @@
+data_dir: null
+results_dir: results
+search:
+  generations: 10
+  crossover_prob: 0.5
+  partitioning: true
+  operator: llm
+  knowledge_base: true
+  init_pop_per_niche: 5
+  n_child: 4
+  n_parents_shown: 6
+  latency_limit: null
+  match_budget: true
+predictor:
+  kind: zc_ensemble
+  n_train: 1000
+  target: val
+evaluation:
+  acc: test
+  front_source: archive
+  normalization: front
+  ref_point:
+  - 1.1
+  - 1.1
+llm:
+  backend: openai
+  model: deepseek-coder-v2-16b-8k
+  temperature: 0.7
+  base_url: http://localhost:11434/v1
+  api_key_env: OPENAI_API_KEY
+  max_tokens: 4096
+  mode: record
+  timeout: 3600
+bias:
+  rounds: 10
+  per_round: 6
+  prompt: normal
+variant: llmnas
+type: search
+code_version: d7d93c2
