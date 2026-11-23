@@ -74,7 +74,7 @@ li { margin-bottom: 6px; }
 a { color: var(--accent); }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 code, .mono { font-family: var(--f-mono); font-size: .88em; }
-code { background: var(--code-bg); padding: 1px 5px; border-radius: 4px; }
+code { background: var(--code-bg); padding: 1px 5px; border-radius: 4px; overflow-wrap: anywhere; }
 strong { font-weight: 600; }
 
 .head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
@@ -151,9 +151,9 @@ footer { max-width: 1120px; margin: 48px auto 0; padding-top: 18px; border-top: 
 </style>
 
 <header class="top">
-  <div class="eyebrow">Reproduction of LLM-NAS (arXiv 2510.01472) · status 23 November 2026</div>
+  <div class="eyebrow">Reproduction of LLM-NAS (arXiv 2510.01472) · paper version of 23 November 2026</div>
   <h1>What we set out to test, and what we found</h1>
-  <p class="lede">A walk through each objective of the paper, in the order the work was done. Each section says what question it answers, what was run, what came out, and what it means. Numbers are CIFAR-10 unless stated. A glossary of terms is at the end.</p>
+  <p class="lede">A walk through each objective of the updated paper, in the order the work was done. Each section says what question it answers, what was run, what came out, and what it means. Numbers are CIFAR-10 unless stated; every one is generated from the archived runs. A glossary is at the end.</p>
 </header>
 
 <div class="wrap">
@@ -163,124 +163,116 @@ footer { max-width: 1120px; margin: 48px auto 0; padding-top: 18px; border-top: 
     <li><a href="#paper"><span class="n">0</span><span>The paper and our questions</span></a></li>
     <li><a href="#framework"><span class="n">1</span><span>A re-runnable reproduction</span></a></li>
     <li><a href="#data"><span class="n">2</span><span>Is it the paper's data?</span></a></li>
-    <li><a href="#headline"><span class="n">3</span><span>The headline result</span></a></li>
-    <li><a href="#devices"><span class="n">4</span><span>Six devices, more seeds</span></a></li>
+    <li><a href="#headline"><span class="n">3</span><span>The headline setting</span></a></li>
+    <li><a href="#devices"><span class="n">4</span><span>All six devices</span></a></li>
     <li><a href="#scoring"><span class="n">5</span><span>Is the score fair?</span></a></li>
     <li><a href="#worth"><span class="n">6</span><span>Is the LLM worth it?</span></a></li>
     <li><a href="#budget"><span class="n">7</span><span>Where the budget goes</span></a></li>
     <li><a href="#fix"><span class="n">8</span><span>The duplicate-fix test</span></a></li>
-    <li><a href="#next"><span class="n">9</span><span>What is left to decide</span></a></li>
+    <li><a href="#conclusion"><span class="n">9</span><span>What the paper concludes</span></a></li>
+    <li><a href="#next"><span class="n">10</span><span>What is left</span></a></li>
     <li><a href="#glossary"><span class="n">G</span><span>Glossary</span></a></li>
   </ol>
 </nav>
 
 <main>
 
-<!-- 0 ------------------------------------------------------------------------------------------------>
 <section id="paper">
   <div class="head"><span class="num">0</span><span class="chip done">Background</span></div>
   <h2>The paper and our two questions</h2>
   <p><strong>What LLM-NAS does.</strong> It searches for small neural networks that are both accurate and fast on a given chip. The candidates are cells from NAS-Bench-201: each cell has six connections, and each connection is one of five operations, so there are 15,625 possible cells. Instead of changing cells at random, as an evolutionary algorithm would, the method asks GPT-4.1 to propose new cells from the best ones found so far. It also has the model keep a running list of design rules, the <em>knowledge base</em>.</p>
-  <p>Two other parts matter. The space is split into six <em>niches</em> by how many 3×3 convolutions a cell has, so the search covers simple and complex designs alike. And no network is trained. Accuracy comes from a predictor built on cheap "zero-cost" scores, and latency comes from a table of measurements on six chips (HW-NAS-Bench).</p>
-  <p><strong>What it claims.</strong> Fronts close to the best possible (hypervolume 0.997 on CIFAR-10, Edge GPU) from 120 API calls and about 3 minutes per search, far cheaper than methods that train networks. The authors did not release code.</p>
+  <p>Two other parts matter. The space is split into six <em>niches</em> by how many 3×3 convolutions a cell has, so the search covers simple and complex designs alike. And no network is trained: accuracy comes from a predictor built on cheap "zero-cost" scores, and latency from a table of measurements on six chips (HW-NAS-Bench).</p>
+  <p><strong>What it claims.</strong> Fronts close to the best possible (hypervolume 0.997 on CIFAR-10, Edge GPU) from 120 API calls and about 3 minutes per search. The authors did not release code.</p>
   <h3>Our two questions</h3>
   <ol class="plain">
-    <li>With the same evaluator and the same budget, does the LLM find better designs than a plain, non-LLM search would?</li>
+    <li>With the same evaluator and the same budget, does the LLM find better designs than a plain, non-LLM search?</li>
     <li>Does the LLM bring design knowledge that the search would not have found by itself?</li>
   </ol>
   <div class="takeaway"><span class="k">Why this framing</span><p>The paper compares itself with methods that train networks for days. Much of its saving comes from not training at all, which any search algorithm can do. To credit the LLM, it has to beat other searches that use the same shortcut.</p></div>
 </section>
 
-<!-- 1 ------------------------------------------------------------------------------------------------>
 <section id="framework">
   <div class="head"><span class="num">1</span><span class="chip done">Done</span></div>
   <h2>Objective 1: a reproduction anyone can re-run</h2>
   <p class="q">Can every number be regenerated later, without paying for API calls again?</p>
-  <h3>What we did</h3>
   <ul>
     <li>Rebuilt the method from the paper's text, its Algorithm 1 and the prompts in its Appendix E, as a Python package.</li>
-    <li>Put every setting in one file. Each setting is tagged <code>[paper]</code> if the paper states it, or <code>[assumed]</code> if we had to choose. There are 13 assumed choices. The main ones are 5 starting cells per niche, 4 children per call, at most 6 parents shown, and temperature 0.7.</li>
-    <li>Gave each run a folder named after a fingerprint of its settings. A finished run is never recomputed, and changing a setting creates a new folder instead of overwriting.</li>
+    <li>Put every setting in one file, tagged <code>[paper]</code> if the paper states it or <code>[assumed]</code> if we had to choose (13 choices, such as 5 starting cells per niche and 4 children per call).</li>
+    <li>Gave each run a folder named after a fingerprint of its settings, so a finished run is never recomputed or overwritten.</li>
     <li>Logged every prompt and reply. Any LLM search can be replayed exactly, offline and at no cost.</li>
-    <li>Wrote 60 automated tests that run on synthetic data with a fake LLM.</li>
+    <li>61 automated tests run on synthetic data with a fake LLM.</li>
+    <li>One script, <code>report/paper_numbers.py</code>, computes every number in the paper's tables from the archived runs.</li>
   </ul>
-  <div class="takeaway"><span class="k">Why it mattered later</span><p>The replay logs made the duplicate analysis in Section 7 free: we re-read 720 GPT-4.1 calls without calling the API. They also let us show that the new duplicate-fix code changes nothing when switched off. Five archived runs, including real GPT-4.1 and DeepSeek searches, reproduced exactly.</p></div>
+  <div class="takeaway"><span class="k">Now public</span><p>The code, settings, reports and every run's logs are at <a href="https://github.com/Zimozoxolo/llm-nas-repro">github.com/Zimozoxolo/llm-nas-repro</a> under the MIT licence.</p></div>
 </section>
 
-<!-- 2 ------------------------------------------------------------------------------------------------>
 <section id="data">
   <div class="head"><span class="num">2</span><span class="chip done">Done</span></div>
   <h2>Objective 2: is our data the paper's data?</h2>
   <p class="q">Before comparing results, do the benchmark tables we built match what the paper used?</p>
-  <h3>What we did</h3>
-  <p>We merged three public sources into one table per dataset: latency from HW-NAS-Bench, zero-cost scores from NAS-Bench-Suite-Zero, and accuracy from NATS-Bench. Then we checked the result against every number the paper prints.</p>
-  <h3>What we found</h3>
+  <p>We merged three public sources into one table per dataset (latency from HW-NAS-Bench, zero-cost scores from NAS-Bench-Suite-Zero, accuracy from NATS-Bench) and checked it against every number the paper prints.</p>
   <ul>
-    <li><strong>11 of the 12</strong> architectures in the paper's Table 2 exist in the benchmark with matching accuracy and latency. The twelfth (94.37% at 4.35 ms on Edge GPU) does not exist. The same row is printed for another method, so it is probably a copying error in the paper.</li>
-    <li><strong>A benchmark flaw.</strong> 4,699 cells (30%) have an Edge TPU latency of −1, meaning they failed to compile for that chip. Treated as real numbers, they look like free, instant models and drag every method's Edge TPU score down to about 0.2. We treat them as impossible on that chip. The paper does not say what it did.</li>
+    <li><strong>11 of the 12</strong> architectures in the paper's Table 2 exist in the benchmark with matching accuracy and latency. The twelfth (94.37% at 4.35 ms on Edge GPU) does not exist; the same row is printed for another method, so it is probably a copying error.</li>
+    <li><strong>A benchmark flaw.</strong> 4,699 cells (30%) have an Edge TPU latency of −1, meaning they failed to compile. Treated as real numbers they look like free, instant models and drag every Edge TPU score down to about 0.2. We treat them as impossible on that chip. The paper does not say what it did.</li>
     <li>Our accuracy predictor ranks cells better than the paper's: a rank correlation of 0.96 against about 0.90. It helps every method equally.</li>
   </ul>
-  <div class="takeaway"><span class="k">What it means</span><p>The data matches, so differences from the paper come from the method or the scoring, not from the data. The Edge TPU flaw has to be handled by anyone who uses this benchmark. As far as we found, no paper mentions it.</p></div>
+  <div class="takeaway"><span class="k">What it means</span><p>The data matches, so differences from the paper come from the method or the scoring, not from the data.</p></div>
 </section>
 
-<!-- 3 ------------------------------------------------------------------------------------------------>
 <section id="headline">
   <div class="head"><span class="num">3</span><span class="chip done">Done</span><span class="chip part">One dataset</span></div>
-  <h2>Objective 3: the headline result</h2>
+  <h2>Objective 3: the headline setting</h2>
   <p class="q">On the paper's main setting (CIFAR-10, Edge GPU), do we get its score, and does swapping the LLM change it?</p>
-  <h3>What we ran</h3>
-  <p>GPT-4.1, the paper's model, plus Claude Opus 5.5, DeepSeek-Coder-V2-16B and Qwen2.5-7B. The last two ran on your laptop GPU at no API cost. We compared them with two non-LLM controls that use the same niches and the same predictor: <strong>PEA</strong> (random changes to the parents) and <strong>random sampling</strong> inside each niche.</p>
+  <p>We ran the paper's GPT-4.1, Claude Opus 5.5, and two models on your laptop GPU (DeepSeek-Coder-V2 and Qwen2.5-7B, three seeds each). We compared them with five non-LLM searches that use the same niches and predictor, ten seeds each.</p>
   <div class="tbl"><table>
-    <thead><tr><th>Method</th><th class="n">HV</th><th class="n">Usable proposals</th><th class="n">Evaluated</th><th class="n">Cost</th><th class="n">Time</th></tr></thead>
+    <thead><tr><th>Method</th><th class="n">Seeds</th><th class="n">HV</th><th class="n">Usable</th><th class="n">Evaluated</th><th class="n">Cost</th></tr></thead>
     <tbody>
-      <tr><td>Paper (GPT-4.1)</td><td class="n">0.997</td><td class="n">–</td><td class="n">–</td><td class="n">–</td><td class="n">3 min</td></tr>
-      <tr class="llm"><td>GPT-4.1 (ours)</td><td class="n">0.964</td><td class="n">41%</td><td class="n">129</td><td class="n">$0.85</td><td class="n">8.6 min</td></tr>
-      <tr class="llm"><td>Claude Opus 5.5</td><td class="n">0.980</td><td class="n">80%</td><td class="n">222</td><td class="n">$10.77</td><td class="n">71 min</td></tr>
-      <tr class="llm"><td>DeepSeek-Coder-V2</td><td class="n">0.988</td><td class="n">23%</td><td class="n">85</td><td class="n">$0</td><td class="n">71 min</td></tr>
-      <tr class="llm"><td>Qwen2.5-7B</td><td class="n">0.888</td><td class="n">40%</td><td class="n">125</td><td class="n">$0</td><td class="n">153 min</td></tr>
-      <tr class="ctl"><td>PEA (3 seeds)</td><td class="n">0.989</td><td class="n">65%</td><td class="n">185</td><td class="n">$0</td><td class="n">seconds</td></tr>
-      <tr class="ctl"><td>Random sampling (3 seeds)</td><td class="n">0.991</td><td class="n">100%</td><td class="n">269</td><td class="n">$0</td><td class="n">~1 s</td></tr>
+      <tr><td>Paper (GPT-4.1)</td><td class="n">?</td><td class="n">0.997</td><td class="n">–</td><td class="n">–</td><td class="n">–</td></tr>
+      <tr class="llm"><td>GPT-4.1 (ours)</td><td class="n">1</td><td class="n">0.964</td><td class="n">41%</td><td class="n">129</td><td class="n">$0.85</td></tr>
+      <tr class="llm"><td>Claude Opus 5.5</td><td class="n">1</td><td class="n">0.980</td><td class="n">80%</td><td class="n">222</td><td class="n">$10.77</td></tr>
+      <tr class="llm"><td>DeepSeek-Coder-V2</td><td class="n">3</td><td class="n">0.983</td><td class="n">15%</td><td class="n">66</td><td class="n">$0</td></tr>
+      <tr class="llm"><td>Qwen2.5-7B</td><td class="n">3</td><td class="n">0.949</td><td class="n">32%</td><td class="n">108</td><td class="n">$0</td></tr>
+      <tr class="ctl"><td>NSGA-II</td><td class="n">10</td><td class="n">0.994</td><td class="n">77%</td><td class="n">270</td><td class="n">$0</td></tr>
+      <tr class="ctl"><td>Regularised evolution</td><td class="n">10</td><td class="n">0.994</td><td class="n">78%</td><td class="n">270</td><td class="n">$0</td></tr>
+      <tr class="ctl"><td>PEA with refilling</td><td class="n">10</td><td class="n">0.991</td><td class="n">22%</td><td class="n">270</td><td class="n">$0</td></tr>
+      <tr class="ctl"><td>PEA (random edits)</td><td class="n">10</td><td class="n">0.979</td><td class="n">62%</td><td class="n">180</td><td class="n">$0</td></tr>
+      <tr class="ctl"><td>Random sampling</td><td class="n">10</td><td class="n">0.979</td><td class="n">100%</td><td class="n">269</td><td class="n">$0</td></tr>
     </tbody>
   </table></div>
-  <p class="caption">HV = hypervolume as a share of the best possible (1.0). One run per LLM.</p>
-  <h3>What it means</h3>
+  <p class="caption">HV = hypervolume as a share of the best possible (1.0); mean over seeds. "Usable" = share of proposals that could be evaluated. PEA with refilling redraws rejected children, so its usable share is of all its draws.</p>
   <ul>
-    <li>GPT-4.1 scores 0.964, short of the paper's 0.997. No LLM beats the two free controls.</li>
-    <li>The LLMs waste many proposals. Only 23–41% of what GPT-4.1, DeepSeek and Qwen proposed could be evaluated; the rest repeated a cell already tried or broke the niche rule. Claude Opus wasted 20%.</li>
-    <li>The 3-minute claim did not hold: GPT-4.1 took 8.6 minutes for 120 calls.</li>
-    <li>Only CIFAR-10 was run with LLMs. CIFAR-100 and ImageNet16-120 were left out to keep costs down.</li>
+    <li>GPT-4.1 scores 0.964, short of the paper's 0.997, and took 8.6 minutes rather than 3.</li>
+    <li>No LLM reaches the three searches that use their full budget (0.991–0.994).</li>
+    <li>DeepSeek's average (0.983) is above plain PEA and random sampling (0.979). Those two vary a lot from seed to seed on this device: one PEA seed ends at 0.905 and two random-sampling seeds at 0.926 and 0.945.</li>
   </ul>
 </section>
 
-<!-- 4 ------------------------------------------------------------------------------------------------>
 <section id="devices">
   <div class="head"><span class="num">4</span><span class="chip done">Done</span><span class="chip part">CIFAR-10 only</span></div>
   <h2>Objective 4: does it hold on all six chips?</h2>
   <p class="q">Is Edge GPU a special case, or does the pattern hold across the paper's six devices?</p>
-  <h3>What we ran</h3>
-  <p>GPT-4.1, Claude Haiku 4.5, DeepSeek and Qwen on Edge GPU, Raspberry Pi 4, Edge TPU, Pixel 3, Eyeriss and FPGA. Haiku replaced Opus here because Opus costs about $11 per search. This week DeepSeek and Qwen reached three seeds each (18 runs per model, all on your GPU). The controls now have 10 seeds, and we added two standard evolutionary algorithms, NSGA-II and regularised evolution, with the same predictor and 270 evaluations.</p>
+  <p>GPT-4.1 and Claude Haiku 4.5 (one seed) and DeepSeek and Qwen (three seeds) on Edge GPU, Raspberry Pi 4, Edge TPU, Pixel 3, Eyeriss and FPGA: 48 LLM searches. Haiku replaced Opus here because Opus costs about $11 per search.</p>
   <div class="bars" role="img" aria-label="Mean hypervolume over six devices, CIFAR-10">
     <div class="bar ctl"><span class="nm">NSGA-II (10 seeds)</span><span class="tr"><span class="fi" style="width:80%"></span></span><span class="v">0.970</span></div>
     <div class="bar ctl"><span class="nm">Reg. evolution (10)</span><span class="tr"><span class="fi" style="width:79.3%"></span></span><span class="v">0.969</span></div>
-    <div class="bar ctl"><span class="nm">PEA with refill (10)</span><span class="tr"><span class="fi" style="width:72.7%"></span></span><span class="v">0.959</span></div>
-    <div class="bar ctl"><span class="nm">PEA (3)</span><span class="tr"><span class="fi" style="width:68%"></span></span><span class="v">0.952</span></div>
+    <div class="bar ctl"><span class="nm">PEA with refilling (10)</span><span class="tr"><span class="fi" style="width:72.7%"></span></span><span class="v">0.959</span></div>
+    <div class="bar ctl"><span class="nm">PEA (10)</span><span class="tr"><span class="fi" style="width:66.7%"></span></span><span class="v">0.950</span></div>
     <div class="bar ctl"><span class="nm">Random sampling (10)</span><span class="tr"><span class="fi" style="width:65.3%"></span></span><span class="v">0.948</span></div>
-    <div class="bar llm"><span class="nm">GPT-4.1 (1 seed)</span><span class="tr"><span class="fi" style="width:52%"></span></span><span class="v">0.928</span></div>
+    <div class="bar llm"><span class="nm">GPT-4.1 (1)</span><span class="tr"><span class="fi" style="width:52%"></span></span><span class="v">0.928</span></div>
     <div class="bar llm"><span class="nm">Qwen2.5-7B (3)</span><span class="tr"><span class="fi" style="width:29.3%"></span></span><span class="v">0.894</span></div>
     <div class="bar llm"><span class="nm">DeepSeek-Coder-V2 (3)</span><span class="tr"><span class="fi" style="width:26.7%"></span></span><span class="v">0.890</span></div>
     <div class="bar llm"><span class="nm">Claude Haiku 4.5 (1)</span><span class="tr"><span class="fi" style="width:25.3%"></span></span><span class="v">0.888</span></div>
   </div>
   <div class="axis"><span></span><span class="ticks"><span>0.85</span><span>0.90</span><span>0.95</span><span>1.00</span></span><span></span></div>
-  <p class="caption">Mean hypervolume over the six devices, default scoring, CIFAR-10. The axis starts at 0.85 so the differences are visible. Orange = LLM operators, grey = non-LLM controls.</p>
-  <h3>What it means</h3>
+  <p class="caption">Mean hypervolume over the six devices, default scoring. The axis starts at 0.85 so the differences are visible. Orange = LLMs, grey = non-LLM searches. Seeds in brackets.</p>
   <ul>
-    <li>Of the 24 seed-0 LLM runs (four models × six devices), none beat PEA on its device, and one beat random sampling.</li>
-    <li>Every LLM sits below every control, and the evolutionary algorithms are the strongest.</li>
-    <li>The new seeds show that local-model runs vary a lot. Across devices and seeds, DeepSeek's HV has a standard deviation of 0.10 and Qwen's 0.09. One seed per LLM, as in the earlier results, could mislead by that much.</li>
+    <li><strong>None of the 48 LLM searches</strong> beats NSGA-II, regularised evolution or PEA with refilling on its device.</li>
+    <li>Three beat plain PEA and four beat random sampling, all on Edge GPU except GPT-4.1 on Eyeriss (0.896 against 0.895).</li>
+    <li>On the three devices without the degenerate cell (next section), the LLMs score 0.71–0.90 against control averages of 0.90–0.96, so the gap is not a scoring artefact.</li>
+    <li><strong>LLM results vary a lot between seeds.</strong> The local models' three seeds differ by up to 0.058, more than any control. Qwen's Edge GPU seeds score 0.888, 0.985 and 0.975. Single-seed LLM rankings should not be trusted.</li>
   </ul>
 </section>
 
-<!-- 5 ------------------------------------------------------------------------------------------------>
 <section id="scoring">
   <div class="head"><span class="num">5</span><span class="chip done">Done</span></div>
   <h2>Objective 5: is the scoring rule fair?</h2>
@@ -305,51 +297,60 @@ footer { max-width: 1120px; margin: 48px auto 0; padding-top: 18px; border-top: 
       <text class="svg-text" x="236" y="128">found front</text>
     </svg>
   </div>
-  <p class="caption">Hypervolume is the area between a set of designs and a reference point. We report it as a share of the area the true best front would cover, so 1.0 is perfect.</p>
-  <h3>What we found</h3>
-  <p><strong>One useless cell distorts the scale.</strong> On Edge GPU the true best front ends in a "network" whose input never reaches its output. It answers at chance level (10% accuracy) but runs fastest (0.50 ms), so it sits on the front. Scores are stretched between the best and worst points of the front, so this one cell squeezes all sensible designs into the top 9% of the accuracy scale. That compresses the differences between methods.</p>
-  <p>Removing cells below 80% accuracy changes the order on Edge GPU:</p>
+  <p class="caption">Hypervolume is the area between a set of designs and a reference point, reported as a share of the area the true best front covers, so 1.0 is perfect.</p>
+  <h3>One useless cell distorts the scale</h3>
+  <p>On Edge GPU the true best front ends in a "network" whose input never reaches its output. It answers at chance level (10% accuracy) but runs fastest (0.50 ms), so it sits on the front and squeezes all sensible designs into the top 9% of the accuracy scale.</p>
+  <p>Every one of the 50 control searches on Edge GPU ends with such a cell on its front. The LLMs almost never propose one, since they are asked for accurate models. Where an LLM search has one, it was usually already in the 30 random starting cells. That luck, not the model, is why Qwen's seeds score 0.888 without it and 0.985 and 0.975 with it.</p>
+  <h3>Removing cells below 80% accuracy reorders Edge GPU</h3>
   <div class="tbl"><table>
-    <thead><tr><th>Method</th><th class="n">Default HV</th><th class="n">HV with 80% floor</th></tr></thead>
+    <thead><tr><th>Method</th><th class="n">Seeds</th><th class="n">Default HV</th><th class="n">HV with 80% floor</th></tr></thead>
     <tbody>
-      <tr class="llm"><td>Claude Opus 5.5</td><td class="n">0.980</td><td class="n">0.961</td></tr>
-      <tr class="ctl"><td>Random sampling</td><td class="n">0.991</td><td class="n">0.931</td></tr>
-      <tr class="ctl"><td>PEA</td><td class="n">0.989</td><td class="n">0.904</td></tr>
-      <tr class="llm"><td>DeepSeek-Coder-V2</td><td class="n">0.988</td><td class="n">0.901</td></tr>
-      <tr class="llm"><td>GPT-4.1</td><td class="n">0.964</td><td class="n">0.752</td></tr>
-      <tr class="llm"><td>Qwen2.5-7B</td><td class="n">0.888</td><td class="n">0.709</td></tr>
+      <tr class="llm"><td>Claude Opus 5.5</td><td class="n">1</td><td class="n">0.980</td><td class="n">0.961</td></tr>
+      <tr class="ctl"><td>NSGA-II</td><td class="n">10</td><td class="n">0.994</td><td class="n">0.953</td></tr>
+      <tr class="ctl"><td>Regularised evolution</td><td class="n">10</td><td class="n">0.994</td><td class="n">0.951</td></tr>
+      <tr class="ctl"><td>PEA with refilling</td><td class="n">10</td><td class="n">0.991</td><td class="n">0.922</td></tr>
+      <tr class="ctl"><td>Random sampling</td><td class="n">10</td><td class="n">0.979</td><td class="n">0.911</td></tr>
+      <tr class="ctl"><td>PEA</td><td class="n">10</td><td class="n">0.979</td><td class="n">0.870</td></tr>
+      <tr class="llm"><td>DeepSeek-Coder-V2</td><td class="n">3</td><td class="n">0.983</td><td class="n">0.825</td></tr>
+      <tr class="llm"><td>Qwen2.5-7B</td><td class="n">3</td><td class="n">0.949</td><td class="n">0.781</td></tr>
+      <tr class="llm"><td>GPT-4.1</td><td class="n">1</td><td class="n">0.964</td><td class="n">0.752</td></tr>
     </tbody>
   </table></div>
   <ul>
-    <li>With the floor, Claude Opus is the only LLM ahead of the controls, at about $11 per search. GPT-4.1 falls well behind them.</li>
-    <li>The paper's near-perfect scores (0.996–0.997) appear on exactly the three devices whose true front has such a cell. On the other three it reports 0.93–0.96. This fits the effect but does not prove the paper scored that way.</li>
-    <li>We re-scored every run under 16 plausible scoring rules. GPT-4.1 ranks 6th of 9 methods under every one of them, so its position does not depend on the rule.</li>
+    <li>With the floor, Claude Opus is first, but only just: the best single seeds of regularised evolution and NSGA-II reach 0.972 and 0.967. One search can't settle it.</li>
+    <li>GPT-4.1, DeepSeek and Qwen fall below all five controls.</li>
+    <li>The paper's near-perfect scores (0.996–0.997) appear on exactly the three devices whose true front has such a cell, and 0.93–0.96 on the other three. This fits the effect but does not prove the paper scored that way.</li>
+    <li>We re-scored every run under 16 plausible scoring rules. Under every one, the 25 device results of the published method beat NSGA-II, regularised evolution or PEA with refilling at most once.</li>
   </ul>
-  <div class="takeaway"><span class="k">What it means</span><p>Comparing HV across papers in this field is unreliable until authors state their scoring rule. Our conclusions about GPT-4.1 do not depend on the rule. Claude Opus's advantage does.</p></div>
+  <div class="takeaway"><span class="k">What it means</span><p>Comparing HV across papers in this field is unreliable until authors state their scoring rule. Our main conclusion holds under all 16 rules. Claude Opus's lead depends on the rule and on one search.</p></div>
 </section>
 
-<!-- 6 ------------------------------------------------------------------------------------------------>
 <section id="worth">
-  <div class="head"><span class="num">6</span><span class="chip done">Done</span><span class="chip part">To be refreshed in paper</span></div>
+  <div class="head"><span class="num">6</span><span class="chip done">Done</span></div>
   <h2>Objective 6: is the LLM worth it?</h2>
   <p class="q">With the same evaluator, does the LLM find better fronts, or find them with fewer evaluations, than a cheap search?</p>
   <h3>Equal evaluations</h3>
-  <p>The LLM runs evaluate fewer cells, because many of their proposals are rejected. To compare fairly, we read each control's score at the point where it had evaluated as many cells as GPT-4.1 had (145 on average).</p>
+  <p>The LLM searches evaluate fewer cells because many proposals are rejected. To compare fairly we read each control at the point where it had evaluated as many cells as the LLM search, averaged over its ten seeds.</p>
   <div class="tbl"><table>
-    <thead><tr><th>After 145 evaluations</th><th class="n">Mean HV, six devices</th></tr></thead>
+    <thead><tr><th>LLM</th><th class="n">Evaluated</th><th class="n">LLM HV</th><th class="n">Random sampling</th><th class="n">PEA</th><th class="n">NSGA-II</th><th class="n">Reg. evolution</th></tr></thead>
     <tbody>
-      <tr class="ctl"><td>Regularised evolution</td><td class="n">0.960</td></tr>
-      <tr class="ctl"><td>NSGA-II</td><td class="n">0.949</td></tr>
-      <tr class="ctl"><td>PEA</td><td class="n">0.944</td></tr>
-      <tr class="ctl"><td>Random sampling</td><td class="n">0.930</td></tr>
-      <tr class="llm"><td>GPT-4.1</td><td class="n">0.928</td></tr>
+      <tr class="llm"><td>GPT-4.1</td><td class="n">145</td><td class="n">0.928</td><td class="n">0.925</td><td class="n">0.943</td><td class="n">0.949</td><td class="n">0.960</td></tr>
+      <tr class="llm"><td>Qwen2.5-7B</td><td class="n">114</td><td class="n">0.894</td><td class="n">0.915</td><td class="n">0.931</td><td class="n">0.938</td><td class="n">0.954</td></tr>
+      <tr class="llm"><td>Claude Haiku 4.5</td><td class="n">86</td><td class="n">0.888</td><td class="n">0.897</td><td class="n">0.910</td><td class="n">0.915</td><td class="n">0.943</td></tr>
+      <tr class="llm"><td>DeepSeek-Coder-V2</td><td class="n">63</td><td class="n">0.890</td><td class="n">0.877</td><td class="n">0.885</td><td class="n">0.887</td><td class="n">0.921</td></tr>
     </tbody>
   </table></div>
-  <p>At the same number of evaluations, GPT-4.1 is level with random sampling and below the evolutionary methods.</p>
+  <p class="caption">Mean HV over six devices. Each control column is that control read at the LLM's number of evaluated cells.</p>
+  <ul>
+    <li>GPT-4.1 is level with random sampling and below the evolutionary searches.</li>
+    <li>Qwen and Haiku are below every control.</li>
+    <li>DeepSeek looks level with three controls, but only because it evaluates so few cells (63). At that point every method is barely past its random start, and two of DeepSeek's Edge GPU searches had the degenerate cell in that start.</li>
+    <li>Regularised evolution leads every LLM by 0.03–0.06.</li>
+  </ul>
   <h3>Is the gap real or noise?</h3>
-  <p>We tested whether GPT-4.1 is worse than each control with a cautious test that treats the six devices as six data points. With six devices the smallest possible p-value is 0.016. GPT-4.1 reached it against PEA, NSGA-II and regularised evolution under all 16 scoring rules. We also checked that a smaller or larger predictor does not change the order of the controls.</p>
+  <p>We tested whether the LLMs are worse than each control with a cautious test that treats the six devices as six data points; its smallest possible p-value is 0.016. Against NSGA-II, regularised evolution and PEA with refilling, the LLMs reach it under all 16 scoring rules.</p>
   <h3>What it costs</h3>
-  <p>A GPT-4.1 search costs $0.80–0.88 and takes about 8 minutes. The controls cost nothing and finish in about a second.</p>
+  <p>A GPT-4.1 search costs $0.80–0.88 and takes about 8 minutes; Haiku $1.44–1.62 and about 40 minutes; Opus $10.77 and 71 minutes; the local models nothing in fees but 1–3 hours each. The controls cost nothing and finish in seconds.</p>
   <h3>Where an LLM could still pay off (not tested)</h3>
   <div class="cols">
     <div class="card"><h4>Expensive evaluations</h4><p>Here an evaluation takes a millisecond. If each one meant training a network, saving evaluations would matter.</p></div>
@@ -357,129 +358,106 @@ footer { max-width: 1120px; margin: 48px auto 0; padding-top: 18px; border-top: 
     <div class="card"><h4>Explanations</h4><p>The rules and rationales are readable. Only Claude Opus backed its rules with its own measurements.</p></div>
     <div class="card"><h4>Larger spaces</h4><p>15,625 cells is small enough for random search to do well. A good prior might matter more in a far larger space.</p></div>
   </div>
-  <div class="takeaway"><span class="k">What it means</span><p>On this benchmark the paper's cost saving comes from skipping training, which the free controls also do. The LLM contributes readable rules and a text interface, not better fronts. The NSGA-II and regularised-evolution runs were added after the paper's Section 5 was written, so that section still needs updating.</p></div>
+  <div class="takeaway"><span class="k">What it means</span><p>On this benchmark the paper's cost saving comes from skipping training, which the free controls also do. The LLM adds readable rules and a text interface, not better fronts.</p></div>
 </section>
 
-<!-- 7 ------------------------------------------------------------------------------------------------>
 <section id="budget">
   <div class="head"><span class="num">7</span><span class="chip done">Done</span></div>
   <h2>Objective 7: where the budget goes</h2>
-  <p class="q">Why do the LLM runs evaluate so few cells, and what does that cost them?</p>
-  <h3>The arithmetic</h3>
-  <p>The paper's budget is 120 calls: 60 update the knowledge base and 60 ask for 4 new cells each, so 240 cells are requested. A rejected proposal is not replaced. GPT-4.1 therefore evaluates about 145 cells (30 starting cells plus the accepted ones), against 270 for NSGA-II and regularised evolution, which keep generating until the budget is full.</p>
+  <p class="q">Why do the LLM searches evaluate so few cells?</p>
+  <p>The paper's budget is 120 calls: 60 update the knowledge base and 60 ask for 4 new cells each, so 240 cells are requested. A rejected proposal is not replaced, so GPT-4.1 evaluates about 145 cells (30 starting cells plus the accepted ones), against 270 for the searches that keep generating until the budget is full.</p>
   <h3>What happens to every proposal</h3>
   <div class="legend"><span><i class="s-new"></i>new, evaluated</span><span><i class="s-dup"></i>duplicate</span><span><i class="s-out"></i>broke the niche rule</span><span><i class="s-oth"></i>other</span></div>
   <div class="stack"><span style="color:var(--llm)">Claude Opus (Edge GPU)</span><span class="tr"><span class="s-new" style="width:80%"></span><span class="s-dup" style="width:20%"></span></span><span class="v">222</span></div>
   <div class="stack"><span style="color:var(--llm)">GPT-4.1</span><span class="tr"><span class="s-new" style="width:47.9%"></span><span class="s-dup" style="width:42.7%"></span><span class="s-out" style="width:8.3%"></span><span class="s-oth" style="width:1.1%"></span></span><span class="v">145</span></div>
-  <div class="stack"><span style="color:var(--llm)">Qwen2.5-7B</span><span class="tr"><span class="s-new" style="width:38.8%"></span><span class="s-dup" style="width:28.1%"></span><span class="s-out" style="width:32.1%"></span><span class="s-oth" style="width:1.0%"></span></span><span class="v">123</span></div>
+  <div class="stack"><span style="color:var(--llm)">Qwen2.5-7B</span><span class="tr"><span class="s-new" style="width:35.2%"></span><span class="s-dup" style="width:42.1%"></span><span class="s-out" style="width:22.3%"></span><span class="s-oth" style="width:0.4%"></span></span><span class="v">114</span></div>
   <div class="stack"><span style="color:var(--llm)">Claude Haiku 4.5</span><span class="tr"><span class="s-new" style="width:23.3%"></span><span class="s-dup" style="width:65.6%"></span><span class="s-out" style="width:9.3%"></span><span class="s-oth" style="width:1.8%"></span></span><span class="v">86</span></div>
-  <div class="stack"><span style="color:var(--llm)">DeepSeek-Coder-V2</span><span class="tr"><span class="s-new" style="width:19%"></span><span class="s-dup" style="width:57.1%"></span><span class="s-out" style="width:22.4%"></span><span class="s-oth" style="width:1.5%"></span></span><span class="v">76</span></div>
-  <div class="stack"><span style="color:var(--ctl)">PEA</span><span class="tr"><span class="s-new" style="width:58%"></span><span class="s-dup" style="width:39.8%"></span><span class="s-oth" style="width:2.2%"></span></span><span class="v">169</span></div>
+  <div class="stack"><span style="color:var(--llm)">DeepSeek-Coder-V2</span><span class="tr"><span class="s-new" style="width:13.7%"></span><span class="s-dup" style="width:73.5%"></span><span class="s-out" style="width:11.9%"></span><span class="s-oth" style="width:0.9%"></span></span><span class="v">63</span></div>
+  <div class="stack"><span style="color:var(--ctl)">PEA</span><span class="tr"><span class="s-new" style="width:57.7%"></span><span class="s-dup" style="width:40%"></span><span class="s-oth" style="width:2.3%"></span></span><span class="v">168</span></div>
   <div class="stack"><span style="color:var(--ctl)">Random sampling</span><span class="tr"><span class="s-new" style="width:99.7%"></span><span class="s-dup" style="width:0.3%"></span></span><span class="v">269</span></div>
-  <p class="caption">Share of all proposals, CIFAR-10, six devices, seed 0 for the LLMs. The number on the right is the mean count of cells evaluated per search. NSGA-II and regularised evolution regenerate rejected children, so they always reach 270.</p>
+  <p class="caption">Share of all proposals, CIFAR-10, six devices, all seeds. The number on the right is the mean count of cells evaluated per search.</p>
   <h3>Two different failures</h3>
   <ul>
-    <li><strong>Copying what they are shown.</strong> 41% of DeepSeek's proposals and 33% of Haiku's are a parent from the same prompt, returned unchanged.</li>
-    <li><strong>Forgetting what they tried.</strong> GPT-4.1 rarely copies a parent (6%). Most of its duplicates (32% of all its proposals) are cells it had already seen 3–5 generations earlier, which have since dropped out of the prompt. Each call starts fresh, so the model cannot know the cell was tried.</li>
-    <li>For GPT-4.1 the duplicate rate climbs from 3% in generation 1 to 65% by generations 8–10. Running out of space is not the cause: at the time of a proposal, at most 4.5% of a niche had been evaluated on average.</li>
+    <li><strong>Copying what they are shown.</strong> 58% of DeepSeek's proposals and 33% of Haiku's are a parent from the same prompt, returned unchanged.</li>
+    <li><strong>Forgetting what they tried.</strong> GPT-4.1 rarely copies a parent (6%). Most of its duplicates (32% of all its proposals) are cells it had seen several generations earlier, which have since dropped out of the prompt.</li>
+    <li>For GPT-4.1 the duplicate rate climbs from 3% in generation 1 to 65% by generations 8–10. Running out of space is not the cause: at most 4.2% of a niche had been evaluated, on average, when a proposal was made.</li>
   </ul>
-  <div class="takeaway"><span class="k">What it means</span><p>Part of the LLM's lower score comes from evaluating fewer cells, not only from worse proposals. To our knowledge this is the first exact count of duplicate LLM proposals in a fully listed search space, broken down by source. It is now a section of the paper, "Where the budget goes".</p></div>
+  <div class="takeaway"><span class="k">What it means</span><p>Part of the LLM's lower score could come from evaluating fewer cells, not only from worse proposals. The next test separates the two.</p></div>
 </section>
 
-<!-- 8 ------------------------------------------------------------------------------------------------>
 <section id="fix">
-  <div class="head"><span class="num">8</span><span class="chip prog">In progress</span><span class="chip you">Needs your decisions</span></div>
-  <h2>Objective 8: the duplicate-fix test</h2>
-  <p class="q">If we stop the waste, does GPT-4.1 catch up with the controls? This separates "evaluates fewer cells" from "proposes worse cells".</p>
-  <h3>Rules written before any result</h3>
-  <p>We wrote the test into <code>PREREGISTRATION_duplicate_fix.md</code> and committed it before writing any code. It fixes in advance which runs count, what is measured, and what would count as a win or a loss, so the result cannot be tuned afterwards. Every outcome gets reported, including "no better" and "worse".</p>
-  <h3>The two fixes</h3>
+  <div class="head"><span class="num">8</span><span class="chip done">Done</span><span class="chip you">Negative result</span></div>
+  <h2>Objective 8: the pre-registered duplicate-fix test</h2>
+  <p class="q">If GPT-4.1 is shown what it already tried, and asked again when it repeats itself, does it stop wasting proposals and catch up?</p>
+  <p>The questions, rules, pass marks and expected result were written and committed before any paid call. Two amendments were made, dated, before any arm result existed.</p>
   <div class="cols">
-    <div class="card"><h4>Fix 1: show the history</h4><p>Each request lists every cell already evaluated in the niche (at most 45), with an instruction not to repeat them. This targets GPT-4.1's forgetting.</p></div>
-    <div class="card"><h4>Fix 2: ask again</h4><p>When children are rejected, the model is asked again for only the missing ones, told which were rejected and why. At most 5 retries. A slot still empty after that stays empty and is never filled with a random cell.</p></div>
+    <div class="card"><h4>Arm A: history + ask again</h4><p>The prompt lists up to 45 cells already evaluated in the niche. Rejected children are asked for again, with the reason, up to 5 times. Never padded with random cells. Budget: 270 evaluations. Cost $14.07.</p></div>
+    <div class="card"><h4>Arm B: history only</h4><p>The same list, nothing else, and the paper's 120 calls. Cost $5.53.</p></div>
   </div>
-  <h3>What will be compared</h3>
   <div class="tbl"><table>
-    <thead><tr><th>Run</th><th>Fixes</th><th>Budget</th><th class="n">Cost</th></tr></thead>
+    <thead><tr><th>Question</th><th>Pass mark or rule</th><th>Result</th></tr></thead>
     <tbody>
-      <tr class="llm"><td>Arm A (main)</td><td>history + ask again</td><td>270 evaluations</td><td class="n">≈ $11, at most ≈ $17</td></tr>
-      <tr class="llm"><td>Arm B</td><td>history only</td><td>the paper's 120 calls</td><td class="n">≈ $5.40</td></tr>
-      <tr class="llm"><td>Reference</td><td>none (existing runs)</td><td>120 calls</td><td class="n">already paid</td></tr>
-      <tr class="ctl"><td>PEA with refill (main comparator)</td><td>redraws rejected children</td><td>270 evaluations, 10 seeds</td><td class="n">done, free</td></tr>
-      <tr class="ctl"><td>Random sampling, NSGA-II, reg. evolution</td><td>–</td><td>270 evaluations, 10 seeds</td><td class="n">done, free</td></tr>
+      <tr><td>Q1: did the fixes work?</td><td>Arm A ≥ 265 evaluations on every device, duplicates ≤ 22.7%; arm B ≤ 32.7%</td><td><strong>No.</strong> Arm A reached 231–251, duplicates rose to 48.3% (from 42.7%). Arm B fell to 35.9%.</td></tr>
+      <tr><td>Q2: arm A at 270 evaluations</td><td>Better / Worse / Parity against each control</td><td><strong>Worse</strong> than all four (p = 0.016–0.031). Reported as not answered, because arm A never filled its budget.</td></tr>
+      <tr><td>Q3: arm A at 120 evaluations</td><td>Same rules</td><td>Parity with three controls, Worse than regularised evolution, as for the original runs.</td></tr>
+      <tr><td>Q4: arm B against the original runs</td><td>Margin 0.010</td><td><strong>Parity</strong>: +0.014 on average, p = 0.078.</td></tr>
     </tbody>
   </table></div>
-  <p>Each arm is GPT-4.1, CIFAR-10, all six devices. Arm A is read at two points: after 270 evaluations (equal budget) and after 120 (where a good prior should help most).</p>
-  <h3>How a verdict is reached</h3>
-  <p>For each device, the margin is twice the control's spread over its 10 seeds, or 0.010 if that is larger. A difference smaller than the margin could be luck.</p>
   <ul>
-    <li><strong>Better</strong>: GPT-4.1 beats the control by more than the margin on at least 5 of 6 devices, and the six-device test gives p ≤ 0.05.</li>
-    <li><strong>Worse</strong>: it trails by more than the margin on at least 5 of 6 devices, or the test gives p ≤ 0.05 in that direction.</li>
-    <li><strong>Parity</strong>: anything else.</li>
+    <li>Told that a cell had already been evaluated, GPT-4.1 often proposed it again. On Edge GPU only 75 of 373 retry proposals were usable.</li>
+    <li>With the fixes it evaluated 68% more cells (243 against 145) but gained only 0.004 in HV.</li>
+    <li>Total cost $19.60 of the $23 approved; no API errors and no re-runs. The detailed results page is linked at the end.</li>
   </ul>
-  <p>Separately, the fixes count as working if arm A reaches at least 265 evaluations on every device and its duplicate rate falls at least 20 points, from 42.7% to 22.7% or less.</p>
-  <h3>Done so far (all free)</h3>
-  <ul>
-    <li>Both fixes are built as switches that are off by default. With them off, results are identical to before.</li>
-    <li>Tested with a fake LLM, then frozen at commit <code>754bc79</code>, with that ID written into the pre-registration. The prompt wording can no longer change.</li>
-    <li><strong>Amendment 1</strong>, dated and recorded: in a dry run, PEA with refill could fill only 217–265 of its 270 slots, because the near neighbours of a niche's few parents run out. It now falls back to a random new cell after 50 failed draws, as NSGA-II and regularised evolution already do. The LLM arms are still never padded.</li>
-    <li>All 240 control runs are finished. The analysis runs as one command, <code>python -m llmnas dupfix</code>.</li>
-  </ul>
-  <h3>The problem found, and amendment 2</h3>
-  <p>Hypervolume cannot exceed 1. On Edge GPU, Raspberry Pi 4 and Pixel 3 the controls already score 0.991–0.995, so beating them by the 0.010 minimum would need a score above 1. With only 3 devices left where a win is possible, "at least 5 of 6" can never be met. As written, the test could find GPT-4.1 worse but never better.</p>
-  <p><strong>Proposed amendment 2:</strong> count only devices where beating the margin is possible, require a win on all of them (at least 3), and keep the six-device significance test. "Worse" and "Parity" stay as they are. The decisive devices become the ones where the controls have room to improve:</p>
-  <div class="tbl"><table>
-    <thead><tr><th>Device</th><th class="n">PEA with refill, HV at 270</th><th class="n">Margin GPT-4.1 must beat</th></tr></thead>
-    <tbody>
-      <tr><td>Edge TPU</td><td class="n">0.942</td><td class="n">0.029</td></tr>
-      <tr><td>Eyeriss</td><td class="n">0.919</td><td class="n">0.029</td></tr>
-      <tr><td>FPGA</td><td class="n">0.919</td><td class="n">0.041</td></tr>
-    </tbody>
-  </table></div>
-  <h3>What we expect, written down in advance</h3>
-  <p>The fixes will cut the waste and fill the budget. GPT-4.1 will then be level with PEA and random sampling and still below NSGA-II and regularised evolution. As a preview, the existing GPT-4.1 runs read at 120 evaluations are already level with PEA with refill, random sampling and NSGA-II, and worse than regularised evolution (p = 0.016). These are not the test results.</p>
-  <div class="cols">
-    <div class="card"><h4>If GPT-4.1 catches up</h4><p>Its earlier deficit was mainly the wasted budget, and the paper's framework, not the LLM, was the weak point.</p></div>
-    <div class="card"><h4>If it stays level or below</h4><p>The negative result stands even with a full budget: on this benchmark its proposals are no better than random changes.</p></div>
-    <div class="card"><h4>If the fixes fail to fill the budget</h4><p>That is itself a finding about how well the model follows instructions, and the equal-budget question stays open.</p></div>
-  </div>
+  <div class="takeaway"><span class="k">What it means</span><p>The repeats come from the model's proposals, not from missing information. The objection that the LLM loses only because it evaluates fewer cells is not supported.</p></div>
 </section>
 
-<!-- 9 ------------------------------------------------------------------------------------------------>
-<section id="next">
-  <div class="head"><span class="num">9</span><span class="chip you">Your decisions</span></div>
-  <h2>What is left to decide</h2>
+<section id="conclusion">
+  <div class="head"><span class="num">9</span><span class="chip done">Paper</span></div>
+  <h2>What the updated paper concludes</h2>
   <div class="decide">
-    <div><p><strong>Amendment 2.</strong> Fix the "Better" rule as above, so the test can come out either way. This is free and has to be done before any paid run.</p></div>
-    <div><p><strong>Paid arms.</strong> Arm A ≈ $11 (at most ≈ $17) and arm B ≈ $5.40. Your approval and the amount are recorded in the pre-registration before the first call.</p></div>
-    <div><p><strong>Paper update.</strong> Add the new seeds, the 10-seed controls, NSGA-II and regularised evolution, and the fix results, then rebuild the ten journal versions. Best done once, after the paid arms.</p></div>
-    <div><p><strong>Older paid items.</strong> Three GPT-4.1 seeds on all devices plus the CIFAR-100 ablation (≈ $55), and a small item (≈ $2). Approve or drop.</p></div>
-    <div><p><strong>Submission details.</strong> CRediT roles, funding, competing interests, co-author approval, making the repository public, AI-use wording, the ReScience label, TEVC page length, GECCO citation details, and the date you contacted the original authors.</p></div>
+    <div><p><strong>The data is recoverable, with two caveats:</strong> one reported point does not exist, and the Edge TPU column hides 4,699 failed compilations.</p></div>
+    <div><p><strong>The scoring rule is the biggest unknown.</strong> One degenerate cell decides how compressed the scores are; until authors state their rule, HV values from different papers can't be compared.</p></div>
+    <div><p><strong>No LLM search beats the strong non-LLM searches</strong> on any of the six devices (0 of 48), under any of the 16 scoring rules. Only Claude Opus, under the 80% floor and from one $11 search, edges ahead on Edge GPU.</p></div>
+    <div><p><strong>The cost saving comes from the training-free evaluator,</strong> which every search can use, not from the language model.</p></div>
+    <div><p><strong>Wasted proposals are not the reason the LLM loses.</strong> The pre-registered fixes let GPT-4.1 evaluate more cells, but not catch up.</p></div>
+    <div><p><strong>Limits:</strong> one small, tabulated search space with a cheap evaluator; one seed for the API models; CIFAR-10 only for the LLMs.</p></div>
   </div>
 </section>
 
-<!-- G ------------------------------------------------------------------------------------------------>
+<section id="next">
+  <div class="head"><span class="num">10</span><span class="chip you">Your actions</span></div>
+  <h2>What is left</h2>
+  <div class="decide">
+    <div><p><strong>Read the paper</strong> (<code>report/reproduction_only.pdf</code>). Sections 4 and 7 changed most.</p></div>
+    <div><p><strong>Send it to Dr Nyathi</strong> for co-author approval.</p></div>
+    <div><p><strong>Send the email to the original authors</strong> (<code>report/emails/contact_original_authors.md</code>) and note the date; ReScience needs it.</p></div>
+    <div><p><strong>Submit.</strong> The ten journal versions and Overleaf zips are in <code>Downloads\LLM-NAS_journal_submissions</code>. TEVC is cut to 14 pages with a supplement.</p></div>
+  </div>
+  <p>Not planned, listed as future work: three GPT-4.1 seeds on all devices with the CIFAR-100 ablation (about $55), and two more Claude Opus seeds (about $22).</p>
+</section>
+
 <section id="glossary">
   <div class="head"><span class="num">G</span><span class="chip done">Reference</span></div>
   <h2>Glossary</h2>
   <dl class="gloss">
     <dt>Cell</dt><dd>One candidate network design in NAS-Bench-201: six connections, each with one of five operations. 15,625 in total.</dd>
     <dt>Pareto front</dt><dd>The designs for which nothing else is both faster and more accurate. The "true front" is the best possible one, computed from the full benchmark.</dd>
-    <dt>Hypervolume (HV)</dt><dd>The area covered by a set of designs up to a reference point, as a share of the true front's area. 1.0 is perfect; higher is better.</dd>
+    <dt>Hypervolume (HV)</dt><dd>The area covered by a set of designs up to a reference point, as a share of the true front's area. 1.0 is perfect.</dd>
     <dt>IGD</dt><dd>Average distance from the true front to the nearest found design. Lower is better.</dd>
     <dt>Niche</dt><dd>One of six slices of the space, by number of 3×3 convolutions. Each niche is searched separately.</dd>
-    <dt>Operator</dt><dd>The step that makes new designs from old ones. LLM-NAS uses GPT-4.1; evolutionary search uses random mutation and crossover.</dd>
-    <dt>PEA</dt><dd>The paper's own ablation: the same framework with random operators instead of the LLM. "PEA with refill" redraws rejected children.</dd>
-    <dt>NSGA-II, regularised evolution</dt><dd>Two standard evolutionary algorithms for this kind of problem. We run them with the same predictor and 270 evaluations.</dd>
+    <dt>Operator</dt><dd>The step that makes new designs from old ones. LLM-NAS uses an LLM; evolutionary search uses random mutation and crossover.</dd>
+    <dt>PEA</dt><dd>The paper's own ablation: the same framework with random edits instead of the LLM. Rejected children are lost.</dd>
+    <dt>PEA with refilling</dt><dd>PEA that redraws a rejected child until the budget of 270 evaluations is full.</dd>
+    <dt>NSGA-II, regularised evolution</dt><dd>Two standard evolutionary algorithms, run with the same predictor and 270 evaluations.</dd>
     <dt>Zero-cost predictor</dt><dd>A model that estimates accuracy from cheap scores computed without training, so a design is scored in about a millisecond.</dd>
-    <dt>Seed</dt><dd>One independent repeat of a search with a different random start. More seeds show how much results vary by chance.</dd>
-    <dt>Sign-flip test</dt><dd>A significance test on the six per-device differences. It asks how often random signs would give a result this one-sided. With six devices, the smallest possible p-value is 1/64 = 0.016.</dd>
-    <dt>Margin</dt><dd>The smallest difference counted as real: twice the control's seed spread on that device, and at least 0.010.</dd>
-    <dt>Pre-registration</dt><dd>Writing the test and its pass/fail rules down, and committing them, before seeing results.</dd>
+    <dt>Seed</dt><dd>One independent repeat of a search with a different random start.</dd>
     <dt>Degenerate cell</dt><dd>A cell whose input never reaches its output. It guesses at chance level but is very fast, so it can sit on the true front and distort the scale.</dd>
+    <dt>80% floor</dt><dd>Scoring that ignores every design below 80% accuracy, which removes the degenerate cell.</dd>
+    <dt>Sign-flip test</dt><dd>A significance test on the six per-device differences; with six devices the smallest possible p-value is 1/64 = 0.016.</dd>
+    <dt>Pre-registration</dt><dd>Writing the test and its pass/fail rules down, and committing them, before seeing results.</dd>
   </dl>
 </section>
 
 </main>
 </div>
-<footer>Sources: the reproduction report (<code>report/reproduction_only.tex</code>), <code>results/reports/</code> (conventions, duplicates, dupfix, sensitivity) and <code>PREREGISTRATION_duplicate_fix.md</code> in the llm-nas-repro repository. Means over devices use all seeds available on 23 November 2026.</footer>
+<footer>Sources: <code>report/reproduction_only.tex</code> (23 November 2026), <code>results/reports/paper_numbers.md</code>, <code>conventions.md</code>, <code>duplicates.md</code>, <code>dupfix.md</code> and <code>PREREGISTRATION_duplicate_fix.md</code> in <a href="https://github.com/Zimozoxolo/llm-nas-repro">the repository</a>. Detailed results of the duplicate-fix test: <a href="https://claude.ai/artifact/AWLnKj83qkhptQkwcpevfL">Duplicate-Fix Test Results</a>.</footer>
