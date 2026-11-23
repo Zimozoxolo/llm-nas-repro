@@ -108,10 +108,11 @@ def report(out: Path | None = None) -> str:
         dup = g[g.outcome == "duplicate"]
         lines.append(f"| {m} | {len(g)} | {len(dup) / len(g):.1%} | "
                      + " | ".join(f"{(dup.source == s).sum() / len(g):.1%}" for s in srcs) + " |")  # fmt: skip
-    lines.append("\n## Duplicate rate by niche (all models)\n")
+    pub = df[~df.method.str.contains("[", regex=False)]  # the published method; duplicate-fix arms listed above only
+    lines.append("\n## Duplicate rate by niche (all models, published method only)\n")
     lines.append("| Niche | size | proposals | duplicate rate | mean share of niche already evaluated |")
     lines.append("|---|---|---|---|---|")
-    for n, g in df.groupby("niche"):
+    for n, g in pub.groupby("niche"):
         lines.append(f"| {n} | {SIZE[n]} | {len(g)} | {(g.outcome == 'duplicate').mean():.1%} | {g.fill.mean():.1%} |")
     lines.append("\n## Duplicate rate by requested operation\n")
     lines.append("| Model | mutation | crossover |")
@@ -119,11 +120,12 @@ def report(out: Path | None = None) -> str:
     for m, g in df.groupby("method"):
         rate = g.groupby(g.op.str.lower()).outcome.apply(lambda s: (s == "duplicate").mean())
         lines.append(f"| {m} | {rate.get('mutation', float('nan')):.1%} | {rate.get('crossover', float('nan')):.1%} |")
-    lines.append("\n## Duplicate rate by generation (all models)\n")
-    lines.append("| Generation | " + " | ".join(str(g) for g in sorted(df.gen.unique())) + " |")
+    lines.append("\n## Duplicate rate by generation\n")
+    lines.append("| Model | " + " | ".join(str(g) for g in sorted(df.gen.unique())) + " |")
     lines.append("|---|" + "---|" * df.gen.nunique())
-    lines.append("| duplicate rate | " + " | ".join(f"{(g.outcome == 'duplicate').mean():.0%}"
-                                                  for _, g in df.groupby("gen")) + " |")  # fmt: skip
+    for m, g0 in [("all models, published method", pub)] + list(df.groupby("method")):
+        lines.append(f"| {m} | " + " | ".join(f"{(g.outcome == 'duplicate').mean():.0%}"
+                                              for _, g in g0.groupby("gen")) + " |")  # fmt: skip
     text = "\n".join(lines) + "\n"
     out.write_text(text, encoding="utf-8")
     return text

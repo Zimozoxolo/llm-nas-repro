@@ -25,10 +25,10 @@ FLAT_PKGS = (bv.PREAMBLE_PKGS.replace("\\graphicspath{{figures/}}\n", "")
              + "\\usepackage{adjustbox}\n\\setlength{\\emergencystretch}{3em}\n")
 
 HIGHLIGHTS = [
-    "Independent reimplementation of LLM-NAS from its text, algorithm and prompts",
     "Eleven of twelve reported architectures recovered; one does not exist",
     "Hypervolume rankings hinge on one degenerate point and on normalisation",
-    "No LLM run beat random-operator evolution across six devices (0 of 24)",
+    "No LLM search beat NSGA-II or regularised evolution on six devices (0 of 48)",
+    "Pre-registered fixes for repeated LLM proposals did not close the gap",
     "The training-free evaluator, not the LLM, explains the cost savings",
 ]
 assert 3 <= len(HIGHLIGHTS) <= 5 and all(len(h) <= 85 for h in HIGHLIGHTS), [len(h) for h in HIGHLIGHTS]
@@ -41,7 +41,7 @@ AI_ELSEVIER = (
 )
 DATA_STMT = (
     "The benchmark data are public: HW-NAS-Bench, NAS-Bench-Suite-Zero and NATS-Bench. The code, "
-    "configurations and archived run logs behind every number are available at [repository URL and archive DOI]."
+    "configurations and archived run logs behind every number are available at \\url{https://github.com/Zimozoxolo/llm-nas-repro}."
 )
 
 TEVC_TITLE = "Does the Language Model Matter? Reproducing Language-Model-Driven Hardware-Aware Neural Architecture Search"
@@ -55,8 +55,10 @@ TEVC_ABSTRACT = (
     "but share the same training-free evaluator and complexity niches. Front quality, measured by hypervolume and "
     "inverted generational distance, depended strongly on an unstated normalisation: a single degenerate "
     "architecture on the true front compresses all useful architectures into a small part of the accuracy axis. "
-    "Across six hardware devices, no language-model run exceeded evolution with a random variation operator, and "
-    "one exceeded random sampling. On this small tabulated search space with a cheap evaluator, the reported cost "
+    "Across six hardware devices, none of 48 language-model searches exceeded NSGA-II, regularised evolution or "
+    "evolution with a refilled random operator, each run with ten seeds. In a pre-registered test, showing the "
+    "model the architectures it had already evaluated and asking again for rejected proposals did not reduce its "
+    "repeated proposals, and with a full budget it scored below every control. On this small tabulated search space with a cheap evaluator, the reported cost "
     "savings come from the evaluator rather than from the language model; whether the operator pays off with "
     "expensive evaluations remains open."
 )
@@ -112,6 +114,8 @@ def split_pm(table):
 def fit_wide(s, springer=False):
     """Shrink (never enlarge) tables and TikZ pictures that are wider than the text column."""
     wrap = lambda m: "\\begin{adjustbox}{max width=\\linewidth}\n" + m.group(1) + "\n\\end{adjustbox}"
+    # the source scales some wide tables with \resizebox; unwrap them so each template applies its own rule
+    s = re.sub(r"\\resizebox\{\\linewidth\}\{!\}\{(\\begin\{tabular\}.*?\\end\{tabular\})\}", r"\1", s, flags=re.S)
     if springer:
         # sn-jnl's table environment breaks when a tabular is boxed, so shrink fonts, padding and
         # fixed column widths instead.
@@ -119,8 +123,9 @@ def fit_wide(s, springer=False):
                    r"\1\\footnotesize\\setlength{\\tabcolsep}{3pt}", s)
         s = re.sub(r"p\{(\d+(?:\.\d+)?)cm\}", lambda m: "p{%.1fcm}" % (float(m.group(1)) * 0.78), s)
         s = s.replace("\\setlength{\\tabcolsep}{4pt}", "\\setlength{\\tabcolsep}{2pt}")
-        s = s.replace("Method & Edge~GPU & Raspberry~Pi~4 & Edge~TPU & Pixel~3 & Eyeriss & FPGA \\\\",
-                      "Method & EGPU & Pi4 & ETPU & Pix3 & Eyeriss & FPGA \\\\")
+        s = s.replace("Method & Edge~GPU & Raspberry~Pi~4 & Edge~TPU & Pixel~3 & Eyeriss & FPGA",
+                      "Method & EGPU & Pi4 & ETPU & Pix3 & Eyeriss & FPGA")
+        s = s.replace("\\setlength{\\tabcolsep}{2.5pt}", "\\setlength{\\tabcolsep}{2pt}")
         s = s.replace("\\caption{Hypervolume (default convention) on CIFAR-10, all six devices.",
                       "\\caption{Hypervolume (default convention) on CIFAR-10, all six devices (EGPU: Edge GPU; "
                       "Pi4: Raspberry Pi 4; ETPU: Edge TPU; Pix3: Pixel 3).")
@@ -246,7 +251,7 @@ def build_springer(name, main, glossary, style, authoryear, heading):
         "\\item \\textbf{Competing interests.} The authors have no relevant financial or non-financial interests to disclose.\n"
         "\\item \\textbf{Ethics approval and consent to participate.} Not applicable; no human or animal subjects were involved.\n"
         f"\\item \\textbf{{Data availability.}} {DATA_STMT}\n"
-        "\\item \\textbf{Code availability.} [Public repository URL and archive DOI, e.g.\\ Zenodo.]\n"
+        "\\item \\textbf{Code availability.} \\url{https://github.com/Zimozoxolo/llm-nas-repro} (MIT licence).\n"
         "\\item \\textbf{Use of large language models.} Large language models are the object of study and are documented in "
         "Sections~\\ref{sec:background}--\\ref{sec:results}. An AI coding assistant (Claude Code) was used to write the "
         "implementation and to draft and edit parts of the text (Section~\\ref{sec:method}); the authors reviewed all code "
@@ -261,8 +266,54 @@ def build_springer(name, main, glossary, style, authoryear, heading):
 
 
 # ---------------------------------------------------------------- IEEE TEVC
+# Moved to the supplementary file so the paper fits TEVC's length limit (about 14 pages).
+TEVC_TO_SUPP = [
+    "How it was done before language models",
+    "Search strategies: advantages and pitfalls",
+    "How performance is estimated today",
+    "Unspecified details and the choices made",
+    "Scope of what was run",
+    "Ablation on CIFAR-100 (paper's Table 5)",
+    "What the paper reports",
+]
+TEVC_PARAS_TO_SUPP = ["What other studies report.", "Relation to other work.", "Where an LLM operator could still be justified."]
+
+
+def tevc_trim(body):
+    """Cut the listed subsections out of the body; references to their labels point to the supplement."""
+    moved = []
+    for title in TEVC_TO_SUPP:
+        m = re.search(r"\\subsection\{" + re.escape(title) + r"\}.*?(?=\\subsection\{|\\section\{|%=====)", body, flags=re.S)
+        assert m, f"TEVC: subsection not found: {title}"
+        moved.append(m.group(0))
+        body = body[: m.start()] + body[m.end():]
+    for title in ("Future work",):
+        m = re.search(r"\\section\{" + re.escape(title) + r"\}.*?(?=\\section\{|%=====)", body, flags=re.S)
+        assert m, f"TEVC: section not found: {title}"
+        moved.append(m.group(0).replace("\\section{", "\\subsection{", 1))
+        body = body[: m.start()] + body[m.end():]
+    for title in TEVC_PARAS_TO_SUPP:
+        m = re.search(r"\\paragraph\{" + re.escape(title) + r"\}.*?(?=\\paragraph\{|\\subsection\{|\\section\{|%=====)",
+                      body, flags=re.S)
+        assert m, f"TEVC: paragraph not found: {title}"
+        moved.append(m.group(0))
+        body = body[: m.start()] + body[m.end():]
+    labels = {l for t in moved for l in re.findall(r"\\label\{([^}]+)\}", t)}
+    for l in labels:
+        body = re.sub(r"(Tables?|Figures?|Sections?|Sec\.|Fig\.)~\\ref\{" + re.escape(l) + r"\}", "the supplementary material", body)
+        body = body.replace("\\ref{" + l + "}", "S")
+    # references from the moved text back into the paper
+    for i, t in enumerate(moved):
+        for l in set(re.findall(r"\\ref\{([^}]+)\}", t)) - labels:
+            t = re.sub(r"(Tables?|Figures?|Sections?|Sec\.|Fig\.|Appendix)~\\ref\{" + re.escape(l) + r"\}", "the main paper", t)
+            t = t.replace("\\ref{" + l + "}", "the main paper")
+        moved[i] = t
+    return body, moved
+
+
 def build_tevc(main, glossary):
     d, body = prep("tevc", main, "All code, configurations and run logs are provided as anonymised supplementary material.")
+    body, moved = tevc_trim(body)
     (d / "refs.bib").write_text((HERE / "refs.bib").read_text(encoding="utf-8") + CLAUDE_BIB, encoding="utf-8")
     body = re.sub(r"\\begin\{table\}(\[[^\]]*\])?", r"\\begin{table*}[!t]", body).replace("\\end{table}", "\\end{table*}")
     body = re.sub(r"\\begin\{figure\}(\[[^\]]*\])?", r"\\begin{figure*}[!t]", body).replace("\\end{figure}", "\\end{figure*}")
@@ -291,9 +342,12 @@ def build_tevc(main, glossary):
     (d / "main.tex").write_text(tex, encoding="utf-8")
     supp = (
         "\\documentclass[11pt,a4paper]{article}\n\\usepackage[margin=2.4cm]{geometry}\n" + FLAT_PKGS +
-        "\\begin{document}\n\\title{Supplementary material: glossary of terms and formulas}\n\\date{}\n\\maketitle\n"
+        "\\usepackage{natbib}\n\\begin{document}\n\\title{Supplementary material}\n\\date{}\n\\maketitle\n"
+        "\\section{Extended background and settings}\n"
+        + "\n".join(moved) +
+        "\n\\section{Glossary of terms and formulas}\n"
         + glossary.replace("\\section{Glossary of terms and formulas}\\label{sec:glossary}", "") +
-        "\n\\end{document}\n"
+        "\n\\bibliographystyle{plainnat}\n\\bibliography{refs}\n\\end{document}\n"
     )
     (d / "supplementary.tex").write_text(supp, encoding="utf-8")
     return d

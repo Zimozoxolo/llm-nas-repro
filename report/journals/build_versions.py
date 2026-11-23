@@ -21,20 +21,20 @@ ABSTRACT = (
     "LLM-NAS uses a large language model (LLM) as the variation operator of a hardware-aware neural "
     "architecture search and reports near-optimal Pareto fronts on HW-NAS-Bench from 120 calls to the "
     "language model per search. No reference implementation was available, so we reimplemented the method "
-    "from the paper's text, algorithm and prompts in a configuration-driven framework that logs every call "
-    "for exact replay. We first validated the benchmark data: eleven of the paper's twelve reported "
-    "architectures were recovered exactly, one reported point does not exist in the benchmark, and 4{,}699 "
-    "architectures carry an invalid Edge TPU latency. We then compared searches driven by GPT-4.1, Claude "
-    "Opus~5.5, Claude Haiku~4.5, DeepSeek-Coder-V2 and Qwen2.5-7B with non-LLM controls that share the "
-    "evaluator and the niche structure, using hypervolume (HV) and inverted generational distance. Under the "
-    "default convention GPT-4.1 reached HV~0.964 (paper: 0.997) and the controls 0.989--0.991. The ranking "
-    "depends on the normalisation: one degenerate architecture on the true front compresses all sensible "
-    "architectures into 9\\% of the accuracy axis, and excluding architectures below 80\\% accuracy places "
-    "Claude Opus~5.5 first (0.961) and GPT-4.1 below the controls (0.752). Across six devices, none of 24 LLM "
-    "runs exceeded random-operator evolution and one exceeded random sampling. On this small tabulated space "
-    "with a cheap evaluator, the method's cost advantage comes from the training-free evaluator rather than "
-    "from the language model; whether the LLM operator pays off with expensive evaluations or in larger "
-    "spaces remains open."
+    "from the paper's description in a framework that logs every call for exact replay. Eleven of the "
+    "paper's twelve reported architectures were recovered exactly; one does not exist in the benchmark, "
+    "and 4{,}699 architectures carry an invalid Edge TPU latency. We compared searches driven by GPT-4.1, Claude "
+    "Opus~5.5, Claude Haiku~4.5, DeepSeek-Coder-V2 and Qwen2.5-7B with five non-LLM controls that share the "
+    "evaluator and the niche structure, among them NSGA-II and regularised evolution, ten seeds each. On Edge "
+    "GPU, GPT-4.1 reached a hypervolume of 0.964 (paper: 0.997). Across six devices, none of 48 LLM searches "
+    "exceeded NSGA-II, regularised evolution or refilled random-operator evolution. One degenerate architecture "
+    "on the true front compresses all sensible architectures into 9\\% of the accuracy axis; excluding it "
+    "reorders the methods and puts Claude Opus~5.5 first on Edge GPU, from a single search, but leaves the "
+    "six-device result unchanged. The LLMs repeat 20--74\\% of their proposals. In a pre-registered test, "
+    "showing GPT-4.1 the cells already evaluated and asking again for rejected children did not reduce the "
+    "repeats, and with the larger budget it scored below every control. On this small tabulated space, the "
+    "method's cost advantage comes from the training-free evaluator rather than from the "
+    "language model."
 )
 KEYWORDS = ["Neural architecture search", "Hardware-aware NAS", "Large language models",
             "Reproducibility", "Evolutionary computation", "Multi-objective optimisation"]
@@ -45,7 +45,8 @@ AI_SENTENCE_NEW = ("The implementation is a Python package, written with the ass
                    "(Claude Code) and reviewed by us; every number in this paper is produced by it and can be "
                    "regenerated from the archived run logs. It has the following properties, all motivated by "
                    "the need to regenerate every number years later:")
-REPO_OLD = "All code, configurations and reports are in the \\code{llm-nas-repro} repository."
+REPO_OLD = ("All code, configurations, reports and run logs are in the public \\code{llm-nas-repro} repository "
+            "(\\url{https://github.com/Zimozoxolo/llm-nas-repro}, MIT licence).")
 REPO_NEW = {
     "tmlr": "All code, configurations and run logs are provided as anonymised supplementary material.",
     "gpem": "All code, configurations and run logs are in the public repository given in the Code availability statement.",
@@ -159,7 +160,7 @@ def build_gpem(main, glossary):
         "\\item \\textbf{Ethics approval and consent to participate.} Not applicable; no human or animal subjects were involved.\n"
         "\\item \\textbf{Data availability.} All benchmark data are public: HW-NAS-Bench, NAS-Bench-Suite-Zero and NATS-Bench. "
         "The archived run logs behind every number are available in the code repository.\n"
-        "\\item \\textbf{Code availability.} [Public repository URL and archive DOI, e.g.\\ Zenodo.]\n"
+        "\\item \\textbf{Code availability.} \\url{https://github.com/Zimozoxolo/llm-nas-repro} (MIT licence).\n"
         "\\item \\textbf{Use of large language models.} Large language models are the object of study and are documented in "
         "Sections~\\ref{sec:background}--\\ref{sec:results}; an AI coding tool assisted the implementation, as stated in "
         "Section~\\ref{sec:method}. The authors reviewed all code and text and are accountable for them.\n"
@@ -206,7 +207,7 @@ title: "[¬Re] LLM-NAS: LLM-Driven Hardware-Aware Neural Architecture Search"
 keywords: {kw}
 
 code:
-  - url: "[public repository URL]"
+  - url: https://github.com/Zimozoxolo/llm-nas-repro
   - doi:
   - swh:
 

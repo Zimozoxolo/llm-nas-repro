@@ -11,48 +11,54 @@ Significance (one-sided, H1: the LLM runs are worse than the control): *pooled s
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | claude-haiku-4-5 | 6 | 0.888 | 0.821 | 0.895 | 0.832 | 0.872 | 0.786 | 0.879 | 0.799 | 0.977 | 0.933 | 0.977 | 0.937 | 0.975 | 0.921 | 0.976 | 0.926 |
 | claude-opus-5-5 | 1 | 0.980 | 0.961 | 0.981 | 0.976 | 0.993 | 0.956 | 0.995 | 0.971 | 0.990 | 0.989 | 0.990 | 0.993 | 0.997 | 0.987 | 0.997 | 0.992 |
-| deepseek-coder-v2-16b-8k | 6 | 0.897 | 0.846 | 0.904 | 0.853 | 0.879 | 0.817 | 0.887 | 0.826 | 0.976 | 0.935 | 0.977 | 0.940 | 0.974 | 0.925 | 0.975 | 0.930 |
+| deepseek-coder-v2-16b-8k | 6 | 0.890 | 0.813 | 0.897 | 0.825 | 0.870 | 0.778 | 0.877 | 0.789 | 0.981 | 0.924 | 0.983 | 0.935 | 0.978 | 0.912 | 0.981 | 0.923 |
 | gpt-4.1 | 6 | 0.928 | 0.860 | 0.940 | 0.879 | 0.919 | 0.833 | 0.933 | 0.854 | 0.989 | 0.953 | 0.990 | 0.959 | 0.988 | 0.943 | 0.990 | 0.951 |
-| qwen2.5-7b-8k | 6 | 0.891 | 0.807 | 0.898 | 0.820 | 0.878 | 0.771 | 0.885 | 0.786 | 0.961 | 0.918 | 0.963 | 0.925 | 0.959 | 0.905 | 0.960 | 0.913 |
-| NSGA-II (no LLM) | 6 | 0.969 | 0.943 | 0.984 | 0.968 | 0.966 | 0.937 | 0.982 | 0.963 | 0.994 | 0.972 | 0.997 | 0.986 | 0.993 | 0.968 | 0.996 | 0.984 |
+| gpt-4.1 [history + re-prompt] | 6 | 0.932 | 0.892 | 0.944 | 0.910 | 0.922 | 0.873 | 0.935 | 0.891 | 0.989 | 0.959 | 0.991 | 0.969 | 0.989 | 0.951 | 0.991 | 0.963 |
+| gpt-4.1 [history] | 6 | 0.942 | 0.903 | 0.951 | 0.917 | 0.935 | 0.884 | 0.944 | 0.900 | 0.990 | 0.963 | 0.990 | 0.968 | 0.990 | 0.957 | 0.991 | 0.963 |
+| qwen2.5-7b-8k | 6 | 0.894 | 0.815 | 0.904 | 0.836 | 0.879 | 0.784 | 0.888 | 0.805 | 0.975 | 0.923 | 0.978 | 0.937 | 0.972 | 0.911 | 0.975 | 0.926 |
+| NSGA-II (no LLM) | 6 | 0.970 | 0.945 | 0.983 | 0.968 | 0.967 | 0.938 | 0.981 | 0.963 | 0.994 | 0.973 | 0.997 | 0.986 | 0.994 | 0.970 | 0.996 | 0.984 |
 | PEA (no LLM) | 6 | 0.952 | 0.911 | 0.960 | 0.929 | 0.945 | 0.897 | 0.953 | 0.916 | 0.991 | 0.961 | 0.993 | 0.972 | 0.990 | 0.956 | 0.992 | 0.967 |
-| Random sampling (no LLM) | 6 | 0.950 | 0.907 | 0.956 | 0.922 | 0.941 | 0.889 | 0.948 | 0.907 | 0.992 | 0.963 | 0.993 | 0.971 | 0.991 | 0.957 | 0.992 | 0.965 |
-| Reg. evolution (no LLM) | 6 | 0.967 | 0.936 | 0.981 | 0.962 | 0.963 | 0.928 | 0.978 | 0.955 | 0.994 | 0.970 | 0.997 | 0.985 | 0.993 | 0.966 | 0.996 | 0.983 |
+| PEA with refill (no LLM) | 6 | 0.959 | 0.923 | 0.971 | 0.943 | 0.953 | 0.910 | 0.965 | 0.930 | 0.993 | 0.967 | 0.996 | 0.981 | 0.992 | 0.963 | 0.995 | 0.977 |
+| Random sampling (no LLM) | 6 | 0.948 | 0.907 | 0.956 | 0.922 | 0.940 | 0.891 | 0.948 | 0.906 | 0.991 | 0.961 | 0.993 | 0.971 | 0.990 | 0.955 | 0.992 | 0.965 |
+| Reg. evolution (no LLM) | 6 | 0.969 | 0.941 | 0.983 | 0.965 | 0.966 | 0.932 | 0.981 | 0.958 | 0.995 | 0.973 | 0.997 | 0.986 | 0.994 | 0.969 | 0.997 | 0.984 |
 
 ### cifar10: rank by HV under each convention (1 = best)
 
 | Method | best rank | worst rank |
 |---|---|---|
-| NSGA-II (no LLM) | 1 | 3 |
-| PEA (no LLM) | 4 | 5 |
-| Random sampling (no LLM) | 3 | 5 |
+| NSGA-II (no LLM) | 2 | 3 |
+| PEA (no LLM) | 5 | 6 |
+| PEA with refill (no LLM) | 3 | 4 |
+| Random sampling (no LLM) | 4 | 7 |
 | Reg. evolution (no LLM) | 1 | 3 |
-| claude-haiku-4-5 | 7 | 9 |
-| claude-opus-5-5 | 1 | 5 |
-| deepseek-coder-v2-16b-8k | 7 | 8 |
-| gpt-4.1 | 6 | 6 |
-| qwen2.5-7b-8k | 8 | 9 |
+| claude-haiku-4-5 | 10 | 12 |
+| claude-opus-5-5 | 1 | 8 |
+| deepseek-coder-v2-16b-8k | 10 | 12 |
+| gpt-4.1 | 9 | 9 |
+| gpt-4.1 [history + re-prompt] | 6 | 8 |
+| gpt-4.1 [history] | 5 | 8 |
+| qwen2.5-7b-8k | 10 | 12 |
 
 ### cifar10: LLM runs that beat each control by HV (same device and convention)
 
-| Convention | beats PEA (no LLM) | beats Random sampling (no LLM) | beats NSGA-II (no LLM) | beats Reg. evolution (no LLM) |
-|---|---|---|---|---|
-| front / r=1.1 / archive / no floor | 0/25 | 1/25 | 0/25 | 0/25 |
-| front / r=1.1 / archive / floor 85% | 1/25 | 3/25 | 1/25 | 1/25 |
-| front / r=1.1 / all / no floor | 1/25 | 1/25 | 0/25 | 0/25 |
-| front / r=1.1 / all / floor 85% | 2/25 | 3/25 | 1/25 | 1/25 |
-| front / r=1.0 / archive / no floor | 1/25 | 2/25 | 0/25 | 1/25 |
-| front / r=1.0 / archive / floor 85% | 1/25 | 3/25 | 1/25 | 1/25 |
-| front / r=1.0 / all / no floor | 2/25 | 2/25 | 0/25 | 1/25 |
-| front / r=1.0 / all / floor 85% | 2/25 | 3/25 | 1/25 | 1/25 |
-| space / r=1.1 / archive / no floor | 2/25 | 2/25 | 0/25 | 0/25 |
-| space / r=1.1 / archive / floor 85% | 2/25 | 3/25 | 1/25 | 1/25 |
-| space / r=1.1 / all / no floor | 2/25 | 1/25 | 0/25 | 0/25 |
-| space / r=1.1 / all / floor 85% | 2/25 | 3/25 | 1/25 | 1/25 |
-| space / r=1.0 / archive / no floor | 3/25 | 3/25 | 1/25 | 1/25 |
-| space / r=1.0 / archive / floor 85% | 2/25 | 3/25 | 1/25 | 1/25 |
-| space / r=1.0 / all / no floor | 2/25 | 2/25 | 1/25 | 1/25 |
-| space / r=1.0 / all / floor 85% | 1/25 | 3/25 | 1/25 | 1/25 |
+| Convention | beats PEA (no LLM) | beats Random sampling (no LLM) | beats NSGA-II (no LLM) | beats Reg. evolution (no LLM) | beats PEA with refill (no LLM) |
+|---|---|---|---|---|---|
+| front / r=1.1 / archive / no floor | 0/25 | 3/25 | 0/25 | 0/25 | 0/25 |
+| front / r=1.1 / archive / floor 85% | 1/25 | 3/25 | 1/25 | 1/25 | 1/25 |
+| front / r=1.1 / all / no floor | 1/25 | 3/25 | 0/25 | 0/25 | 0/25 |
+| front / r=1.1 / all / floor 85% | 2/25 | 3/25 | 1/25 | 1/25 | 1/25 |
+| front / r=1.0 / archive / no floor | 1/25 | 3/25 | 0/25 | 0/25 | 1/25 |
+| front / r=1.0 / archive / floor 85% | 1/25 | 3/25 | 1/25 | 1/25 | 1/25 |
+| front / r=1.0 / all / no floor | 2/25 | 3/25 | 0/25 | 0/25 | 1/25 |
+| front / r=1.0 / all / floor 85% | 2/25 | 3/25 | 1/25 | 1/25 | 1/25 |
+| space / r=1.1 / archive / no floor | 1/25 | 3/25 | 0/25 | 0/25 | 0/25 |
+| space / r=1.1 / archive / floor 85% | 1/25 | 3/25 | 1/25 | 1/25 | 1/25 |
+| space / r=1.1 / all / no floor | 2/25 | 3/25 | 0/25 | 0/25 | 0/25 |
+| space / r=1.1 / all / floor 85% | 2/25 | 3/25 | 1/25 | 1/25 | 1/25 |
+| space / r=1.0 / archive / no floor | 2/25 | 4/25 | 1/25 | 1/25 | 1/25 |
+| space / r=1.0 / archive / floor 85% | 1/25 | 3/25 | 1/25 | 1/25 | 1/25 |
+| space / r=1.0 / all / no floor | 2/25 | 3/25 | 1/25 | 1/25 | 1/25 |
+| space / r=1.0 / all / floor 85% | 1/25 | 3/25 | 1/25 | 1/25 | 1/25 |
 
 ## cifar10: mean IGD over devices
 
@@ -60,48 +66,54 @@ Significance (one-sided, H1: the LLM runs are worse than the control): *pooled s
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | claude-haiku-4-5 | 6 | 0.089 | 0.127 | 0.081 | 0.120 | 0.089 | 0.127 | 0.081 | 0.120 | 0.044 | 0.074 | 0.041 | 0.070 | 0.044 | 0.074 | 0.041 | 0.070 |
 | claude-opus-5-5 | 1 | 0.052 | 0.041 | 0.045 | 0.024 | 0.052 | 0.041 | 0.045 | 0.024 | 0.044 | 0.022 | 0.040 | 0.013 | 0.044 | 0.022 | 0.040 | 0.013 |
-| deepseek-coder-v2-16b-8k | 6 | 0.092 | 0.117 | 0.083 | 0.107 | 0.092 | 0.117 | 0.083 | 0.107 | 0.040 | 0.068 | 0.035 | 0.061 | 0.040 | 0.068 | 0.035 | 0.061 |
+| deepseek-coder-v2-16b-8k | 6 | 0.098 | 0.134 | 0.085 | 0.121 | 0.098 | 0.134 | 0.085 | 0.121 | 0.042 | 0.078 | 0.035 | 0.070 | 0.042 | 0.078 | 0.035 | 0.070 |
 | gpt-4.1 | 6 | 0.072 | 0.101 | 0.059 | 0.086 | 0.072 | 0.101 | 0.059 | 0.086 | 0.039 | 0.059 | 0.032 | 0.050 | 0.039 | 0.059 | 0.032 | 0.050 |
-| qwen2.5-7b-8k | 6 | 0.091 | 0.135 | 0.084 | 0.129 | 0.091 | 0.135 | 0.084 | 0.129 | 0.040 | 0.077 | 0.036 | 0.074 | 0.040 | 0.077 | 0.036 | 0.074 |
-| NSGA-II (no LLM) | 6 | 0.065 | 0.077 | 0.032 | 0.041 | 0.065 | 0.077 | 0.032 | 0.041 | 0.033 | 0.045 | 0.016 | 0.024 | 0.033 | 0.045 | 0.016 | 0.024 |
+| gpt-4.1 [history + re-prompt] | 6 | 0.083 | 0.098 | 0.053 | 0.065 | 0.083 | 0.098 | 0.053 | 0.065 | 0.041 | 0.056 | 0.027 | 0.038 | 0.041 | 0.056 | 0.027 | 0.038 |
+| gpt-4.1 [history] | 6 | 0.067 | 0.075 | 0.067 | 0.075 | 0.067 | 0.075 | 0.067 | 0.075 | 0.035 | 0.044 | 0.039 | 0.045 | 0.035 | 0.044 | 0.039 | 0.045 |
+| qwen2.5-7b-8k | 6 | 0.093 | 0.128 | 0.082 | 0.116 | 0.093 | 0.128 | 0.082 | 0.116 | 0.040 | 0.075 | 0.034 | 0.067 | 0.040 | 0.075 | 0.034 | 0.067 |
+| NSGA-II (no LLM) | 6 | 0.057 | 0.068 | 0.030 | 0.037 | 0.057 | 0.068 | 0.030 | 0.037 | 0.029 | 0.040 | 0.015 | 0.022 | 0.029 | 0.040 | 0.015 | 0.022 |
 | PEA (no LLM) | 6 | 0.061 | 0.080 | 0.047 | 0.064 | 0.061 | 0.080 | 0.047 | 0.064 | 0.029 | 0.047 | 0.021 | 0.037 | 0.029 | 0.047 | 0.021 | 0.037 |
-| Random sampling (no LLM) | 6 | 0.065 | 0.082 | 0.050 | 0.067 | 0.065 | 0.082 | 0.050 | 0.067 | 0.030 | 0.049 | 0.022 | 0.039 | 0.030 | 0.049 | 0.022 | 0.039 |
-| Reg. evolution (no LLM) | 6 | 0.055 | 0.072 | 0.027 | 0.039 | 0.055 | 0.072 | 0.027 | 0.039 | 0.027 | 0.042 | 0.012 | 0.022 | 0.027 | 0.042 | 0.012 | 0.022 |
+| PEA with refill (no LLM) | 6 | 0.058 | 0.075 | 0.035 | 0.048 | 0.058 | 0.075 | 0.035 | 0.048 | 0.027 | 0.044 | 0.014 | 0.028 | 0.027 | 0.044 | 0.014 | 0.028 |
+| Random sampling (no LLM) | 6 | 0.065 | 0.086 | 0.048 | 0.067 | 0.065 | 0.086 | 0.048 | 0.067 | 0.029 | 0.050 | 0.020 | 0.039 | 0.029 | 0.050 | 0.020 | 0.039 |
+| Reg. evolution (no LLM) | 6 | 0.053 | 0.067 | 0.028 | 0.038 | 0.053 | 0.067 | 0.028 | 0.038 | 0.025 | 0.039 | 0.013 | 0.022 | 0.025 | 0.039 | 0.013 | 0.022 |
 
 ### cifar10: rank by IGD under each convention (1 = best)
 
 | Method | best rank | worst rank |
 |---|---|---|
-| NSGA-II (no LLM) | 2 | 5 |
-| PEA (no LLM) | 2 | 4 |
-| Random sampling (no LLM) | 3 | 5 |
-| Reg. evolution (no LLM) | 1 | 2 |
-| claude-haiku-4-5 | 7 | 9 |
-| claude-opus-5-5 | 1 | 9 |
-| deepseek-coder-v2-16b-8k | 6 | 9 |
-| gpt-4.1 | 5 | 6 |
-| qwen2.5-7b-8k | 6 | 9 |
+| NSGA-II (no LLM) | 2 | 4 |
+| PEA (no LLM) | 3 | 6 |
+| PEA with refill (no LLM) | 2 | 4 |
+| Random sampling (no LLM) | 4 | 7 |
+| Reg. evolution (no LLM) | 1 | 3 |
+| claude-haiku-4-5 | 10 | 12 |
+| claude-opus-5-5 | 1 | 12 |
+| deepseek-coder-v2-16b-8k | 9 | 12 |
+| gpt-4.1 | 7 | 9 |
+| gpt-4.1 [history + re-prompt] | 6 | 9 |
+| gpt-4.1 [history] | 5 | 10 |
+| qwen2.5-7b-8k | 8 | 11 |
 
 ### cifar10: LLM runs that beat each control by IGD (same device and convention)
 
-| Convention | beats PEA (no LLM) | beats Random sampling (no LLM) | beats NSGA-II (no LLM) | beats Reg. evolution (no LLM) |
-|---|---|---|---|---|
-| front / r=1.1 / archive / no floor | 2/25 | 4/25 | 6/25 | 2/25 |
-| front / r=1.1 / archive / floor 85% | 2/25 | 5/25 | 3/25 | 1/25 |
-| front / r=1.1 / all / no floor | 2/25 | 2/25 | 3/25 | 0/25 |
-| front / r=1.1 / all / floor 85% | 2/25 | 4/25 | 1/25 | 1/25 |
-| front / r=1.0 / archive / no floor | 2/25 | 4/25 | 6/25 | 2/25 |
-| front / r=1.0 / archive / floor 85% | 2/25 | 5/25 | 3/25 | 1/25 |
-| front / r=1.0 / all / no floor | 2/25 | 2/25 | 3/25 | 0/25 |
-| front / r=1.0 / all / floor 85% | 2/25 | 4/25 | 1/25 | 1/25 |
-| space / r=1.1 / archive / no floor | 5/25 | 7/25 | 8/25 | 3/25 |
-| space / r=1.1 / archive / floor 85% | 2/25 | 5/25 | 2/25 | 1/25 |
-| space / r=1.1 / all / no floor | 3/25 | 7/25 | 1/25 | 0/25 |
-| space / r=1.1 / all / floor 85% | 2/25 | 4/25 | 1/25 | 1/25 |
-| space / r=1.0 / archive / no floor | 5/25 | 7/25 | 8/25 | 3/25 |
-| space / r=1.0 / archive / floor 85% | 2/25 | 5/25 | 2/25 | 1/25 |
-| space / r=1.0 / all / no floor | 3/25 | 7/25 | 1/25 | 0/25 |
-| space / r=1.0 / all / floor 85% | 2/25 | 4/25 | 1/25 | 1/25 |
+| Convention | beats PEA (no LLM) | beats Random sampling (no LLM) | beats NSGA-II (no LLM) | beats Reg. evolution (no LLM) | beats PEA with refill (no LLM) |
+|---|---|---|---|---|---|
+| front / r=1.1 / archive / no floor | 2/25 | 2/25 | 3/25 | 1/25 | 1/25 |
+| front / r=1.1 / archive / floor 85% | 2/25 | 3/25 | 1/25 | 1/25 | 1/25 |
+| front / r=1.1 / all / no floor | 1/25 | 2/25 | 0/25 | 0/25 | 0/25 |
+| front / r=1.1 / all / floor 85% | 2/25 | 3/25 | 1/25 | 1/25 | 1/25 |
+| front / r=1.0 / archive / no floor | 2/25 | 2/25 | 3/25 | 1/25 | 1/25 |
+| front / r=1.0 / archive / floor 85% | 2/25 | 3/25 | 1/25 | 1/25 | 1/25 |
+| front / r=1.0 / all / no floor | 1/25 | 2/25 | 0/25 | 0/25 | 0/25 |
+| front / r=1.0 / all / floor 85% | 2/25 | 3/25 | 1/25 | 1/25 | 1/25 |
+| space / r=1.1 / archive / no floor | 3/25 | 2/25 | 2/25 | 2/25 | 2/25 |
+| space / r=1.1 / archive / floor 85% | 2/25 | 3/25 | 1/25 | 1/25 | 1/25 |
+| space / r=1.1 / all / no floor | 1/25 | 3/25 | 0/25 | 0/25 | 0/25 |
+| space / r=1.1 / all / floor 85% | 2/25 | 3/25 | 1/25 | 1/25 | 1/25 |
+| space / r=1.0 / archive / no floor | 3/25 | 2/25 | 2/25 | 2/25 | 2/25 |
+| space / r=1.0 / archive / floor 85% | 2/25 | 3/25 | 1/25 | 1/25 | 1/25 |
+| space / r=1.0 / all / no floor | 1/25 | 3/25 | 0/25 | 0/25 | 0/25 |
+| space / r=1.0 / all / floor 85% | 2/25 | 3/25 | 1/25 | 1/25 | 1/25 |
 
 ## cifar100: mean HV over devices
 
@@ -181,11 +193,13 @@ Default convention (front / r=1.1 / archive / no floor), then the range over all
 
 | Dataset | Metric | Control | LLM wins (default) | pooled sign p | Wilcoxon p | devices won | device-clustered p | wins over 16 conv. | max device-clustered p over 16 conv. |
 |---|---|---|---|---|---|---|---|---|---|
-| cifar10 | HV | PEA (no LLM) | 0/25 | 3.0e-08 | 3.0e-08 | 0/6 | 0.016 | 0-3 of 25 | 0.016 |
-| cifar10 | HV | Random sampling (no LLM) | 1/25 | 7.7e-07 | 1.5e-07 | 0/6 | 0.016 | 1-3 of 25 | 0.016 |
+| cifar10 | HV | PEA (no LLM) | 0/25 | 3.0e-08 | 3.0e-08 | 0/6 | 0.016 | 0-2 of 25 | 0.016 |
+| cifar10 | HV | Random sampling (no LLM) | 3/25 | 7.8e-05 | 7.5e-07 | 0/6 | 0.016 | 3-4 of 25 | 0.016 |
 | cifar10 | HV | NSGA-II (no LLM) | 0/25 | 3.0e-08 | 3.0e-08 | 0/6 | 0.016 | 0-1 of 25 | 0.016 |
 | cifar10 | HV | Reg. evolution (no LLM) | 0/25 | 3.0e-08 | 3.0e-08 | 0/6 | 0.016 | 0-1 of 25 | 0.016 |
-| cifar10 | IGD | PEA (no LLM) | 2/25 | 9.7e-06 | 7.5e-07 | 0/6 | 0.016 | 2-5 of 25 | 0.078 |
-| cifar10 | IGD | Random sampling (no LLM) | 4/25 | 4.6e-04 | 9.1e-06 | 1/6 | 0.031 | 2-7 of 25 | 0.094 |
-| cifar10 | IGD | NSGA-II (no LLM) | 6/25 | 0.007 | 0.002 | 1/6 | 0.047 | 1-8 of 25 | 0.141 |
-| cifar10 | IGD | Reg. evolution (no LLM) | 2/25 | 9.7e-06 | 9.8e-07 | 0/6 | 0.016 | 0-3 of 25 | 0.031 |
+| cifar10 | HV | PEA with refill (no LLM) | 0/25 | 3.0e-08 | 3.0e-08 | 0/6 | 0.016 | 0-1 of 25 | 0.016 |
+| cifar10 | IGD | PEA (no LLM) | 2/25 | 9.7e-06 | 7.5e-07 | 0/6 | 0.016 | 1-3 of 25 | 0.031 |
+| cifar10 | IGD | Random sampling (no LLM) | 2/25 | 9.7e-06 | 2.1e-06 | 0/6 | 0.016 | 2-3 of 25 | 0.016 |
+| cifar10 | IGD | NSGA-II (no LLM) | 3/25 | 7.8e-05 | 1.3e-06 | 0/6 | 0.016 | 0-3 of 25 | 0.016 |
+| cifar10 | IGD | Reg. evolution (no LLM) | 1/25 | 7.7e-07 | 6.0e-08 | 0/6 | 0.016 | 0-2 of 25 | 0.016 |
+| cifar10 | IGD | PEA with refill (no LLM) | 1/25 | 7.7e-07 | 8.9e-08 | 0/6 | 0.016 | 0-2 of 25 | 0.016 |

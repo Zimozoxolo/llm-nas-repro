@@ -19,22 +19,20 @@ obj = objectives(b.latencies("edgegpu"), b.test_acc)
 tf = obj[pareto_mask(obj)]
 tf = tf[np.argsort(tf[:, 0])]
 
-runs = []
+from llmnas.conventions import method_of  # noqa: E402
+
+SHOW = {"gpt-4.1": "gpt-4.1", "claude-opus-5-5": "claude-opus-5-5", "deepseek-coder-v2-16b-8k": "deepseek-coder-v2-16b",
+        "qwen2.5-7b-8k": "qwen2.5-7b", "PEA (no LLM)": "PEA (no LLM)", "Random sampling (no LLM)": "Random sampling in niches",
+        "Reg. evolution (no LLM)": "Regularised evolution (no LLM)"}
+runs, seen = [], set()
 for f in sorted(glob.glob(os.path.join(ROOT, "results/runs/*/cifar10/edgegpu/seed0/run.json"))):
     r = json.load(open(f))
-    c = r["config"]
-    if c.get("type", "search") != "search" or c["llm"].get("backend") == "mock":
+    m = method_of(r) if r["config"].get("type", "search") in ("search", "regevo") else None
+    if m not in SHOW or m in seen:  # one run per method; the duplicate-fix arms are not the published method
         continue
-    s = c["search"]
-    if s["operator"] == "llm" and s["partitioning"] and s.get("knowledge_base", True):
-        label = c["llm"]["model"].replace("-8k", "").replace("-16k", "")
-    elif s["operator"] == "random" and s["partitioning"] and s["generations"] == 10:
-        label = "PEA (no LLM)"
-    elif s["operator"] == "random_sample" and s["partitioning"]:
-        label = "Random sampling in niches"
-    else:
-        continue
-    runs.append((label, r))
+    seen.add(m)
+    runs.append((SHOW[m], r))
+runs.sort(key=lambda x: list(SHOW.values()).index(x[0]))
 
 fig, ax = plt.subplots(figsize=(7.2, 4.8))
 ax.scatter(obj[:, 0], -obj[:, 1], s=2, c="0.85", rasterized=True, label="Search space (15,625)")

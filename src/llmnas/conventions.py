@@ -195,7 +195,9 @@ def report(datasets=("cifar10", "cifar100", "ImageNet16-120"), out: Path | None 
         per_dev = d.groupby(["method", "device", "convention"])[["hv", "igd"]].mean().reset_index()
         ndev = per_dev.groupby("method").device.nunique()
         present = [c for c in controls if c in set(per_dev.method)]
-        llms = sorted(m for m in set(per_dev.method) if m not in controls)
+        # head-to-head counts cover the LLM-NAS method as published; the duplicate-fix arms ("[history...]") are
+        # scored in the tables but judged only by their pre-registered analysis (llmnas.dupfix)
+        llms = sorted(m for m in set(per_dev.method) if m not in controls and "[" not in m)
         for metric, label in (("hv", "HV"), ("igd", "IGD")):
             piv = per_dev.groupby(["method", "convention"])[metric].mean().unstack("convention")
             lines.append(f"\n## {ds}: mean {label} over devices\n")
