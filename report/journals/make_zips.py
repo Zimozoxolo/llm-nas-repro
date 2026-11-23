@@ -2,7 +2,7 @@ import zipfile, sys
 from pathlib import Path
 sys.stdout.reconfigure(encoding="utf-8")
 HERE = Path(__file__).resolve().parent
-OUT = Path(r"C:\Users\siyab\Downloads")
+OUT = Path.home() / "Downloads"
 SKIP_EXT = {".aux", ".log", ".out", ".blg", ".bcf", ".run.xml", ".fls", ".fdb_latexmk", ".toc", ".xdv", ".synctex.gz"}
 
 NOTES = {

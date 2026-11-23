@@ -3,7 +3,7 @@ import shutil, sys, zipfile
 from pathlib import Path
 sys.stdout.reconfigure(encoding="utf-8")
 HERE = Path(__file__).resolve().parent
-OUT = Path(r"C:\Users\siyab\Downloads\LLM-NAS_journal_submissions")
+OUT = Path.home() / "Downloads" / "LLM-NAS_journal_submissions"
 OUT.mkdir(exist_ok=True)
 SKIP = (".aux", ".log", ".out", ".blg", ".fls", ".fdb_latexmk", ".toc", ".spl", ".synctex.gz")
 
