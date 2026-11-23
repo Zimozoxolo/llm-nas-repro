@@ -76,7 +76,7 @@ For each device d and control c: `margin(d, c) = max(2 x s.d. of c over its 10 s
 
 | Verdict | Rule |
 |---|---|
-| **Better** | `diff > +margin` on at least 5 of 6 devices, **and** sign-flip p <= 0.05 for "LLM better" |
+| **Better** | `diff > +margin` on every device where `mean + margin < 1` (at least 3 such devices; amendment 2), **and** sign-flip p <= 0.05 over all six devices for "LLM better" |
 | **Worse** | `diff < -margin` on at least 5 of 6 devices, **or** sign-flip p <= 0.05 for "LLM worse" |
 | **Parity** | anything else |
 
@@ -116,7 +116,9 @@ with the reference runs.
 - Implementation commit (frozen before paid runs): `754bc79` (2026-11-20; switches added in `67b262d`, amendment 1
   in `754bc79`). Checked with the mock backend and by replaying archived runs. Prompt wording and retry rules
   are fixed from this commit on.
-- Approval of paid arms: _to be filled in (date, amount)_.
+- Analysis rule frozen with amendment 2 in the commit that adds it (see Section 9).
+- Approval of paid arms: 2026-11-23, by the author, for arm A (about $11, at most $17) and arm B (about $5.40),
+  GPT-4.1 via the OpenAI API, total cap $23. Given after the explainer of 2026-11-22 was read.
 
 ## 9. Amendments (made before any paid run)
 
@@ -137,3 +139,19 @@ new. The main comparator could then not be read at N = 270. Changes:
    its result.
 5. Cost: the mock needed 224-330 calls per arm-A search, more than the 195-270 assumed. Revised estimate for
    arm A: about $11 for six devices, at most about $17 if every retry is used. Arm B unchanged.
+
+**Amendment 2, 2026-11-23.** Found when the 10-seed controls were analysed at N = 270 (no paid call made, no
+arm-A or arm-B result exists). Seen at that point: the control results and the archived GPT-4.1 reference runs,
+which this test already used as its starting point. HV is a ratio to the true front and cannot exceed 1. On Edge
+GPU, Raspberry Pi 4 and Pixel 3, `mean + margin >= 1` for PEA with refill, NSGA-II and regularised evolution
+(means 0.991-0.995, margin 0.010), so no arm could exceed the margin there and "at least 5 of 6 devices" could
+never be met: the test could return "Worse" but never "Better". Changes:
+
+1. "Better" requires `diff > +margin` on every device where `mean(c, d) + margin(d, c) < 1`, with at least 3 such
+   devices, and the one-sided sign-flip p <= 0.05 over all six devices (unchanged; on 3 devices alone the
+   smallest p would be 1/8). With fewer than 3 such devices, "Better" is not reachable and this is reported.
+2. "Worse" and "Parity", the margins, Q1, Q4 (same rules), the arms, prompts and controls are unchanged.
+3. At N = 270 the devices where a win is possible are Edge TPU, Eyeriss and FPGA for PEA with refill (margins
+   0.029, 0.029, 0.041), NSGA-II and regularised evolution; the analysis report lists them per control.
+4. Implemented in `llmnas.dupfix.verdict` with a test; the verdicts for the archived reference runs at N = 120
+   are the same under the old and new rule.

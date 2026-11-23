@@ -196,6 +196,26 @@ def test_retry_prompt_format():
     assert "child 0: crossover\n  child 1: mutation" in p
 
 
+def test_amendment2_better_counts_only_devices_with_room():
+    import pandas as pd
+
+    from llmnas.conventions import DEVICES
+    from llmnas.dupfix import verdict
+
+    ctl = pd.Series([0.991, 0.993, 0.942, 0.992, 0.919, 0.919], index=DEVICES)
+    mar = pd.Series([0.010, 0.010, 0.029, 0.010, 0.029, 0.041], index=DEVICES)
+    arm = pd.Series([0.995, 0.996, 0.990, 0.995, 0.975, 0.975], index=DEVICES)  # wins on the 3 devices with room
+    v = verdict(arm, ctl, mar)
+    assert v["room"] == 3 and v["above_room"] == 3 and v["above"] == 3 and v["verdict"] == "Better"
+    arm2 = arm.copy()
+    arm2[DEVICES[5]] = 0.950  # misses one device with room: no longer Better
+    assert verdict(arm2, ctl, mar)["verdict"] == "Parity"
+    assert verdict(ctl - 0.05, ctl, mar)["verdict"] == "Worse"  # "Worse" unchanged
+    full = pd.Series(0.999, index=DEVICES)  # no room anywhere: Better unreachable
+    assert verdict(full, ctl + 0.0, pd.Series(0.010, index=DEVICES))["room"] == 3
+    assert verdict(full, pd.Series(0.995, index=DEVICES), pd.Series(0.010, index=DEVICES))["verdict"] == "Parity"
+
+
 @pytest.mark.parametrize("name", ["dupfix_controls", "dupfix_arms"])
 def test_experiment_files_load(name):
     from llmnas.experiments import config_hash, load_experiment, variant_config

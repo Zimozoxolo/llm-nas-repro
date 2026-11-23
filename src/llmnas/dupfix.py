@@ -1,13 +1,14 @@
 """Pre-registered analysis of the duplicate-fix test: ``python -m llmnas dupfix``.
 
-Implements Sections 4-5 of PREREGISTRATION_duplicate_fix.md (with amendment 1) and nothing else:
+Implements Sections 4-5 of PREREGISTRATION_duplicate_fix.md (with amendments 1 and 2) and nothing else:
 
 * HV under the default convention (front normalisation, reference point 1.1, archived front, no floor), read from
   each run's trajectory at N evaluations by linear interpolation between generations; a run that ends before N
   is scored at its final value.
 * margin(d, c) = max(2 x s.d. of control c over its seeds on device d, 0.010)   (sample s.d., ddof = 1)
 * diff(d, c)   = HV(arm, d) - mean HV(c, d)
-* Better: diff > +margin on >= 5 of 6 devices AND one-sided sign-flip p <= 0.05 for "arm better"
+* Better (amendment 2): diff > +margin on every device where mean + margin < 1 (at least 3 such devices) AND
+  one-sided sign-flip p <= 0.05 over all six devices for "arm better"
   Worse:  diff < -margin on >= 5 of 6 devices OR  one-sided sign-flip p <= 0.05 for "arm worse"
   Parity: anything else (also if Better and Worse both held)
 * Q1: arm A reaches N >= 265 on all six devices and its duplicate rate is >= 20 points below the reference's;
@@ -79,14 +80,18 @@ def verdict(arm: pd.Series, ctl_mean: pd.Series, margin: pd.Series) -> dict:
     devs = [d for d in DEVICES if d in arm.index and d in ctl_mean.index]
     diff = np.array([arm[d] - ctl_mean[d] for d in devs])
     m = np.array([margin[d] for d in devs])
+    # amendment 2: HV is capped at 1, so "Better" counts only devices where mean + margin < 1 (at least 3 needed)
+    room = np.array([ctl_mean[d] + margin[d] < 1.0 for d in devs], dtype=bool)
     above, below = int((diff > m).sum()), int((diff < -m).sum())
+    above_room = int(((diff > m) & room).sum())
     p_better, p_worse = _signflip_p(-diff), _signflip_p(diff)
-    better = above >= 5 and p_better <= 0.05
+    better = room.sum() >= 3 and above_room == room.sum() and p_better <= 0.05
     worse = below >= 5 or p_worse <= 0.05
     v = "Parity" if better == worse else ("Better" if better else "Worse")
     if len(devs) < 6:
         v += f" (only {len(devs)} of 6 devices)"
-    return dict(devices=len(devs), above=above, below=below, mean_diff=float(diff.mean()) if len(diff) else np.nan,
+    return dict(devices=len(devs), above=above, below=below, room=int(room.sum()), above_room=above_room,
+                room_devices=[d for d, r in zip(devs, room) if r], mean_diff=float(diff.mean()) if len(diff) else np.nan,
                 p_better=p_better, p_worse=p_worse, verdict=v, diffs=dict(zip(devs, diff.round(4))))  # fmt: skip
 
 
@@ -96,7 +101,7 @@ def report(out: Path | None = None) -> str:
     out.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(out.with_suffix(".csv"), index=False)
     L = ["# Duplicate-fix test (pre-registered analysis)\n",
-         "Rules: PREREGISTRATION_duplicate_fix.md, Sections 4-5 and amendment 1. HV = default convention, read at N "
+         "Rules: PREREGISTRATION_duplicate_fix.md, Sections 4-5 and amendments 1-2. HV = default convention, read at N "
          "evaluations from the trajectory (final value if the run ended earlier). CIFAR-10.\n"]  # fmt: skip
     arms = {m: df[df.method == m] for m in (ARM_A, ARM_B, REF)}
     have = {m: g for m, g in arms.items() if len(g)}
@@ -123,13 +128,15 @@ def report(out: Path | None = None) -> str:
             a = g.set_index("device")[col]
             L.append(f"**{m} at {label}** " + ("(primary)" if m == ARM_A else "(secondary)"))
             L.append("")
-            L.append("| Control | verdict | devices above / below margin | mean diff | p (better) | p (worse) |")
-            L.append("|---|---|---|---|---|---|")
+            L.append("| Control | verdict | devices above / below margin | above where a win is possible "
+                     "(amendment 2) | mean diff | p (better) | p (worse) |")  # fmt: skip
+            L.append("|---|---|---|---|---|---|---|")
             for c in CONTROLS:
                 sub = cs.xs(c, level="method")
                 v = verdict(a, sub["mean"], sub["margin"])
                 tag = " (primary comparator)" if c == PRIMARY else ""
                 L.append(f"| {c}{tag} | **{v['verdict']}** | {v['above']} / {v['below']} of {v['devices']} | "
+                         f"{v['above_room']} of {v['room']} ({', '.join(v['room_devices']) or 'none'}) | "
                          f"{v['mean_diff']:+.4f} | {v['p_better']:.3f} | {v['p_worse']:.3f} |")  # fmt: skip
             L.append("")
 
