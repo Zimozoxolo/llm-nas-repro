@@ -46,21 +46,19 @@ DATA_STMT = (
 
 TEVC_TITLE = "Does the Language Model Matter? Reproducing Language-Model-Driven Hardware-Aware Neural Architecture Search"
 TEVC_ABSTRACT = (
-    "A recent method for hardware-aware neural architecture search replaces the evolutionary variation operator "
-    "with a large language model and reports near-optimal accuracy-latency trade-offs from 120 model queries per "
-    "search. Because no reference implementation was available, we reimplemented the method from its published "
-    "description and logged every model query for exact replay. Validation of the benchmark data recovered eleven "
-    "of the twelve architectures reported by the original authors; one reported point does not exist in the "
-    "benchmark. We then compared searches driven by five language models with controls that use no language model "
-    "but share the same training-free evaluator and complexity niches. Front quality, measured by hypervolume and "
-    "inverted generational distance, depended strongly on an unstated normalisation: a single degenerate "
-    "architecture on the true front compresses all useful architectures into a small part of the accuracy axis. "
-    "Across six hardware devices, none of 48 language-model searches exceeded NSGA-II, regularised evolution or "
-    "evolution with a refilled random operator, each run with ten seeds. In a pre-registered test, showing the "
-    "model the architectures it had already evaluated and asking again for rejected proposals did not reduce its "
-    "repeated proposals, and with a full budget it scored below every control. On this small tabulated search space with a cheap evaluator, the reported cost "
-    "savings come from the evaluator rather than from the language model; whether the operator pays off with "
-    "expensive evaluations remains open."
+    "A recent method for hardware-aware neural architecture search replaces the variation operator of an "
+    "evolutionary search with a large language model and reports near-optimal accuracy-latency trade-offs from "
+    "120 model queries per search. No reference implementation was available, so we reimplemented the method from "
+    "its published description and logged every query for exact replay. Eleven of the twelve architectures "
+    "reported by the original authors were recovered; one does not exist in the benchmark. We compared searches "
+    "driven by five language models with five controls that use no language model but share the training-free "
+    "evaluator and the complexity niches, among them two standard evolutionary algorithms, each run with ten seeds. "
+    "Front quality depended strongly on an unstated normalisation: a single degenerate architecture on the true "
+    "front compresses all useful architectures into a small part of the accuracy axis. Across six hardware "
+    "devices, none of 48 language-model searches exceeded the two evolutionary algorithms or random-operator "
+    "evolution with refilling. In a pre-registered test, showing the model the architectures it had already "
+    "evaluated and asking again for rejected proposals did not reduce its repeated proposals. On this benchmark, "
+    "the reported cost savings come from the evaluator rather than from the language model."
 )
 TEVC_KEYWORDS = ["Neural architecture search", "evolutionary computation", "large language models",
                  "multiobjective optimization", "reproducibility"]
@@ -149,19 +147,20 @@ GA_TEX = r"""\documentclass[border=4pt]{standalone}
 \node[box] (a) {\textbf{LLM-NAS}\\[2pt]an LLM proposes architectures; a training-free evaluator scores them};
 \node[box,right=6mm of a] (b) {\textbf{Reproduction}\\[2pt]same evaluator and niches for LLM and non-LLM operators, six devices};
 \draw[->,thick] (a)--(b);
-\begin{scope}[shift={(10.4,-1.1)}]
+\begin{scope}[shift={(11.3,-1.1)}]
   \def\s{18}
-  \foreach \lab/\v/\c [count=\i] in {GPT-4.1/0.928/blue!55, DeepSeek/0.897/blue!55, Qwen/0.891/blue!55, Haiku/0.888/blue!55,
-      {Random sampling}/0.950/orange!80, {Random-operator evolution}/0.952/orange!80} {
+  \foreach \lab/\v/\c [count=\i] in {GPT-4.1 (1 seed)/0.928/blue!55, Qwen (3)/0.894/blue!55, DeepSeek (3)/0.890/blue!55,
+      Haiku (1)/0.888/blue!55, {Random sampling (10)}/0.948/orange!80, {Random-operator evolution (10)}/0.950/orange!80,
+      {Same, with refilling (10)}/0.959/orange!80, {Regularised evolution (10)}/0.969/orange!80, {NSGA-II (10)}/0.970/orange!80} {
     \pgfmathsetmacro{\w}{(\v-0.85)*\s}
-    \pgfmathsetmacro{\y}{2.3-0.38*\i}
-    \fill[\c] (0,\y-0.14) rectangle (\w,\y+0.14);
+    \pgfmathsetmacro{\y}{2.3-0.235*\i}
+    \fill[\c] (0,\y-0.095) rectangle (\w,\y+0.095);
     \node[anchor=east,font=\sffamily\scriptsize] at (-0.05,\y) {\lab};
     \node[anchor=west,font=\sffamily\scriptsize] at (\w+0.03,\y) {\v};
   }
   \draw (0,-0.05)--(0,2.15);
   \node[font=\sffamily\scriptsize,anchor=north] at (1.0,-0.05) {hypervolume, mean over six devices (CIFAR-10); axis starts at 0.85};
-  \node[font=\sffamily\small\bfseries,anchor=south,align=center] at (1.0,2.2) {0 of 24 LLM runs beat random-operator evolution};
+  \node[font=\sffamily\small\bfseries,anchor=south,align=center] at (1.0,2.2) {0 of 48 LLM searches beat the evolutionary controls};
 \end{scope}
 \draw[->,thick] (b.east)--++(0.9,0);
 \end{tikzpicture}
@@ -275,8 +274,18 @@ TEVC_TO_SUPP = [
     "Scope of what was run",
     "Ablation on CIFAR-100 (paper's Table 5)",
     "What the paper reports",
+    # added to reach TEVC's 10-page limit for regular papers (over-length pages are charged)
+    "Framework",
+    "Data",
+    "LLM co-evolution of knowledge and architectures",
+    "Training-free evaluation",
+    "Cost",
+    "Why hardware-aware search",
 ]
-TEVC_PARAS_TO_SUPP = ["What other studies report.", "Relation to other work.", "Where an LLM operator could still be justified."]
+TEVC_PARAS_TO_SUPP = ["What other studies report.", "Relation to other work.", "Where an LLM operator could still be justified.",
+                      "What the paper offers as justification.", "Evidence 2: cost.", "What would settle the question."]
+TEVC_SECTIONS_TO_SUPP = ["Future work", "Reproducibility and artefacts"]
+TEVC_FLOATS_TO_SUPP = ["tab:multidevicefloor", "fig:floor", "fig:pipeline", "fig:cnnfronts", "tab:dupfixq1"]
 
 
 def tevc_trim(body):
@@ -287,8 +296,14 @@ def tevc_trim(body):
         assert m, f"TEVC: subsection not found: {title}"
         moved.append(m.group(0))
         body = body[: m.start()] + body[m.end():]
-    for title in ("Future work",):
-        m = re.search(r"\\section\{" + re.escape(title) + r"\}.*?(?=\\section\{|%=====)", body, flags=re.S)
+    for lab in TEVC_FLOATS_TO_SUPP:
+        m = re.search(r"\\begin\{(table|figure)\}(?:(?!\\end\{(?:table|figure)\}).)*?\\label\{" + re.escape(lab)
+                      + r"\}.*?\\end\{\1\}\n?", body, flags=re.S)
+        assert m, f"TEVC: float not found: {lab}"
+        moved.append(m.group(0))
+        body = body[: m.start()] + body[m.end():]
+    for title in TEVC_SECTIONS_TO_SUPP:
+        m = re.search(r"\\section\{" + re.escape(title) + r"\}.*?(?=\\section\{|%=====|\Z)", body, flags=re.S)
         assert m, f"TEVC: section not found: {title}"
         moved.append(m.group(0).replace("\\section{", "\\subsection{", 1))
         body = body[: m.start()] + body[m.end():]
@@ -313,7 +328,13 @@ def tevc_trim(body):
 
 def build_tevc(main, glossary):
     d, body = prep("tevc", main, "All code, configurations and run logs are provided as anonymised supplementary material.")
+    roadmap = ("Section~\\ref{sec:discussion} what was discovered, and Section~\\ref{sec:future} next steps. "
+               "Appendix~\\ref{sec:glossary} defines all technical terms and formulas.")
+    assert body.count(roadmap) == 1
+    body = body.replace(roadmap, "and Section~\\ref{sec:discussion} what was discovered. The supplementary material "
+                                 "gives further background, settings, results, next steps and a glossary of all terms.")
     body, moved = tevc_trim(body)
+    body = re.sub(r"(\\paragraph\{[^}]*\} )the supplementary material", r"\1The supplementary material", body)
     (d / "refs.bib").write_text((HERE / "refs.bib").read_text(encoding="utf-8") + CLAUDE_BIB, encoding="utf-8")
     body = re.sub(r"\\begin\{table\}(\[[^\]]*\])?", r"\\begin{table*}[!t]", body).replace("\\end{table}", "\\end{table*}")
     body = re.sub(r"\\begin\{figure\}(\[[^\]]*\])?", r"\\begin{figure*}[!t]", body).replace("\\end{figure}", "\\end{figure*}")
