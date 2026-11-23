@@ -96,7 +96,7 @@ def copy_figs(dst):
         shutil.copy2(FIG / f, dst / "figures" / f)
 
 
-DECL_NOTE = "% [TO CONFIRM] statements in square brackets must be checked or completed by the author before submission.\n"
+DECL_NOTE = "% Declarations confirmed by the authors on 2026-11-23; the code URL is still to be added.\n"
 
 
 def build_tmlr(main, glossary):
@@ -154,16 +154,16 @@ def build_gpem(main, glossary):
         "\n\n\\backmatter\n\n"
         "\\section*{Declarations}\n"
         "\\begin{itemize}\n"
-        "\\item \\textbf{Funding.} [State the funding sources, or: The author received no specific funding for this work.]\n"
-        "\\item \\textbf{Competing interests.} [The author declares no competing interests.]\n"
+        "\\item \\textbf{Funding.} This research received no specific funding.\n"
+        "\\item \\textbf{Competing interests.} The authors declare no competing interests.\n"
         "\\item \\textbf{Ethics approval and consent to participate.} Not applicable; no human or animal subjects were involved.\n"
         "\\item \\textbf{Data availability.} All benchmark data are public: HW-NAS-Bench, NAS-Bench-Suite-Zero and NATS-Bench. "
         "The archived run logs behind every number are available in the code repository.\n"
         "\\item \\textbf{Code availability.} [Public repository URL and archive DOI, e.g.\\ Zenodo.]\n"
         "\\item \\textbf{Use of large language models.} Large language models are the object of study and are documented in "
         "Sections~\\ref{sec:background}--\\ref{sec:results}; an AI coding tool assisted the implementation, as stated in "
-        "Section~\\ref{sec:method}. The author reviewed all code and text and is accountable for them.\n"
-        "\\item \\textbf{Author contributions.} [S.M.: conceptualisation, software, investigation, analysis, writing.]\n"
+        "Section~\\ref{sec:method}. The authors reviewed all code and text and are accountable for them.\n"
+        "\\item \\textbf{Author contributions.} " + au.credit_springer() + "\n"
         "\\end{itemize}\n\n"
         "\\begin{appendices}\n" + glossary + "\n\\end{appendices}\n\n"
         "\\bibliography{refs}\n\n\\end{document}\n"
@@ -198,7 +198,7 @@ def build_rescience(main, glossary):
     kw = ", ".join(k.lower() for k in KEYWORDS) + ", python"
     yaml = f"""# To be filled by the author(s) at the time of submission
 # -------------------------------------------------------
-# [TO CONFIRM] "[¬Re]" marks a replication that did not reproduce the original claims;
+# "[¬Re]" (chosen 2026-11-23) marks a replication that did not reproduce the original claims;
 # use "[Re]" instead if the editor and you judge the replication successful.
 title: "[¬Re] LLM-NAS: LLM-Driven Hardware-Aware Neural Architecture Search"
 

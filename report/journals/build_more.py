@@ -37,7 +37,7 @@ AI_ELSEVIER = (
     "During the preparation of this work the first author used Claude Code (Anthropic), an AI coding assistant, "
     "to write and run the implementation and analysis code and to draft and edit parts of the manuscript text. "
     "After using this tool, the authors reviewed and edited the content as needed and take full responsibility "
-    "for the content of the published article. [TO CONFIRM: adjust to describe the actual use.]"
+    "for the content of the published article."
 )
 DATA_STMT = (
     "The benchmark data are public: HW-NAS-Bench, NAS-Bench-Suite-Zero and NATS-Bench. The code, "
@@ -207,12 +207,12 @@ def build_elsevier(name, journal, main, glossary, authoryear=False, ga=False, ma
         "\n\n\\section*{CRediT authorship contribution statement}\n"
         + au.credit_elsevier() + "\n\n"
         "\\section*{Declaration of competing interest}\n"
-        "[The authors declare that they have no known competing financial interests or personal relationships "
-        "that could have appeared to influence the work reported in this paper.]\n\n"
+        "The authors declare that they have no known competing financial interests or personal relationships "
+        "that could have appeared to influence the work reported in this paper.\n\n"
         f"\\section*{{Data availability}}\n{DATA_STMT}\n\n"
         "\\section*{Declaration of generative AI and AI-assisted technologies in the manuscript preparation process}\n"
         f"{AI_ELSEVIER}\n\n"
-        "\\section*{Acknowledgements}\n[Funding sources and acknowledgements, if any.]\n\n"
+        "\\section*{Acknowledgements}\nThis research received no specific funding.\n\n"
         "\\appendix\n" + glossary +
         f"\n\n\\bibliographystyle{{{style}}}\n\\bibliography{{refs}}\n\n\\end{{document}}\n"
     )
@@ -242,15 +242,15 @@ def build_springer(name, main, glossary, style, authoryear, heading):
         "\n\n\\backmatter\n\n"
         f"\\section*{{{heading}}}\n"
         "\\begin{itemize}\n"
-        "\\item \\textbf{Funding.} [State the funding sources, or: The authors received no specific funding for this work.]\n"
-        "\\item \\textbf{Competing interests.} [The authors have no relevant financial or non-financial interests to disclose.]\n"
+        "\\item \\textbf{Funding.} This research received no specific funding.\n"
+        "\\item \\textbf{Competing interests.} The authors have no relevant financial or non-financial interests to disclose.\n"
         "\\item \\textbf{Ethics approval and consent to participate.} Not applicable; no human or animal subjects were involved.\n"
         f"\\item \\textbf{{Data availability.}} {DATA_STMT}\n"
         "\\item \\textbf{Code availability.} [Public repository URL and archive DOI, e.g.\\ Zenodo.]\n"
         "\\item \\textbf{Use of large language models.} Large language models are the object of study and are documented in "
         "Sections~\\ref{sec:background}--\\ref{sec:results}. An AI coding assistant (Claude Code) was used to write the "
         "implementation and to draft and edit parts of the text (Section~\\ref{sec:method}); the authors reviewed all code "
-        "and text and are accountable for them. [TO CONFIRM.]\n"
+        "and text and are accountable for them.\n"
         "\\item \\textbf{Author contributions.} " + au.credit_springer() + "\n"
         "\\end{itemize}\n\n"
         "\\begin{appendices}\n" + glossary + "\n\\end{appendices}\n\n"
@@ -285,7 +285,7 @@ def build_tevc(main, glossary):
         "\n\n\\section*{Acknowledgment}\n"
         "Text throughout this paper was drafted with the assistance of an AI system, Claude Code \\cite{claudecode}, "
         "which was also used to write the implementation; the authors reviewed and revised all text and code and are "
-        "accountable for them. [TO CONFIRM; add research sponsors here after review.]\n\n"
+        "accountable for them. This research received no specific funding.\n\n"
         "\\bibliographystyle{IEEEtran}\n\\bibliography{refs}\n\n\\end{document}\n"
     )
     (d / "main.tex").write_text(tex, encoding="utf-8")
